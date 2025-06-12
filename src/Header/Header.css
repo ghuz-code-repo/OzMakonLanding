@@ -1,0 +1,6 @@
+.header-section {
+  background-color: #f8f9fa; /* Example style */
+  /* Add screen-specific styles here */
+  min-height: auto; /* Override global section style if needed */
+  padding: 10px 20px;
+}
