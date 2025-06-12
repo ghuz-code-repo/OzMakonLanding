@@ -1,0 +1,9 @@
+.carousel-section {
+  background-color: #e0e0e0; /* Example style */
+  /* Add screen-specific styles here */
+}
+.carousel-section > div { /* Style for sub-components for visibility */
+    padding: 10px;
+    margin: 10px;
+    border: 1px dashed #ccc;
+}

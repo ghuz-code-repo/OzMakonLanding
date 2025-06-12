@@ -1,0 +1,16 @@
+/* Global styles for the application */
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Example of a global style */
+.section {
+  min-height: 100vh; /* Default to full screen height, can be overridden */
+  padding: 20px;
+  border-bottom: 1px solid #eee; /* For visual separation during development */
+}

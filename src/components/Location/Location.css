@@ -1,0 +1,12 @@
+.location-section {
+  background-color: #bfbfbf; /* Example style */
+  /* Add screen-specific styles here */
+}
+.map-placeholder {
+    height: 300px;
+    background-color: #aaa;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+}
