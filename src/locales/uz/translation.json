@@ -1,0 +1,28 @@
+{
+  "header": {
+    "main": "Bosh sahifa",
+    "about": "Majmua haqida",
+    "advantages": "Afzalliklar",
+    "layouts": "Rejalar",
+    "location": "Manzil",
+    "contacts": "Aloqa",
+    "lang": "UZ"
+  },
+  "hero": {
+    "title": "Yangi imkoniyatlar va shahar hayotining markazida",
+    "subtitle": "Toshkentning yuragida eksklyuziv imkoniyatlar va qulayliklar olamini kashf eting."
+  },
+  "conception": {
+    "sectionTitle": "Yashash majmuasining arxitekturasi va konsepsiyasi haqida",
+    "mainDescription": "Fasadlar geometriyasi, turli hajm va materiallarning uyg'unligi.\nSirlashgan plitkalar.\nYuqori sifatli italyan suvoq.\nKompozit panellar.",
+    "dutchTitle": "Golland estetikasiga xoslik",
+    "dutchDescription": "De Architekten Cie. golland byurosining master-rejasi. Turli balandlikdagi qurilish va Yevropa fasadlari, an'anaviy mozaika va Markaziy Osiyo arxitekturasi iliq ranglaridan ilhomlangan.",
+    "helpTitle": "Sizga mos keladigan kvartirani tanlashda yordam beramiz",
+    "helpSubtitle": "Bitimning har bir bosqichida yordam beramiz",
+    "form": {
+      "namePlaceholder": "Ismingiz",
+      "phonePlaceholder": "+998 ",
+      "button": "Ariza qoldirish"
+    }
+  }
+} 

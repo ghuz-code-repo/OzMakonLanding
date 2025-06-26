@@ -26,16 +26,16 @@
 
 .ozmakon-navbar {
   /* Adjusted for the image's appearance */
-  background: rgba(173, 201, 221, 0.2); /* Light blueish tint, adjust alpha for desired transparency */
-  backdrop-filter: blur(15px);
-  -webkit-backdrop-filter: blur(15px);
-  border: 0.5px solid rgba(255, 255, 255, 0.15); /* Softer border */
-  border-radius: 25px; /* Slightly more rounded as per image */
+  background: var(--color-overlay-lightblue);
+  backdrop-filter: var(--color-blur);
+  -webkit-backdrop-filter: var(--color-blur);
+  border: 0.5px solid var(--color-border);
+  border-radius: 25px;
   padding: 10px 25px; /* Adjusted padding */
   width: 95%;
   /* max-width: 1100px; Adjusted max-width based on image proportions */
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-  color: #f0f0f0; /* Default text color for items inside navbar */
+  box-shadow: var(--color-shadow-header);
+  color: var(--color-header-link);
 }
 
 .ozmakon-navbar .container-fluid {
@@ -81,7 +81,7 @@
   display: inline-block; /* Or block, depending on flex context */
   width: 1px; /* Width of the line */
   height: 30px; /* MAKE THIS MATCH THE .logo-image height */
-  background-color: #cccccc; /* Color of the line */
+  background-color: var(--color-border-header);
   margin: 0 12px; /* Spacing around the line */
   /* Removed text-specific properties like font-size, line-height */
 }
@@ -111,7 +111,7 @@
 }
 
 .ozmakon-menu .nav-link {
-  color: #f0f0f0; /* Light color for links */
+  color: var(--color-header-link);
   margin: 0 12px; /* Spacing between menu items */
   font-size: 0.9rem;
   font-weight: 400;
@@ -120,8 +120,8 @@
 
 .ozmakon-menu .nav-link.active,
 .ozmakon-menu .nav-link:hover {
-  color: #ffffff; /* Brighter white on hover/active */
-  text-shadow: 0 0 5px rgba(255,255,255,0.5);
+  color: var(--color-header-link-hover);
+  text-shadow: 0 0 5px var(--color-header-link-hover)80;
 }
 
 .ozmakon-language-switcher {
@@ -132,50 +132,184 @@
 }
 
 .ozmakon-language-switcher .nav-link {
-  color: #f0f0f0;
+  color: var(--color-header-link);
   font-size: 0.9rem;
   padding-right: 0.5rem; /* Default padding for dropdown toggle */
 }
 .ozmakon-language-switcher .nav-link:hover {
-  color: #ffffff;
+  color: var(--color-header-link-hover);
 }
 .ozmakon-language-switcher .dropdown-menu {
-  background: rgba(173, 201, 221, 0.5); /* Match navbar style */
+  background: var(--color-overlay-lightblue-strong);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
-  border: 0.5px solid rgba(255, 255, 255, 0.15);
+  border: 0.5px solid var(--color-border);
   border-radius: 10px; /* Rounded corners for dropdown */
 }
 .ozmakon-language-switcher .dropdown-item {
-  color: #f0f0f0;
+  color: var(--color-header-link);
 }
 .ozmakon-language-switcher .dropdown-item:hover {
-  background-color: rgba(255, 255, 255, 0.1);
-  color: #ffffff;
+  background-color: var(--color-overlay-blur);
+  color: var(--color-header-link-hover);
 }
 
 
-/* Styles for screens 1280px and wider */
-@media (min-width: 1280px) {
-  .ozmakon-navbar {
-    /* width: 920px; Fixed width as requested */
-    min-height: 45.5;
-    padding-top: 10px; /* Adjusted from 14px to better match visual */
-    padding-right: 25px;/* Adjusted from 16px */
-    padding-bottom: 10px;/* Adjusted from 14px */
-    padding-left: 25px; /* Adjusted from 16px */
-  }
-}
+
 
 /* Adjustments for Bootstrap's default navbar toggler behavior */
 .navbar-toggler {
-  border-color: rgba(255, 255, 255, 0.2); /* Lighter border for toggler */
+  border-color: var(--color-border-light);
 }
 .navbar-toggler-icon {
   background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(240, 240, 240, 0.9)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e"); /* Lighter toggler icon */
 }
 
-@media (max-width: 1200px) { /* Bootstrap's lg breakpoint - when collapsed */
+.header {
+  border-radius: 999px;
+  border-width: 0.5px;
+  margin-top: 30px;
+  position: fixed;
+  z-index: 100;
+  backdrop-filter: var(--color-blur);
+  width: 80%;
+  height: 70px !important; 
+  min-width: 0;
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+}
+
+.header__container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 16px;
+  max-height: 1em;
+  width: 100%;
+}
+
+.header__logos {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  max-height: 1em;
+
+}
+
+.header__logo-gh {
+
+  object-fit: contain;
+}
+
+.header__divider {
+  display: inline-block;
+  width: 2px;
+  height: 1em;
+  background: linear-gradient(180deg, var(--color-header-divider) 0%, var(--color-header-divider) 100%);
+  border-radius: 1px;
+}
+
+.header__logo-ozmakon {
+
+  object-fit: contain;
+}
+
+.header__nav {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  font-size: 20px;
+  height: 1em;
+
+}
+
+.header__nav-link {
+  font-family: 'Urbanist', sans-serif;
+  font-weight: 400;
+  font-size: 20px;
+
+  line-height: 1.2;
+  color: var(--color-header-link-accent);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.header__nav-link:hover {
+  color: var(--color-header-link-hover);
+}
+
+.header__lang {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: 'Urbanist', sans-serif;
+  font-weight: 700;
+  font-size: 20px;
+  color: var(--color-header-link-accent);
+  cursor: pointer;
+}
+
+.header__lang-current {
+  color: var(--color-header-link-accent);
+}
+
+.header__lang-chevron {
+  display: inline-block;
+  vertical-align: middle;
+  color: var(--color-header-link-accent);
+}
+
+.header__burger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+  height: 40px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  z-index: 120;
+  margin-left: 16px;
+  position: relative;
+}
+.header__burger span {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 28px;
+  height: 3px;
+  background: #fff;
+  border-radius: 2px;
+  transition: 0.3s;
+  transform: translate(-50%, -50%) rotate(0deg);
+}
+.header__burger span:nth-child(1) {
+  transform: translate(-50%, -12px) rotate(0deg);
+}
+.header__burger span:nth-child(2) {
+  transform: translate(-50%, -50%) rotate(0deg);
+}
+.header__burger span:nth-child(3) {
+  transform: translate(-50%, 10px) rotate(0deg);
+}
+.header__burger--open span:nth-child(1) {
+  transform: translate(-50%, -50%) rotate(45deg);
+}
+.header__burger--open span:nth-child(2) {
+  opacity: 0;
+}
+.header__burger--open span:nth-child(3) {
+  transform: translate(-50%, -50%) rotate(-45deg);
+}
+
+/* Styles for screens 1280px and wider */
+@media (min-width: 1280px) {
+
+}
+
+@media (max-width: 1280px) { /* Bootstrap's lg breakpoint - when collapsed */
   .ozmakon-navbar .container-fluid {
     /* flex-wrap: wrap; // Already set or default Bootstrap behavior */
     /* justify-content: space-between; // Already set */
@@ -230,4 +364,191 @@
     left: 50%;
     transform: translateX(-50%); /* Center dropdown menu */
   }
+
+  .ozmakon-navbar {
+    /* width: 920px; Fixed width as requested */
+    min-height: 45.5;
+    padding-top: 10px; /* Adjusted from 14px to better match visual */
+    padding-right: 25px;/* Adjusted from 16px */
+    padding-bottom: 10px;/* Adjusted from 14px */
+    padding-left: 25px; /* Adjusted from 16px */
+  }
+
+
+  .header {
+    min-width: 0;
+    width: 80%;
+  }
+
+  .header__container {
+    /* flex-direction: column; */
+    gap: 16px;
+
+  }
+  .header__nav {
+    font-size: 12px;
+    display: none;
+    gap: 12px;
+  }
+
+  .header__nav-link {
+    font-size: 12px;}
+
+  .header__logos {
+    gap: 12px;
+  }
+
+}
+
+@media (max-width: 1024px) {
+  .header {
+    min-width: 0;
+    width: 80%;
+  }
+  .header__burger {
+    display: flex;
+  }
+  .header__nav {
+    position: fixed;
+    top: 0;
+    right: -100vw;
+    width: 70vw;
+    max-width: 320px;
+    height: 100vh;
+    background: rgba(30, 32, 36, 0.98);
+    box-shadow: -4px 0 24px 0 rgba(0,0,0,0.12);
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    padding: 100px 32px 32px 32px;
+    gap: 24px;
+    z-index: 110;
+    transition: right 0.3s cubic-bezier(.4,0,.2,1);
+    display: flex;
+  }
+  .header__nav--open {
+    right: 0;
+  }
+  .header__nav-link {
+
+    color: #fff;
+    padding: 8px 0;
+    width: 100%;
+    text-align: left;
+  }
+  .header__nav-link:hover {
+    color: #CDDBE5;
+  }
+  .header__nav-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.3);
+    z-index: 109;
+    cursor: pointer;
+  }
+  .header__nav {
+    display: none;
+  }
+  .header__nav.header__nav--open {
+    display: flex;
+  }
+}
+
+@media (min-width: 1025px) {
+  .header__burger {
+    display: none !important;
+  }
+  .header__nav {
+    display: flex !important;
+    position: static;
+    flex-direction: row;
+    align-items: center;
+    height: auto;
+    background: none;
+    box-shadow: none;
+    padding: 0;
+    gap: 20px;
+  }
+  .header__nav-link {
+    width: auto;
+    text-align: center;
+  }
+  .header__nav-overlay {
+    display: none;
+  }
+}
+
+@media (max-width: 700px) {
+  .header {
+    min-width: 0;
+    width: 100%;
+  }
+
+  .header__container {
+    gap: 8px;
+    /* padding: 8px 2px; */
+  }
+  .header__nav {
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .header__logo-gh, .header__logo-ozmakon {
+    width: 90px;
+    height: 22px;
+  }
+  .header__divider {
+    height: 22px;
+  }
+  .header__nav-link {
+    font-size: 16px;
+  }
+  .header__lang {
+    font-size: 16px;
+  }
+}
+
+.header__lang-dropdown {
+  position: relative;
+  display: inline-block;
+}
+.header__lang-current {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  user-select: none;
+  padding: 2px 8px;
+  border-radius: 6px;
+  transition: background 0.2s;
+}
+.header__lang-current:hover {
+  background: rgba(205, 219, 229, 0.08);
+}
+.header__lang-dropdown-list {
+  position: absolute;
+  top: 110%;
+  left: 0;
+  min-width: 60px;
+  background: var(--color-bg-secondary);
+  border-radius: 8px;
+  box-shadow: var(--color-shadow-light);
+  z-index: 200;
+  padding: 4px 0;
+  margin-top: 4px;
+}
+.header__lang-dropdown-item {
+  padding: 8px 16px;
+  cursor: pointer;
+  color: var(--color-header-link-accent);
+  font-size: 16px;
+  transition: background 0.2s, color 0.2s;
+  border-radius: 4px;
+}
+.header__lang-dropdown-item:hover {
+  background: var(--color-bg-secondary);
+  color: var(--color-header-link-hover);
+}
+.header__lang-dropdown-item--active {
+  font-weight: 700;
+  color: var(--color-header-link-hover);
+  background: var(--color-header-divider);
 }

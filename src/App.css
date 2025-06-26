@@ -6,6 +6,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  align-items: center;
 }
 
 /* Example of a global style */
@@ -13,4 +14,11 @@ body {
   min-height: 100vh; /* Default to full screen height, can be overridden */
   padding: 20px;
   border-bottom: 1px solid #eee; /* For visual separation during development */
+}
+
+
+#root{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
