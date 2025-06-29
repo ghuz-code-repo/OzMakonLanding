@@ -1,0 +1,208 @@
+.usp5__container {
+  display: flex;
+  width: 100%;
+  background: var(--color-bg-main);
+  align-self: center;
+  justify-content: center;
+  padding-top: 100px;
+}
+
+
+.usp5-wrapper {
+  max-width: 1700px;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  min-height: 900px;
+  height: 100%;
+  color: #fff;
+  margin: 0;
+  box-sizing: border-box;
+  justify-content: space-between;
+  align-items: flex-end;
+  padding-top: 100px;
+}
+
+
+
+.usp5-col {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  max-height: 1053px;
+}
+
+.usp5-col--left {
+  padding-left: 0.5%;
+  min-width: 40%;
+  max-width: 40%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  position: relative;
+}
+
+.usp5-col--center {
+  margin-top: -100px;
+  gap: 30px;
+  min-width: 30%;
+  max-width: 30%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+
+.usp5__img-child{
+  background-position: right;
+  border-radius: 12px;
+
+  min-width: 465px;
+  min-height: 335px;
+  background-image: url(/src/assets/img/UniqueSellingPropositionsGrid5/kids_room.jpg);
+  background-size: cover;
+  box-shadow: 0 8px 32px 0 rgba(210, 159, 102, 0.10);
+}
+
+.usp5__img-dvor{
+  background-position: -160px 0px;
+  border-radius: 12px;
+  min-width: 465px;
+  min-height: 688px;
+  background-image:url(/src/assets/img/UniqueSellingPropositionsGrid5/eagle_view.jpg);
+  background-size: cover;
+  box-shadow: 0 8px 32px 0 rgba(210, 159, 102, 0.10);
+}
+
+
+.usp5-col--right {
+  min-width: 29%;
+  max-width: 29%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-end;
+  /* padding: 80px 0 80px 40px; */
+  /* gap: 42px; */
+  position: relative;
+  padding-right: 0.5%;
+}
+
+.usp5_img--frontview{
+  border-radius: 12px;
+  background-position: -160px 0px;
+
+  width: 433px;
+  height: 453px;
+  background-image: url(/src/assets/img/UniqueSellingPropositionsGrid5/front_view.png);
+  background-size: cover;
+}
+.usp5_img--bbq{
+  border-radius: 12px;
+  background-position: right bottom;
+
+  width: 433px;
+  height: 273px;
+  background-image: url(/src/assets/img/UniqueSellingPropositionsGrid5/bbq.png);
+  background-size: cover;
+}
+
+.usp5__line {
+  /* position: absolute; */
+  /* left: 0; */
+  /* top: 80px; */
+  width: 2px;
+  height: 420px;
+  background: var(--color-gold);
+  border-radius: 1px;
+}
+
+.usp5__title {
+  font-size: 76px;
+  font-weight: 400;
+  line-height: 1.2;
+  color: #fff;
+  margin-bottom: 32px;
+  max-width: 90%;
+
+}
+
+.usp5__left-top-text{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  max-width: 86%;
+}
+
+
+.usp5__list {
+  font-size: 24px;
+  color: var(--color-gold);
+  line-height: 1.16;
+}
+
+.usp5__year {
+  font-size: 24px;
+  color: var(--color-gold);
+  margin-top: auto;
+}
+
+
+
+.usp5__img-block {
+
+  border-radius: 12px;
+  overflow: hidden;
+  /* background: #fff; */
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.usp5__img {
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+  border-radius: 12px;
+}
+
+.usp5__img-zal{
+  border-radius: 12px;
+
+  width: 454px;
+  height: 480px;
+  background-position: -384px;
+  background-image: url(/src/assets/img/UniqueSellingPropositionsGrid5/sports.jpg);
+  background-size: cover;
+  box-shadow: 0 8px 32px 0 rgba(210, 159, 102, 0.10);
+
+}
+
+
+.usp5__img-block--house {
+  margin-bottom: 24px;
+  box-shadow: 0 8px 32px 0 rgba(210, 159, 102, 0.10);
+  
+}
+
+.usp5__img-block--bbq {
+  box-shadow: 0 8px 32px 0 rgba(210, 159, 102, 0.10);
+
+}
+
+.usp5__textblock {
+  color: var(--color-gold);
+  font-size: 20px;
+  font-family: 'Urbanist', sans-serif;
+  line-height: 1.16;
+  padding: 0;
+  background: none;
+  margin-top: 10px;
+  margin-bottom: 70px;
+}
+
+.usp5__left-bottom{
+  margin-top: 71px;
+}

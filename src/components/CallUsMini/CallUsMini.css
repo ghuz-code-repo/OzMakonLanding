@@ -15,7 +15,6 @@
   justify-content: flex-start;
   align-items: flex-start;
   pointer-events: none;
-  /* padding: 40px 48px 32px 48px; */
   width: 100%;
   max-width: 1414px;
   background: var(--color-overlay-blur);
@@ -23,19 +22,16 @@
   border-radius: 18px;
   box-shadow: var(--color-shadow);
   backdrop-filter: blur(100.4px);
-
 }
 
 .callusmini__content {
   display: flex;
   justify-content: space-between;
   width: 100%;
-  /* max-width: 1100px; */
   pointer-events: auto;
 }
 
 .callusmini__left {
-  /* flex: 1 1 60%; */
   display: flex;
   align-items: center;
   padding-left: 56px;
@@ -94,7 +90,6 @@
   font-size: 24px;
   letter-spacing: -3%;
   vertical-align: middle;
-
 }
 
 .callusmini__button {

@@ -20,7 +20,7 @@
   --color-info: #1890ff;
   --color-header-link: #f0f0f0;
   --color-header-link-hover: #ffffff;
-  --color-header-link-accent: #CDDBE5;
+  --color-header-link-accent: #e4e4e4;
   --color-header-divider: #837D79;
   --color-text-main: #fff;
   --color-text-dark: #212121;
@@ -33,5 +33,5 @@
   --color-shadow-header: 0 4px 20px rgba(0, 0, 0, 0.1);
   --color-blur: blur(100.4px);
   --color-overlay-gradient: linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0.9) 94%);
-  --conception--yelow-line: #D29F66;
+  --color-gold: #D29F66;
 } 
