@@ -206,3 +206,49 @@
 .usp5__left-bottom{
   margin-top: 71px;
 }
+
+.usp5-slide-anim {
+  transition: transform 0.5s cubic-bezier(.4,0,.2,1), opacity 0.5s cubic-bezier(.4,0,.2,1), filter 0.5s cubic-bezier(.4,0,.2,1);
+}
+
+.usp5-anim--down {
+  /* Появление снизу вверх */
+  transform: translateY(60px);
+  opacity: 0;
+  filter: blur(16px);
+  animation: usp5-slide-in-down 0.5s forwards;
+}
+
+@keyframes usp5-slide-in-down {
+  from {
+    transform: translateY(60px);
+    opacity: 0;
+    filter: blur(16px);
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+    filter: blur(0);
+  }
+}
+
+.usp5-anim--up {
+  /* Появление сверху вниз */
+  transform: translateY(-60px);
+  opacity: 0;
+  filter: blur(16px);
+  animation: usp5-slide-in-up 0.5s forwards;
+}
+
+@keyframes usp5-slide-in-up {
+  from {
+    transform: translateY(-60px);
+    opacity: 0;
+    filter: blur(16px);
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+    filter: blur(0);
+  }
+}

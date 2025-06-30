@@ -4,6 +4,7 @@ import './UniqueSellingPropositionsGrid5.css';
 
 const slideData = (t) => [
   {
+    title : t('usp5.title'),
     left: {
       list: [t('usp5.list1'), t('usp5.list2'), t('usp5.list3')],
       year: '2025',
@@ -20,8 +21,10 @@ const slideData = (t) => [
     },
   },
   {
+    title : t('usp5.titleb'),
+
     left: {
-      list: [t('usp5.list1b') || 'Второй слайд 1', t('usp5.list2b') || 'Второй слайд 2', t('usp5.list3b') || 'Второй слайд 3'],
+      list: [t('usp5.list1b'), t('usp5.list2b'), t('usp5.list3b')],
       year: '2026',
       img: 'kids_room.jpg',
     },
@@ -134,7 +137,7 @@ const UniqueSellingPropositionsGrid5 = () => {
         {/* Левая колонка */}
         <div className="usp5-col usp5-col--left">
           <div className="usp5__left-top">
-            <h2 className="usp5__title">{t('usp5.title')}</h2>
+            <h2 className="usp5__title">{slide.title}</h2>
             <div className="usp5__left-top-text">
               <div className="usp5__list">
                 {slide.left.list.map((item, i) => <div key={i}>{item}</div>)}
