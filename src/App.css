@@ -9,6 +9,22 @@ body {
   align-items: center;
 }
 
+/* Для Chrome, Edge, Safari */
+body::-webkit-scrollbar {
+  width: 0 !important;
+  height: 0 !important;
+}
+
+/* Для Firefox */
+body {
+  scrollbar-width: auto;
+}
+
+/* Для IE/Edge (устаревшее, но на всякий случай) */
+body {
+  -ms-overflow-style: none;
+}
+
 /* Example of a global style */
 .section {
   min-height: 100vh; /* Default to full screen height, can be overridden */

@@ -33,6 +33,23 @@ body {
   min-height: 100vh;
   min-width: 100%;
   overflow-x: hidden;
+  scrollbar-width: auto; /* Firefox */
+  -ms-overflow-style: none; /* IE/Edge */
+}
+
+/* Скрыть скроллбар на всём сайте, но не запрещать прокрутку */
+body::-webkit-scrollbar {
+  width: 0 !important;
+  height: 0 !important;
+}
+
+#root, .App {
+  scrollbar-width: auto !important;
+  -ms-overflow-style: auto !important;
+}
+#root::-webkit-scrollbar, .App::-webkit-scrollbar {
+  width: 0 !important;
+  height: 0 !important;
 }
 
 h1, h2, h3, h4, h5, h6, .urbanist {
@@ -82,4 +99,22 @@ html, body {
   overflow-x: hidden;
   max-width: 100%;
   box-sizing: border-box;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE/Edge */
+}
+
+html::-webkit-scrollbar,
+body::-webkit-scrollbar {
+  width: 0 !important;
+  height: 0 !important;
+}
+
+/* Скрыть скроллбар у всех элементов на сайте */
+* {
+  scrollbar-width: none !important; /* Firefox */
+  -ms-overflow-style: none !important; /* IE/Edge */
+}
+*::-webkit-scrollbar {
+  width: 0 !important;
+  height: 0 !important;
 }
