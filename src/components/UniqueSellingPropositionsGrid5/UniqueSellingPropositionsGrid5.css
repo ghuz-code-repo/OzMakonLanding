@@ -4,7 +4,7 @@
   background: var(--color-bg-main);
   align-self: center;
   justify-content: center;
-  padding-top: 100px;
+  /* padding-top: 100px; */
 }
 
 
@@ -251,4 +251,49 @@
     opacity: 1;
     filter: blur(0);
   }
+}
+
+/* Анимация появления/ухода слайдов через классы на .usp5__container и .usp5-col */
+.usp5__container.anim-down .usp5-animatable {
+  animation: usp5-appear-down 0.3s cubic-bezier(.4,0,.2,1) both;
+}
+.usp5__container.anim-down .usp5-col--leaving .usp5-animatable {
+  animation: usp5-disappear-down 0.3s cubic-bezier(.4,0,.2,1) both !important;
+}
+.usp5__container.anim-up .usp5-animatable {
+  animation: usp5-appear-up 0.3s cubic-bezier(.4,0,.2,1) both;
+}
+.usp5__container.anim-up .usp5-col--leaving .usp5-animatable {
+  animation: usp5-disappear-up 0.3s cubic-bezier(.4,0,.2,1) both !important;
+}
+
+.usp5__container.anim-down .usp5-col--left   .usp5-animatable { animation-delay: 0.1s; }
+.usp5__container.anim-down .usp5-col--center .usp5-animatable { animation-delay: 0.2s; }
+.usp5__container.anim-down .usp5-col--right  .usp5-animatable { animation-delay: 0.3s; }
+
+.usp5__container.anim-up .usp5-col--left   .usp5-animatable { animation-delay: 0.3s; }
+.usp5__container.anim-up .usp5-col--center .usp5-animatable { animation-delay: 0.2s; }
+.usp5__container.anim-up .usp5-col--right  .usp5-animatable { animation-delay: 0.1s; }
+
+@keyframes usp5-appear-down {
+  from { transform: translateY(40px); opacity: 0; }
+  to   { transform: translateY(0);    opacity: 1; }
+}
+@keyframes usp5-appear-up {
+  from { transform: translateY(-40px); opacity: 0;}
+  to   { transform: translateY(0);     opacity: 1;}
+}
+@keyframes usp5-disappear-down {
+  from { transform: translateY(0);    opacity: 1;}
+  to   { transform: translateY(-40px);opacity: 0;}
+}
+@keyframes usp5-disappear-up {
+  from { transform: translateY(0);     opacity: 1;}
+  to   { transform: translateY(40px);  opacity: 0;}
+}
+
+.usp5-animatable {
+  will-change: transform, opacity;
+  backface-visibility: hidden;
+  transform: translateZ(0);
 }
