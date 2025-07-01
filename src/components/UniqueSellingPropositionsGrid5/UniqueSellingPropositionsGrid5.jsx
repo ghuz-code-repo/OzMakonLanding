@@ -1,6 +1,8 @@
 import React, { useRef, useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import './UniqueSellingPropositionsGrid5.css';
+import USPGridSlide from './USPGridSlide';
+const height = 1200-(1080-window.innerHeight)
 
 const slideData = (t) => [
   {
@@ -25,16 +27,16 @@ const slideData = (t) => [
 
     left: {
       list: [t('usp5.list1b'), t('usp5.list2b'), t('usp5.list3b')],
-      year: '2026',
-      img: 'kids_room.jpg',
+      year: '2025',
+      img: 'enter.jpg',
     },
     center: {
-      img1: 'eagle_view.jpg',
-      img2: 'sports.jpg',
+      img1: 'lift.jpg',
+      img2: 'Makon_render.jpg',
     },
     right: {
-      img1: 'bbq.png',
-      img2: 'front_view.png',
+      img1: 'komnata.jpg',
+      img2: 'coffe_table.jpg',
       text: t('usp5.textblock2') || 'Второй текстовый блок',
     },
   },
@@ -67,46 +69,71 @@ const UniqueSellingPropositionsGrid5 = () => {
       const visibleHeight = Math.min(rect.bottom, window.innerHeight) - Math.max(rect.top, 0);
       const visibleRatio = visibleHeight / rect.height;
 
-      if (
-        visibleRatio >= 0.5 && !atTop && !atBottom &&
-        !(
-          (current === 0 && directionScroll === 'up') ||
-          (current === slides.length - 1 && directionScroll === 'down')
-        )
-      ) {
-        e.preventDefault();
-        document.body.style.overflow = 'hidden';
-        if (directionScroll === 'down') {
-          const scrollDelta = rect.bottom - window.innerHeight;
-          window.scrollBy({ top: scrollDelta, behavior: 'smooth' });
-        } else {
-          const scrollDelta = rect.top;
-          window.scrollBy({ top: scrollDelta, behavior: 'smooth' });
-        }
-        return;
-      }
-
+      // 1. Hijack scroll для смены слайдов (ПЕРЕД блокировкой скролла)
       let hijack = false;
       if (directionScroll === 'down' && current < slides.length - 1 && atBottom) hijack = true;
       if (directionScroll === 'up' && current > 0 && atTop) hijack = true;
 
       if (hijack) {
         e.preventDefault();
+        setIsLocked(true);
         document.body.style.overflow = 'hidden';
         if (!ticking) {
           ticking = true;
           setAnimDirection(directionScroll === 'down' ? 'anim-down' : 'anim-up');
           setCurrent((c) => directionScroll === 'down' ? Math.min(c + 1, slides.length - 1) : Math.max(c - 1, 0));
-          setIsLocked(true);
           setTimeout(() => {
             setIsLocked(false);
             setAnimDirection(null);
           }, 1000);
           ticking = false;
         }
-      } else {
-        document.body.style.overflow = '';
+        return;
       }
+
+      // 2. Доскролл только если блок почти полностью виден, но не до конца
+      if (current === 0 && directionScroll === 'down') {
+        if (visibleRatio >= 0.01 && rect.bottom > window.innerHeight + 1) {
+          e.preventDefault();
+          document.body.style.overflow = 'hidden';
+          const scrollDelta = rect.bottom - window.innerHeight;
+          window.scrollBy({ top: scrollDelta, behavior: 'smooth' });
+          return;
+        }
+        // Если блок уже полностью виден — не даём скроллить дальше
+        if (rect.bottom <= window.innerHeight + 1) {
+          e.preventDefault();
+          return;
+        }
+      }
+
+      // Аналогичная логика для скролла вверх на последнем слайде
+      if (current === slides.length - 1 && directionScroll === 'up') {
+        if (visibleRatio >= 0.01 && rect.top < -1) {
+          e.preventDefault();
+          document.body.style.overflow = 'hidden';
+          const scrollDelta = rect.top;
+          window.scrollBy({ top: scrollDelta, behavior: 'smooth' });
+          return;
+        }
+        // Если блок уже полностью виден сверху — не даём скроллить выше
+        if (rect.top >= -1) {
+          e.preventDefault();
+          return;
+        }
+      }
+
+      if (current < slides.length - 1 && directionScroll === 'down' && atBottom) {
+        e.preventDefault();
+        return;
+      }
+
+      if (current > 0 && directionScroll === 'up' && atTop) {
+        e.preventDefault();
+        return;
+      }
+
+      document.body.style.overflow = '';
     };
 
     window.addEventListener('wheel', onWheel, { passive: false });
@@ -123,83 +150,9 @@ const UniqueSellingPropositionsGrid5 = () => {
     };
   }, []);
 
-  // Рендер только текущего слайда, анимация на колонках
-  const slide = slides[current];
-
-  const renderSlide = (slide, colClass, ref = null) => (
-    <div className="usp5-wrapper" ref={ref}>
-      <div className={`usp5-col usp5-col--left${colClass || ''}`}>
-        <div className="usp5-animatable">
-          <div className="usp5__left-top">
-            <h2 className="usp5__title">
-            {slide.title.split('\n').map((line, i) => (
-            <React.Fragment key={i}>
-              {line}
-              <br />
-            </React.Fragment>
-          ))}</h2>
-            <div className="usp5__left-top-text">
-              <div className="usp5__list">
-                {slide.left.list.map((item, i) => <div key={i}>{item}</div>)}
-              </div>
-              <div className="usp5__year">{slide.left.year}</div>
-            </div>
-          </div>
-        </div>
-        <div className="usp5__left-bottom">
-          <div className="usp5__img-block usp5__img-block--bottom">
-            <div className="usp5__line" />
-            <div
-              className="usp5__img usp5__img-zal  usp5-animatable"
-              style={{ backgroundImage: `url(${imgPath(slide.left.img)})` }}
-            />
-          </div>
-        </div>
-      </div>
-      <div className={`usp5-col usp5-col--center${colClass || ''}`}>
-        <div className="usp5__img-block usp5__img-block--top usp5-animatable">
-          <div
-            className="usp5__img usp5__img-child"
-            style={{ backgroundImage: `url(${imgPath(slide.center.img1)})` }}
-          />
-        </div>
-        <div className="usp5__img-block usp5__img-block--middle usp5-animatable">
-          <div
-            className="usp5__img usp5__img-dvor"
-            style={{ backgroundImage: `url(${imgPath(slide.center.img2)})` }}
-          />
-        </div>
-      </div>
-      <div className={`usp5-col usp5-col--right${colClass || ''}`}>
-        <div className="usp5__img-block usp5__img-block--house usp5-animatable">
-          <div
-            className="usp5_img--frontview"
-            style={{ backgroundImage: `url(${imgPath(slide.right.img1)})` }}
-          />
-        </div>
-        <div className="usp5-animatable">
-          <div className="usp5__textblock">
-            {slide.right.text.split('\n').map((line, i) => (
-              <React.Fragment key={i}>
-                {line}
-                <br />
-              </React.Fragment>
-            ))}
-          </div>
-        </div>
-        <div className="usp5__img-block usp5__img-block--bbq usp5-animatable">
-          <div
-            className="usp5_img--bbq"
-            style={{ backgroundImage: `url(${imgPath(slide.right.img2)})` }}
-          />
-        </div>
-      </div>
-    </div>
-  );
-
   return (
     <section className={`usp5__container${animDirection ? ' ' + animDirection : ''}`} ref={blockRef}>
-      {renderSlide(slide, '')}
+      <USPGridSlide slide={slides[current]} imgPath={imgPath} colClass="" height={height} />
     </section>
   );
 };

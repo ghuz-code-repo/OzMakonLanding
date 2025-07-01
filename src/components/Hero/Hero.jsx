@@ -3,11 +3,12 @@ import { useTranslation } from 'react-i18next';
 import './Hero.css';
 import heroBg from '../../assets/img/Hero/background.jpg';
 import logo from '../../assets/img/Hero/logo.svg';
+const height = 1200-(1080-window.innerHeight)
 
 const Hero = () => {
   const { t } = useTranslation();
   return (
-    <section className="hero" style={{ backgroundImage: `url(${heroBg})` }}>
+    <section className="hero" style={{ backgroundImage: `url(${heroBg})`, minHeight: height}}>
       <div className="hero__overlay">
         <div className="hero__content">
           <div className="hero__logo">

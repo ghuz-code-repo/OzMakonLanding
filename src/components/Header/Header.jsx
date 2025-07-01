@@ -22,6 +22,29 @@ const Header = () => {
   const [showLangDropdown, setShowLangDropdown] = useState(false);
   const langRef = useRef();
 
+  // --- Логика для скрытия/появления хедера ---
+  const [showHeader, setShowHeader] = useState(true);
+  const lastScrollY = useRef(window.scrollY);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY < 50) {
+        setShowHeader(true);
+        lastScrollY.current = window.scrollY;
+        return;
+      }
+      if (window.scrollY > lastScrollY.current) {
+        setShowHeader(false); // Скролл вниз
+      } else {
+        setShowHeader(true); // Скролл вверх
+      }
+      lastScrollY.current = window.scrollY;
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+  // --- конец логики ---
+
   useEffect(() => {
     const checkMobile = () => setIsMobile(window.innerWidth <= 1280);
     checkMobile();
@@ -43,7 +66,9 @@ const Header = () => {
   const handleBurgerClick = () => setMenuOpen((open) => !open);
   const handleNavClick = () => setMenuOpen(false);
 
-  const handleLangClick = () => setShowLangDropdown((v) => !v);
+  const handleLangClick = ()=> setShowLangDropdown((v) => !v);
+  // (console.log('Potom reliznem'));
+
   const handleLangChange = (lng) => {
     i18n.changeLanguage(lng);
     setShowLangDropdown(false);
@@ -76,7 +101,7 @@ const Header = () => {
   );
 
   return (
-    <header className="header">
+    <header className={`header${showHeader ? '' : ' header--hidden'}`}>
       <div className="header__container">
         <div className="header__logos">
           <img src={logoGoldenHouse} alt="Golden House" className="header__logo-gh" />

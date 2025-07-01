@@ -170,6 +170,12 @@
   font-size: 20px;
   display: flex;
   align-items: center;
+  transition: transform 0.3s cubic-bezier(.4,0,.2,1);
+  will-change: transform;
+}
+
+.header--hidden {
+  transform: translateY(-150%);
 }
 
 .header__container {

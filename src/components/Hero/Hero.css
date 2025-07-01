@@ -6,16 +6,12 @@
 .hero {
   position: relative;
   width: 100%;
-  min-height: 600px;
-  height: 100vh;
   background-size: cover;
-  background-position: left;
+  background-position: 0px -50px;
   display: flex;
   align-items: flex-end;
   justify-content: center;
-  padding-top: 90px;
 }
-
 .hero__overlay {
   position: absolute;
   inset: 0;

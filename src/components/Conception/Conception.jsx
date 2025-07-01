@@ -23,7 +23,7 @@ const Conception = () => {
       </div>
       <div className="conception__content">
         <div className="conception__left">
-        <h2 className="conception__section-title">
+        <h2 className="conception__section-title baseline-border">
           {t('conception.sectionTitle').split('\n').map((line, i) => (
             <React.Fragment key={i}>
               {line}
@@ -34,8 +34,8 @@ const Conception = () => {
           <img src={circleImage} alt="yellow line" className="conception__yellow-line" />
         </div>
         <div className="conception__right">
-          <h3 className="conception__dutch-title">{t('conception.dutchTitle')}</h3>
-          <p className="conception__dutch-desc">{t('conception.dutchDescription')}</p>
+          <h3 className="conception__dutch-title baseline-border">{t('conception.dutchTitle')}</h3>
+          <p className="conception__dutch-desc baseline-border">{t('conception.dutchDescription')}</p>
         </div>
       </div>
       <div className="conception__image-wrap">
@@ -43,7 +43,7 @@ const Conception = () => {
       </div>
       <div className="conception__desc-bottom__overlay">  
         <div className="conception__desc-bottom">
-          <p className="conception__main-desc">
+          <p className="conception__main-desc baseline-border">
           {t('conception.mainDescription').split('\n').map((line, i) => (
             <React.Fragment key={i}>
               {line}

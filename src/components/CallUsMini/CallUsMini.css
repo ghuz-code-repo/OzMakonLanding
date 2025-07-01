@@ -51,8 +51,8 @@
   flex-direction: column;
   min-width: 560px;
   padding-right: 66px;
-  padding-top: 44px;
-  padding-bottom: 44px;
+  padding-top: 41px;
+  padding-bottom: 42px;
   gap: 12px;
 }
 
@@ -74,10 +74,11 @@
   font-size: 24px;
   padding: 0px 16px;
   border: 0.5px solid var(--color-border);
-  border-radius: 8px;
+  border-radius: 14px;
   outline: none;
   margin-bottom: 0;
-  background-color: var(--bs-black);
+  background-color: transparent;
+  /* var(--bs-black); */
   color: var(--color-text-main);
   width: 100%;
   line-height: 70px;
@@ -93,6 +94,7 @@
 }
 
 .callusmini__button {
+  min-height: 70px;
   font-size: 18px;
   font-family: 'Urbanist', sans-serif;
   font-weight: 400;
