@@ -17,10 +17,12 @@ function App() {
       <Hero />
       <Conception />
       <UniqueSellingPropositionsGrid5 />
-      <ApartmentLayouts />
-      <PlacesAround />
-      <Location />
-      <CallUsBig />
+      <div className="hideable-content-below">
+        <ApartmentLayouts />
+        <PlacesAround />
+        <Location />
+        <CallUsBig />
+      </div>
     </>
   );
 }

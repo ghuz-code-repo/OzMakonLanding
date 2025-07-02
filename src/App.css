@@ -7,6 +7,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   align-items: center;
+  background: var(--color-bg-main);
 }
 
 /* Для Chrome, Edge, Safari */
@@ -15,6 +16,9 @@ body::-webkit-scrollbar {
   height: 0 !important;
 }
 
+.hideable-content-above{
+  width: 100%;
+}
 /* Для Firefox */
 body {
   scrollbar-width: auto;
@@ -37,4 +41,30 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+.hide-below-slider .hideable-content-below {
+  opacity: 0 !important;
+  pointer-events: none !important;
+  transition: opacity 0.3s;
+}
+
+/* Скрываем всё выше блока слайдера на 5-м слайде */
+.hide-above-slider body > *:not(.usp5__container):not(.usp5-fixed):not(.hideable-content-below) {
+  display: none !important;
+}
+
+.usp5-fixed {
+  position: fixed !important;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 9999;
+  background: var(--color-bg-main, #181818);
+  overflow: auto;
+}
+
+body.slider-locked {
+  overflow: hidden !important;
 }
