@@ -25,51 +25,68 @@ const USPGridCarousel = () => {
   slideRef.current = currentSlide;
   const lastSlideIndex = slides.length - 1;
 
+  console.log(`%c[Render] Слайд: ${currentSlide}`, 'color: orange;');
+
   useEffect(() => {
     const handleWheel = (e) => {
-      // ... (вся логика handleWheel остается без изменений) ...
       const { current: container } = containerRef;
       if (!container) return;
 
       const rect = container.getBoundingClientRect();
-      const isNowActive = rect.top <= 0 && rect.bottom > window.innerHeight;
+      const viewportHeight = window.innerHeight;
+
+      // --- ИСПРАВЛЕНИЕ ЗДЕСЬ ---
+      // Добавляем допуск в 1 пиксель, чтобы избежать ошибок округления браузера.
+      const isNowActive = rect.top <= 1 && rect.bottom >= viewportHeight - 1;
 
       if (!isNowActive) {
-        wasActive.current = false;
+        if (wasActive.current) {
+          console.log('[Check] Слайдер стал НЕ активен.');
+          wasActive.current = false;
+        }
         return;
       }
-      
-      const justActivated = !wasActive.current;
-      wasActive.current = true;
-      const direction = e.deltaY > 0 ? 'down' : 'up';
-      
-      if (isThrottled.current) {
-        e.preventDefault();
-        return;
-      }
-      
-      if ((slideRef.current === 0 && direction === 'up') || (slideRef.current === lastSlideIndex && direction === 'down')) {
-        return;
+
+      if (!wasActive.current) {
+        console.log('[Check] Слайдер стал АКТИВЕН.');
+        wasActive.current = true;
       }
       
       e.preventDefault();
-
-      if (justActivated && direction === 'down') {
-        isThrottled.current = true;
-        setTimeout(() => { isThrottled.current = false; }, SCROLL_DELAY);
+      
+      const direction = e.deltaY > 0 ? 'down' : 'up';
+      
+      if (isThrottled.current) {
+        console.log('%c[Wheel] Прокрутка заблокирована (throttle).', 'color: red;');
         return;
       }
 
-      const nextSlide = slideRef.current + (direction === 'down' ? 1 : -1);
+      if (slideRef.current === 0 && direction === 'up') {
+        console.log('[Check] Попытка выхода ВВЕРХ. Плавно скроллим страницу, чтобы отпустить блок.');
+        window.scrollBy({ top: -50, behavior: 'smooth' });
+        return;
+      }
+
+      if (slideRef.current === lastSlideIndex && direction === 'down') {
+        console.log('[Check] Попытка выхода ВНИЗ. Плавно скроллим страницу, чтобы отпустить блок.');
+        window.scrollBy({ top: 50, behavior: 'smooth' });
+        return;
+      }
       
+      let nextSlide = slideRef.current + (direction === 'down' ? 1 : -1);
+      
+      console.log(`%c[Wheel] Листаем на слайд ${nextSlide}`, 'font-weight: bold;');
       isThrottled.current = true;
       setCurrentSlide(nextSlide);
       
-      const targetScrollY = window.scrollY + rect.top + nextSlide * window.innerHeight;
+      const targetScrollY = window.scrollY + rect.top + nextSlide * viewportHeight;
       window.scrollTo({ top: targetScrollY, behavior: 'auto' });
+
+      console.log(`%c[ACTION] Перемотка на позицию слайда ${nextSlide}. Блокировка на 1с.`, 'color: green;');
 
       setTimeout(() => {
         isThrottled.current = false;
+        console.log('%c[ACTION] Блокировка снята.', 'color: blue;');
       }, SCROLL_DELAY);
     };
 
@@ -80,12 +97,6 @@ const USPGridCarousel = () => {
   return (
     <div ref={containerRef} className="usp5-scroll-container">
       <div className="usp5-sticky-wrapper">
-        {/*
-          Ключевое изменение здесь!
-          Мы оборачиваем слайд в div с уникальным 'key'.
-          Когда 'key' меняется, React полностью пересоздает этот div,
-          что заново запускает нашу CSS-анимацию.
-        */}
         <div key={currentSlide} className="slide-container-animated">
           {slides[currentSlide]}
         </div>
