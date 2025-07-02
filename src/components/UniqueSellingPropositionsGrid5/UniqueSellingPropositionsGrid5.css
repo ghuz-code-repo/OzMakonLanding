@@ -326,3 +326,17 @@
   align-items: center;
   justify-content: center;
 }
+
+@keyframes slideFadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.slide-container-animated {
+  /* Запускаем анимацию */
+  animation: slideFadeIn 0.5s ease-in-out;
+}
