@@ -1,0 +1,149 @@
+.usp5__container {
+    display: flex;
+    width: 100%;
+    background: var(--color-bg-main);
+    align-self: center;
+    justify-content: center;
+}
+
+
+.usp5_wrapper {
+    max-width: 1700px;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    height: 100vh;
+    color: #fff;
+    margin: 0;
+    box-sizing: border-box;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 30px;
+}
+
+.slide5 {
+    width: 100%;
+    /* min-width: 1700px; */
+    display: flex;
+    flex-direction: column;
+    gap: 60px;
+    justify-content: space-between;
+}
+
+.first_row {
+
+    display: flex;
+    flex-direction: row;
+    gap: 30px
+}
+
+.top_left {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 100%;
+}
+
+.top_left_title_block {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.top_left_title {
+    margin-top: -1rem;
+    font-weight: 350;
+    font-size: 76px;
+}
+
+.top_left_year {
+    font-weight: 250;
+    font-size: 24px;
+    color: var(--color-gold);
+
+}
+
+.top_left_text {
+    text-align: left;
+    font-weight: 250;
+    font-size: 24px;
+    color: var(--color-gold);
+}
+
+.top_left_yellow_line {
+    border-left: 0.5px solid var(--color-gold);
+    margin-top: 20px;
+    height: 100%;
+}
+
+.top_right {
+    display: flex;
+    flex-direction: row;
+    gap: 30px;
+}
+
+.top_right_left_img {
+    width: 402px;
+    height: 520px;
+    border-radius: 0px 0px 12px 12px;
+    background: round;
+}
+
+.top_right_right_img {
+    width: 402px;
+    height: 520px;
+    border-radius: 0px 0px 12px 12px;
+    background: round;
+}
+
+.second_row {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 30px;
+}
+
+.bottom_left_img {
+    width: 547px;
+    height: 348px;
+    border-radius: 12px 12px 0px 0px;
+    background: round;
+}
+
+.bottom_center_img {
+    width: 690px;
+    height: 348px;
+    border-radius: 12px 12px 0px 0px;
+    background: round;
+}
+
+.bottom_right{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 145px;
+}
+
+.bottom_right_text_block{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+}
+
+.bottom_right_title {
+    font-weight: 250;
+    font-size: 24px;
+    color: var(--color-gold);
+}
+
+.bottom_right_text {
+    font-weight: 250;
+    font-size: 24px;
+    color: var(--color-gold);
+}
+
+.bottom_right_yellow_line{
+    height: 100%;
+    border-right: 0.5px solid var(--color-gold);
+}

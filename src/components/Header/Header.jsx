@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
 import { supportedLanguages } from '../../i18n';
-import './Header.css';
+import styles from'./Header.module.css';
 import logoGoldenHouse from '../../assets/img/Header/logo-golden-house.svg';
 import logoOzmakon from '../../assets/img/Header/logo-ozmakon.svg';
 // import chevronDown from '../../assets/img/chevron-down.svg'; // если появится
@@ -79,17 +79,17 @@ const Header = () => {
   const currentLang = i18n.language || 'ru';
 
   const LangDropdown = (
-    <div className="header__lang-dropdown" ref={langRef}>
-      <span className="header__lang-current" onClick={handleLangClick}>
+    <div className={styles["header__lang-dropdown"]} ref={langRef}>
+      <span className={styles["header__lang-current"]} onClick={handleLangClick}>
         {t(`header.lang`, { lng: currentLang })}
-        <svg className="header__lang-chevron" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4 6L8 10L12 6" stroke="#CDDBE5" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round"/></svg>
+        <svg className={styles["header__lang-chevron"]} width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4 6L8 10L12 6" stroke="#CDDBE5" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round"/></svg>
       </span>
       {showLangDropdown && (
-        <div className="header__lang-dropdown-list">
+        <div className={styles["header__lang-dropdown-list"]}>
           {languages.map(lng => (
             <div
               key={lng}
-              className={`header__lang-dropdown-item${currentLang === lng ? ' header__lang-dropdown-item--active' : ''}`}
+              className={styles["header__lang-dropdown-item"]+(currentLang === lng ? ' '+styles['header__lang-dropdown-item--active'] : '')}
               onClick={() => handleLangChange(lng)}
             >
               {t(`header.lang`, { lng })}
@@ -101,38 +101,38 @@ const Header = () => {
   );
 
   return (
-    <header className={`header${showHeader ? '' : ' header--hidden'}`}>
-      <div className="header__container">
-        <div className="header__logos">
-          <img src={logoGoldenHouse} alt="Golden House" className="header__logo-gh" />
-          <span className="header__divider" />
-          <img src={logoOzmakon} alt="Ozmakon" className="header__logo-ozmakon" />
+    <header className={styles["header"]+(showHeader ? '' : " "+styles['header--hidden'])} style={{width: menuOpen ? "100%" : ""}}>
+      <div className={styles["header__container"]}>
+        <div className={styles["header__logos"]}>
+          <img src={logoGoldenHouse} alt="Golden House" className={styles["header__logo-gh"]} />
+          <span className={styles["header__divider"]} />
+          <img src={logoOzmakon} alt="Ozmakon" className={styles["header__logo-ozmakon"]} />
         </div>
-        <nav className={`header__nav${menuOpen ? ' header__nav--open' : ''}`}>
+        <nav className={styles["header__nav"]+(menuOpen ? ' '+styles['header__nav--open'] : '')}>
           {navKeys.map(link => (
-            <a key={link.key} href={link.href} className="header__nav-link" onClick={handleNavClick}>
+            <a key={link.key} href={link.href} className={styles["header__nav-link"]} onClick={handleNavClick}>
               {t(`header.${link.key}`)}
             </a>
           ))}
           {isMobile && (
-            <div className="header__lang header__lang--mobile">
+            <div className={styles["header__lang"]+" "+styles["header__lang--mobile"]}>
               {LangDropdown}
             </div>
           )}
         </nav>
         {!isMobile && (
-          <div className="header__lang">
+          <div className={styles["header__lang"]}>
             {LangDropdown}
           </div>
         )}
-        <button className={`header__burger${menuOpen ? ' header__burger--open' : ''}`} onClick={handleBurgerClick} aria-label="Открыть меню">
+        <button className={styles["header__burger"]+(menuOpen ? ' '+styles["header__burger--open"] : '')} onClick={handleBurgerClick} aria-label="Открыть меню">
           <span />
           <span />
           <span />
         </button>
       </div>
       {/* Мобильное меню-оверлей */}
-      {menuOpen && <div className="header__nav-overlay" onClick={handleBurgerClick} />}
+      {menuOpen && <div className={styles["header__nav-overlay"]} onClick={handleBurgerClick} />}
     </header>
   );
 };

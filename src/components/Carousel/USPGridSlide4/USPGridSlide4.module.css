@@ -1,0 +1,156 @@
+.usp5__container {
+    display: flex;
+    width: 100%;
+    background: var(--color-bg-main);
+    align-self: center;
+    justify-content: center;
+}
+
+
+.usp5-wrapper {
+    max-width: 1700px;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    height: 100vh;
+    color: #fff;
+    margin: 0;
+    box-sizing: border-box;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 30px;
+}
+
+
+.slide4 {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+    gap: 60px;
+
+}
+
+.slide-4-top {
+    display: flex;
+    gap: 30px;
+}
+
+.slide-4-top--left {
+    height: 100%;
+    width: 100%;
+}
+
+.slide-4-top--right {
+    display: flex;
+    flex-direction: row;
+    gap: 30px;
+
+}
+
+.top--left--photo {
+    width: 835px;
+    height: 380px;
+    border-radius: 0px 0px 12px 12px;
+    background: round;
+
+}
+
+.left--top--right--photo {
+    width: 402px;
+    height: 380px;
+    border-radius: 0px 0px 12px 12px;
+    background: round;
+}
+
+.right--top--right-photo {
+    width: 402px;
+    height: 380px;
+    border-radius: 0px 0px 12px 12px;
+    background: round;
+}
+
+.slide-4-bottom {
+    display: flex;
+    gap: 30px
+}
+
+.slide-4-bottom--left {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+
+}
+
+.bullet-block {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.slide-4-bottom--left--block {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    justify-content: space-between;
+}
+
+.first-row {
+    margin-top: -10px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.row_title_text {
+    font-size: 76px;
+    font-weight: 400;
+    line-height: 1.2;
+    color: #fff;
+    margin-top: -14px;
+    max-width: 90%;
+    white-space: nowrap;
+
+}
+
+.second-row {
+    display: flex;
+    flex-direction: column;
+    /* height: 100%; */
+    margin-top: 40px;
+}
+
+.main-text {
+    padding-top: 10px;
+    font-weight: 200;
+    font-size: 24px;
+    color: var(--color-gold);
+}
+
+.bullets {
+    font-weight: 200;
+    font-size: 24px;
+    color: var(--color-gold);
+}
+
+.right--bottom-photo {
+    width: 835px;
+    height: 488px;
+    border-radius: 12px 12px 0px 0px;
+    background: round;
+}
+
+.yellow-line {
+    /* width: 2px; */
+    height: 100%;
+    background: var(--color-gold);
+    /* border-radius: 1px; */
+    border-left: 0.5px solid var(--color-gold);
+    
+    margin-top: 10px;
+}
+
+.year {
+    font-weight: 300;
+    font-size: 24px;
+    color: var(--color-gold);
+}

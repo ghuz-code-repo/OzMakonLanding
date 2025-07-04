@@ -4,7 +4,7 @@ import './App.css';
 import Header from './components/Header/Header';
 import Hero from './components/Hero/Hero';
 import Conception from './components/Conception/Conception';
-import UniqueSellingPropositionsGrid5 from './components/UniqueSellingPropositionsGrid5/UniqueSellingPropositionsGrid5';
+import Carousel from './components/Carousel/USPGridCarousel/USPGridCarousel';
 import ApartmentLayouts from './components/ApartmentLayouts/ApartmentLayouts';
 import PlacesAround from './components/PlacesAround/PlacesAround';
 import Location from './components/Location/Location';
@@ -16,7 +16,7 @@ function App() {
       <Header />
       <Hero />
       <Conception />
-      <UniqueSellingPropositionsGrid5 />
+      <Carousel />
       <div className="hideable-content-below">
         <ApartmentLayouts />
         <PlacesAround />

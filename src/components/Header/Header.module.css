@@ -1,0 +1,548 @@
+.header-section {
+  /* The .section class from App.css might add unwanted min-height and padding.
+     Bootstrap's navbar classes (bg-light, navbar-light) will provide base styling.
+     If you use sticky-top, ensure body has appropriate padding if needed. */
+  /* Example: Override App.css .section properties if they conflict */
+  min-height: auto !important;
+  padding: 0 !important; /* Navbar typically controls its own padding */
+  /* border-bottom: 1px solid #dee2e6; Example border */
+
+  /* Base styles for the header wrapper if needed */
+  padding-top: 20px; /* Add some space at the top of the page for the sticky navbar */
+  position: sticky; /* Make the header section sticky */
+  top: 20px; /* Distance from the top of the viewport */
+  left: 0;
+  right: 0;
+  z-index: 1030; /* Ensure it's above other content, Bootstrap's navbar z-index is 1030 */
+  display: flex;
+  justify-content: center;
+}
+
+.navbar-brand {
+  font-weight: bold;
+}
+
+/* Add any additional custom styles for your header here */
+
+.ozmakon-navbar {
+  /* Adjusted for the image's appearance */
+  background: var(--color-overlay-lightblue);
+  backdrop-filter: var(--color-blur);
+  -webkit-backdrop-filter: var(--color-blur);
+  border: 0.5px solid var(--color-border);
+  border-radius: 25px;
+  padding: 10px 25px; /* Adjusted padding */
+  width: 95%;
+  /* max-width: 1100px; Adjusted max-width based on image proportions */
+  box-shadow: var(--color-shadow-header);
+  color: var(--color-header-link);
+}
+
+.ozmakon-navbar .container-fluid {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: nowrap; 
+}
+
+.ozmakon-logo-container {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  flex-shrink: 0; 
+}
+
+/* Remove old text-based logo styles or comment them out */
+/*
+.ozmakon-logo { ... }
+.logo-golden-house { ... }
+.logo-gh-graphic { ... }
+.logo-ozmakon { ... }
+.logo-business { ... }
+*/
+
+.logo-image {
+  height: 30px; /* Default height, adjust as needed. THIS IS THE KEY HEIGHT. */
+  width: auto; /* Maintain aspect ratio */
+  display: block; /* Remove extra space below image */
+}
+
+
+.logo-separator {
+  display: inline-block; /* Or block, depending on flex context */
+  width: 1px; /* Width of the line */
+  height: 30px; /* MAKE THIS MATCH THE .logo-image height */
+  background-color: var(--color-border-header);
+  margin: 0 12px; /* Spacing around the line */
+  /* Removed text-specific properties like font-size, line-height */
+}
+
+.ozmakon-menu-collapse {
+  /* This is the .navbar-collapse element */
+  /* On large screens (when not collapsed), it needs to be a flex container */
+  /* Bootstrap's navbar-expand-lg handles display: flex for > lg breakpoints */
+  /* We need to ensure it distributes space correctly for menu and lang switcher */
+  justify-content: space-between; /* Distributes menu and lang switcher */
+  align-items: center;
+  width: 100%; /* Take available width to allow space-between to work */
+  flex-grow: 1; /* Allow it to grow and push logo/toggler */
+}
+
+.ozmakon-menu {
+  /* Menu UL */
+  /* On large screens, center it if space allows. Bootstrap's .navbar-nav with .mx-auto on parent or self can do this */
+  /* For now, relying on space-between of parent .ozmakon-menu-collapse */
+  display: flex; /* Ensure it's a flex container for its items */
+  margin: 0 auto; /* This will help center the menu block if .ozmakon-menu-collapse has extra space */
+  flex-shrink: 0; /* Prevent menu from shrinking too much */
+}
+
+.nav-link{
+  white-space: pre;
+}
+
+.ozmakon-menu .nav-link {
+  color: var(--color-header-link);
+  margin: 0 12px; /* Spacing between menu items */
+  font-size: 0.9rem;
+  font-weight: 400;
+  text-transform: none; /* Ensure not all caps */
+}
+
+.ozmakon-menu .nav-link.active,
+.ozmakon-menu .nav-link:hover {
+  color: var(--color-header-link-hover);
+  text-shadow: 0 0 5px var(--color-header-link-hover)80;
+}
+
+.ozmakon-language-switcher {
+  /* Styles for language switcher */
+  /* No margin-left needed here as flex layout on parent handles it */
+  /* On large screens, it's the last item in .ozmakon-menu-collapse */
+  flex-shrink: 0; /* Prevent lang switcher from shrinking */
+}
+
+.ozmakon-language-switcher .nav-link {
+  color: var(--color-header-link);
+  font-size: 0.9rem;
+  padding-right: 0.5rem; /* Default padding for dropdown toggle */
+}
+.ozmakon-language-switcher .nav-link:hover {
+  color: var(--color-header-link-hover);
+}
+.ozmakon-language-switcher .dropdown-menu {
+  background: var(--color-overlay-lightblue-strong);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 0.5px solid var(--color-border);
+  border-radius: 10px; /* Rounded corners for dropdown */
+}
+.ozmakon-language-switcher .dropdown-item {
+  color: var(--color-header-link);
+}
+.ozmakon-language-switcher .dropdown-item:hover {
+  background-color: var(--color-overlay-blur);
+  color: var(--color-header-link-hover);
+}
+
+
+
+
+/* Adjustments for Bootstrap's default navbar toggler behavior */
+.navbar-toggler {
+  border-color: var(--color-border-light);
+}
+.navbar-toggler-icon {
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(240, 240, 240, 0.9)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e"); /* Lighter toggler icon */
+}
+
+.header {
+  border: 0.5px solid var(--color-border);
+  border-radius: 999px;
+  margin-top: 30px;
+  position: fixed;
+  z-index: 100;
+  background: var(--color-overlay-blur);
+  backdrop-filter: var(--color-blur);
+  width: 80%;
+  height: 70px !important; 
+  min-width: 0;
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+  transition: border transform 0.3s cubic-bezier(.4,0,.2,1);
+  /* will-change: transform; */
+  -webkit-transition : border 250ms ease-out;
+  -moz-transition : border 250ms ease-out;
+  -o-transition : border 250ms ease-out;
+  transition : border 250ms ease-out;
+  -webkit-transition : box-shadow 250ms ease-out;
+  -moz-transition : box-shadow 250ms ease-out;
+  -o-transition : box-shadow 250ms ease-out;
+  transition : box-shadow 250ms ease-out;
+}
+
+.header:hover{
+  border: 0.5px solid var(--color-gold);
+  -webkit-box-shadow: 0px 0px 20px -10px var(--color-gold);
+  -moz-box-shadow: 0px 0px 20px -10px var(--color-gold);
+  box-shadow: 0px 0px 20px -10px var(--color-gold);
+}
+
+
+.header--hidden {
+  transform: translateY(-150%);
+}
+
+.header__container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 16px;
+  max-height: 1em;
+  width: 100%;
+}
+
+.header__logos {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  max-height: 1em;
+}
+
+.header__logo-gh,
+.header__logo-ozmakon {
+  object-fit: contain;
+}
+
+.header__divider {
+  display: inline-block;
+  width: 2px;
+  height: 1em;
+  background: linear-gradient(180deg, var(--color-header-divider) 0%, var(--color-header-divider) 100%);
+  border-radius: 1px;
+}
+
+.header__nav {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  font-size: 20px;
+  height: 1em;
+}
+
+.header__nav-link {
+  font-family: 'Urbanist', sans-serif;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 1.2;
+  color: var(--color-header-link-accent);
+  text-decoration: none;
+  transition: transform 0.2s cubic-bezier(.4,0,.2,1);
+  -webkit-transition : color 250ms ease-out;
+  -moz-transition : color 250ms ease-out;
+  -o-transition : color 250ms ease-out;
+  transition : color 250ms ease-out;
+}
+
+.header__nav-link:hover {
+  color: var(--color-header-link-hover);
+  /* color: var(--color-gold); */
+
+}
+
+.header__lang {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: 'Urbanist', sans-serif;
+  font-weight: 700;
+  font-size: 20px;
+  color: var(--color-header-link-accent);
+  cursor: pointer;
+}
+
+.header__lang-current {
+  color: var(--color-header-link-accent);
+}
+
+.header__lang-chevron {
+  display: inline-block;
+  vertical-align: middle;
+  color: var(--color-header-link-accent);
+}
+
+.header__burger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+  height: 40px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  z-index: 120;
+  margin-left: 16px;
+  position: relative;
+}
+.header__burger span {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 28px;
+  height: 3px;
+  background: #fff;
+  border-radius: 2px;
+  transition: 0.3s;
+  transform: translate(-50%, -50%) rotate(0deg);
+}
+.header__burger span:nth-child(1) {
+  transform: translate(-50%, -12px) rotate(0deg);
+}
+.header__burger span:nth-child(2) {
+  transform: translate(-50%, -50%) rotate(0deg);
+}
+.header__burger span:nth-child(3) {
+  transform: translate(-50%, 10px) rotate(0deg);
+}
+.header__burger--open span:nth-child(1) {
+  transform: translate(-50%, -50%) rotate(45deg);
+}
+.header__burger--open span:nth-child(2) {
+  opacity: 0;
+}
+.header__burger--open span:nth-child(3) {
+  transform: translate(-50%, -50%) rotate(-45deg);
+}
+
+@media (max-width: 1400px) { /* Bootstrap's lg breakpoint - when collapsed */
+
+  .ozmakon-menu-collapse {
+    /* This is the .navbar-collapse element when collapsed */
+    order: 4; /* Ensure it's below logo and toggler if they were reordered, but default is fine */
+    width: 100%;
+    background: rgba(173, 201, 221, 0.3); 
+    margin-top: 10px;
+    border-radius: 15px;
+    padding: 15px;
+    /* Bootstrap handles display: block for collapsed items */
+    justify-content: flex-start; /* Align items to start when stacked */
+    align-items: stretch; /* Make items take full width if needed */
+  }
+  .ozmakon-menu {
+    margin: 0 0 15px 0; /* Add some bottom margin before language switcher */
+    width: 100%; /* Take full width */
+    flex-direction: column; /* Stack nav items vertically */
+    align-items: center; /* Center nav items */
+  }
+  .ozmakon-menu .nav-item {
+    margin-bottom: 5px;
+    width: 100%; /* Make nav items take full width */
+  }
+  .ozmakon-menu .nav-link {
+    margin: 0;
+    padding: 10px 0; /* More padding for touch */
+    display: block; 
+    text-align: center;
+  }
+  .ozmakon-language-switcher {
+    /* order: 3; // No longer needed, it's part of the collapse flow */
+    /* margin-left: 10px; // No longer needed */
+    padding-top: 0;
+    width: 100%; /* Make language switcher take full width */
+    display: flex;
+    justify-content: center; /* Center the dropdown button */
+    margin-top: 10px; /* Space above language switcher */
+  }
+  .ozmakon-language-switcher .dropdown-menu {
+    /* Ensure dropdown menu is also styled for mobile if needed */
+    /* Example: make it wider */
+    width: auto; /* Or min-width: 150px; */
+    left: 50%;
+    transform: translateX(-50%); /* Center dropdown menu */
+  }
+
+  .ozmakon-navbar {
+    /* width: 920px; Fixed width as requested */
+    min-height: 45.5;
+    padding-top: 10px; /* Adjusted from 14px to better match visual */
+    padding-right: 25px;/* Adjusted from 16px */
+    padding-bottom: 10px;/* Adjusted from 14px */
+    padding-left: 25px; /* Adjusted from 16px */
+  }
+
+
+  .header {
+    min-width: 0;
+    width: 80%;
+  }
+
+  .header__container {
+    /* flex-direction: column; */
+    gap: 16px;
+
+  }
+  .header__nav {
+    font-size: 12px;
+    display: none;
+    gap: 12px;
+  }
+
+  .header__nav-link {
+    font-size: 12px;
+    text-align: center;
+  }
+
+  .header__logos {
+    gap: 12px;
+  }
+
+}
+
+@media (max-width: 1090px) {
+  .header {
+    min-width: 0;
+    width: 80%;
+  }
+  .header__burger {
+    display: flex;
+  }
+  .header__nav {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(30, 32, 36, 0.98);
+    box-shadow: -4px 0 24px 0 rgba(0,0,0,0.12);
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 100px 32px 32px 32px;
+    gap: 44px;
+    z-index: 110;
+    transition: right 0.3s cubic-bezier(.4,0,.2,1);
+    display: flex;
+    margin-left: 0%;
+    margin-right: 0%;
+    margin-top: -30px;
+  }
+  .header__nav--open {
+    right: 0;
+  }
+  .header__nav-link {
+    font-size: 20px;
+
+    color: #fff;
+    padding: 8px 0;
+    width: 100%;
+    text-align: center;
+  }
+  .header__nav-link:hover {
+    color: #CDDBE5;
+  }
+  .header__nav-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.3);
+    z-index: 109;
+    cursor: pointer;
+  }
+  .header__nav {
+    display: none;
+  }
+  .header__nav.header__nav--open {
+    display: flex;
+  }
+}
+
+@media (min-width: 1091px) {
+  .header__burger {
+    display: none !important;
+  }
+  .header__nav {
+    display: flex !important;
+    position: static;
+    flex-direction: row;
+    align-items: center;
+    height: auto;
+    background: none;
+    box-shadow: none;
+    padding: 0;
+    gap: 20px;
+  }
+  .header__nav-link {
+    width: auto;
+    text-align: center;
+  }
+  .header__nav-overlay {
+    display: none;
+  }
+}
+
+@media (max-width: 700px) {
+  .header {
+    min-width: 0;
+    width: 100%;
+  }
+
+  .header__nav {
+    flex-wrap: wrap;
+    margin-left: 0px;
+    margin-top: -30px;
+  }
+  .header__logo-gh, .header__logo-ozmakon {
+    width: 90px;
+    height: 22px;
+  }
+  .header__divider {
+    height: 22px;
+  }
+}
+
+.header__lang-dropdown {
+  position: relative;
+  display: inline-block;
+}
+.header__lang-current {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  user-select: none;
+  padding: 2px 8px;
+  border-radius: 6px;
+  transition: background 0.2s;
+}
+.header__lang-current:hover {
+  background: rgba(205, 219, 229, 0.08);
+}
+.header__lang-dropdown-list {
+  position: absolute;
+  top: 110%;
+  left: 0;
+  min-width: 60px;
+  background: var(--color-bg-secondary);
+  border-radius: 8px;
+  box-shadow: var(--color-shadow-light);
+  z-index: 200;
+  padding: 4px 0;
+  margin-top: 4px;
+}
+.header__lang-dropdown-item {
+  padding: 8px 16px;
+  cursor: pointer;
+  color: var(--color-header-link-accent);
+  font-size: 16px;
+  transition: background 0.2s, color 0.2s;
+  border-radius: 4px;
+}
+.header__lang-dropdown-item:hover {
+  background: var(--color-bg-secondary);
+  color: var(--color-header-link-hover);
+}
+.header__lang-dropdown-item--active {
+  font-weight: 700;
+  color: var(--color-header-link-hover);
+  background: var(--color-header-divider);
+}

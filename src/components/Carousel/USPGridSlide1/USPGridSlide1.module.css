@@ -1,0 +1,201 @@
+.usp5__container {
+    display: flex;
+    width: 100%;
+    background: var(--color-bg-main);
+    align-self: center;
+    justify-content: center;
+    /* padding-top: 100px; */
+  }
+  
+  
+.usp5-wrapper {
+  max-width: 1700px;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  /* min-height: 900px; */
+  height: 100vh;
+  color: #fff;
+  margin: 0;
+  box-sizing: border-box;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 30px;
+  /* margin-top: 80px; */
+  /* padding-bottom: 20px; */
+
+}
+  
+
+.usp5-col {
+display: flex;
+flex-direction: column;
+height: 100%;
+max-height: 1053px;
+}
+
+.usp5-col--left {
+padding-left: 0.5%;
+min-width: 40%;
+max-width: 40%;
+display: flex;
+flex-direction: column;
+justify-content: flex-end;
+position: relative;
+}
+
+.usp5-col--center {
+margin-top: -100px;
+gap: 30px;
+min-width: 30%;
+max-width: 30%;
+display: flex;
+flex-direction: column;
+justify-content: space-between;
+align-items: center;
+}
+
+
+.usp5__img-child{
+background-position: right;
+border-radius: 0px 0px 12px 12px;
+
+min-width: 465px;
+min-height: 335px;
+background-image: url(/src/assets/img/UniqueSellingPropositionsGrid5/kids_room.webp);
+background-size: cover;
+
+}
+
+.usp5__img-dvor{
+background-position: -160px 0px;
+border-radius: 12px 12px 0px 0px;
+min-width: 465px;
+min-height: 585px;
+background-image:url(/src/assets/img/UniqueSellingPropositionsGrid5/eagle_view.webp);
+background-size: cover;
+
+}
+
+
+.usp5-col--right {
+min-width: 29%;
+max-width: 29%;
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+justify-content: flex-end;
+/* padding: 80px 0 80px 40px; */
+/* gap: 42px; */
+position: relative;
+padding-right: 0.5%;
+}
+
+.usp5_img--frontview{
+border-radius: 12px;
+background-position: -160px 0px;
+
+width: 433px;
+height: 370px;
+background-image: url(/src/assets/img/UniqueSellingPropositionsGrid5/front_view.webp);
+background-size: cover;
+}
+.usp5_img--bbq{
+border-radius: 12px 12px 0px 0px;
+background-position: right bottom;
+
+width: 433px;
+height: 190px;
+background-image: url(/src/assets/img/UniqueSellingPropositionsGrid5/bbq.webp);
+background-size: cover;
+}
+
+.usp5__line {
+height: 393px;
+border-left: 0.5px solid var(--color-gold);
+}
+
+.usp5__title {
+font-size: 76px;
+font-weight: 400;
+line-height: 1.2;
+color: #fff;
+margin-bottom: 32px;
+max-width: 90%;
+
+}
+
+.usp5__left-top-text{
+display: flex;
+flex-direction: row;
+justify-content: space-between;
+max-width: 86%;
+}
+
+
+.usp5__list {
+font-size: 24px;
+color: var(--color-gold);
+line-height: 1.16;
+}
+
+.usp5__year {
+font-size: 24px;
+color: var(--color-gold);
+margin-top: auto;
+}
+
+
+
+.usp5__img-block {
+overflow: hidden;
+/* background: #fff; */
+display: flex;
+align-items: flex-end;
+justify-content: space-between;
+}
+
+.usp5__img {
+width: 100%;
+height: 100%;
+object-fit: cover;
+}
+
+.usp5__img-zal{
+border-radius: 12px 12px 0px 0px;
+
+width: 454px;
+height: 390px;
+background-position: -384px;
+background-image: url(/src/assets/img/UniqueSellingPropositionsGrid5/sports.webp);
+background-size: cover;
+
+
+}
+
+
+.usp5__img-block--house {
+margin-bottom: 24px;
+
+
+}
+
+.usp5__img-block--bbq {
+
+
+}
+
+.usp5__textblock {
+color: var(--color-gold);
+font-size: 20px;
+font-family: 'Urbanist', sans-serif;
+line-height: 1.16;
+padding: 0;
+background: none;
+margin-top: 10px;
+margin-bottom: 70px;
+}
+
+.usp5__left-bottom{
+margin-top: 71px;
+}

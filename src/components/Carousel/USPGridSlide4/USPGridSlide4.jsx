@@ -1,0 +1,95 @@
+import React from 'react';
+import { useTranslation } from 'react-i18next';
+import styles from './USPGridSlide4.module.css';
+
+const imgPath = (name) => `/src/assets/img/UniqueSellingPropositionsGrid5/slide4/${name}`;
+
+const USPGridSlide4 = () => {
+  const { t } = useTranslation();
+  const slide = {
+    left_top_img: 'phone_lok.webp',
+    right_left_top_img: 'camera.webp',
+    right_right_top_img: 'pojar.webp',
+    right_bottom_img: 'solar_pannel.webp',
+    left_bottom_title: t('usp5.slide4.left_bottom_title'),
+    year: '2025',
+    left_bottom_text: t('usp5.slide4.left_bottom_text'),
+    left_bottom_bullets: t('usp5.slide4.left_bottom_bullets'),
+
+  };
+  return (
+    <div className={styles["usp5-wrapper"]}>
+      <div className={styles['slide4']}>
+      <div className={styles['slide-4-top']}>
+        <div className={styles['slide-4-top--left']}>
+          <div className={styles['top--left--photo']}
+          style={{backgroundImage: `url(${imgPath(slide.left_top_img)})`}}
+          ></div> 
+          {/* фотография слева сверху */}
+        </div>
+        <div className={styles['slide-4-top--right']}>
+          <div className={styles['left--top--right--photo']}
+          style={{backgroundImage: `url(${imgPath(slide.right_left_top_img)})`}} aria-label='ЖДУ ФОТО'
+          ></div>
+          <div className={styles['right--top--right-photo']}
+          style={{backgroundImage: `url(${imgPath(slide.right_right_top_img)})`}} aria-label='ЖДУ ФОТО'
+          ></div>
+          {/* фотографии справа сверху */}
+        </div>    
+      </div>
+      <div className={styles['slide-4-bottom']}>
+        <div className={styles['slide-4-bottom--left']}>
+          <div className={styles['slide-4-bottom--left--block']}>
+            <div className={styles['first-row']}>
+              <div className={styles['row_title']}>
+                <h2 className={styles['row_title_text']}>
+                  {slide.left_bottom_title.split('\n').map((line, i) => (
+                    <React.Fragment key={i}>
+                      {line}
+                      <br/>
+                    </React.Fragment>
+                  ))}
+                </h2>
+                <div className={styles['main-text']}>
+                {slide.left_bottom_text.split('\n').map((line, i) => (
+                    <React.Fragment key={i}>
+                      {line}
+                      <br />
+                    </React.Fragment>
+                  ))}
+              </div>
+              </div>
+              <div className={styles['year']}>
+                <span>{slide.year}</span>
+              </div>
+            </div>
+            <div className={styles['second-row']}>
+
+              <div className={styles['bullet-block']}>
+              <div className={styles['yellow-line']}/>
+              <div className={styles['bullets']}>
+              <span>
+                {slide.left_bottom_bullets.split('\n').map((line, i) => (
+                    <React.Fragment key={i}>
+                      {line}
+                      <br />
+                    </React.Fragment>
+                  ))}
+                </span>
+              </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div className={styles['slide-4-bottom--right']}>
+          <div className={styles['right--bottom-photo']}
+          style={{backgroundImage: `url(${imgPath(slide.right_bottom_img)})`}} aria-label='ЖДУ ФОТО'>
+          </div>  
+        </div>    
+      </div>
+    </div>
+    </div>
+  );
+};
+
+export default USPGridSlide4; 
