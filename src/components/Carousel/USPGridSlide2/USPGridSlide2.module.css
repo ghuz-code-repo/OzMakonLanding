@@ -6,9 +6,8 @@
   justify-content: center;
 }
 
-
 .usp5-wrapper {
-  max-width: 1700px;
+  min-width: 1700px;
   width: 100%;
   display: flex;
   flex-direction: row;
@@ -49,15 +48,23 @@
   align-items: center;
 }
 
+.usp5__img-block--middle{
+  border-radius: 12px 12px 0px 0px;
+}
+.usp5__img-block--right{
+  margin-bottom: 24px;
+  border-radius: 12px;
+}
+
+
 .usp5__img-lift {
   background-position: right;
   border-radius: 0px 0px 12px 12px;
-
   min-width: 465px;
   min-height: 335px;
   background-image: url(/src/assets/img/UniqueSellingPropositionsGrid5/kids_room.webp);
   background-size: cover;
-  
+
 }
 
 .usp5__img-hall {
@@ -67,7 +74,7 @@
   min-height: 585px;
   background-image: url(/src/assets/img/UniqueSellingPropositionsGrid5/eagle_view.webp);
   background-size: cover;
-  
+
 }
 
 .usp5-col--right {
@@ -76,18 +83,28 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  justify-content: flex-end;
+  justify-content: space-between;
   position: relative;
   padding-right: 0.5%;
 }
 
+.usp5__img-block-right{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start !important;
+}
+
 .usp5_img--komnata {
+  display: flex;
+  flex-direction: column;
   border-radius: 12px;
   background-position: -160px 0px;
   width: 433px;
   height: 370px;
   background-image: url(/src/assets/img/UniqueSellingPropositionsGrid5/front_view.webp);
   background-size: cover;
+  margin-top: 74px;
+
 }
 
 .usp5_img--coffe-table {
@@ -102,7 +119,6 @@
 .usp5__line {
   height: 393px;
   border-left: 0.5px solid var(--color-gold);
-
 }
 
 .usp5__title {
@@ -112,7 +128,6 @@
   color: #fff;
   margin-bottom: 32px;
   max-width: 90%;
-
 }
 
 .usp5__left-top-text {
@@ -145,7 +160,6 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-  
 }
 
 .usp5__img-enter {
@@ -155,20 +169,9 @@
   background-position: -384px;
   background-image: url(/src/assets/img/UniqueSellingPropositionsGrid5/sports.webp);
   background-size: cover;
-  
-
 }
 
-.usp5__img-block--house {
-  margin-bottom: 24px;
-  
 
-}
-
-.usp5__img-block--bbq {
-  
-
-}
 
 .usp5__textblock {
   color: var(--color-gold);
@@ -177,7 +180,7 @@
   line-height: 1.16;
   padding: 0;
   background: none;
-  margin-top: 10px;
+  margin-top: 30px;
   margin-bottom: 70px;
 }
 

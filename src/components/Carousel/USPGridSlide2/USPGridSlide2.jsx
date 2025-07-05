@@ -61,7 +61,8 @@ const USPGridSlide2 = () => {
             style={{ backgroundImage: `url(${imgPath(slide.center.img1)})` }}
           />
         </div>
-        <div className={styles["usp5__img-block"]+' '+styles["usp5__img-block--middle"]+' '+styles["usp5-animatable"]}>
+        <div className={styles["usp5__img-block"]+' '+styles["usp5__img-block--middle"]+' '+styles["usp5-animatable"]}
+        >
           <div
             className={styles["usp5__img"]+' '+styles["usp5__img-hall"]}
             style={{ backgroundImage: `url(${imgPath(slide.center.img2)})` }}
@@ -69,13 +70,11 @@ const USPGridSlide2 = () => {
         </div>
       </div>
       <div className={styles["usp5-col"]+' '+styles["usp5-col--right"]}>
-        <div className={styles["usp5__img-block"]+' '+styles["usp5__img-block--house"]+' '+styles["usp5-animatable"]}>
+        <div className={styles["usp5__img-block-right"]+' '+styles["usp5__img-block"]+' '+styles["usp5-animatable"]}>
           <div
             className={styles["usp5_img--komnata"]}
             style={{ backgroundImage: `url(${imgPath(slide.right.img1)})` }}
           />
-        </div>
-        <div className={styles["usp5-animatable"]}>
           <div className={styles["usp5__textblock"]}>
             {slide.right.text.split('\n').map((line, i) => (
               <React.Fragment key={i}>
@@ -85,7 +84,11 @@ const USPGridSlide2 = () => {
             ))}
           </div>
         </div>
-        <div className={styles["usp5__img-block"]+' '+styles["usp5__img-block--bbq"]+' '+styles["usp5-animatable"]}>
+
+        <div className={styles["usp5-animatable"]}>
+
+        </div>
+        <div className={styles["usp5__img-block"]+' '+styles["usp5-animatable"]}>
           <div
             className={styles["usp5_img--coffe-table"]}
             style={{ backgroundImage: `url(${imgPath(slide.right.img2)})` }}

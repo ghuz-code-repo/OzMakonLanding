@@ -70,13 +70,11 @@ const USPGridSlide1 = () => {
         </div>
       </div>
       <div className={styles["usp5-col"]+' '+styles["usp5-col--right"]}>
-        <div className={styles["usp5__img-block"]+' '+styles["usp5__img-block--house"]+' '+styles["usp5-animatable"]}>
+        <div className={styles["usp5__img-block"]+' '+styles["usp5__img-block-right"]+' '+styles["usp5-animatable"]}>
           <div
             className={styles["usp5_img--frontview"]}
             style={{ backgroundImage: `url(${imgPath(slide.right.img1)})` }} aria-label='ЖДУ ФОТО'
           />
-        </div>
-        <div className={styles["usp5-animatable"]}>
           <div className={styles["usp5__textblock"]}>
             {slide.right.text.split('\n').map((line, i) => (
               <React.Fragment key={i}>
@@ -85,6 +83,9 @@ const USPGridSlide1 = () => {
               </React.Fragment>
             ))}
           </div>
+        </div>
+        <div className={styles["usp5-animatable"]}>
+
         </div>
         <div className={styles["usp5__img-block"]+' '+styles["usp5__img-block--bbq"]+' '+styles["usp5-animatable"]}>
           <div
