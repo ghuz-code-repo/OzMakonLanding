@@ -26,13 +26,73 @@
     }
   },
   "usp5": {
-    "title": "Bino tashqi muhitini\nva daryo\navtomob'lar bilan",
-    "list1": "Yopiq zel'yon daryo",
-    "list2": "BBQ zonasi",
-    "list3": "Be'sechalar",
-    "textblock": "Soyabonli bolalar maydonchalari\nXususiy bolalar bog‘chasi\nKIDS ROOM\nFitnes-zal",
+    "slide1": {
+      "title": "Благоустройство\nи двор\nбез машин",
+      "list": "Закрытый зелёный двор\nBBQ-зона\nБеседки",
+      "textblock": "Детские площадки с теневыми навесами\nЧастный детский сад\nKIDS ROOM\nФитнес-зал"
+    },
+    "slide2": {
+      "title": "Интерьеры\nи\nинфраструктура",
+      "list": "Эстетичное лобби\nЗона ожидания-гостиная\nКолясочные",
+      "textblock": "Санузлы с местом для пеленания\nЛифты с видеонаблюдением"
+    },
     "slide3": {
-      
+      "left_bottom_title": "Продуманное\nпарковочное\nпространство",
+      "left_bottom_text": "Тёплый двухуровневый паркинг\nВозможность установки зарядных станций",
+      "left_bottom_bullets": "Видеонаблюдение 24/7\nУсиление сигнала связи"
+    },
+    "slide4": {
+      "left_bottom_title": "Безопасность\nи устойчивость",
+      "left_bottom_text": "Система пожарной безопасности\nIP-домофония\nFace ID",
+      "left_bottom_bullets": "Резервные системы: солнечные панели,\nрезервуары воды, бесперебойное питание"
+    },
+    "slide5": {
+      "left_top_title":"Комфорт\nи технологии",
+      "left_top_text": "Двухкамерные стеклопакеты,\n6-камерный профиль с улучшенной шумоизоляцией\nИндивидуальные кладовые",
+      "right_bottom_title": "Комфорт",
+      "right_bottom_text": "Электронные замки\nГазовые котлы\nПанельные радиаторы"
+    }
+  },
+  "layouts": {
+    "sectionTitle": "Rejalar",
+    "chooseLayout": "Rejani tanlang",
+    "oneRoom": "1 xonali",
+    "twoRoom": "2 xonali", 
+    "threeRoom": "3 xonali",
+    "fourRoom": "4+ xonali",
+    "allApartments": "Barcha kvartiralar",
+    "layout": "Reja",
+    "currency": "so'm",
+    "area": "Maydon",
+    "rooms": "Xonalar",
+    "priceRange": "Narxi"
+  },
+  "places": {
+    "sectionTitle": "Yaqin atrofdagi joylar",
+    "shopping": "Savdo markazlari",
+    "parks": "Bog'lar",
+    "markets": "Bozorlar",
+    "schools": "Maktablar",
+    "entertainment": "Ko'ngilochar",
+    "shoppingCenters": {
+      "title": "Turar-joy majmuasidan piyoda masofasida zamonaviy savdo-ko'ngilochar markaz — Alfraganus Mall joylashgan",
+      "description": "Bu zamonaviy shahar makoni bo'lib, u yerda butiklar, gastronomik konseptlar, supermarket, dam olish zonalari va bolalar maydonchalari to'plangan. Bu yerda dam olish kunlarini o'tkazish, xarid qilish yoki katta shahar qulayligi va dinamikasida kechqurun sayr qilish yoqimli."
+    },
+    "parksDetail": {
+      "title": "Faol dam olish uchun yashil zonalar va bog'lar",
+      "description": "Majmua yaqinida sayr yo'llari, sport maydonchalari va piknik zonalari bo'lgan obodonlashtirilgan bog'lar joylashgan. Ertalabki yugurishlar, oilaviy dam olish va ochiq havoda faol vaqt o'tkazish uchun ideal joy."
+    },
+    "marketsDetail": {
+      "title": "An'anaviy bozorlar va savdo qatorlari",
+      "description": "Yaqin atrofda ham zamonaviy oziq-ovqat bozorlari, ham an'anaviy savdo qatorlari joylashgan bo'lib, u yerda yangi mevalar, sabzavotlar, go'sht va boshqa mahsulotlarni sotib olish mumkin. Kundalik xaridlar va mahalliy an'analar bilan tanishish uchun qulay."
+    },
+    "schoolsDetail": {
+      "title": "Yuqori darajadagi ta'lim muassasalari",
+      "description": "Bevosita yaqinlikda sifatli maktablar, bolalar bog'chalari va ta'lim markazlari joylashgan. Zamonaviy ta'lim infratuzilmasi barcha yoshdagi bolalarning rivojlanishi va ta'limi uchun qulay sharoitlarni ta'minlaydi."
+    },
+    "entertainmentDetail": {
+      "title": "Butun oila uchun ko'ngilochar va dam olish",
+      "description": "Turli xil ko'ngilochar markazlar, kinoteatrlar, sport majmualari va madaniy muassasalar faol dam olish uchun ko'plab variantlarni taklif qiladi. Oilaviy ko'ngilocharlikdan tortib sport mashg'ulotlarigacha — har kim o'ziga yoqadigan mashg'ulotni topadi."
     }
   }
 } 

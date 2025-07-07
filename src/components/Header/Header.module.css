@@ -161,6 +161,9 @@
   border-radius: 999px;
   margin-top: 30px;
   position: fixed;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
   z-index: 100;
   background: var(--color-overlay-blur);
   backdrop-filter: var(--color-blur);
@@ -170,16 +173,8 @@
   font-size: 20px;
   display: flex;
   align-items: center;
-  transition: border transform 0.3s cubic-bezier(.4,0,.2,1);
-  /* will-change: transform; */
-  -webkit-transition : border 250ms ease-out;
-  -moz-transition : border 250ms ease-out;
-  -o-transition : border 250ms ease-out;
-  transition : border 250ms ease-out;
-  -webkit-transition : box-shadow 250ms ease-out;
-  -moz-transition : box-shadow 250ms ease-out;
-  -o-transition : box-shadow 250ms ease-out;
-  transition : box-shadow 250ms ease-out;
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), border 0.25s ease-out, box-shadow 0.25s ease-out;
+  will-change: transform;
 }
 
 .header:hover{
@@ -191,7 +186,7 @@
 
 
 .header--hidden {
-  transform: translateY(-150%);
+  transform: translateX(-50%) translateY(-150%);
 }
 
 .header__container {

@@ -1,0 +1,152 @@
+@import '../../styles/colors.css';
+
+.apartment-layouts {
+  background: var(--color-bg-main);
+  padding: 80px 0;
+  height: 100%;
+  margin-top: 180px;
+  margin-bottom: 180px;
+}
+
+.apartment-layouts__container {
+  max-width: 1700px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.apartment-layouts__title {
+  font-size: 48px;
+  font-weight: 350;
+  color: var(--color-text-main);
+  /* margin-bottom: 60px; */
+  line-height: 1.2;
+}
+
+.apartment-layouts__content {
+  margin-top: 40px;
+}
+
+.apartment-layouts__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 51px;
+  margin: 0 auto;
+  justify-content: center;
+}
+
+.apartment-layouts__header{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-bottom: 65px;
+}
+
+.apartment-layouts__card {
+  position: relative;
+  background: var(--color-bg-secondary);
+  border-radius: 19px;
+  overflow: hidden;
+  border: 1px solid var(--color-border-light);
+  transition: all 0.3s ease;
+  cursor: pointer;
+  width: 100%;
+  aspect-ratio: 545/606;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.apartment-layouts__card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--color-shadow-strong);
+}
+
+.apartment-layouts__card--all {
+  /* border: 2px solid var(--color-yellow); */
+  position: relative;
+}
+
+.apartment-layouts__card--all::before {
+  content: '';
+  position: absolute;
+  top: 13px;
+  left: 13px;
+  right: 13px;
+  bottom: 13px;
+  border: 3px solid transparent;
+  border-image: url('../../assets/img/Conception/rectangle-37.png') 3 fill;
+  border-image-slice: 7;
+  /* border-radius: 10px; */
+  z-index: 1;
+  pointer-events: none;
+}
+
+.apartment-layouts__card-image {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.apartment-layouts__image {
+  width: 100%;
+  height: 100%;
+  object-fit: clip;
+  scale: 1;
+  transition: transform 0.3s ease;
+}
+
+.apartment-layouts__card:hover .apartment-layouts__image {
+  transform: scale(1.05);
+}
+
+.apartment-layouts__card-content {
+    position: absolute;
+    display: flex;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    top: 0;
+    background: rgba(0, 0, 0, 0.2);
+    padding: 60px 32px 32px 32px;
+    z-index: 2;
+    align-items: flex-end;
+    justify-content: space-around;
+
+}
+
+.apartment-layouts__card-title {
+  font-size: 24px;
+  font-weight: 300;
+  color: var(--color-white);
+  margin: 0;
+  text-align: center;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.apartment-layouts__price {
+  font-size: 24px;
+  font-weight: 250;
+  color: var(--color-white);
+  text-align: center;
+  margin: 0;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.apartment-layouts__discount {
+    position: absolute;
+    top: 0;
+    right: 32px;
+    z-index: 3;
+    width: 48px;
+    height: 81px;
+    background: #fff;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
+    color: var(--color-black);
+    font-size: 20px;
+    font-weight: 500;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    clip-path: url(#discount-tag-clip-path);
+    padding-bottom: 12px;
+}

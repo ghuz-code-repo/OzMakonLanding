@@ -151,10 +151,16 @@
   margin-right: 120px;
 }
 
+.conception__circle-img-wrap:hover .conception__circle-img{
+  transform: scale(1.1);
+}
+
 .conception__circle-img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: clip;
+  transition: transform 0.3s ease;
+
 }
 
 .conception__form-overlay {

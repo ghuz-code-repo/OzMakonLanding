@@ -87,7 +87,6 @@
   align-items: flex-start !important;
 }
 
-
 .usp5_img--frontview {
   border-radius: 12px;
   background-position: -160px 0px;
@@ -96,7 +95,7 @@
   background-image: url(/src/assets/img/UniqueSellingPropositionsGrid5/front_view.webp);
   background-size: cover;
   margin-top: 74px;
-
+  transition: transform 0.3s ease;
 }
 
 .usp5_img--bbq {
@@ -149,10 +148,15 @@
   justify-content: space-between;
 }
 
+.usp5__img-block:hover .usp5__img, .usp5_img--frontview {
+  transform: scale(1.1);
+}
+
 .usp5__img {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  transition: transform 0.3s ease;
 }
 
 .usp5__img-zal {

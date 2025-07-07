@@ -1,0 +1,84 @@
+@import '../../../styles/colors.css';
+
+.layout-changer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 40px 0;
+  padding: 0 20px;
+}
+
+.layout-changer__controls {
+  display: flex;
+ background: #222220;
+
+  border-radius: 50px;
+  padding: 4px;
+  gap: 2px;
+  /* border: 1px solid rgba(255, 255, 255, 0.2); */
+  backdrop-filter: blur(10px);
+}
+
+.layout-changer__button {
+  padding: 12px 24px;
+  border: none;
+  border-radius: 46px;
+  background: transparent;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+  min-width: 140px;
+  font-family: inherit;
+}
+
+.layout-changer__button:hover {
+  color: var(--color-white);
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.layout-changer__button--active {
+  background: var(--color-white);
+  color: var(--color-black);
+  font-weight: 600;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.layout-changer__button--active:hover {
+  background: var(--color-white);
+  color: var(--color-black);
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+  .layout-changer {
+    padding: 0 10px;
+  }
+  
+  .layout-changer__controls {
+    flex-wrap: wrap;
+    border-radius: 25px;
+    gap: 4px;
+  }
+  
+  .layout-changer__button {
+    padding: 10px 20px;
+    font-size: 14px;
+    min-width: 120px;
+  }
+}
+
+@media (max-width: 480px) {
+  .layout-changer__controls {
+    flex-direction: column;
+    width: 100%;
+    max-width: 300px;
+  }
+  
+  .layout-changer__button {
+    width: 100%;
+    min-width: unset;
+  }
+}

@@ -1,0 +1,81 @@
+@import '../../../styles/colors.css';
+
+.type-changer {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin: 20px 0 0 0;
+  padding: 0;
+}
+
+.type-changer__controls {
+  display: flex;
+  background: transparent;
+  border-radius: 0;
+  padding: 0;
+  gap: 40px;
+  backdrop-filter: none;
+  border: none;
+}
+
+.type-changer__button {
+  padding: 0 0 12px 0;
+  border: none;
+  border-radius: 0;
+  background: transparent;
+  color: rgba(255, 255, 255, 0.4);
+  font-size: 16px;
+  font-weight: 400;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+  min-width: auto;
+  font-family: inherit;
+  position: relative;
+  border-bottom: 2px solid transparent;
+}
+
+.type-changer__button:hover {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.type-changer__button--active {
+  background: transparent;
+  color: #ffffff;
+  font-weight: 500;
+  box-shadow: none;
+  border-bottom: 2px solid #ffffff;
+}
+
+.type-changer__button--active:hover {
+  background: transparent;
+  color: #ffffff;
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+  .type-changer {
+    padding: 0;
+  }
+  
+  .type-changer__controls {
+    gap: 30px;
+    flex-wrap: wrap;
+  }
+  
+  .type-changer__button {
+    font-size: 14px;
+    padding: 0 0 6px 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .type-changer__controls {
+    gap: 20px;
+    justify-content: flex-start;
+  }
+  
+  .type-changer__button {
+    font-size: 14px;
+  }
+}
