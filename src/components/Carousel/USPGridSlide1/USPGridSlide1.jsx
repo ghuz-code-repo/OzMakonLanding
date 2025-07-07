@@ -26,7 +26,7 @@ const USPGridSlide1 = () => {
   };
   return (
     <div className={styles["usp5-wrapper"]}>
-      <div className={styles["usp5-col usp5-col--left"]}>
+      <div className={styles["usp5-col"]+' '+styles["usp5-col--left"]}>
         <div className={styles["usp5-animatable"]}>
           <div className={styles["usp5__left-top"]}>
             <h2 className={styles["usp5__title"]}>
