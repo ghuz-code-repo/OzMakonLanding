@@ -82,18 +82,42 @@
     gap: 30px;
 }
 
+.top_right_left_img_block {
+    overflow: hidden;
+    max-width: 100%;
+    max-height: 100%;
+    border-radius: 0px 0px 12px 12px;
+}
+
 .top_right_left_img {
     width: 402px;
     height: 520px;
+    background-position: -50px -50px;
+    background-size: 142%;
+    transition: transform 0.3s ease;
+}
+
+.top_right_left_img_block:hover .top_right_left_img {
+    transform: scale(1.1)
+}
+
+.top_right_right_img_block {
+    overflow: hidden;
+    max-width: 100%;
+    max-height: 100%;
     border-radius: 0px 0px 12px 12px;
-    background: round;
 }
 
 .top_right_right_img {
     width: 402px;
     height: 520px;
-    border-radius: 0px 0px 12px 12px;
-    background: round;
+    background-position: -10px -30px;
+    background-size: 105%;
+    transition: transform 0.3s ease;
+}
+
+.top_right_right_img_block:hover .top_right_right_img {
+    transform: scale(1.1)
 }
 
 .second_row {
@@ -103,28 +127,52 @@
     gap: 30px;
 }
 
+.bottom_center_img_block {
+    overflow: hidden;
+    max-width: 100%;
+    max-height: 100%;
+    border-radius: 12px 12px 0px 0px;
+}
+
 .bottom_left_img {
     width: 547px;
     height: 348px;
+    background-position: -90px -10px;
+    background-size: 120%;
+    transition: transform 0.3s ease;
+}
+
+.bottom_left_img_block:hover .bottom_left_img {
+    transform: scale(1.1)
+}
+
+.bottom_left_img_block {
+    overflow: hidden;
+    max-width: 100%;
+    max-height: 100%;
     border-radius: 12px 12px 0px 0px;
-    background: round;
 }
 
 .bottom_center_img {
     width: 690px;
     height: 348px;
-    border-radius: 12px 12px 0px 0px;
-    background: round;
+    background-position: 0px -60px;
+    background-size: 100%;
+    transition: transform 0.3s ease;
 }
 
-.bottom_right{
+.bottom_center_img_block:hover .bottom_center_img {
+    transform: scale(1.1)
+}
+
+.bottom_right {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     gap: 145px;
 }
 
-.bottom_right_text_block{
+.bottom_right_text_block {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -143,7 +191,7 @@
     color: var(--color-gold);
 }
 
-.bottom_right_yellow_line{
+.bottom_right_yellow_line {
     height: 100%;
     border-right: 0.5px solid var(--color-gold);
 }
