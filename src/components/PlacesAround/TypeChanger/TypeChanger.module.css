@@ -19,7 +19,7 @@
 }
 
 .type-changer__button {
-  padding: 0 0 12px 0;
+  padding: 0 0 0px 0;
   border: none;
   border-radius: 0;
   background: transparent;
@@ -44,7 +44,7 @@
   color: #ffffff;
   font-weight: 500;
   box-shadow: none;
-  border-bottom: 2px solid #ffffff;
+  border-bottom: 2px solid var(--color-gold);
 }
 
 .type-changer__button--active:hover {
