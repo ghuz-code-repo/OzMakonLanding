@@ -2,6 +2,9 @@ import React from 'react';
 import { useTranslation } from 'react-i18next';
 import styles from './Markets.module.css';
 
+const imgPath = (name) => `/src/assets/img/PlacesAround/Markets/${name}`;
+
+
 const Markets = () => {
   const { t } = useTranslation();
 
@@ -10,15 +13,9 @@ const Markets = () => {
       {/* Первая строка - главное изображение и текст */}
       <div className={styles.topRow}>
         <div className={styles.mainImage}>
-          <img 
-            src="/src/assets/webp/рынки/рынки 1.webp" 
-            alt="Рынок рядом с комплексом"
+          <div style={{backgroundImage: `url(${imgPath('nuts.webp')})`}} 
             className={styles.heroImage}
           />
-          <div className={styles.timeTag}>
-            <span className={styles.timeIcon}>🕐</span>
-            7 мин
-          </div>
         </div>
         
         <div className={styles.textBlock}>
@@ -32,17 +29,13 @@ const Markets = () => {
       {/* Вторая строка - дополнительные изображения */}
       <div className={styles.bottomRow}>
         <div className={styles.smallImage}>
-          <img 
-            src="/src/assets/webp/рынки/рынок 1.webp" 
-            alt="Торговые ряды"
-            className={styles.image}
+          <div style={{backgroundImage: `url(${imgPath('man.webp')})`}} 
+            className={styles.leftImage}
           />
         </div>
         <div className={styles.largeImage}>
-          <img 
-            src="/src/assets/webp/рынки/chorsu3-0-0-0-0-1600945367.webp" 
-            alt="Рынок Чорсу"
-            className={styles.image}
+          <div style={{backgroundImage: `url(${imgPath('fruits.webp')})`}} 
+            className={styles.rightImage}
           />
         </div>
       </div>

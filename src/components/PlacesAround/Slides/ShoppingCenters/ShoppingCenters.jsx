@@ -2,6 +2,8 @@ import React from 'react';
 import { useTranslation } from 'react-i18next';
 import styles from './ShoppingCenters.module.css';
 
+const imgPath = (name) => `/src/assets/img/PlacesAround/ShoppingCenters/${name}`;
+
 const ShoppingCenters = () => {
   const { t } = useTranslation();
 
@@ -11,14 +13,10 @@ const ShoppingCenters = () => {
       <div className={styles.topRow}>
         <div className={styles.mainImage}>
           <img 
-            src="/src/assets/webp/ЛЭНДИНГ/ТРЦ 1.webp" 
+            src={imgPath('ТРЦ 4.webp')} 
             alt="Торговый центр Alfraganus Mall"
             className={styles.heroImage}
           />
-          <div className={styles.timeTag}>
-            <span className={styles.timeIcon}>🕐</span>
-            10 мин
-          </div>
         </div>
         
         <div className={styles.textBlock}>
@@ -33,14 +31,14 @@ const ShoppingCenters = () => {
       <div className={styles.bottomRow}>
         <div className={styles.smallImage}>
           <img 
-            src="/src/assets/webp/ЛЭНДИНГ/ТРЦ 2.webp" 
+            src={imgPath('ТРЦ 2.webp')} 
             alt="Интерьер торгового центра"
             className={styles.image}
           />
         </div>
         <div className={styles.largeImage}>
           <img 
-            src="/src/assets/webp/ЛЭНДИНГ/ТРЦ 3.webp" 
+            src={imgPath('ТРЦ 3.webp')} 
             alt="Торговый центр снаружи"
             className={styles.image}
           />

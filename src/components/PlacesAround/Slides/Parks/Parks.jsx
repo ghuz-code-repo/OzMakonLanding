@@ -2,6 +2,9 @@ import React from 'react';
 import { useTranslation } from 'react-i18next';
 import styles from './Parks.module.css';
 
+const imgPath = (name) => `/src/assets/img/PlacesAround/Parks/${name}`;
+
+
 const Parks = () => {
   const { t } = useTranslation();
 
@@ -11,14 +14,10 @@ const Parks = () => {
       <div className={styles.topRow}>
         <div className={styles.mainImage}>
           <img 
-            src="/src/assets/webp/ЛЭНДИНГ/Парки 1.webp" 
+            src={imgPath('pink.png')} 
             alt="Парк рядом с комплексом"
             className={styles.heroImage}
           />
-          <div className={styles.timeTag}>
-            <span className={styles.timeIcon}>🕐</span>
-            5 мин
-          </div>
         </div>
         
         <div className={styles.textBlock}>
@@ -33,14 +32,14 @@ const Parks = () => {
       <div className={styles.bottomRow}>
         <div className={styles.smallImage}>
           <img 
-            src="/src/assets/webp/ЛЭНДИНГ/парки 2.webp" 
+            src={imgPath('Парки 1.webp')} 
             alt="Зеленая зона парка"
             className={styles.image}
           />
         </div>
         <div className={styles.largeImage}>
           <img 
-            src="/src/assets/webp/ЛЭНДИНГ/парки 3.webp" 
+            src={imgPath('парки 2.webp')} 
             alt="Парковая аллея"
             className={styles.image}
           />

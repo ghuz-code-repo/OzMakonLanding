@@ -29,7 +29,9 @@
 .heroImage {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  /* object-fit: cover; */
+  background-size: 100%;
+  background-position: 0px -140px;
   transition: transform 0.3s ease;
 }
 
@@ -107,94 +109,22 @@
   height: 445px;
 }
 
-.image {
+.leftImage{
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  background-size: 100%;
+  background-position: 0px -30px;
+  transition: transform 0.3s ease;
+}
+.rightImage{
+  width: 100%;
+  height: 100%;
+  background-size: 100%;
+  background-position: 0px -75px;
   transition: transform 0.3s ease;
 }
 
-.smallImage:hover .image,
-.largeImage:hover .image {
+.smallImage:hover .leftImage,
+.largeImage:hover .rightImage {
   transform: scale(1.05);
-}
-
-/* Адаптивность */
-@media (max-width: 1024px) {
-  .markets {
-    gap: 20px;
-    height: auto;
-    max-height: none;
-  }
-  
-  .topRow {
-    flex-direction: column;
-    gap: 20px;
-  }
-  
-  .mainImage {
-    width: 100%;
-    height: 250px;
-  }
-  
-  .textBlock {
-    padding: 30px;
-  }
-  
-  .bottomRow {
-    gap: 20px;
-    height: 200px;
-  }
-  
-  .smallImage {
-    width: 100%;
-    height: 200px;
-  }
-  
-  .largeImage {
-    width: 100%;
-    height: 200px;
-  }
-}
-
-@media (max-width: 768px) {
-  .markets {
-    gap: 20px;
-  }
-  
-  .textBlock {
-    padding: 20px;
-  }
-  
-  .title {
-    font-size: 20px;
-    margin-bottom: 15px;
-  }
-  
-  .description {
-    font-size: 14px;
-  }
-  
-  .bottomRow {
-    flex-direction: column;
-    gap: 12px;
-    height: auto;
-  }
-  
-  .smallImage, .largeImage {
-    width: 100%;
-    height: 150px;
-  }
-}
-
-@media (max-width: 480px) {
-  .bottomRow {
-    flex-direction: column;
-    height: auto;
-  }
-  
-  .smallImage, .largeImage {
-    width: 100%;
-    height: 150px;
-  }
 }

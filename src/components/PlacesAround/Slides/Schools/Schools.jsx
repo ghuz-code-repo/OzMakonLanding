@@ -2,6 +2,9 @@ import React from 'react';
 import { useTranslation } from 'react-i18next';
 import styles from './Schools.module.css';
 
+const imgPath = (name) => `/src/assets/img/PlacesAround/Schools/${name}`;
+
+
 const Schools = () => {
   const { t } = useTranslation();
 
@@ -11,14 +14,10 @@ const Schools = () => {
       <div className={styles.topRow}>
         <div className={styles.mainImage}>
           <img 
-            src="/src/assets/webp/ЛЭНДИНГ/школы 1.webp" 
+            src={imgPath('школы 3.webp')} 
             alt="Школа рядом с комплексом"
             className={styles.heroImage}
           />
-          <div className={styles.timeTag}>
-            <span className={styles.timeIcon}>🕐</span>
-            3 мин
-          </div>
         </div>
         
         <div className={styles.textBlock}>
@@ -33,14 +32,14 @@ const Schools = () => {
       <div className={styles.bottomRow}>
         <div className={styles.smallImage}>
           <img 
-            src="/src/assets/webp/ЛЭНДИНГ/школы 2.webp" 
+            src={imgPath('школы 1.webp')} 
             alt="Школьный класс"
             className={styles.image}
           />
         </div>
         <div className={styles.largeImage}>
           <img 
-            src="/src/assets/webp/ЛЭНДИНГ/школы 3.webp" 
+            src={imgPath('школы 4.webp')} 
             alt="Школьный двор"
             className={styles.image}
           />
