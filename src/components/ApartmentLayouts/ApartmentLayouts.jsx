@@ -21,7 +21,8 @@ const ApartmentLayouts = () => {
       {
         id: 1,
         image: imgPath('1k-1.webp'),
-        scale: 1.8,
+        scaleFrom: 1.5,
+        scaleTo: 1.85,
         price: '400 000 000',
         discount: '-15%',
         isHover: false
@@ -29,7 +30,8 @@ const ApartmentLayouts = () => {
       {
         id: 2,
         image: imgPath('1k-2.webp'),
-        scale: 1.6,
+        scaleFrom: 1.4,
+        scaleTo: 1.65,
         price: '400 000 000',
         discount: '-15%',
         isHover: false
@@ -39,15 +41,17 @@ const ApartmentLayouts = () => {
       {
         id: 3,
         image: imgPath('2k-1.webp'),
-        scale: 1.5,
+        scaleFrom: 1.4,
+        scaleTo: 1.65,
         price: '600 000 000',
         discount: '-3%',
         isHover: false
       },
       {
         id: 4,
-        image: imgPath('2k-1.webp'),
-        scale: 1.5,
+        image: imgPath('2k-2.webp'),
+        scaleFrom: 1.4,
+        scaleTo: 1.65,
         price: '580 000 000',
         discount: '-3%',
         isHover: false
@@ -57,7 +61,8 @@ const ApartmentLayouts = () => {
       {
         id: 5,
         image: imgPath('3k-1.webp'),
-        scale: 1.15,
+        scaleFrom: 1.0,
+        scaleTo: 1.15,
         price: '800 000 000',
         discount: '-2%',
         isHover: false
@@ -65,7 +70,8 @@ const ApartmentLayouts = () => {
       {
         id: 6,
         image: imgPath('3k-2.webp'),
-        scale: 1.4,
+        scaleFrom: 1,
+        scaleTo: 1.4,
         price: '800 000 000',
         discount: '-2%',
         isHover: false
@@ -75,7 +81,8 @@ const ApartmentLayouts = () => {
       {
         id: 7,
         image: imgPath('4k-1.webp'),
-        scale: 1.1,
+        scaleFrom: 1,
+        scaleTo: 1.1,
         price: '1 000 000 000',
         discount: '-2%',
         isHover: false
@@ -83,7 +90,8 @@ const ApartmentLayouts = () => {
       {
         id: 8,
         image: imgPath('4k-2.webp'),
-        scale: 1.25,
+        scaleFrom: 1.1,
+        scaleTo: 1.25,
         price: '1 000 000 000',
         discount: '-2%',
         isHover: false
@@ -119,14 +127,14 @@ const ApartmentLayouts = () => {
             {/* Первая карточка - "Все квартиры" */}
             <div className={styles["apartment-layouts__card"] + " " + styles["apartment-layouts__card--all"]}>
               <div className={styles["apartment-layouts__card-image"]}>
-                <img
-                  src={imgPath('all.png')}
-                  alt={t('layouts.allApartments')}
+                <div
                   className={styles["apartment-layouts__image"]}
-                  style={{ objectFit: 'cover' }}
+                  style={{ 
+                    backgroundImage: `linear-gradient(0deg,rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0.3) 60%, rgba(255, 255, 255, 0) 100%), url(${imgPath('all.png')})`
+                  }}
                 />
               </div>
-              <div className={styles["apartment-layouts__card-content"]}>
+              <div className={styles["apartment-layouts__card-all-content"]}>
                 <h3 className={styles["apartment-layouts__card-title"]}>
                   {t('layouts.allApartments')}
                 </h3>
@@ -150,7 +158,7 @@ const ApartmentLayouts = () => {
                     alt={`${t('layouts.layout')}`}
                     className={styles["apartment-layouts__image"]}
                     style={{
-                      transform: hoveredId === layout.id ? `scale(${layout.scale})` : `scale(1)`,
+                      transform: hoveredId === layout.id ? `scale(${layout.scaleTo})` : `scale(${layout.scaleFrom})`,
                       transition: 'transform 0.3s ease-in-out' // ✨ Бонус: плавная анимация
                     }}
                   />
