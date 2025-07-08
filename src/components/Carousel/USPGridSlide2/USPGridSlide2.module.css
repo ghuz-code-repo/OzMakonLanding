@@ -8,6 +8,8 @@
 
 .usp5-wrapper {
   min-width: 1700px;
+  max-width: 1700px;
+
   width: 100%;
   display: flex;
   flex-direction: row;
@@ -29,8 +31,6 @@
 
 .usp5-col--left {
   padding-left: 0.5%;
-  min-width: 40%;
-  max-width: 40%;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
@@ -40,46 +40,43 @@
 .usp5-col--center {
   margin-top: -100px;
   gap: 30px;
-  min-width: 30%;
-  max-width: 30%;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
 }
 
-.usp5__img-block--middle{
-  border-radius: 12px 12px 0px 0px;
-}
-.usp5__img-block--right{
-  margin-bottom: 24px;
-  border-radius: 12px;
-}
-
-
 .usp5__img-lift {
-  background-position: right;
-  border-radius: 0px 0px 12px 12px;
+  background-position: 0px 0px;
+  scale: 1.1;
+  /* border-radius: 0px 0px 12px 12px; */
   min-width: 465px;
   min-height: 335px;
   background-image: url(/src/assets/img/UniqueSellingPropositionsGrid5/kids_room.webp);
   background-size: cover;
+}
 
+.usp5__img-block--top{
+  border-radius: 0px 0px 12px 12px;
+}
+.usp5__img-block--bottom{
+  border-radius: 12px 12px 0px 0px;
+}
+.usp5__img-block--middle{
+  border-radius: 12px 12px 0px 0px;
 }
 
 .usp5__img-hall {
-  background-position: -160px 0px;
+  background-position: 0px 0px;
+  scale: 1.1;
   border-radius: 12px 12px 0px 0px;
   min-width: 465px;
   min-height: 585px;
   background-image: url(/src/assets/img/UniqueSellingPropositionsGrid5/eagle_view.webp);
   background-size: cover;
-
 }
 
 .usp5-col--right {
-  min-width: 29%;
-  max-width: 29%;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -92,28 +89,39 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start !important;
+  margin-top: 74px;
+  border-radius: 12px;
 }
 
 .usp5_img--komnata {
-  display: flex;
-  flex-direction: column;
   border-radius: 12px;
-  background-position: -160px 0px;
-  width: 433px;
-  height: 370px;
+  background-position: 0px -80px;
+  min-width: 433px;
+  min-height: 370px;
   background-image: url(/src/assets/img/UniqueSellingPropositionsGrid5/front_view.webp);
   background-size: cover;
-  margin-top: 74px;
+  transition: transform 0.3s ease;
+}
+
+.usp5_img--coffee {
+  border-radius: 12px 12px 0px 0px;
+  background-position: right bottom;
+  transition: transform 0.3s ease;
+  min-width: 433px;
+  min-height: 190px;
+  background-image: url(/src/assets/img/UniqueSellingPropositionsGrid5/bbq.webp);
+  background-size: cover;
+  transition: transform 0.3s ease;
 
 }
 
-.usp5_img--coffe-table {
-  border-radius: 12px 12px 0px 0px;
-  background-position: right bottom;
-  width: 433px;
-  height: 224px;
-  background-image: url(/src/assets/img/UniqueSellingPropositionsGrid5/bbq.webp);
-  background-size: cover;
+.usp5__right-top-block{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  width: 100%;
 }
 
 .usp5__line {
@@ -127,14 +135,15 @@
   line-height: 1.2;
   color: #fff;
   margin-bottom: 32px;
-  max-width: 90%;
+  /* max-width: 90%; */
+  min-width: 730px;
 }
 
 .usp5__left-top-text {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  max-width: 86%;
+  max-width: 90%;
 }
 
 .usp5__list {
@@ -156,22 +165,33 @@
   justify-content: space-between;
 }
 
+.usp5__img-block-bottom-right{
+    border-radius: 12px 12px 0px 0px;
+}
+
+.usp5__img-block:hover .usp5__img{
+  transform: scale(1.1);
+}
+
 .usp5__img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  transition: transform 0.3s ease;
 }
 
 .usp5__img-enter {
   border-radius: 12px 12px 0px 0px;
   width: 454px;
   height: 390px;
-  background-position: -384px;
+  background-position: 0px -208px;
   background-image: url(/src/assets/img/UniqueSellingPropositionsGrid5/sports.webp);
   background-size: cover;
 }
 
-
+.usp5__img-block--house {
+  margin-bottom: 24px;
+  
+}
 
 .usp5__textblock {
   color: var(--color-gold);
@@ -185,5 +205,8 @@
 }
 
 .usp5__left-bottom {
+  display: flex;
+  flex-direction:row;
+  justify-content: space-between;
   margin-top: 71px;
 }

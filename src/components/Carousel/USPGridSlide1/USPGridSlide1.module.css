@@ -66,7 +66,7 @@
 }
 
 .usp5__img-dvor {
-  background-position: -160px 0px;
+  background-position: -130px 0px;
   border-radius: 12px 12px 0px 0px;
   min-width: 465px;
   min-height: 585px;
@@ -92,8 +92,9 @@
 }
 
 .usp5_img--frontview {
+  scale: 1.5;
   border-radius: 12px;
-  background-position: -160px 0px;
+  background-position: -60px 50px;
   min-width: 433px;
   min-height: 370px;
   background-image: url(/src/assets/img/UniqueSellingPropositionsGrid5/front_view.webp);
@@ -102,13 +103,16 @@
 }
 
 .usp5_img--bbq {
+  scale: 1;
   border-radius: 12px 12px 0px 0px;
-  background-position: right bottom;
+  background-position: -10px -50px;
   transition: transform 0.3s ease;
   min-width: 433px;
   min-height: 190px;
   background-image: url(/src/assets/img/UniqueSellingPropositionsGrid5/bbq.webp);
   background-size: cover;
+  transition: transform 0.3s ease;
+
 }
 
 .usp5__right-top-block{
@@ -172,16 +176,15 @@
 .usp5__img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
   transition: transform 0.3s ease;
 }
 
 .usp5__img-zal {
   border-radius: 12px 12px 0px 0px;
-
+  scale: 1.3;
   width: 454px;
   height: 390px;
-  background-position: -384px;
+  background-position: -270px -10px;
   background-image: url(/src/assets/img/UniqueSellingPropositionsGrid5/sports.webp);
   background-size: cover;
 }
@@ -203,5 +206,8 @@
 }
 
 .usp5__left-bottom {
+  display: flex;
+  flex-direction:row;
+  justify-content: space-between;
   margin-top: 71px;
 }

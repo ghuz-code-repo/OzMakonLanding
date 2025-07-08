@@ -2,12 +2,13 @@ import React from 'react';
 import { useTranslation } from 'react-i18next';
 import styles from './USPGridSlide2.module.css';
 
+
 const imgPath = (name) => `/src/assets/img/UniqueSellingPropositionsGrid5/slide2/${name}`;
 
 const USPGridSlide2 = () => {
   const { t } = useTranslation();
   const slide = {
-    title : t('usp5.slide2.title'),
+    title: t('usp5.slide2.title'),
     left: {
       list: t('usp5.slide2.list'),
       year: '2025',
@@ -20,7 +21,7 @@ const USPGridSlide2 = () => {
     right: {
       img1: 'komnata.webp',
       img2: 'coffe_table.webp',
-      text: t('usp5.slide2.textblock') || 'Второй текстовый блок',
+      text: t('usp5.slide2.textblock'),
     },
   };
   return (
@@ -45,36 +46,37 @@ const USPGridSlide2 = () => {
           </div>
         </div>
         <div className={styles["usp5__left-bottom"]}>
-          <div className={styles["usp5__img-block"]+' '+styles["usp5__img-block--bottom"]+' '+styles["usp5-animatable"]}>
-            <div className={styles["usp5__line"]} />
+          <div className={styles["usp5__line"]} />
+          <div className={styles["usp5__img-block"] + ' ' + styles["usp5__img-block--bottom"]}>
             <div
-              className={styles["usp5__img"]+' '+styles["usp5__img-enter"]}
-              style={{ backgroundImage: `url(${imgPath(slide.left.img)})` }}
+              className={styles["usp5__img"] + ' ' + styles["usp5__img-enter"]}
+              style={{ backgroundImage: `url(${imgPath(slide.left.img)})` }} aria-label='ЖДУ ФОТО'
             />
           </div>
         </div>
       </div>
-      <div className={styles["usp5-col"]+' '+styles["usp5-col--center"]}>
-        <div className={styles["usp5__img-block"]+' '+styles["usp5__img-block--top"]+' '+styles["usp5-animatable"]}>
+      <div className={styles["usp5-col"] + ' ' + styles["usp5-col--center"]}>
+        <div className={styles["usp5__img-block"] + ' ' + styles["usp5__img-block--top"]}>
           <div
-            className={styles["usp5__img"]+' '+styles["usp5__img-lift"]}
-            style={{ backgroundImage: `url(${imgPath(slide.center.img1)})` }}
+            className={styles["usp5__img"] + ' ' + styles["usp5__img-lift"]}
+            style={{ backgroundImage: `url(${imgPath(slide.center.img1)})` }} aria-label='ЖДУ ФОТО'
           />
         </div>
-        <div className={styles["usp5__img-block"]+' '+styles["usp5__img-block--middle"]+' '+styles["usp5-animatable"]}
-        >
+        <div className={styles["usp5__img-block"] + ' ' + styles["usp5__img-block--middle"]}>
           <div
-            className={styles["usp5__img"]+' '+styles["usp5__img-hall"]}
-            style={{ backgroundImage: `url(${imgPath(slide.center.img2)})` }}
+            className={styles["usp5__img"] + ' ' + styles["usp5__img-hall"]}
+            style={{ backgroundImage: `url(${imgPath(slide.center.img2)})` }} aria-label='ЖДУ ФОТО'
           />
         </div>
       </div>
-      <div className={styles["usp5-col"]+' '+styles["usp5-col--right"]}>
-        <div className={styles["usp5__img-block-right"]+' '+styles["usp5__img-block"]+' '+styles["usp5-animatable"]}>
-          <div
-            className={styles["usp5_img--komnata"]}
-            style={{ backgroundImage: `url(${imgPath(slide.right.img1)})` }}
-          />
+      <div className={styles["usp5-col"] + ' ' + styles["usp5-col--right"]}>
+        <div className={styles["usp5__right-top-block"]}>
+          <div className={styles["usp5__img-block"]+ ' ' + styles["usp5__img-block-right"]}>
+            <div
+              className={styles["usp5__img"] + ' ' + styles["usp5_img--komnata"]}
+              style={{ backgroundImage: `url(${imgPath(slide.right.img1)})` }} aria-label='ЖДУ ФОТО'
+            />
+          </div>
           <div className={styles["usp5__textblock"]}>
             {slide.right.text.split('\n').map((line, i) => (
               <React.Fragment key={i}>
@@ -84,14 +86,10 @@ const USPGridSlide2 = () => {
             ))}
           </div>
         </div>
-
-        <div className={styles["usp5-animatable"]}>
-
-        </div>
-        <div className={styles["usp5__img-block"]+' '+styles["usp5-animatable"]}>
+        <div className={styles["usp5__img-block"] + ' ' + styles["usp5__img-block-bottom-right"]}>
           <div
-            className={styles["usp5_img--coffe-table"]}
-            style={{ backgroundImage: `url(${imgPath(slide.right.img2)})` }}
+            className={styles["usp5__img"] + ' ' + styles["usp5_img--coffee"]}
+            style={{ backgroundImage: `url(${imgPath(slide.right.img2)})` }} aria-label='ЖДУ ФОТО'
           />
         </div>
       </div>
