@@ -1,3 +1,5 @@
+@import '../../styles/colors.css';
+
 .header-section {
   /* The .section class from App.css might add unwanted min-height and padding.
      Bootstrap's navbar classes (bg-light, navbar-light) will provide base styling.
