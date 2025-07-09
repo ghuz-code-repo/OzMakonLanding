@@ -8,7 +8,7 @@ import Carousel from './components/Carousel/USPGridCarousel/USPGridCarousel';
 import ApartmentLayouts from './components/ApartmentLayouts/ApartmentLayouts';
 import PlacesAround from './components/PlacesAround/PlacesAround';
 import Location from './components/Location/Location';
-import CallUsBig from './components/CallUsBig/CallUsBig';
+import Callback from './components/Callback/Callback';
 
 function App() {
   return (
@@ -21,7 +21,7 @@ function App() {
         <ApartmentLayouts />
         <PlacesAround />
         <Location />
-        <CallUsBig />
+        <Callback />
       </div>
     </>
   );

@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next';
 import styles from './Conception.module.css';
 import mainImage from '../../assets/img/Conception/main-image.webp';
 import circleImage from '../../assets/img/Conception/rectangle-37.png';
-import CallUsMini from '../CallUsMini/CallUsMini';
+import CallbackMini from '../CallbackMini/CallbackMini';
 import icon1 from '../../assets/img/Conception/icon-1.svg';
 import icon2 from '../../assets/img/Conception/icon-2.svg';
 import icon3 from '../../assets/img/Conception/icon-3.svg';
@@ -15,7 +15,7 @@ const Conception = () => {
 
   return (
     <section className={styles["conception"]}>
-      <CallUsMini/>
+      <CallbackMini/>
       <div className={styles["conception__arrows"]}>
       <img src={icon1} alt="vector" className={styles["conception__arrow"]} />
       <img src={icon2} alt="vector" className={styles["conception__arrow"]} />

@@ -33,7 +33,7 @@ body {
 .section {
   min-height: 100vh; /* Default to full screen height, can be overridden */
   padding: 20px;
-  border-bottom: 1px solid #eee; /* For visual separation during development */
+  /* border-bottom: 1px solid #eee; For visual separation during development */
 }
 
 

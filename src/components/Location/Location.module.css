@@ -1,8 +1,9 @@
 @import '../../styles/colors.css';
 
 .location-section {
-  background-color: #bfbfbf;
-  max-height: 900px;
+  margin:0 20px !important;
+  padding:0 20px !important;
+  
   /* Example style */
   /* Add screen-specific styles here */
 }

@@ -17,7 +17,7 @@ const Location = () => {
       place: t('location.card.METRO.place')
     }]
   return (
-    <section className="location-section section">
+    <section className={styles["location-section"]}>
       {/* Location (map) content will go here */}
       <h2 className={styles.title}>{t('location.title')}</h2>
       <span className={styles.mainText}>

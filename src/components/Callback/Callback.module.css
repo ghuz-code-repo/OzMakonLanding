@@ -1,0 +1,189 @@
+@import '../../styles/colors.css';
+
+.CallbackSection {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  background: var(--color-bg-main);
+  max-width: 1700px;
+  max-height: 100vh;
+  margin: 0 20px;
+  padding: 0 20px;
+  margin-top: 150px;
+  overflow-y: hidden;
+  /* padding: 60px 0; */
+}
+
+.left {
+  width: 700px;
+  margin-right: 48px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.right {
+  display: flex;
+  align-items: flex-start;
+}
+
+.grid {
+  display: flex;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(4, 1fr);
+  gap: 24px;
+}
+
+.gridItem {
+  max-width: 258px; 
+  max-height: fit-content;
+  background: var(--color-bg-secondary);
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.column{
+  display: flex;
+  flex-direction: column;
+  gap: 30px
+}
+
+
+.title {
+  color: var(--color-text-main);
+  font-weight: 350;
+  font-size: 116px;
+}
+
+.subTitle {
+  color: var(--color-text-main);
+  font-weight: 350;
+  font-size: 46px;
+}
+
+.mainText {
+  color: var(--color-text-dark-grey);
+  font-weight: 200;
+  font-size: 24px;
+  display: block;
+  margin-bottom: 42px;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.input {
+  font-size: 24px;
+  padding: 0px 16px;
+  border: 0.5px solid var(--color-border);
+  border-radius: 14px;
+  outline: none;
+  margin-bottom: 0;
+  background-color: transparent;
+  /* var(--bs-black); */
+  color: var(--color-text-main);
+  width: 100%;
+  line-height: 70px;
+}
+
+.input::placeholder {
+  color: var(--color-text-grey);
+  font-family: Inter;
+  font-weight: 300;
+  font-size: 24px;
+  letter-spacing: -3%;
+  vertical-align: middle;
+}
+
+.button {
+  min-height: 70px;
+  font-size: 18px;
+  font-family: 'Urbanist', sans-serif;
+  font-weight: 400;
+  padding: 12px 0;
+  border: none;
+  border-radius: 14px;
+  background: var(--color-yellow);
+  color: var(--color-text-dark);
+  cursor: pointer;
+  margin-top: 8px;
+  transition: background 0.2s, color 0.2s;
+}
+
+.button:hover {
+  background: var(--color-accent);
+  color: var(--color-bg-main);
+}
+
+
+.consent {
+  font-size: 16px;
+  color: var(--color-text-main);
+  opacity: 0.4;
+  margin-top: 12px;
+  line-height: 18px;
+  font-family: 'Inter', Arial, sans-serif;
+}
+
+.checkboxLabel {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 18px 0 0 0;
+  cursor: pointer;
+  user-select: none;
+}
+
+.checkbox {
+  display: none;
+}
+
+.customCheckbox {
+  width: 22px;
+  height: 22px;
+  border: 2px solid var(--color-border);
+  border-radius: 6px;
+  background: var(--color-bg-main);
+  position: relative;
+  flex-shrink: 0;
+}
+
+.checkbox:checked + .customCheckbox {
+  border-color: var(--color-yellow);
+  background: var(--color-yellow);
+}
+
+.checkbox:checked + .customCheckbox::after {
+  content: '';
+  position: absolute;
+  left: 5px;
+  top: 1px;
+  width: 7px;
+  height: 13px;
+  border: solid var(--color-text-dark);
+  border-width: 0 3px 3px 0;
+  border-radius: 1px;
+  transform: rotate(45deg);
+  display: block;
+}
+
+.consentText {
+  color: var(--color-text-dark-grey);
+  font-size: 16px;
+  font-family: 'Inter', Arial, sans-serif;
+  opacity: 0.8;
+  line-height: 1.3;
+  margin-left: 2px;
+}
+
+.button:disabled {
+  opacity: 0.5;
+  pointer-events: none;
+  filter: grayscale(0.2);
+}
