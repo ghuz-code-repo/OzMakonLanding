@@ -1,0 +1,112 @@
+@import '../../styles/colors.css';
+
+.location-section {
+  background-color: #bfbfbf;
+  max-height: 900px;
+  /* Example style */
+  /* Add screen-specific styles here */
+}
+
+.map-placeholder {
+  height: 300px;
+  background-color: #aaa;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+}
+
+.title {
+  color: var(--color-text-main);
+  font-weight: 350;
+  font-size: 76px;
+}
+
+.mainText {
+  color: var(--color-text-dark-grey);
+  font-weight: 200;
+  font-size: 24px;
+}
+ 
+.mapBlock {
+  max-height: 948px;
+  margin-top: 48px;
+  border-radius: 12px;
+  overflow: hidden;
+  margin-bottom: 52px;
+}
+
+.mapImage {
+  position: relative;
+  min-width: 1700px;
+  min-height: 700px;
+  background-size: 100%;
+  background-position: 0px -250px
+}
+
+.mapImage::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+
+  /* Задаем фон и фильтр именно здесь */
+  background-image: url('/src/assets/img/Location/map.png');
+  background-size: 100%;
+  background-position: 0px -250px;
+  filter: grayscale(100%);
+
+  /* Помещаем этот слой под основной контент */
+  z-index: -1;
+}
+
+.card {
+  backdrop-filter: blur(32px);
+  border: 1.6px solid;
+  border-image-source: linear-gradient(127.74deg, rgba(255, 255, 255, 0.5) 5.83%, rgba(255, 255, 255, 0.5) 97.9%);
+
+  min-width: 503px;
+  min-height: 177px;
+  padding-top: 25px;
+  padding-right: 36px;
+  padding-bottom: 25px;
+  padding-left: 36px;
+  gap: 16px;
+  border-radius: 32px;
+  border-width: 1.6px;
+
+  position: absolute;
+  bottom: 53px;
+  left: 32px;
+}
+
+.marker {
+  filter: none;
+  position: absolute;
+  bottom: 110px;
+  right: 320px;
+}
+
+.cardRow {
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+}
+
+.cardRowBulletTextBlock {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.cardRowBulletTime {
+  font-weight: 400;
+  font-size: 24px;
+}
+
+.cardRowBulletPlace {
+  font-weight: 200;
+  font-size: 24px;
+}

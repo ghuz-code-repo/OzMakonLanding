@@ -15,8 +15,8 @@
 }
 
 .apartment-layouts__title {
-  font-size: 48px;
   font-weight: 350;
+  font-size: 76px;
   color: var(--color-text-main);
   /* margin-bottom: 60px; */
   line-height: 1.2;

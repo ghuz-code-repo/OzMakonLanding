@@ -23,9 +23,10 @@
   --color-header-link-accent: #e4e4e4;
   --color-header-divider: #837D79;
   --color-text-main: #fff;
-  --color-text-dark: #212121;
   --color-text-grey: #dedede;
   --color-text-muted: #b0b0b0;
+  --color-text-dark-grey:  #6D6A68;
+  --color-text-dark: #212121;
   --color-shadow: 0 4px 24px 0 rgba(0,0,0,0.12);
   --color-shadow-strong: 0 8px 32px 0 rgba(0,0,0,0.18);
   --color-shadow-light: 0 2px 8px 0 rgba(0,0,0,0.08);

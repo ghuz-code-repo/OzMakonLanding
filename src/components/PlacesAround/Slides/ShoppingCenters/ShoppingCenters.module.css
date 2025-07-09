@@ -20,7 +20,7 @@
 .mainImage {
   position: relative;
   width: 832px;
-  height: 320px;
+  height: 300px;
   border-radius: 20px;
   overflow: hidden;
   flex-shrink: 0;
@@ -83,7 +83,7 @@
 
 .smallImage {
   width: 690px;
-  height: 445px;
+  height: 420px;
   border-radius: 20px;
   overflow: hidden;
   flex-shrink: 0;
@@ -91,7 +91,7 @@
 
 .largeImage {
   width: 980px;
-  height: 445px;
+  height: 420px;
   border-radius: 20px;
   overflow: hidden;
   flex-shrink: 0;
