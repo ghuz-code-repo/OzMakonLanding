@@ -1,19 +1,61 @@
-import React, { useState } from 'react';
+import React, { useState, useRef} from 'react';
 import { useTranslation } from 'react-i18next';
 import styles from './ApartmentLayouts.module.css';
 import LayoutChanger from './LayoutChanger/LayoutChanger';
+import MacroWidget from '../MacroWidget/MacroWidget';
 
 const imgPath = (name) => `/src/assets/img/ApartmentLayouts/${name}`;
 
 const ApartmentLayouts = () => {
   const { t } = useTranslation();
   const [selectedLayout, setSelectedLayout] = useState('1-room');
-  
+
   const [hoveredId, setHoveredId] = useState(null);
 
   const handleLayoutChange = (layoutId) => {
     setSelectedLayout(layoutId);
   };
+
+  const widgetRef = useRef();
+
+  // Функция для открытия каталога по умолчанию
+  const handleOpenCatalog = () => {
+    if (widgetRef.current) {
+      widgetRef.current.show({}); // Пустой объект откроет каталог по умолчанию
+    }
+  };
+
+  // Функция для открытия конкретного дома в режиме "шахматки" на английском языке [cite: 38]
+  const handleOpenSpecificHouse = (roomCount) => {
+    if (widgetRef.current) {
+      const params = {
+        locale: 'ru',       // язык [cite: 36] uz_Latn
+        houseId: 5139395,   // ID дома [cite: 35]
+        presMode: 'house',  // режим "конкретный дом" [cite: 35]
+        houseView: 'plans', // вид "планировки" [cite: 35]
+        category: 'flat',   // категория "квартиры" [cite: 35]
+        filters:{
+          rooms:roomCount, // если только одна комната, то просто число, иначе строка с запятыми
+        }
+      };
+      widgetRef.current.show(params);
+    }
+  };
+
+  // Функция для открытия кабинета агента [cite: 40]
+  const handleOpenAgentCabinet = () => {
+    if (widgetRef.current) {
+      widgetRef.current.show({ type: 'agent' }); // тип виджета "кабинет агента" [cite: 34]
+    }
+  };
+
+  // Функция для закрытия виджета
+  const handleHideWidget = () => {
+    if (widgetRef.current) {
+      widgetRef.current.hide();
+    }
+  };
+
 
   // Данные для планировок
   const layoutsData = {
@@ -25,7 +67,8 @@ const ApartmentLayouts = () => {
         scaleTo: 1.85,
         price: '400 000 000',
         discount: '-15%',
-        isHover: false
+        isHover: false,
+        roomCount: [1]
       },
       {
         id: 2,
@@ -34,7 +77,8 @@ const ApartmentLayouts = () => {
         scaleTo: 1.65,
         price: '400 000 000',
         discount: '-15%',
-        isHover: false
+        isHover: false,
+        roomCount: [1]
       }
     ],
     '2-room': [
@@ -45,7 +89,8 @@ const ApartmentLayouts = () => {
         scaleTo: 1.65,
         price: '600 000 000',
         discount: '-3%',
-        isHover: false
+        isHover: false,
+        roomCount: [2]
       },
       {
         id: 4,
@@ -54,7 +99,8 @@ const ApartmentLayouts = () => {
         scaleTo: 1.65,
         price: '580 000 000',
         discount: '-3%',
-        isHover: false
+        isHover: false,
+        roomCount: [2]
       }
     ],
     '3-room': [
@@ -65,7 +111,8 @@ const ApartmentLayouts = () => {
         scaleTo: 1.15,
         price: '800 000 000',
         discount: '-2%',
-        isHover: false
+        isHover: false,
+        roomCount: [3]
       },
       {
         id: 6,
@@ -74,7 +121,8 @@ const ApartmentLayouts = () => {
         scaleTo: 1.4,
         price: '800 000 000',
         discount: '-2%',
-        isHover: false
+        isHover: false,
+        roomCount: [3]
       }
     ],
     '4-room': [
@@ -85,7 +133,8 @@ const ApartmentLayouts = () => {
         scaleTo: 1.1,
         price: '1 000 000 000',
         discount: '-2%',
-        isHover: false
+        isHover: false,
+        roomCount: [4,5,6,7,8,9,10]
       },
       {
         id: 8,
@@ -94,7 +143,8 @@ const ApartmentLayouts = () => {
         scaleTo: 1.25,
         price: '1 000 000 000',
         discount: '-2%',
-        isHover: false
+        isHover: false,
+        roomCount: [4,5,6,7,8,9,10]
       }
     ]
   };
@@ -125,11 +175,13 @@ const ApartmentLayouts = () => {
         <div className={styles["apartment-layouts__content"]}>
           <div className={styles["apartment-layouts__grid"]}>
             {/* Первая карточка - "Все квартиры" */}
-            <div className={styles["apartment-layouts__card"] + " " + styles["apartment-layouts__card--all"]}>
+            <div className={styles["apartment-layouts__card"] + " " + styles["apartment-layouts__card--all"]}
+              onClick={handleOpenCatalog}
+            >
               <div className={styles["apartment-layouts__card-image"]}>
                 <div
                   className={styles["apartment-layouts__image"]}
-                  style={{ 
+                  style={{
                     backgroundImage: `linear-gradient(0deg,rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0.3) 60%, rgba(255, 255, 255, 0) 100%), url(${imgPath('all.png')})`
                   }}
                 />
@@ -143,9 +195,11 @@ const ApartmentLayouts = () => {
 
             {/* Карточки планировок */}
             {currentLayouts.map((layout) => (
+
               <div key={layout.id} className={styles["apartment-layouts__card"]}
                 onMouseEnter={() => setHoveredId(layout.id)}
                 onMouseLeave={() => setHoveredId(null)}
+                onClick={()=>handleOpenSpecificHouse(layout.roomCount)}
               >
                 {layout.discount && (
                   <div className={styles["apartment-layouts__discount"]}>
@@ -159,7 +213,7 @@ const ApartmentLayouts = () => {
                     className={styles["apartment-layouts__image"]}
                     style={{
                       transform: hoveredId === layout.id ? `scale(${layout.scaleTo})` : `scale(${layout.scaleFrom})`,
-                      transition: 'transform 0.3s ease-in-out' // ✨ Бонус: плавная анимация
+                      transition: 'transform 0.3s ease-in-out'
                     }}
                   />
                 </div>
@@ -173,6 +227,7 @@ const ApartmentLayouts = () => {
           </div>
         </div>
       </div>
+      <MacroWidget ref={widgetRef} />
     </section>
   );
 };

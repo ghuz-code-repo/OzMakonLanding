@@ -138,7 +138,7 @@ const USPGridCarousel = () => {
   }, [lastSlideIndex]); // Добавили зависимость
 
   return (
-    <div ref={containerRef} className={styles["usp5-scroll-container"]}>
+    <div ref={containerRef} className={styles["usp5-scroll-container"]} id='advantages'>
       <div className={styles["usp5-sticky-wrapper"]}>
         <div key={currentSlide} className={styles["slide-container-animated"]}>
           {slides[currentSlide]}

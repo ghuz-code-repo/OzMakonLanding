@@ -9,6 +9,7 @@ import ApartmentLayouts from './components/ApartmentLayouts/ApartmentLayouts';
 import PlacesAround from './components/PlacesAround/PlacesAround';
 import Location from './components/Location/Location';
 import Callback from './components/Callback/Callback';
+import Footer from './components/Footer/Footer';
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
         <PlacesAround />
         <Location />
         <Callback />
+        <Footer />
       </div>
     </>
   );

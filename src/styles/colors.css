@@ -36,3 +36,12 @@
   --color-overlay-gradient: linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0.9) 94%);
   --color-gold: #D29F66;
 } 
+
+body a {
+  color: var(--color-yellow);
+  text-decoration: none;
+}
+body a:hover {
+  text-decoration: underline;
+  text-underline-position: under;
+}

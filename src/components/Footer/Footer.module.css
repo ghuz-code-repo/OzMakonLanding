@@ -1,0 +1,86 @@
+@import '../../styles/colors.css';
+
+.footer {
+    width: 100%;
+    color: var(--color-white);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 14px;
+}
+
+.container {
+    min-width: 1700px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    margin-bottom: 40px;
+    /* margin-top: 24px; */
+}
+
+.footerRow {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 24px;
+    margin-top: 24px;
+}
+
+.footerTopLeft {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.footerTopRight {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.footerBottomLeft {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4em;
+}
+
+.phone {
+    font-weight: 400;
+    font-style: SemiBold;
+    font-size: 28px;
+}
+
+.phone a {
+    color: var(--color-white);
+}
+
+.phone a:hover {
+    text-decoration: none;
+}
+
+.href {
+    font-weight: 350;
+    font-size: 16px;
+}
+
+.workingHours {
+    font-weight: 350;
+    font-size: 14px;
+}
+
+.copanyName {
+    font-weight: 350;
+    font-size: 14px;
+}
+
+.copyright {
+    font-weight: 350;
+    font-size: 14px;
+}
+
+.address {
+    font-weight: 350;
+    font-size: 14px;
+    line-height: 24px;
+}

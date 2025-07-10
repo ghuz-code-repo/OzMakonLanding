@@ -14,7 +14,7 @@ const Conception = () => {
   const { t } = useTranslation();
 
   return (
-    <section className={styles["conception"]}>
+    <section className={styles["conception"]} id='about'>
       <CallbackMini/>
       <div className={styles["conception__arrows"]}>
       <img src={icon1} alt="vector" className={styles["conception__arrow"]} />
