@@ -25,17 +25,16 @@ const ApartmentLayouts = () => {
     }
   };
 
-  // Функция для открытия конкретного дома в режиме "шахматки" на английском языке [cite: 38]
   const handleOpenSpecificHouse = (roomCount) => {
     if (widgetRef.current) {
       const params = {
-        locale: 'ru',       // язык [cite: 36] uz_Latn
-        houseId: 5139395,   // ID дома [cite: 35]
-        presMode: 'house',  // режим "конкретный дом" [cite: 35]
-        houseView: 'plans', // вид "планировки" [cite: 35]
-        category: 'flat',   // категория "квартиры" [cite: 35]
+        locale: 'ru',
+        houseId: 3340663,
+        presMode: 'house',
+        houseView: 'plans',
+        category: 'flat',
         filters:{
-          rooms:roomCount, // если только одна комната, то просто число, иначе строка с запятыми
+          rooms:roomCount,
         }
       };
       widgetRef.current.show(params);
@@ -134,7 +133,7 @@ const ApartmentLayouts = () => {
         price: '1 000 000 000',
         discount: '-2%',
         isHover: false,
-        roomCount: [4,5,6,7,8,9,10]
+        roomCount: [4,5]
       },
       {
         id: 8,
@@ -144,7 +143,7 @@ const ApartmentLayouts = () => {
         price: '1 000 000 000',
         discount: '-2%',
         isHover: false,
-        roomCount: [4,5,6,7,8,9,10]
+        roomCount: [4,5]
       }
     ]
   };
@@ -176,7 +175,7 @@ const ApartmentLayouts = () => {
           <div className={styles["apartment-layouts__grid"]}>
             {/* Первая карточка - "Все квартиры" */}
             <div className={styles["apartment-layouts__card"] + " " + styles["apartment-layouts__card--all"]}
-              onClick={handleOpenCatalog}
+              onClick={()=>handleOpenSpecificHouse([1,2,3,4,5])}
             >
               <div className={styles["apartment-layouts__card-image"]}>
                 <div
