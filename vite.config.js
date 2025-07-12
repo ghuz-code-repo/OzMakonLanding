@@ -14,7 +14,7 @@ export default defineConfig({
     //   }
     // },
     // host: 'localhost', // Use your domain or 'localhost' for local development
-    port: 3333,
+    port: 4444,
     strictPort: true, // Exit if port is already in use
     open: true, // Attempt to open in browser automatically
   },

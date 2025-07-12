@@ -52,14 +52,25 @@
   color: #ffffff;
 }
 
-/* Адаптивность */
+/* Tablets (≤1024px) */
+@media (max-width: 1024px) {
+  .type-changer__controls {
+    gap: 32px;
+  }
+  
+  .type-changer__button {
+    font-size: 15px;
+  }
+}
+
+/* Small tablets and large phones (≤768px) */
 @media (max-width: 768px) {
   .type-changer {
     padding: 0;
   }
   
   .type-changer__controls {
-    gap: 30px;
+    gap: 24px;
     flex-wrap: wrap;
   }
   
@@ -69,13 +80,26 @@
   }
 }
 
-@media (max-width: 480px) {
+/* Mobile devices (≤576px) */
+@media (max-width: 576px) {
   .type-changer__controls {
     gap: 20px;
     justify-content: flex-start;
   }
   
   .type-changer__button {
-    font-size: 14px;
+    font-size: 13px;
+  }
+}
+
+/* Small mobile devices (≤480px) */
+@media (max-width: 480px) {
+  .type-changer__controls {
+    gap: 16px;
+    justify-content: flex-start;
+  }
+  
+  .type-changer__button {
+    font-size: 12px;
   }
 }

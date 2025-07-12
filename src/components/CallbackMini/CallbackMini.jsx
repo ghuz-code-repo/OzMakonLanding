@@ -18,14 +18,14 @@ const CallbackMini = () => {
           <form className={styles["CallbackMini__form"]}>
             <input
               type="text"
-              className={styles["CallbackMini__input"]+' '+styles["urbanist"]}
+              className={styles["CallbackMini__input"] + ' ' + styles["urbanist"]}
               placeholder={t('conception.form.namePlaceholder')}
               name="name"
               autoComplete="off"
             />
             <input
               type="tel"
-              className={styles["CallbackMini__input"]+' '+styles["urbanist"]}
+              className={styles["CallbackMini__input"] + ' ' + styles["urbanist"]}
               placeholder={t('conception.form.phonePlaceholder')}
               name="phone"
               autoComplete="off"

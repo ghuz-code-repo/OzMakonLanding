@@ -39,10 +39,10 @@
 
 .mapImage {
   position: relative;
-  min-width: 1700px;
+  width: 100%;
   min-height: 700px;
-  background-size: 100%;
-  background-position: 0px -250px
+  background-size: cover;
+  background-position: center;
 }
 
 .mapImage::before {
@@ -55,8 +55,8 @@
 
   /* Задаем фон и фильтр именно здесь */
   background-image: url('/src/assets/img/Location/map.png');
-  background-size: 100%;
-  background-position: 0px -250px;
+  background-size: cover;
+  background-position: center;
   filter: grayscale(100%);
 
   /* Помещаем этот слой под основной контент */
@@ -110,4 +110,201 @@
 .cardRowBulletPlace {
   font-weight: 200;
   font-size: 24px;
+}
+
+/* Tablets (≤1200px) */
+@media (max-width: 1200px) {
+  .location-section {
+    margin: 0 16px !important;
+    padding: 0 16px !important;
+  }
+
+  .title {
+    font-size: 60px;
+  }
+
+  .mainText {
+    font-size: 20px;
+  }
+
+  .mapBlock {
+    margin-top: 40px;
+    margin-bottom: 40px;
+  }
+
+  .mapImage {
+    min-height: 600px;
+  }
+
+  .card {
+    min-width: 400px;
+    min-height: 150px;
+    padding: 20px 30px;
+    bottom: 40px;
+    left: 24px;
+  }
+
+  .marker {
+    bottom: 90px;
+    right: 240px;
+  }
+
+  .cardRowBulletTime,
+  .cardRowBulletPlace {
+    font-size: 20px;
+  }
+}
+
+/* Tablets (≤1024px) */
+@media (max-width: 1024px) {
+  .title {
+    font-size: 48px;
+  }
+
+  .mainText {
+    font-size: 18px;
+  }
+
+  .mapImage {
+    min-height: 500px;
+  }
+
+  .card {
+    min-width: 350px;
+    min-height: 130px;
+    padding: 18px 24px;
+    bottom: 32px;
+    left: 20px;
+  }
+
+  .marker {
+    bottom: 70px;
+    right: 200px;
+  }
+
+  .cardRowBulletTime,
+  .cardRowBulletPlace {
+    font-size: 18px;
+  }
+}
+
+/* Small tablets and large phones (≤768px) */
+@media (max-width: 768px) {
+  .location-section {
+    margin: 0 12px !important;
+    padding: 0 12px !important;
+  }
+
+  .title {
+    font-size: 36px;
+  }
+
+  .mainText {
+    font-size: 16px;
+  }
+
+  .mapBlock {
+    margin-top: 32px;
+    margin-bottom: 32px;
+  }
+
+  .mapImage {
+    min-height: 400px;
+  }
+
+  .card {
+    min-width: 280px;
+    min-height: 110px;
+    padding: 16px 20px;
+    bottom: 24px;
+    left: 16px;
+  }
+
+  .marker {
+    bottom: 50px;
+    right: 150px;
+  }
+
+  .cardRowBulletTime,
+  .cardRowBulletPlace {
+    font-size: 16px;
+  }
+}
+
+/* Mobile devices (≤576px) */
+@media (max-width: 576px) {
+  .location-section {
+    margin: 0 8px !important;
+    padding: 0 8px !important;
+  }
+
+  .title {
+    font-size: 28px;
+  }
+
+  .mainText {
+    font-size: 14px;
+  }
+
+  .mapBlock {
+    margin-top: 24px;
+    margin-bottom: 24px;
+  }
+
+  .mapImage {
+    min-height: 320px;
+  }
+
+  .card {
+    min-width: 240px;
+    min-height: 100px;
+    padding: 12px 16px;
+    bottom: 16px;
+    left: 12px;
+    gap: 12px;
+  }
+
+  .marker {
+    bottom: 40px;
+    right: 120px;
+  }
+
+  .cardRowBulletTime,
+  .cardRowBulletPlace {
+    font-size: 14px;
+  }
+}
+
+/* Small mobile devices (≤480px) */
+@media (max-width: 480px) {
+  .title {
+    font-size: 24px;
+  }
+
+  .mainText {
+    font-size: 13px;
+  }
+
+  .mapImage {
+    min-height: 280px;
+  }
+
+  .card {
+    min-width: 200px;
+    min-height: 90px;
+    padding: 10px 14px;
+    bottom: 12px;
+    left: 8px;
+    gap: 8px;
+  }
+
+  .marker {
+    bottom: 30px;
+    right: 100px;
+  }
+
+  .cardRowBulletTime,
+  .cardRowBulletPlace {
+    font-size: 12px;
+  }
 }

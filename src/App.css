@@ -8,6 +8,7 @@ body {
   -moz-osx-font-smoothing: grayscale;
   align-items: center;
   background: var(--color-bg-main);
+  overflow-x: hidden !important; /* Prevents scrollbars from appearing */
 }
 
 /* Для Chrome, Edge, Safari */

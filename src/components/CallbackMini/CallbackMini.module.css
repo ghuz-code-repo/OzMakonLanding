@@ -1,15 +1,8 @@
 @import '../../styles/colors.css';
 
-.call-us-mini-section {
-  background-color: var(--color-white);
-  /* Example style */
-  min-height: 20vh;
-  /* Example: smaller section */
-  /* Add screen-specific styles here */
-}
-
+/* Base styles for FullHD (1920x1080) and larger screens */
 .CallbackMini__overlay {
-  margin-top: -78px;
+  margin-top: 0;
   z-index: 10;
   display: flex;
   justify-content: flex-start;
@@ -35,6 +28,8 @@
   display: flex;
   align-items: center;
   padding-left: 56px;
+  flex: 0 0 auto;
+  min-width: 300px;
 }
 
 .CallbackMini__title {
@@ -49,7 +44,8 @@
 .CallbackMini__right {
   display: flex;
   flex-direction: column;
-  min-width: 560px;
+  flex: 1;
+  max-width: 560px;
   padding-right: 66px;
   padding-top: 41px;
   padding-bottom: 42px;
@@ -78,7 +74,6 @@
   outline: none;
   margin-bottom: 0;
   background-color: transparent;
-  /* var(--bs-black); */
   color: var(--color-text-main);
   width: 100%;
   line-height: 70px;
@@ -113,45 +108,261 @@
   color: var(--color-bg-main);
 }
 
-@media (max-width: 1200px) {
-  .CallbackMini__content {
-    flex-direction: column;
-    align-items: flex-start;
-    padding: 24px 12px 16px 12px;
-    margin: 24px 0 0 0;
-    max-width: 98%;
-  }
-
-  .CallbackMini__right {
-    margin-left: 0;
-    align-items: flex-start;
-  }
-
-  .CallbackMini__form {
-    width: 100%;
-    max-width: 100%;
+/* Large screens (≥1025px) - Add negative margin for desktop overlap effect */
+@media (min-width: 1025px) {
+  .CallbackMini__overlay {
+    margin-top: -78px;
   }
 }
 
-@media (max-width: 700px) {
+/* Tablets (≤1200px) */
+@media (max-width: 1200px) {
+  .CallbackMini__overlay {
+    max-width: 95%;
+    border-radius: 16px;
+  }
+
+  .CallbackMini__left {
+    padding-left: 40px;
+    min-width: 280px;
+  }
+
+  .CallbackMini__title {
+    font-size: 45px;
+    line-height: 1.1;
+  }
+
+  .CallbackMini__right {
+    max-width: 500px;
+    padding-right: 50px;
+    padding-top: 35px;
+    padding-bottom: 35px;
+  }
+
+  .CallbackMini__subtitle {
+    font-size: 22px;
+    line-height: 1.2;
+  }
+
+  .CallbackMini__input {
+    font-size: 22px;
+    line-height: 65px;
+    padding: 0 14px;
+  }
+
+  .CallbackMini__input::placeholder {
+    font-size: 22px;
+  }
+
+  .CallbackMini__button {
+    min-height: 65px;
+    font-size: 17px;
+  }
+}
+
+/* Tablets (≤1024px) */
+@media (max-width: 1024px) {
+  .CallbackMini__overlay {
+    max-width: 95%;
+    border-radius: 14px;
+  }
+
+  .CallbackMini__content {
+    flex-direction: column;
+    align-items: stretch;
+    padding: 32px 28px 24px 28px;
+    margin: 24px 0 0 0;
+    gap: 20px;
+  }
+
+  .CallbackMini__left {
+    padding-left: 0;
+    min-width: auto;
+    justify-content: flex-start;
+  }
+
+  .CallbackMini__title {
+    font-size: 36px;
+    max-width: 100%;
+    line-height: 1.1;
+  }
+
+  .CallbackMini__right {
+    padding: 0;
+    max-width: 100%;
+    margin-top: 0;
+  }
+
+  .CallbackMini__subtitle {
+    font-size: 18px;
+    margin-bottom: 8px;
+  }
+
+  .CallbackMini__form {
+    max-width: none;
+    gap: 10px;
+  }
+
+  .CallbackMini__input {
+    font-size: 18px;
+    line-height: 56px;
+    padding: 0 16px;
+    border-radius: 12px;
+  }
+
+  .CallbackMini__input::placeholder {
+    font-size: 18px;
+  }
+
+  .CallbackMini__button {
+    min-height: 56px;
+    font-size: 16px;
+    border-radius: 12px;
+  }
+}
+
+/* Mobile devices (≤768px) */
+@media (max-width: 768px) {
   .CallbackMini__overlay {
     position: static;
     width: 100%;
     max-width: 100%;
-    margin: 0;
+    margin: 0 16px;
+    border-radius: 12px;
   }
 
   .CallbackMini__content {
-    padding: 12px 2vw 8px 2vw;
-    margin: 12px 0 0 0;
-    max-width: 100%;
+    padding: 24px 20px 20px 20px;
+    margin: 16px 0 0 0;
+    gap: 16px;
+  }
+
+  .CallbackMini__title {
+    font-size: 24px;
+    line-height: 1.2;
+  }
+
+  .CallbackMini__subtitle {
+    font-size: 16px;
+    line-height: 1.3;
+    margin-bottom: 4px;
+  }
+
+  .CallbackMini__form {
+    gap: 12px;
+  }
+
+  .CallbackMini__input {
+    font-size: 16px;
+    line-height: 48px;
+    padding: 0 14px;
+    border-radius: 10px;
+  }
+
+  .CallbackMini__input::placeholder {
+    font-size: 16px;
+  }
+
+  .CallbackMini__button {
+    min-height: 48px;
+    font-size: 16px;
+    border-radius: 10px;
+  }
+}
+
+.CallbackMini__input::placeholder {
+  font-size: 16px;
+}
+.CallbackMini__button {
+  min-height: 50px;
+  font-size: 14px;
+}
+
+
+/* Small mobile devices (≤576px) */
+@media (max-width: 576px) {
+  .CallbackMini__overlay {
+    margin: 0 12px;
+    border-radius: 10px;
+  }
+
+  .CallbackMini__content {
+    padding: 20px 16px 16px 16px;
+    gap: 14px;
   }
 
   .CallbackMini__title {
     font-size: 20px;
+    line-height: 1.2;
   }
 
   .CallbackMini__subtitle {
     font-size: 14px;
+    line-height: 1.3;
+  }
+
+  .CallbackMini__form {
+    gap: 10px;
+  }
+
+  .CallbackMini__input {
+    font-size: 14px;
+    line-height: 44px;
+    padding: 0 12px;
+    border-radius: 8px;
+  }
+
+  .CallbackMini__input::placeholder {
+    font-size: 14px;
+  }
+
+  .CallbackMini__button {
+    min-height: 44px;
+    font-size: 14px;
+    border-radius: 8px;
+  }
+}
+
+/* Very small mobile devices (≤480px) */
+@media (max-width: 480px) {
+  .CallbackMini__overlay {
+    margin: 0 8px;
+    border-radius: 8px;
+  }
+
+  .CallbackMini__content {
+    padding: 16px 12px 12px 12px;
+    gap: 12px;
+  }
+
+  .CallbackMini__title {
+    font-size: 18px;
+    line-height: 1.2;
+  }
+
+  .CallbackMini__subtitle {
+    font-size: 13px;
+    line-height: 1.3;
+  }
+
+  .CallbackMini__form {
+    gap: 8px;
+  }
+
+  .CallbackMini__input {
+    font-size: 13px;
+    line-height: 40px;
+    padding: 0 10px;
+    border-radius: 6px;
+  }
+
+  .CallbackMini__input::placeholder {
+    font-size: 13px;
+  }
+
+  .CallbackMini__button {
+    min-height: 40px;
+    font-size: 13px;
+    border-radius: 6px;
   }
 }

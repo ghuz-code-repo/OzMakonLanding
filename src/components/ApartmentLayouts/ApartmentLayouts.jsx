@@ -29,7 +29,7 @@ const ApartmentLayouts = () => {
     if (widgetRef.current) {
       const params = {
         locale: 'ru',
-        houseId: 3340663,
+        houseId: 5139395,
         presMode: 'house',
         houseView: 'plans',
         category: 'flat',

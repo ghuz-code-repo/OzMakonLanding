@@ -408,7 +408,8 @@
   .header__nav {
     position: absolute;
     top: 0;
-    left: 0;
+    left: -1px;
+    top: -1px;
     width: 100vw;
     height: 100vh;
     background: rgba(30, 32, 36, 0.98);

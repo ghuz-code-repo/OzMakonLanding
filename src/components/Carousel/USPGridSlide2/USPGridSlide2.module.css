@@ -9,19 +9,18 @@
 }
 
 .usp5-wrapper {
-  min-width: 1700px;
   max-width: 1700px;
-
   width: 100%;
+  margin: 0 auto;
   display: flex;
   flex-direction: row;
   height: 100vh;
   color: #fff;
-  margin: 0;
   box-sizing: border-box;
   justify-content: space-between;
   align-items: flex-end;
   gap: 30px;
+  padding: 0 20px;
 }
 
 .usp5-col {
@@ -211,4 +210,135 @@
   flex-direction:row;
   justify-content: space-between;
   margin-top: 71px;
+}
+
+/* Tablet and smaller devices (≤1200px) */
+@media (max-width: 1200px) {
+  .usp5-wrapper {
+    gap: 20px;
+    padding: 0 15px;
+  }
+
+  .usp5__img-enter {
+    width: 350px;
+    height: 300px;
+  }
+
+  .usp5__textblock {
+    font-size: 18px;
+    margin-top: 20px;
+    margin-bottom: 50px;
+  }
+}
+
+/* Tablet (≤1024px) */
+@media (max-width: 1024px) {
+  .usp5-wrapper {
+    flex-direction: column;
+    height: auto;
+    min-height: 100vh;
+    padding: 20px 15px;
+    gap: 30px;
+    align-items: center;
+  }
+
+  .usp5-col {
+    max-height: none;
+    width: 100%;
+    max-width: 600px;
+  }
+
+  .usp5-col--center {
+    margin-top: 0;
+  }
+
+  .usp5__img-enter {
+    width: 100%;
+    max-width: 400px;
+    height: 250px;
+  }
+
+  .usp5__left-bottom {
+    margin-top: 30px;
+    flex-direction: column;
+    gap: 20px;
+  }
+}
+
+/* Mobile landscape (≤768px) */
+@media (max-width: 768px) {
+  .usp5-wrapper {
+    padding: 16px 12px;
+  }
+
+  .usp5__img-enter {
+    height: 200px;
+  }
+
+  .usp5__textblock {
+    font-size: 16px;
+    margin-top: 16px;
+    margin-bottom: 30px;
+  }
+
+  .usp5__list {
+    font-size: 20px;
+  }
+
+  .usp5__year {
+    font-size: 20px;
+  }
+}
+
+/* Mobile devices (≤576px) */
+@media (max-width: 576px) {
+  .usp5-wrapper {
+    padding: 16px 8px;
+    gap: 20px;
+  }
+
+  .usp5__img-enter {
+    height: 180px;
+  }
+
+  .usp5__textblock {
+    font-size: 14px;
+    margin-top: 12px;
+    margin-bottom: 24px;
+  }
+
+  .usp5__list {
+    font-size: 18px;
+  }
+
+  .usp5__year {
+    font-size: 18px;
+  }
+
+  .usp5__left-bottom {
+    margin-top: 20px;
+  }
+}
+
+/* Small mobile devices (≤480px) */
+@media (max-width: 480px) {
+  .usp5-wrapper {
+    padding: 12px 6px;
+  }
+
+  .usp5__img-enter {
+    height: 150px;
+  }
+
+  .usp5__textblock {
+    font-size: 12px;
+  }
+
+  .usp5__list {
+    font-size: 16px;
+  }
+
+  .usp5__year {
+    font-size: 16px;
+  }
 }
