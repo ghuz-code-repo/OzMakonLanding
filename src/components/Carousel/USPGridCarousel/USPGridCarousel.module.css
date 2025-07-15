@@ -4,6 +4,7 @@
 .usp5-scroll-container {
     height: 500vh; 
     position: relative;
+    margin-top: 20vh;
   }
   
   /* Этот контейнер "прилипает" к верху экрана, когда мы скроллим внутри .usp5-scroll-container */
@@ -11,7 +12,7 @@
     position: sticky;
     top: 0;
     height: 100vh; /* Занимает всю высоту экрана */
-    width: 100%;
+    width: 100vw;
     overflow: hidden; /* Скрывает все, что не помещается */
     display: flex;
     align-items: center;
@@ -131,16 +132,6 @@
   /* Этот контейнер "прилипает" к верху экрана, когда мы начинаем
     скроллить внутри .usp5-scroll-container.
   */
-  .usp5-sticky-wrapper {
-    position: sticky;
-    top: 0;
-    height: 100vh; /* Занимает всю высоту экрана */
-    width: 100%;
-    overflow: hidden; /* Скрывает все, что не помещается */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
   
   @keyframes slideFadeIn {
     from {
@@ -154,6 +145,7 @@
   .slide-container-animated {
     /* Запускаем анимацию */
     animation: slideFadeIn 0.5s ease-in-out;
+    max-width: 100vw !important;
   }
 
 
@@ -171,57 +163,5 @@
   .slide-container-animated {
     /* Применяем анимацию к обертке слайда */
     animation: slideFadeIn 0.5s ease-in-out;
+    max-width: 100vw !important;
   }
-
-  /* Tablets (≤1200px) */
-@media (max-width: 1200px) {
-  .usp5-scroll-container {
-    height: 450vh; /* Немного уменьшаем для планшетов */
-  }
-}
-
-/* Tablets (≤1024px) */
-@media (max-width: 1024px) {
-  .usp5-scroll-container {
-    height: 400vh;
-  }
-  
-  .usp5-sticky-wrapper {
-    height: 90vh; /* Немного уменьшаем высоту */
-  }
-}
-
-/* Small tablets and large phones (≤768px) */
-@media (max-width: 768px) {
-  .usp5-scroll-container {
-    height: 350vh; /* Еще больше уменьшаем для мобильных */
-  }
-  
-  .usp5-sticky-wrapper {
-    height: 80vh;
-  }
-}
-
-/* Mobile devices (≤576px) */
-@media (max-width: 576px) {
-  .usp5-scroll-container {
-    height: 300vh;
-  }
-  
-  .usp5-sticky-wrapper {
-    height: 70vh;
-  }
-}
-
-/* Small mobile devices (≤480px) */
-@media (max-width: 480px) {
-  .usp5-scroll-container {
-    height: 280vh;
-  }
-  
-  .usp5-sticky-wrapper {
-    height: 65vh;
-  }
-}
-
-
