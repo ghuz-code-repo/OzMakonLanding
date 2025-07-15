@@ -118,3 +118,35 @@ body::-webkit-scrollbar {
   width: 0 !important;
   height: 0 !important;
 }
+
+/* Оптимизации для памяти и производительности */
+* {
+  /* Отключаем will-change по умолчанию для экономии памяти */
+  will-change: auto;
+}
+
+/* Оптимизация изображений */
+img, [style*="background-image"] {
+  /* Принудительное освобождение памяти при выходе из области видимости */
+  content-visibility: auto;
+  contain-intrinsic-size: 1px 1000px;
+}
+
+/* Оптимизация для мобильных устройств */
+@media (max-width: 768px) {
+  * {
+    /* Отключаем сложные эффекты на мобильных для экономии памяти */
+    backdrop-filter: none !important;
+    filter: none !important;
+    transform: none !important;
+    transition: none !important;
+    animation: none !important;
+  }
+  
+  /* Исключения для критически важных элементов */
+  .header, .navbar, .carousel-controls {
+    backdrop-filter: revert !important;
+    transform: revert !important;
+    transition: revert !important;
+  }
+}

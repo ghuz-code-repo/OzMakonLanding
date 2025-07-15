@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
 import { supportedLanguages } from '../../i18n';
+import { useEventListener, useDebounce } from '../../hooks/useEventListener';
 import styles from'./Header.module.css';
 import logoGoldenHouse from '../../assets/img/Header/logo-golden-house.svg';
 import logoOzmakon from '../../assets/img/Header/logo-ozmakon.svg';
@@ -22,35 +23,36 @@ const Header = () => {
   const [showLangDropdown, setShowLangDropdown] = useState(false);
   const langRef = useRef();
 
-  // --- Логика для скрытия/появления хедера ---
+  // --- Оптимизированная логика для скрытия/появления хедера ---
   const [showHeader, setShowHeader] = useState(true);
   const lastScrollY = useRef(window.scrollY);
 
-  useEffect(() => {
-    const handleScroll = () => {
-      if (window.scrollY < 50) {
-        setShowHeader(true);
-        lastScrollY.current = window.scrollY;
-        return;
-      }
-      if (window.scrollY > lastScrollY.current) {
-        setShowHeader(false); // Скролл вниз
-      } else {
-        setShowHeader(true); // Скролл вверх
-      }
+  const handleScroll = useDebounce(() => {
+    if (window.scrollY < 50) {
+      setShowHeader(true);
       lastScrollY.current = window.scrollY;
-    };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-  // --- конец логики ---
+      return;
+    }
+    if (window.scrollY > lastScrollY.current) {
+      setShowHeader(false); // Скролл вниз
+    } else {
+      setShowHeader(true); // Скролл вверх
+    }
+    lastScrollY.current = window.scrollY;
+  }, 16);
+
+  useEventListener('scroll', handleScroll, window, { passive: true });
+
+  // --- Оптимизированная проверка мобильного устройства ---
+  const checkMobile = useDebounce(() => {
+    setIsMobile(window.innerWidth <= 1280);
+  }, 250);
 
   useEffect(() => {
-    const checkMobile = () => setIsMobile(window.innerWidth <= 1280);
     checkMobile();
-    window.addEventListener('resize', checkMobile);
-    return () => window.removeEventListener('resize', checkMobile);
   }, []);
+
+  useEventListener('resize', checkMobile, window, { passive: true });
 
   useEffect(() => {
     if (!showLangDropdown) return;

@@ -17,7 +17,8 @@ function App() {
       <Header />
       <Hero />
       <Conception />
-      {/* <Carousel />
+      <Carousel />
+      {/* 
       <div className="hideable-content-below">
         <ApartmentLayouts />
         <PlacesAround />

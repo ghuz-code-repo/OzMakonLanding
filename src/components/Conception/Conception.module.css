@@ -767,3 +767,31 @@
     z-index: 3;
   }
 }
+
+@media (max-width: 360px) {
+
+  .conception__circle-img-wrap {
+    display: block;
+    position: absolute;
+    bottom: -88px;
+    right: 4px;
+    width: 120px;
+    height: 160px;
+    border-radius: 999px;
+    overflow: hidden;
+    border: 2px solid var(--color-bg-main);
+    z-index: 3;
+  }
+
+  .conception__mobile-img-wrap {
+    margin-top: -18px;
+    display: block;
+    width: 150px;
+    height: 200px;
+    border-radius: 6px;
+    overflow: hidden;
+    border: 2px solid var(--color-bg-main);
+    margin-left: -20px;
+    flex-shrink: 0;
+  }
+}

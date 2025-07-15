@@ -69,3 +69,24 @@ body {
 body.slider-locked {
   overflow: hidden !important;
 }
+
+/* Принудительная сборка мусора для неиспользуемых элементов */
+.carousel-slide:not(.active) {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+}
+
+/* Отключение тяжелых эффектов на мобильных */
+@media (max-width: 768px) {
+  .carousel-slide {
+    transform: none !important;
+    will-change: auto !important;
+  }
+  
+  /* [style*="background-image"] {
+    background-attachment: scroll !important;
+    background-size: contain !important;
+  } */
+}

@@ -22,14 +22,15 @@ const USPGridSlide5 = () => {
         <div className={styles["first_row"]}>
           <div className={styles["top_left"]}>
             <div className={styles["top_left_title_block"]}>
-              <div className={styles["top_left_title"]}>
+              <h2 className={styles["top_left_title"]}>
                 {slide.left_top_title.split('\n').map((line, i) => (
                   <React.Fragment key={i}>
                     {line}
                     <br />
                   </React.Fragment>
                 ))}
-              </div>
+              </h2>
+
               <div className={styles["top_left_year"]}>{slide.year}
               </div>
             </div>
