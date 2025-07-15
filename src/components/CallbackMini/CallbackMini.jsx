@@ -5,9 +5,7 @@ import { sendLeadToMacroCRM, showFlashMessage } from '../../utils/macroCRM';
 import { formSync } from '../../hooks/useFormSync';
 import { SmartPhoneInput } from '../SmartPhoneInput';
 import { useScrollTo } from '../../hooks/useScrollTo';
-import icon1 from '../../assets/img/Conception/icon-1.svg';
-import icon2 from '../../assets/img/Conception/icon-2.svg';
-import icon3 from '../../assets/img/Conception/icon-3.svg';
+import { validateAndFormatName, isValidName } from '../../utils/nameValidation';
 
 const CallbackMini = () => {
   const { t } = useTranslation();
@@ -50,13 +48,11 @@ const CallbackMini = () => {
 
   // Обработчик изменения поля имени
   const handleNameChange = (e) => {
-    const value = e.target.value;
-    // Простая валидация имени - только буквы, пробелы и дефисы
-    const formattedName = value.replace(/[^a-zA-Zа-яёА-ЯЁ\s\-]/g, '');
-    setFormData(prev => ({ ...prev, name: formattedName }));
+    const value = validateAndFormatName(e.target.value);
+    setFormData(prev => ({ ...prev, name: value }));
     
     // Синхронизируем с глобальным состоянием
-    formSync.updateData('name', formattedName);
+    formSync.updateData('name', value);
   };
 
   // Обработчик изменения поля телефона
@@ -162,7 +158,7 @@ const CallbackMini = () => {
             <button 
               className={styles["CallbackMini__button"]} 
               type="submit"
-              disabled={isSubmitting || !formData.name.trim() || !isPhoneValid}
+              disabled={isSubmitting || !isValidName(formData.name) || !isPhoneValid}
             >
               {isSubmitting ? 'Отправка...' : t('conception.form.button')}
             </button>

@@ -4,6 +4,7 @@ import { useTranslation } from 'react-i18next';
 import { sendLeadToMacroCRM, showFlashMessage } from '../../utils/macroCRM';
 import { formSync } from '../../hooks/useFormSync';
 import { SmartPhoneInput } from '../SmartPhoneInput';
+import { validateAndFormatName, isValidName } from '../../utils/nameValidation';
 const imgPath = (name) => `/src/assets/img/Callback/${name}`;
 
 // Все данные остаются с дублированием, как было в вашем рабочем варианте
@@ -74,7 +75,7 @@ const Callback = () => {
 
   // Обработчик изменения поля имени
   const handleNameChange = (e) => {
-    const value = e.target.value.replace(/[^a-zA-Zа-яА-ЯёЁ\s]/g, '');
+    const value = validateAndFormatName(e.target.value);
     setFormData(prev => ({ ...prev, name: value }));
     
     // Синхронизируем с глобальным состоянием
@@ -257,7 +258,7 @@ const Callback = () => {
             <button 
               className={styles.button} 
               type="submit" 
-              disabled={!consent || isSubmitting || !formData.name.trim() || !isPhoneValid}
+              disabled={!consent || isSubmitting || !isValidName(formData.name) || !isPhoneValid}
             >
               {isSubmitting ? 'Отправка...' : t('callback.button')}
             </button>
