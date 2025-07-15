@@ -36,7 +36,7 @@
 }
 
 .gridItem {
-  max-width: 258px; 
+  max-width: 258px;
   max-height: fit-content;
   background: var(--color-bg-secondary);
   overflow: hidden;
@@ -45,10 +45,11 @@
   justify-content: center;
 }
 
-.column{
+.column {
   display: flex;
   flex-direction: column;
-  gap: 30px
+  gap: 30px;
+  scale: 1.04;
 }
 
 
@@ -154,12 +155,12 @@
   flex-shrink: 0;
 }
 
-.checkbox:checked + .customCheckbox {
+.checkbox:checked+.customCheckbox {
   border-color: var(--color-yellow);
   background: var(--color-yellow);
 }
 
-.checkbox:checked + .customCheckbox::after {
+.checkbox:checked+.customCheckbox::after {
   content: '';
   position: absolute;
   left: 5px;

@@ -1,6 +1,9 @@
-import React, { useState, useLayoutEffect, useRef } from 'react';
+import React, { useState, useLayoutEffect, useRef, useEffect } from 'react';
 import styles from './Callback.module.css';
 import { useTranslation } from 'react-i18next';
+import { sendLeadToMacroCRM, showFlashMessage } from '../../utils/macroCRM';
+import { formSync } from '../../hooks/useFormSync';
+import { SmartPhoneInput } from '../SmartPhoneInput';
 const imgPath = (name) => `/src/assets/img/Callback/${name}`;
 
 // Все данные остаются с дублированием, как было в вашем рабочем варианте
@@ -26,6 +29,12 @@ const rightImages = [
 const Callback = () => {
   const { t } = useTranslation();
   const [consent, setConsent] = useState(false);
+  const [formData, setFormData] = useState({
+    name: '',
+    phone: ''
+  });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isPhoneValid, setIsPhoneValid] = useState(false);
 
   // Ваши ref'ы, которые работают
   const sectionRef = useRef(null);
@@ -35,6 +44,111 @@ const Callback = () => {
 
   // Ref для хранения финального смещения. ОН НАМ НУЖЕН.
   const finalTranslateRef = useRef({ left: 0, mid: 0, right: 0 });
+
+  // Синхронизация с CallbackMini
+  useEffect(() => {
+    const unsubscribe = formSync.subscribe((syncData) => {
+      setFormData(prev => ({
+        ...prev,
+        name: syncData.name || '',
+        phone: syncData.phone || ''
+      }));
+      
+      // Синхронизируем валидность телефона
+      setIsPhoneValid(syncData.isPhoneValid || false);
+    });
+
+    // Загружаем начальные данные
+    const initialData = formSync.getData();
+    if (initialData.name || initialData.phone) {
+      setFormData(prev => ({
+        ...prev,
+        name: initialData.name || '',
+        phone: initialData.phone || ''
+      }));
+      setIsPhoneValid(initialData.isPhoneValid || false);
+    }
+
+    return unsubscribe;
+  }, []);
+
+  // Обработчик изменения поля имени
+  const handleNameChange = (e) => {
+    const value = e.target.value.replace(/[^a-zA-Zа-яА-ЯёЁ\s]/g, '');
+    setFormData(prev => ({ ...prev, name: value }));
+    
+    // Синхронизируем с глобальным состоянием
+    formSync.updateData('name', value);
+  };
+
+  // Обработчик изменения поля телефона
+  const handlePhoneChange = (e) => {
+    setFormData(prev => ({ ...prev, phone: e.target.value }));
+    
+    // Синхронизируем с глобальным состоянием
+    formSync.updateData('phone', e.target.value);
+  };
+
+  // Обработчик изменения валидности телефона
+  const handlePhoneValidation = (status) => {
+    const isValid = status.isValid && status.isComplete;
+    setIsPhoneValid(isValid);
+    
+    // Синхронизируем статус валидации
+    formSync.updateValidation('phone', isValid);
+  };
+
+  // Обработчик отправки формы
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    
+    if (!consent) {
+      showFlashMessage('Необходимо согласиться с условиями обработки данных', 'warning');
+      return;
+    }
+
+    if (!formData.name.trim()) {
+      showFlashMessage('Пожалуйста, введите ваше имя', 'warning');
+      return;
+    }
+
+    if (!isPhoneValid) {
+      showFlashMessage('Пожалуйста, введите корректный номер телефона', 'warning');
+      return;
+    }
+
+    setIsSubmitting(true);
+
+    try {
+      const leadData = {
+        name: formData.name,
+        phone: formData.phone,
+        action: 'callback', // Тип заявки - обратный звонок
+        channelMedium: 'Форма обратной связи', // Метка источника
+        message: `Заявка с сайта OzMakon. Имя: ${formData.name}, Телефон: ${formData.phone}`
+      };
+
+      const result = await sendLeadToMacroCRM(leadData);
+
+      if (result.success) {
+        showFlashMessage('Заявка успешно отправлена! Мы свяжемся с вами в ближайшее время.', 'success', 7000);
+        
+        // Очищаем форму после успешной отправки
+        setFormData({ name: '', phone: '' });
+        setConsent(false);
+        
+        // Очищаем синхронизированные данные
+        formSync.clearData();
+      } else {
+        showFlashMessage(`Ошибка при отправке заявки: ${result.error || result.message}`, 'error');
+      }
+    } catch (error) {
+      console.error('Ошибка отправки формы:', error);
+      showFlashMessage('Произошла ошибка при отправке заявки. Попробуйте еще раз.', 'error');
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
 
   // Используем useLayoutEffect для точных измерений
   useLayoutEffect(() => {
@@ -98,30 +212,54 @@ const Callback = () => {
   return (
     // JSX ОСТАЁТСЯ ВАШ, С ДУБЛИРОВАНИЕМ
     <div className={styles.CallbackWrapper} id='contacts'>
-      <section className={styles.CallbackSection} ref={sectionRef}>
+      <section className={styles.CallbackSection} ref={sectionRef} data-section="callback">
         <div className={styles.left}>
           <h2 className={styles.title}>{t('callback.title')}</h2>
           <h3 className={styles.subTitle}>{t('callback.subTitle')}</h3>
           <span className={styles.mainText}>
             {t('callback.mainText')}
           </span>
-          <form className={styles.form}>
-            <input className={styles.input} type="text" placeholder={t('callback.namePlaceholder')} />
-            <input className={styles.input} type="text" placeholder={t("callback.phonePlaceholder")} />
+          <form className={styles.form} onSubmit={handleSubmit}>
+            <input 
+              className={styles.input} 
+              type="text" 
+              name="name"
+              value={formData.name}
+              onChange={handleNameChange}
+              placeholder={t('callback.namePlaceholder')}
+              disabled={isSubmitting}
+              required
+              maxLength="50"
+            />
+            <SmartPhoneInput
+              value={formData.phone}
+              onChange={handlePhoneChange}
+              onValidationChange={handlePhoneValidation}
+              className={styles.input}
+              name="phone"
+              disabled={isSubmitting}
+              required
+            />
             <label className={styles.checkboxLabel}>
               <input
                 type="checkbox"
                 checked={consent}
                 onChange={e => setConsent(e.target.checked)}
                 className={styles.checkbox}
+                disabled={isSubmitting}
+                required
               />
               <span className={styles.customCheckbox}></span>
               <span className={styles.consentText}>
                 {t('callback.agreement')}
               </span>
             </label>
-            <button className={styles.button} type="submit" disabled={!consent}>
-              {t('callback.button')}
+            <button 
+              className={styles.button} 
+              type="submit" 
+              disabled={!consent || isSubmitting || !formData.name.trim() || !isPhoneValid}
+            >
+              {isSubmitting ? 'Отправка...' : t('callback.button')}
             </button>
           </form>
         </div>

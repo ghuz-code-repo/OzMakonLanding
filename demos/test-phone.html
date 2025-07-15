@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Тест форматирования телефона</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 20px;
+        }
+        
+        .test-form {
+            background: #f5f5f5;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+        
+        input {
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+        
+        .result {
+            background: #e8f5e8;
+            padding: 10px;
+            border-radius: 4px;
+            margin: 10px 0;
+        }
+        
+        .error {
+            background: #ffe8e8;
+            color: #d00;
+        }
+    </style>
+</head>
+<body>
+    <h1>Тест динамического placeholder для телефонов</h1>
+    
+    <div class="test-form">
+        <h3>Поддерживаемые форматы:</h3>
+        <ul>
+            <li><strong>+7</strong> - Россия/Казахстан: +7 999 999 99 99</li>
+            <li><strong>+998</strong> - Узбекистан: +998 99 999 99 99 ✅ (разрешен для отправки)</li>
+            <li><strong>+996</strong> - Кыргызстан: +996 999 999 999</li>
+            <li><strong>+992</strong> - Таджикистан: +992 99 999 9999</li>
+            <li><strong>+993</strong> - Туркменистан: +993 99 999 999</li>
+        </ul>
+        
+        <h3>Новая логика placeholder:</h3>
+        <ul>
+            <li>При фокусе в пустое поле - подставляется оптимальный код</li>
+            <li>Если ввести только код страны и убрать фокус:</li>
+            <li style="margin-left: 20px;">✅ Разрешенный код → становится placeholder</li>
+            <li style="margin-left: 20px;">❌ Неразрешенный код → пытается определить по геолокации</li>
+            <li style="margin-left: 20px;">❌ Геолокация не помогла → использует +998</li>
+            <li><strong>Только код +998 разрешен для отправки</strong></li>
+        </ul>
+        
+        <input 
+            type="tel" 
+            id="phone" 
+            placeholder="+998"
+        />
+        
+        <button onclick="testValidation()">Проверить валидацию</button>
+        
+        <div id="result" class="result">
+            Введите номер телефона для тестирования
+        </div>
+        
+        <div style="margin-top: 20px; padding: 20px; background: #fff3cd; border-radius: 5px;">
+            <h3>🔍 Тест неизвестных кодов стран</h3>
+            <p>Тестируем обработку неизвестных кодов (+380, +49, +1, +86):</p>
+            <div style="margin: 10px 0;">
+                <button onclick="testUnknownCodeInInput('+380')">Тест +380 (Украина)</button>
+                <button onclick="testUnknownCodeInInput('+49')">Тест +49 (Германия)</button>
+                <button onclick="testUnknownCodeInInput('+1')">Тест +1 (США)</button>
+                <button onclick="testUnknownCodeInInput('+86')">Тест +86 (Китай)</button>
+                <button onclick="testUnknownCodeInInput('+33')">Тест +33 (Франция)</button>
+            </div>
+            <div id="unknownTestResult" style="margin-top: 10px; font-family: monospace; background: white; padding: 10px; border-radius: 3px; font-size: 12px;"></div>
+        </div>
+    </div>
+
+    <script>
+        // Конфигурация форматирования телефонов по странам
+        const COUNTRY_PHONE_CONFIG = {
+            '7': {
+                name: 'Россия/Казахстан',
+                format: '+7 999 999 99 99', 
+                maxLength: 11, // +7 + 10 цифр
+                pattern: /^7\d{10}$/
+            },
+            '998': {
+                name: 'Узбекистан',
+                format: '+998 99 999 99 99',
+                maxLength: 12, // +998 + 9 цифр  
+                pattern: /^998\d{9}$/
+            },
+            '996': {
+                name: 'Кыргызстан', 
+                format: '+996 999 999 999',
+                maxLength: 12, // +996 + 9 цифр
+                pattern: /^996\d{9}$/
+            },
+            '992': {
+                name: 'Таджикистан',
+                format: '+992 99 999 9999', 
+                maxLength: 12, // +992 + 9 цифр
+                pattern: /^992\d{9}$/
+            },
+            '993': {
+                name: 'Туркменистан',
+                format: '+993 99 999 999',
+                maxLength: 11, // +993 + 8 цифр
+                pattern: /^993\d{8}$/
+            }
+        };
+
+        // Определяет код страны из номера телефона
+        function detectCountryCode(phone) {
+            if (!phone) return null;
+            
+            const numbers = phone.replace(/\D/g, '');
+            if (numbers.length === 0) return null;
+            
+            // Проверяем коды по порядку убывания длины (чтобы 998 проверился раньше чем 9)
+            const sortedCodes = Object.keys(COUNTRY_PHONE_CONFIG).sort((a, b) => b.length - a.length);
+            
+            for (const code of sortedCodes) {
+                if (numbers.startsWith(code)) {
+                    return code;
+                }
+            }
+            
+            return null;
+        }
+
+        // Форматирует номер телефона для России/Казахстана (+7)
+        function formatPhoneRussia(numbers) {
+            const phoneNumber = numbers.substring(1); // убираем код 7
+            let formatted = '+7';
+            
+            if (phoneNumber.length >= 3) {
+                formatted += ' ' + phoneNumber.substring(0, 3);
+            } else if (phoneNumber.length > 0) {
+                formatted += ' ' + phoneNumber;
+            }
+            
+            if (phoneNumber.length >= 6) {
+                formatted += ' ' + phoneNumber.substring(3, 6);
+            } else if (phoneNumber.length > 3) {
+                formatted += ' ' + phoneNumber.substring(3);
+            }
+            
+            if (phoneNumber.length >= 8) {
+                formatted += ' ' + phoneNumber.substring(6, 8);
+            } else if (phoneNumber.length > 6) {
+                formatted += ' ' + phoneNumber.substring(6);
+            }
+            
+            if (phoneNumber.length >= 10) {
+                formatted += ' ' + phoneNumber.substring(8, 10);
+            } else if (phoneNumber.length > 8) {
+                formatted += ' ' + phoneNumber.substring(8);
+            }
+            
+            return formatted;
+        }
+
+        // Форматирует номер телефона для Узбекистана (+998)
+        function formatPhoneUzbekistan(numbers) {
+            const phoneNumber = numbers.substring(3); // убираем код 998
+            let formatted = '+998';
+            
+            if (phoneNumber.length >= 2) {
+                formatted += ' ' + phoneNumber.substring(0, 2);
+            } else if (phoneNumber.length > 0) {
+                formatted += ' ' + phoneNumber;
+            }
+            
+            if (phoneNumber.length >= 5) {
+                formatted += ' ' + phoneNumber.substring(2, 5);
+            } else if (phoneNumber.length > 2) {
+                formatted += ' ' + phoneNumber.substring(2);
+            }
+            
+            if (phoneNumber.length >= 7) {
+                formatted += ' ' + phoneNumber.substring(5, 7);
+            } else if (phoneNumber.length > 5) {
+                formatted += ' ' + phoneNumber.substring(5);
+            }
+            
+            if (phoneNumber.length >= 9) {
+                formatted += ' ' + phoneNumber.substring(7, 9);
+            } else if (phoneNumber.length > 7) {
+                formatted += ' ' + phoneNumber.substring(7);
+            }
+            
+            return formatted;
+        }
+
+        // Универсальная функция форматирования телефона
+        function formatPhoneNumber(value) {
+            // Удаляем все символы кроме цифр и +
+            let cleaned = value.replace(/[^\d+]/g, '');
+            
+            // Если пустая строка
+            if (!cleaned) {
+                return '';
+            }
+            
+            // Если не начинается с +, добавляем
+            if (!cleaned.startsWith('+')) {
+                cleaned = '+' + cleaned;
+            }
+            
+            // Извлекаем только цифры после +
+            const numbers = cleaned.substring(1);
+            
+            if (!numbers) {
+                return '+';
+            }
+            
+            // Определяем код страны
+            const countryCode = detectCountryCode('+' + numbers);
+            
+            if (!countryCode) {
+                // Если код не определен, возвращаем как есть но ограничиваем длину
+                const limitedNumbers = numbers.length > 15 ? numbers.substring(0, 15) : numbers;
+                return '+' + limitedNumbers;
+            }
+            
+            // Получаем конфигурацию для страны
+            const config = COUNTRY_PHONE_CONFIG[countryCode];
+            
+            // Ограничиваем длину согласно максимуму для страны
+            const maxDigits = config.maxLength - 1; // -1 за знак +
+            const limitedNumbers = numbers.length > maxDigits ? numbers.substring(0, maxDigits) : numbers;
+            
+            // Применяем соответствующее форматирование
+            switch (countryCode) {
+                case '7':
+                    return formatPhoneRussia(limitedNumbers);
+                case '998':
+                    return formatPhoneUzbekistan(limitedNumbers);
+                default:
+                    return '+' + limitedNumbers;
+            }
+        }
+
+        function handlePhoneInput(value, isBlur = false) {
+            if (isBlur && (!value || value.trim() === '' || value === '+')) {
+                return '';
+            }
+            
+            if (!value || value.trim() === '') {
+                return '';
+            }
+            
+            return formatPhoneNumber(value);
+        }
+
+        function handlePhoneFocus(currentValue) {
+            if (!currentValue || currentValue.trim() === '') {
+                return '+998';
+            }
+            return currentValue;
+        }
+
+        // Разрешенные коды стран для отправки формы
+        const ALLOWED_COUNTRY_CODES = ['998'];
+        
+        // Маппинг ISO кодов стран на телефонные коды
+        const COUNTRY_ISO_TO_PHONE_CODE = {
+            'UZ': '998', // Узбекистан
+            'RU': '7',   // Россия
+            'KZ': '7',   // Казахстан
+            'KG': '996', // Кыргызстан
+            'TJ': '992', // Таджикистан
+            'TM': '993', // Туркменистан
+        };
+        
+        // Получает код страны по геолокации (мок для теста)
+        async function getCountryByGeolocation() {
+            // Симуляция API вызова
+            return new Promise((resolve) => {
+                setTimeout(() => {
+                    // Мок: возвращаем случайную страну для демонстрации
+                    const countries = ['UZ', 'RU', 'KG', 'TJ', 'TM'];
+                    const randomCountry = countries[Math.floor(Math.random() * countries.length)];
+                    console.log('Мок геолокации вернул:', randomCountry);
+                    resolve(randomCountry);
+                }, 500);
+            });
+        }
+        
+        // Определяет оптимальный placeholder
+        async function getOptimalPlaceholder(currentValue) {
+            // Если поле пустое или только +, возвращаем дефолтный
+            if (!currentValue || currentValue.trim() === '' || currentValue === '+') {
+                return '+998';
+            }
+            
+            // Извлекаем код страны из введенного значения
+            const detectedCode = detectCountryCode(currentValue);
+            
+            // Если код определен и разрешен для отправки - используем его
+            if (detectedCode && ALLOWED_COUNTRY_CODES.includes(detectedCode)) {
+                return '+' + detectedCode;
+            }
+            
+            // Если код не разрешен, пытаемся определить по геолокации
+            try {
+                const countryISO = await getCountryByGeolocation();
+                if (countryISO) {
+                    const phoneCodeByGeo = COUNTRY_ISO_TO_PHONE_CODE[countryISO];
+                    
+                    // Если код по геолокации разрешен - используем его
+                    if (phoneCodeByGeo && ALLOWED_COUNTRY_CODES.includes(phoneCodeByGeo)) {
+                        return '+' + phoneCodeByGeo;
+                    }
+                }
+            } catch (error) {
+                console.log('Ошибка геолокации:', error);
+            }
+            
+            // Если ничего не подошло - используем первый разрешенный код
+            return '+' + ALLOWED_COUNTRY_CODES[0];
+        }
+        
+        // Проверяет, содержит ли значение только код страны
+        function isOnlyCountryCode(value) {
+            if (!value || value.trim() === '') return false;
+            
+            const cleaned = value.replace(/\s/g, ''); // убираем пробелы
+            const numbers = cleaned.replace(/[^\d+]/g, ''); // оставляем только + и цифры
+            
+            if (!numbers.startsWith('+')) return false;
+            
+            const digits = numbers.substring(1);
+            
+            // Проверяем, является ли это только кодом страны
+            const detectedCode = detectCountryCode(numbers);
+            
+            if (detectedCode) {
+                // Если код определен - проверяем точное совпадение длины
+                return digits.length === detectedCode.length;
+            } else {
+                // Если код не определен нашей системой, считаем что это код страны
+                // если цифр от 1 до 4 (стандартные коды стран 1-4 цифры)
+                return digits.length >= 1 && digits.length <= 4;
+            }
+        }
+
+        function getCountryCode(phone) {
+            return detectCountryCode(phone) || '';
+        }
+
+        function validateCountryCode(phone) {
+            const countryCode = getCountryCode(phone);
+            const isAllowed = ALLOWED_COUNTRY_CODES.includes(countryCode);
+            
+            return {
+                isValid: isAllowed,
+                countryCode: countryCode,
+                allowedCodes: ALLOWED_COUNTRY_CODES
+            };
+        }
+
+        function validatePhoneComplete(phone) {
+            if (!phone) return false;
+            
+            const numbers = phone.replace(/\D/g, '');
+            
+            if (numbers.length < 10 || numbers.length > 15) return false;
+            
+            return validateCountryCode(phone).isValid;
+        }
+
+        function testValidation() {
+            const phoneInput = document.getElementById('phone');
+            const phone = phoneInput.value;
+            const result = document.getElementById('result');
+            
+            const countryValidation = validateCountryCode(phone);
+            const isComplete = validatePhoneComplete(phone);
+            const detectedCode = detectCountryCode(phone);
+            const countryInfo = detectedCode ? COUNTRY_PHONE_CONFIG[detectedCode] : null;
+            
+            let message = `<strong>Проверка валидации:</strong><br>`;
+            message += `Номер: "${phone}"<br>`;
+            message += `Определена страна: ${countryInfo ? countryInfo.name : 'не определена'}<br>`;
+            message += `Код страны: ${countryValidation.countryCode}<br>`;
+            message += `Ожидаемый формат: ${countryInfo ? countryInfo.format : 'неизвестно'}<br>`;
+            message += `Код разрешен для отправки: ${countryValidation.isValid ? '✅' : '❌'}<br>`;
+            message += `Полная валидация: ${isComplete ? '✅' : '❌'}<br>`;
+            
+            if (!countryValidation.isValid && countryValidation.countryCode) {
+                const allowedCodesText = countryValidation.allowedCodes.map(code => `+${code}`).join(', ');
+                message += `<span style="color: red;">Ошибка: Поддерживаются только номера с кодами: ${allowedCodesText}</span>`;
+            }
+            
+            result.innerHTML = message;
+            result.className = isComplete ? 'result' : 'result error';
+        }
+
+        // Тестирование
+        const phoneInput = document.getElementById('phone');
+        const result = document.getElementById('result');
+
+        phoneInput.addEventListener('input', (e) => {
+            const formatted = handlePhoneInput(e.target.value);
+            e.target.value = formatted;
+            
+            const detectedCode = detectCountryCode(formatted);
+            const countryInfo = detectedCode ? COUNTRY_PHONE_CONFIG[detectedCode] : null;
+            
+            result.innerHTML = `
+                <strong>Результат:</strong> "${formatted}"<br>
+                <strong>Определена страна:</strong> ${countryInfo ? countryInfo.name : 'не определена'}<br>
+                <strong>Ожидаемый формат:</strong> ${countryInfo ? countryInfo.format : 'неизвестно'}<br>
+                <strong>Длина:</strong> ${formatted.length} символов<br>
+                <strong>Только цифры:</strong> ${formatted.replace(/\D/g, '')}
+            `;
+            result.className = 'result';
+        });
+
+        phoneInput.addEventListener('focus', async (e) => {
+            const valueWithPrefix = handlePhoneFocus(e.target.value);
+            if (valueWithPrefix !== e.target.value) {
+                e.target.value = valueWithPrefix;
+                result.innerHTML = `<strong>Фокус:</strong> Добавлен оптимальный префикс`;
+            }
+        });
+
+        phoneInput.addEventListener('blur', async (e) => {
+            const currentValue = e.target.value;
+            
+            // Если поле пустое или только +, очищаем и устанавливаем placeholder
+            if (!currentValue || currentValue.trim() === '' || currentValue === '+') {
+                const optimalPlaceholder = await getOptimalPlaceholder('');
+                e.target.placeholder = optimalPlaceholder;
+                e.target.value = '';
+                result.innerHTML = `<strong>Потеря фокуса:</strong> Поле очищено, placeholder установлен: ${optimalPlaceholder}`;
+                return;
+            }
+            
+            // Если в поле только код страны
+            if (isOnlyCountryCode(currentValue)) {
+                const optimalPlaceholder = await getOptimalPlaceholder(currentValue);
+                e.target.placeholder = optimalPlaceholder;
+                e.target.value = '';
+                result.innerHTML = `<strong>Потеря фокуса:</strong> Обнаружен только код страны. Placeholder: ${optimalPlaceholder}`;
+                return;
+            }
+            
+            // Если есть полный номер, оставляем как есть
+            result.innerHTML = `<strong>Потеря фокуса:</strong> Сохранен номер: "${currentValue}"`;
+        });
+
+        // Тестовые случаи для демонстрации новой логики
+        console.log('=== Тестовые случаи для новой системы placeholder ===');
+        console.log('Тест isOnlyCountryCode:');
+        console.log('"+7" ->', isOnlyCountryCode('+7'));
+        console.log('"+998" ->', isOnlyCountryCode('+998'));
+        console.log('"+7999" ->', isOnlyCountryCode('+7999'));
+        
+        console.log('\n=== Форматирование номеров ===');
+        console.log('Россия (+7):');
+        console.log('"+79991234567" ->', formatPhoneNumber('+79991234567'));
+        
+        console.log('\nУзбекистан (+998):');
+        console.log('"+998901234567" ->', formatPhoneNumber('+998901234567'));
+        
+        console.log('\nКыргызстан (+996):');
+        console.log('"+996555123456" ->', formatPhoneNumber('+996555123456'));
+        
+        // Демонстрация логики placeholder
+        console.log('\n=== Демонстрация логики placeholder ===');
+        console.log('Инструкции для тестирования:');
+        console.log('1. Кликните в поле - появится +998');
+        console.log('2. Сотрите и введите +7, кликните вне поля');
+        console.log('3. Наблюдайте как система определяет оптимальный placeholder');
+        console.log('4. Попробуйте +996, +992, +993');
+        console.log('5. Введите полный номер - он сохранится');
+        
+        // Тест неизвестных кодов стран
+        console.log('\n=== Тест обработки неизвестных кодов ===');
+        
+        function testUnknownCountryCode(code) {
+            console.log(`\nТест кода ${code}:`);
+            console.log('isOnlyCountryCode:', isOnlyCountryCode(code));
+            console.log('detectCountryCode:', detectCountryCode(code));
+            
+            // Симулируем обработку неизвестного кода
+            if (isOnlyCountryCode(code)) {
+                console.log('✅ Система считает это кодом страны');
+                console.log('🔄 Поле будет очищено и установлен оптимальный placeholder');
+            } else {
+                console.log('❌ Система НЕ считает это кодом страны');
+            }
+        }
+        
+        // Тестируем различные коды
+        testUnknownCountryCode('+380'); // Украина
+        testUnknownCountryCode('+49');  // Германия
+        testUnknownCountryCode('+1');   // США/Канада
+        testUnknownCountryCode('+86');  // Китай
+        testUnknownCountryCode('+33');  // Франция
+        testUnknownCountryCode('+44');  // Великобритания
+        
+        // Тестируем граничные случаи
+        testUnknownCountryCode('+12345'); // Слишком длинный код
+        testUnknownCountryCode('+9');      // Короткий код
+        
+        // Функция для интерактивного тестирования неизвестных кодов
+        function testUnknownCodeInInput(code) {
+            const phoneInput = document.getElementById('phone');
+            const resultDiv = document.getElementById('unknownTestResult');
+            
+            // Устанавливаем код в поле
+            phoneInput.value = code;
+            
+            // Имитируем blur событие
+            const isOnlyCode = isOnlyCountryCode(code);
+            const detectedCode = detectCountryCode(code);
+            
+            let result = `<strong>Тест кода ${code}:</strong><br>`;
+            result += `• isOnlyCountryCode: ${isOnlyCode}<br>`;
+            result += `• detectCountryCode: ${detectedCode || 'null'}<br>`;
+            
+            if (isOnlyCode) {
+                result += `• ✅ Считается кодом страны<br>`;
+                result += `• 🔄 Поле будет очищено при blur<br>`;
+                result += `• 📍 Placeholder установится через геолокацию<br>`;
+                
+                // Симулируем очистку поля
+                phoneInput.value = '';
+                phoneInput.placeholder = 'Определяется...';
+                
+                // Имитируем геолокацию
+                setTimeout(() => {
+                    phoneInput.placeholder = '+998 99 999 99 99';
+                    result += `• ✨ Placeholder обновлен на +998<br>`;
+                    resultDiv.innerHTML = result;
+                }, 500);
+            } else {
+                result += `• ❌ НЕ считается кодом страны<br>`;
+                result += `• ⏸️ Поле останется без изменений<br>`;
+            }
+            
+            resultDiv.innerHTML = result;
+        }
+    </script>
+</body>
+</html>

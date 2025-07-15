@@ -18,14 +18,14 @@ function App() {
       <Hero />
       <Conception />
       <Carousel />
-      {/* 
+      
       <div className="hideable-content-below">
         <ApartmentLayouts />
         <PlacesAround />
         <Location />
         <Callback />
         <Footer />
-      </div> */}
+      </div>
     </>
   );
 }
