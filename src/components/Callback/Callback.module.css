@@ -32,7 +32,7 @@
   display: flex;
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: repeat(4, 1fr);
-  gap: 24px;
+  gap: 36px;
 }
 
 .gridItem {
