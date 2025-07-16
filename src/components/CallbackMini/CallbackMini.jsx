@@ -132,7 +132,7 @@ const CallbackMini = () => {
         </div>
         <div className={styles["CallbackMini__right"]}>
           <p className={styles["CallbackMini__subtitle"]}>{t('conception.helpSubtitle')}</p>
-          <form className={styles["CallbackMini__form"]} onSubmit={handleSubmit}>
+          <div className={styles["CallbackMini__form"]}>
             <input
               type="text"
               className={styles["CallbackMini__input"] + ' ' + styles["urbanist"]}
@@ -142,7 +142,6 @@ const CallbackMini = () => {
               onChange={handleNameChange}
               disabled={isSubmitting}
               autoComplete="off"
-              required
               maxLength="50"
             />
             <SmartPhoneInput
@@ -153,16 +152,9 @@ const CallbackMini = () => {
               disabled={isSubmitting}
               name="phone"
               autoComplete="off"
-              required
             />
-            <button 
-              className={styles["CallbackMini__button"]} 
-              type="submit"
-              disabled={isSubmitting || !isValidName(formData.name) || !isPhoneValid}
-            >
-              {isSubmitting ? 'Отправка...' : t('conception.form.button')}
-            </button>
-          </form>
+            <a href="#contacts"><button className={styles["CallbackMini__button"]}>{t('conception.form.button')}</button></a>
+          </div>
         </div>
       </div>
     </div>
