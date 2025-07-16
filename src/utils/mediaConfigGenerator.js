@@ -54,27 +54,48 @@ export const generateMediaConfig = () => {
     ]
   };
 
-  // Планировки квартир
+  // Планировки квартир - ВСЕ файлы из ApartmentLayouts
   const apartmentImages = [
-    '/src/assets/webp/1k-1.webp',
-    '/src/assets/webp/1k-2.webp',
-    '/src/assets/webp/2k-1.webp',
-    '/src/assets/webp/2k-2.webp',
-    '/src/assets/webp/3k-1.webp',
-    '/src/assets/webp/3k-3.webp',
-    '/src/assets/webp/4k-1.webp',
-    '/src/assets/webp/4k-2.webp'
+    '/src/assets/img/ApartmentLayouts/1k-1.webp',
+    '/src/assets/img/ApartmentLayouts/1k-2.webp',
+    '/src/assets/img/ApartmentLayouts/2k-1.webp',
+    '/src/assets/img/ApartmentLayouts/2k-2.webp',
+    '/src/assets/img/ApartmentLayouts/3k-1.webp',
+    '/src/assets/img/ApartmentLayouts/3k-2.webp',
+    '/src/assets/img/ApartmentLayouts/4k-1.webp',
+    '/src/assets/img/ApartmentLayouts/4k-2.webp',
+    '/src/assets/img/ApartmentLayouts/all.png'
   ];
 
-  // Места вокруг
+  // Места вокруг - ВСЕ файлы из всех подпапок PlacesAround
   const placesImages = [
-    '/src/assets/webp/dark_gym_interior_with_sport_and_fitness_equipment_2025_03_12_01.webp',
-    '/src/assets/webp/electronic_card_key_for_open_door_in_hotel_smart_2025_03_16_08_28.webp',
-    '/src/assets/webp/hand_holding_a_silver_fire_alarm_system_sensor_2025_02_11_23_48.webp',
-    '/src/assets/webp/clean-agent-fire-suppression-system-2025-02-02-20-12-09-utc.webp',
-    '/src/assets/webp/aluminum_window_open_detail_metal_door_frame_clos_2024_12_07_16.webp',
-    '/src/assets/webp/a_face_scanner_being_used_by_a_woman_to_open_a_doo_2025_04_01_23.webp',
-    '/src/assets/webp/close-up-hand-using-device.webp'
+    // Shopping Centers
+    '/src/assets/img/PlacesAround/ShoppingCenters/ТРЦ 2.webp',
+    '/src/assets/img/PlacesAround/ShoppingCenters/ТРЦ 3.webp',
+    '/src/assets/img/PlacesAround/ShoppingCenters/ТРЦ 4.webp',
+    
+    // Markets
+    '/src/assets/img/PlacesAround/Markets/fruits.webp',
+    '/src/assets/img/PlacesAround/Markets/man.webp',
+    '/src/assets/img/PlacesAround/Markets/nuts.webp',
+    
+    // Parks
+    '/src/assets/img/PlacesAround/Parks/pink.png',
+    '/src/assets/img/PlacesAround/Parks/Парки 1.webp',
+    '/src/assets/img/PlacesAround/Parks/парки 2.webp',
+    
+    // Schools
+    '/src/assets/img/PlacesAround/Schools/школы 1.webp',
+    '/src/assets/img/PlacesAround/Schools/школы 3.webp',
+    '/src/assets/img/PlacesAround/Schools/школы 4.webp',
+    
+    // Entertainment
+    '/src/assets/img/PlacesAround/Entertainment/досуг 2.webp',
+    '/src/assets/img/PlacesAround/Entertainment/досуг 3.webp',
+    '/src/assets/img/PlacesAround/Entertainment/досуг 4.webp',
+    
+    // Car icon
+    '/src/assets/img/PlacesAround/car.svg'
   ];
 
   // Локация
