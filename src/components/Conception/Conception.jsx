@@ -8,6 +8,7 @@ import icon1 from '../../assets/img/Conception/icon-1.svg';
 import icon2 from '../../assets/img/Conception/icon-2.svg';
 import icon3 from '../../assets/img/Conception/icon-3.svg';
 import cloud from '../../assets/img/Conception/telegram-cloud-document.webp';
+import CachedImage from '../CachedImage/CachedImage';
 
 const Conception = () => {
   const { t } = useTranslation();
@@ -16,9 +17,9 @@ const Conception = () => {
     <section className={styles["conception"]} id='about'>
       <CallbackMini />
       <div className={styles["conception__arrows"]}>
-        <img src={icon1} alt="vector" className={styles["conception__arrow"]} />
-        <img src={icon2} alt="vector" className={styles["conception__arrow"]} />
-        <img src={icon3} alt="vector" className={styles["conception__arrow"]} />
+        <CachedImage src={icon1} alt="vector" className={styles["conception__arrow"]} />
+        <CachedImage src={icon2} alt="vector" className={styles["conception__arrow"]} />
+        <CachedImage src={icon3} alt="vector" className={styles["conception__arrow"]} />
       </div>
       <div className={styles["conception__content"]}>
         <div className={styles["conception__left"]}>
@@ -30,7 +31,7 @@ const Conception = () => {
               </React.Fragment>
             ))}
           </h2>
-          <img src={circleImage} alt="yellow line" className={styles["conception__yellow-line"]} />
+          <CachedImage src={circleImage} alt="yellow line" className={styles["conception__yellow-line"]} />
         </div>
         <div className={styles["conception__right"]}>
           <h3 className={styles["conception__dutch-title"] + ' ' + styles["baseline-border"]}>{t('conception.dutchTitle')}</h3>
@@ -38,14 +39,14 @@ const Conception = () => {
         </div>
       </div>
       <div className={styles["conception__image-wrap"]}>
-        <img src={mainImage} alt="Conception main" className={styles["conception__main-img"]} />
+        <CachedImage src={mainImage} alt="Conception main" className={styles["conception__main-img"]} />
         <div className={styles["conception__circle-img-wrap"]}>
-          <img src={cloud} alt="Интерьер" className={styles["conception__circle-img"]} />
+          <CachedImage src={cloud} alt="Интерьер" className={styles["conception__circle-img"]} />
         </div>
       </div>
       <div className={styles["conception__desc-bottom__overlay"]}>  
         <div className={styles["conception__mobile-img-wrap"]}>
-          <img src={mainImage} alt="Mobile interior" className={styles["conception__mobile-img"]} />
+          <CachedImage src={mainImage} alt="Mobile interior" className={styles["conception__mobile-img"]} />
         </div>
         <div className={styles["conception__desc-bottom"]}>
           <p className={styles["conception__main-desc"] + ' ' + styles["baseline-border"]}>
