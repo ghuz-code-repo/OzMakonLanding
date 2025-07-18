@@ -1,0 +1,48 @@
+/* Анимации для системы предзагрузки медиафайлов */
+
+@keyframes shimmer {
+  0% { 
+    background-position: 100% 0; 
+  }
+  100% { 
+    background-position: -100% 0; 
+  }
+}
+
+@keyframes spin {
+  0% { 
+    transform: rotate(0deg); 
+  }
+  100% { 
+    transform: rotate(360deg); 
+  }
+}
+
+/* Классы для компонентов загрузки */
+.media-shimmer {
+  background: linear-gradient(90deg, #f0f0f0 25%, transparent 37%, #f0f0f0 63%);
+  background-size: 400% 100%;
+  animation: shimmer 1.5s ease-in-out infinite;
+}
+
+.media-spinner {
+  animation: spin 1s linear infinite;
+}
+
+/* Плавные переходы */
+.media-transition {
+  transition: all 0.3s ease;
+}
+
+.media-fade-in {
+  animation: fadeIn 0.5s ease-in;
+}
+
+@keyframes fadeIn {
+  from { 
+    opacity: 0; 
+  }
+  to { 
+    opacity: 1; 
+  }
+}

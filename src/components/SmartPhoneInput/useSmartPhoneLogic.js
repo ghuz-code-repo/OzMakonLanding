@@ -1,175 +1,199 @@
 import { useCallback } from 'react';
+import phoneConfigData from './phoneConfig.json';
 
-// Конфигурация форматирования телефонов по странам
-const COUNTRY_PHONE_CONFIG = {
-  '7': {
-    name: 'Россия/Казахстан',
-    format: '+7 999 999 99 99', 
-    maxLength: 12, // +7 + 10 цифр
-    pattern: /^7\d{10}$/
-  },
-  '998': {
-    name: 'Узбекистан',
-    format: '+998 99 999 99 99',
-    maxLength: 13, // +998 + 9 цифр  
-    pattern: /^998\d{9}$/
-  },
-  '996': {
-    name: 'Кыргызстан',
-    format: '+996 999 99 99 99',
-    maxLength: 13, // +996 + 9 цифр
-    pattern: /^996\d{9}$/
-  },
-  '992': {
-    name: 'Таджикистан',
-    format: '+992 99 999 99 99',
-    maxLength: 13, // +992 + 9 цифр
-    pattern: /^992\d{9}$/
-  },
-  '993': {
-    name: 'Туркменистан',
-    format: '+993 99 99 99 99',
-    maxLength: 12, // +993 + 8 цифр
-    pattern: /^993\d{8}$/
-  }
-};
+// Конфигурация из JSON файла
+const PHONE_CONFIG = phoneConfigData;
+const COUNTRY_PHONE_CONFIG = phoneConfigData.countryPhoneConfig;
+const COUNTRY_ISO_TO_PHONE_CODE = phoneConfigData.countryIsoToPhoneCode;
+const DEFAULT_ALLOWED_CODES = phoneConfigData.allowedCountryCodes;
+const DEFAULT_COUNTRY_CODE = phoneConfigData.defaultCountryCode;
 
-// Маппинг ISO кодов стран на телефонные коды
-const COUNTRY_ISO_TO_PHONE_CODE = {
-  'UZ': '998', // Узбекистан
-  'RU': '7',   // Россия
-  'KZ': '7',   // Казахстан  
-  'KG': '996', // Кыргызстан
-  'TJ': '992', // Таджикистан
-  'TM': '993', // Туркменистан
-  'UA': '380', // Украина
-  'BY': '375', // Беларусь
-  'DE': '49',  // Германия
-  'US': '1',   // США
-  'CN': '86',  // Китай
-  'FR': '33',  // Франция
-  'GB': '44',  // Великобритания
-};
+// Преобразуем строковые паттерны в RegExp объекты
+Object.keys(COUNTRY_PHONE_CONFIG).forEach(code => {
+  COUNTRY_PHONE_CONFIG[code].pattern = new RegExp(COUNTRY_PHONE_CONFIG[code].pattern);
+});
+
+// Экспорт конфигурации для внешнего использования
+export { PHONE_CONFIG, COUNTRY_PHONE_CONFIG, COUNTRY_ISO_TO_PHONE_CODE, DEFAULT_ALLOWED_CODES, DEFAULT_COUNTRY_CODE };
 
 /**
- * Форматирует номер телефона (функция без хука)
+ * Прогрессивная проверка кода страны
+ * @param {string} phoneNumber - номер телефона для проверки
+ * @returns {Object} результат проверки
+ */
+function analyzeCountryCode(phoneNumber) {
+  // console.log('🔍 analyzeCountryCode called with:', phoneNumber);
+  
+  if (!phoneNumber) {
+    return { status: 'empty', code: null, possibleCodes: [] };
+  }
+  
+  const cleanNumber = phoneNumber.replace(/[^\d]/g, '');
+  // console.log('🔍 analyzeCountryCode: cleanNumber =', cleanNumber);
+  
+  if (!cleanNumber) {
+    return { status: 'empty', code: null, possibleCodes: [] };
+  }
+  
+  const allCodes = Object.keys(COUNTRY_PHONE_CONFIG);
+  // console.log('🔍 analyzeCountryCode: all available codes =', allCodes);
+  
+  // Ищем точные совпадения (полные коды)
+  const exactMatches = allCodes.filter(code => cleanNumber.startsWith(code) && cleanNumber.length >= code.length);
+  // console.log('🔍 analyzeCountryCode: exact matches =', exactMatches);
+  
+  if (exactMatches.length > 0) {
+    // Найден точный код - выбираем самый длинный (приоритет у более специфичных кодов)
+    const foundCode = exactMatches.sort((a, b) => b.length - a.length)[0];
+    // console.log('🔍 analyzeCountryCode: EXACT CODE FOUND:', foundCode);
+    return { 
+      status: 'found', 
+      code: foundCode, 
+      possibleCodes: exactMatches,
+      isAllowed: DEFAULT_ALLOWED_CODES.includes(foundCode)
+    };
+  }
+  
+  // Ищем частичные совпадения (коды, которые начинаются с введённых цифр)
+  const partialMatches = allCodes.filter(code => code.startsWith(cleanNumber));
+  // console.log('🔍 analyzeCountryCode: partial matches =', partialMatches);
+  
+  if (partialMatches.length > 0) {
+    // console.log('🔍 analyzeCountryCode: PARTIAL MATCHES FOUND:', partialMatches);
+    return { 
+      status: 'partial', 
+      code: null, 
+      possibleCodes: partialMatches 
+    };
+  }
+  
+  // Нет ни точных, ни частичных совпадений - код невозможен
+  // console.log('🔍 analyzeCountryCode: NO POSSIBLE CODES - IMPOSSIBLE');
+  return { 
+    status: 'impossible', 
+    code: cleanNumber, 
+    possibleCodes: [] 
+  };
+}
+
+/**
+ * Определяет код страны из номера телефона
+ */
+function detectCountryCode(phoneNumber) {
+  // console.log('🔍 detectCountryCode called with:', phoneNumber);
+  
+  if (!phoneNumber) {
+    // console.log('🔍 detectCountryCode: phoneNumber is empty, returning null');
+    return null;
+  }
+  
+  const analysis = analyzeCountryCode(phoneNumber);
+  
+  if (analysis.status === 'found') {
+    // console.log('🔍 detectCountryCode: returning found code:', analysis.code);
+    return analysis.code;
+  }
+  
+  // console.log('🔍 detectCountryCode: no exact code found, returning null');
+  return null;
+}
+
+/**
+ * Универсальная функция форматирования номера на основе маски из конфигурации
+ * @param {string} countryCode - код страны
+ * @param {string} digits - цифры номера (без кода страны)
+ * @returns {string} отформатированный номер
+ */
+function formatByMask(countryCode, digits) {
+  const config = COUNTRY_PHONE_CONFIG[countryCode];
+  if (!config || !config.format) {
+    return `+${countryCode}${digits}`;
+  }
+  
+  const format = config.format;
+  // console.log(`📞 Formatting ${countryCode} with digits: "${digits}" using format: "${format}"`);
+  
+  // Извлекаем маску после кода страны
+  const maskParts = format.split(' ').slice(1); // убираем "+код"
+  // console.log(`📞 Mask parts:`, maskParts);
+  
+  let result = `+${countryCode}`;
+  let digitIndex = 0;
+  
+  for (const part of maskParts) {
+    if (digitIndex >= digits.length) break;
+    
+    const partLength = part.length;
+    const digitsPart = digits.substring(digitIndex, digitIndex + partLength);
+    
+    if (digitsPart) {
+      result += ` ${digitsPart}`;
+      digitIndex += partLength;
+    }
+  }
+  
+  // console.log(`📞 Result: "${result}"`);
+  return result;
+}
+
+/**
+ * Форматирует номер телефона
  * @param {string} inputValue - введенное значение
  * @returns {string} отформатированный номер
  */
 export function formatPhoneNumber(inputValue) {
   if (!inputValue) return '';
   
-  // Удаляем все символы кроме цифр
-  let cleanValue = inputValue.replace(/[^\d]/g, '');
+  // Удаляем все символы кроме цифр и +
+  let cleaned = inputValue.replace(/[^\d+]/g, '');
   
-  // Добавляем '+' в начало если его нет
-  if (!inputValue.startsWith('+')) {
-    cleanValue = cleanValue;
+  // Если пустая строка
+  if (!cleaned) {
+    return '';
   }
   
-  // Определяем страну
-  const countryCode = detectCountryCodeStatic(cleanValue);
+  // Если не начинается с +, добавляем
+  if (!cleaned.startsWith('+')) {
+    cleaned = '+' + cleaned;
+  }
+  
+  // Определяем код страны
+  const countryCode = detectCountryCode(cleaned);
   if (!countryCode) {
-    // Если код страны не определен, возвращаем с '+'
-    return cleanValue ? `+${cleanValue}` : '';
+    return cleaned; // Возвращаем как есть, если код не определен
   }
-  
+
   const config = COUNTRY_PHONE_CONFIG[countryCode];
   if (!config) {
-    return `+${cleanValue}`;
+    return cleaned;
   }
+
+  // Извлекаем цифры после кода страны
+  const digits = cleaned.substring(1); // убираем +
+  const countryDigits = digits.substring(countryCode.length); // убираем код страны
   
-  // Ограничиваем длину
-  const maxDigits = config.maxLength - 1; // -1 для знака '+'
-  const truncatedValue = cleanValue.substring(0, maxDigits);
+  // Обрезаем по максимальной длине
+  const maxDigits = config.maxLength - countryCode.length - 1; // -1 для +
+  const truncatedDigits = countryDigits.substring(0, maxDigits);
   
-  // Применяем форматирование
-  let formatted = `+${truncatedValue}`;
-  
-  // Добавляем пробелы согласно формату
-  if (countryCode === '7' && truncatedValue.length > 1) {
-    const number = truncatedValue.substring(1);
-    if (number.length <= 3) {
-      formatted = `+7 ${number}`;
-    } else if (number.length <= 6) {
-      formatted = `+7 ${number.substring(0, 3)} ${number.substring(3)}`;
-    } else if (number.length <= 8) {
-      formatted = `+7 ${number.substring(0, 3)} ${number.substring(3, 6)} ${number.substring(6)}`;
-    } else {
-      formatted = `+7 ${number.substring(0, 3)} ${number.substring(3, 6)} ${number.substring(6, 8)} ${number.substring(8)}`;
-    }
-  } else if (countryCode === '998' && truncatedValue.length > 3) {
-    const number = truncatedValue.substring(3);
-    if (number.length <= 2) {
-      formatted = `+998 ${number}`;
-    } else if (number.length <= 5) {
-      formatted = `+998 ${number.substring(0, 2)} ${number.substring(2)}`;
-    } else if (number.length <= 7) {
-      formatted = `+998 ${number.substring(0, 2)} ${number.substring(2, 5)} ${number.substring(5)}`;
-    } else {
-      formatted = `+998 ${number.substring(0, 2)} ${number.substring(2, 5)} ${number.substring(5, 7)} ${number.substring(7)}`;
-    }
-  } else if (['996', '992'].includes(countryCode) && truncatedValue.length > 3) {
-    const number = truncatedValue.substring(3);
-    if (number.length <= 3) {
-      formatted = `+${countryCode} ${number}`;
-    } else if (number.length <= 5) {
-      formatted = `+${countryCode} ${number.substring(0, 3)} ${number.substring(3)}`;
-    } else if (number.length <= 7) {
-      formatted = `+${countryCode} ${number.substring(0, 3)} ${number.substring(3, 5)} ${number.substring(5)}`;
-    } else {
-      formatted = `+${countryCode} ${number.substring(0, 3)} ${number.substring(3, 5)} ${number.substring(5, 7)} ${number.substring(7)}`;
-    }
-  } else if (countryCode === '993' && truncatedValue.length > 3) {
-    const number = truncatedValue.substring(3);
-    if (number.length <= 2) {
-      formatted = `+993 ${number}`;
-    } else if (number.length <= 4) {
-      formatted = `+993 ${number.substring(0, 2)} ${number.substring(2)}`;
-    } else if (number.length <= 6) {
-      formatted = `+993 ${number.substring(0, 2)} ${number.substring(2, 4)} ${number.substring(4)}`;
-    } else {
-      formatted = `+993 ${number.substring(0, 2)} ${number.substring(2, 4)} ${number.substring(4, 6)} ${number.substring(6)}`;
-    }
-  }
-  
-  return formatted;
+  // Используем универсальное форматирование по маске
+  return formatByMask(countryCode, truncatedDigits);
 }
 
 /**
- * Определяет код страны из номера телефона (статическая функция)
+ * Проверяет, разрешен ли код страны
  */
-function detectCountryCodeStatic(phoneNumber) {
-  if (!phoneNumber) return null;
-  
-  const cleanNumber = phoneNumber.replace(/[^\d]/g, '');
-  
-  // Проверяем коды стран в порядке убывания длины
-  const codes = Object.keys(COUNTRY_PHONE_CONFIG).sort((a, b) => b.length - a.length);
-  
-  for (const code of codes) {
-    if (cleanNumber.startsWith(code)) {
-      return code;
-    }
-  }
-  
-  return null;
-}
-
-/**
- * Проверяет, разрешен ли код страны (статическая функция)
- */
-export function isCountryCodeAllowed(phoneNumber, allowedCodes = ['998', '7', '996', '992', '993']) {
-  const countryCode = detectCountryCodeStatic(phoneNumber);
+export function isCountryCodeAllowed(phoneNumber, allowedCodes = DEFAULT_ALLOWED_CODES) {
+  const countryCode = detectCountryCode(phoneNumber);
   return countryCode ? allowedCodes.includes(countryCode) : false;
 }
 
 /**
- * Валидирует номер телефона (статическая функция)
+ * Валидирует номер телефона
  */
-export function validatePhoneNumber(phoneNumber, allowedCodes = ['998', '7', '996', '992', '993']) {
+export function validatePhoneNumber(phoneNumber, allowedCodes = DEFAULT_ALLOWED_CODES) {
   const formattedValue = formatPhoneNumber(phoneNumber);
-  const detectedCode = detectCountryCodeStatic(formattedValue);
+  const detectedCode = detectCountryCode(formattedValue);
   const isValid = formattedValue ? isCountryCodeAllowed(formattedValue, allowedCodes) : false;
   const isComplete = formattedValue.length > (detectedCode?.length || 0) + 1;
   
@@ -179,6 +203,98 @@ export function validatePhoneNumber(phoneNumber, allowedCodes = ['998', '7', '99
     value: formattedValue,
     isComplete
   };
+}
+
+/**
+ * Получает оптимальный код страны для пользователя
+ * Логика: если введенный код не разрешен, пытаемся определить страну пользователя по IP,
+ * если не получилось или страна не разрешена - берем первый код из списка разрешенных
+ * 
+ * @param {string} currentCode - текущий введенный код страны
+ * @param {string[]} allowedCodes - список разрешенных кодов стран
+ * @param {boolean} enableGeolocation - включить геолокацию
+ * @returns {Promise<string>} оптимальный код страны
+ */
+export async function getOptimalCountryCode(currentCode = '', allowedCodes = DEFAULT_ALLOWED_CODES, enableGeolocation = true) {
+  // Если текущий код разрешен - возвращаем его
+  if (currentCode && allowedCodes.includes(currentCode)) {
+    return currentCode;
+  }
+
+  // Пытаемся получить страну пользователя через геолокацию
+  if (enableGeolocation) {
+    try {
+      const userCountryCode = await getUserCountryByGeolocation();
+      if (userCountryCode && allowedCodes.includes(userCountryCode)) {
+        return userCountryCode;
+      }
+    } catch (error) {
+      console.warn('Не удалось определить страну пользователя:', error);
+    }
+  }
+
+  // Возвращаем первый разрешенный код
+  return allowedCodes[0] || DEFAULT_COUNTRY_CODE;
+}
+
+/**
+ * Получает страну пользователя через геолокацию по IP
+ * @returns {Promise<string|null>} код страны или null
+ */
+async function getUserCountryByGeolocation() {
+  // Попытка получить страну через IP
+  try {
+    const response = await fetch('https://ipapi.co/json/');
+    if (response.ok) {
+      const data = await response.json();
+      const phoneCode = COUNTRY_ISO_TO_PHONE_CODE[data.country_code];
+      if (phoneCode) {
+        return phoneCode;
+      }
+    }
+  } catch (error) {
+    console.warn('IP геолокация недоступна:', error);
+  }
+
+  // Попытка получить координаты через браузер (если IP не сработал)
+  if (navigator.geolocation) {
+    try {
+      const position = await new Promise((resolve, reject) => {
+        navigator.geolocation.getCurrentPosition(resolve, reject, {
+          timeout: 5000,
+          enableHighAccuracy: false
+        });
+      });
+
+      const { latitude, longitude } = position.coords;
+
+      // Обратное геокодирование через несколько сервисов
+      const geocodeServices = [
+        `https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=${latitude}&longitude=${longitude}&localityLanguage=en`,
+        `https://geocode.xyz/${latitude},${longitude}?json=1`
+      ];
+
+      for (const serviceUrl of geocodeServices) {
+        try {
+          const response = await fetch(serviceUrl);
+          if (response.ok) {
+            const data = await response.json();
+            const countryCode = data.countryCode || data.country;
+            const phoneCode = COUNTRY_ISO_TO_PHONE_CODE[countryCode];
+            if (phoneCode) {
+              return phoneCode;
+            }
+          }
+        } catch (error) {
+          console.warn(`Ошибка геокодирования ${serviceUrl}:`, error);
+        }
+      }
+    } catch (error) {
+      console.warn('Геолокация браузера недоступна:', error);
+    }
+  }
+
+  return null;
 }
 
 /**
@@ -193,44 +309,20 @@ export function validatePhoneNumber(phoneNumber, allowedCodes = ['998', '7', '99
  */
 export function useSmartPhoneLogic(config = {}) {
   const {
-    allowedCountryCodes = ['998'],
-    defaultCountryCode = '998',
+    allowedCountryCodes = DEFAULT_ALLOWED_CODES,
+    defaultCountryCode = DEFAULT_COUNTRY_CODE,
     enableGeolocation = true,
     showFullMaskPlaceholder = false
   } = config;
-
-  /**
-   * Определяет код страны из номера телефона
-   * @param {string} phone - номер телефона
-   * @returns {string|null} код страны или null
-   */
-  const detectCountryCode = useCallback((phone) => {
-    if (!phone) return null;
-    
-    const numbers = phone.replace(/\D/g, '');
-    if (numbers.length === 0) return null;
-    
-    // Проверяем коды по порядку убывания длины (чтобы 998 проверился раньше чем 9)
-    const sortedCodes = Object.keys(COUNTRY_PHONE_CONFIG).sort((a, b) => b.length - a.length);
-    
-    for (const code of sortedCodes) {
-      if (numbers.startsWith(code)) {
-        return code;
-      }
-    }
-    
-    return null;
-  }, []);
 
   /**
    * Проверяет, разрешен ли код страны для отправки
    * @param {string} phone - номер телефона
    * @returns {boolean} true если код страны разрешен
    */
-  const isCountryCodeAllowed = useCallback((phone) => {
-    const countryCode = detectCountryCode(phone);
-    return countryCode ? allowedCountryCodes.includes(countryCode) : false;
-  }, [detectCountryCode, allowedCountryCodes]);
+  const isCountryCodeAllowedCallback = useCallback((phone) => {
+    return isCountryCodeAllowed(phone, allowedCountryCodes);
+  }, [allowedCountryCodes]);
 
   /**
    * Проверяет, содержит ли значение только код страны
@@ -258,221 +350,40 @@ export function useSmartPhoneLogic(config = {}) {
       // если цифр от 1 до 4 (стандартные коды стран 1-4 цифры)
       return digits.length >= 1 && digits.length <= 4;
     }
-  }, [detectCountryCode]);
-
-  /**
-   * Форматирует номер телефона согласно маскам стран
-   * @param {string} value - введенное значение
-   * @returns {string} отформатированный номер
-   */
-  const formatPhoneNumber = useCallback((value) => {
-    if (!value) return '';
-    
-    // Удаляем все символы кроме цифр и +
-    let cleaned = value.replace(/[^\d+]/g, '');
-    
-    // Если пустая строка
-    if (!cleaned) {
-      return '';
-    }
-    
-    // Если не начинается с +, добавляем
-    if (!cleaned.startsWith('+')) {
-      cleaned = '+' + cleaned;
-    }
-    
-    // Определяем код страны
-    const countryCode = detectCountryCode(cleaned);
-    if (!countryCode) {
-      return cleaned; // Возвращаем как есть, если код не определен
-    }
-    
-    const config = COUNTRY_PHONE_CONFIG[countryCode];
-    if (!config) {
-      return cleaned;
-    }
-    
-    // Извлекаем цифры после кода страны
-    const digits = cleaned.substring(1); // убираем +
-    const countryDigits = digits.substring(countryCode.length); // убираем код страны
-    
-    // Обрезаем по максимальной длине
-    const maxDigits = config.maxLength - countryCode.length - 1; // -1 для +
-    const truncatedDigits = countryDigits.substring(0, maxDigits);
-    
-    // Форматируем согласно маске
-    switch (countryCode) {
-      case '7': // +7 999 999 99 99
-        return `+7${truncatedDigits.replace(/(\d{0,3})(\d{0,3})(\d{0,2})(\d{0,2})/, (match, g1, g2, g3, g4) => {
-          let result = '';
-          if (g1) result += ` ${g1}`;
-          if (g2) result += ` ${g2}`;
-          if (g3) result += ` ${g3}`;
-          if (g4) result += ` ${g4}`;
-          return result;
-        })}`;
-        
-      case '998': // +998 99 999 99 99
-        return `+998${truncatedDigits.replace(/(\d{0,2})(\d{0,3})(\d{0,2})(\d{0,2})/, (match, g1, g2, g3, g4) => {
-          let result = '';
-          if (g1) result += ` ${g1}`;
-          if (g2) result += ` ${g2}`;
-          if (g3) result += ` ${g3}`;
-          if (g4) result += ` ${g4}`;
-          return result;
-        })}`;
-        
-      case '996': // +996 999 999 999
-        return `+996${truncatedDigits.replace(/(\d{0,3})(\d{0,3})(\d{0,3})/, (match, g1, g2, g3) => {
-          let result = '';
-          if (g1) result += ` ${g1}`;
-          if (g2) result += ` ${g2}`;
-          if (g3) result += ` ${g3}`;
-          return result;
-        })}`;
-        
-      case '992': // +992 99 999 9999
-        return `+992${truncatedDigits.replace(/(\d{0,2})(\d{0,3})(\d{0,4})/, (match, g1, g2, g3) => {
-          let result = '';
-          if (g1) result += ` ${g1}`;
-          if (g2) result += ` ${g2}`;
-          if (g3) result += ` ${g3}`;
-          return result;
-        })}`;
-        
-      case '993': // +993 99 999 999
-        return `+993${truncatedDigits.replace(/(\d{0,2})(\d{0,3})(\d{0,3})/, (match, g1, g2, g3) => {
-          let result = '';
-          if (g1) result += ` ${g1}`;
-          if (g2) result += ` ${g2}`;
-          if (g3) result += ` ${g3}`;
-          return result;
-        })}`;
-        
-      default:
-        return cleaned;
-    }
-  }, [detectCountryCode]);
-
-  /**
-   * Получает страну пользователя через геолокацию
-   * @returns {Promise<string|null>} код страны или null
-   */
-  const getCountryByGeolocation = useCallback(async () => {
-    if (!enableGeolocation) {
-      return null;
-    }
-
-    // 1. Попытка получить страну через IP
-    try {
-      const response = await fetch('https://ipapi.co/json/');
-      if (response.ok) {
-        const data = await response.json();
-        const phoneCode = COUNTRY_ISO_TO_PHONE_CODE[data.country_code];
-        if (phoneCode) {
-          return phoneCode;
-        }
-      }
-    } catch (error) {
-      console.warn('IP геолокация недоступна:', error);
-    }
-
-    // 2. Попытка получить координаты через браузер
-    if (navigator.geolocation) {
-      try {
-        const position = await new Promise((resolve, reject) => {
-          navigator.geolocation.getCurrentPosition(resolve, reject, {
-            timeout: 5000,
-            enableHighAccuracy: false
-          });
-        });
-
-        const { latitude, longitude } = position.coords;
-
-        // 3. Обратное геокодирование через несколько сервисов
-        const geocodeServices = [
-          `https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=${latitude}&longitude=${longitude}&localityLanguage=en`,
-          `https://geocode.xyz/${latitude},${longitude}?json=1`
-        ];
-
-        for (const serviceUrl of geocodeServices) {
-          try {
-            const response = await fetch(serviceUrl);
-            if (response.ok) {
-              const data = await response.json();
-              const countryCode = data.countryCode || data.country;
-              const phoneCode = COUNTRY_ISO_TO_PHONE_CODE[countryCode];
-              if (phoneCode) {
-                return phoneCode;
-              }
-            }
-          } catch (error) {
-            console.warn(`Ошибка геокодирования ${serviceUrl}:`, error);
-          }
-        }
-      } catch (error) {
-        console.warn('Геолокация браузера недоступна:', error);
-      }
-    }
-
-    return null;
-  }, [enableGeolocation]);
+  }, []);
 
   /**
    * Получает оптимальный placeholder на основе геолокации
-   * @param {Function|null} geolocationFn - функция геолокации
-   * @param {string} fallbackCountryCode - код страны по умолчанию
    * @returns {Promise<string>} оптимальный placeholder
    */
-  const getOptimalPlaceholder = useCallback(async (geolocationFn = null, fallbackCountryCode = '998') => {
-    // Пытаемся определить страну через геолокацию
-    if (geolocationFn) {
-      try {
-        const detectedCountryCode = await geolocationFn();
-        if (detectedCountryCode && COUNTRY_PHONE_CONFIG[detectedCountryCode]) {
-          return showFullMaskPlaceholder 
-            ? COUNTRY_PHONE_CONFIG[detectedCountryCode].format
-            : `+${detectedCountryCode}`;
-        }
-      } catch (error) {
-        console.warn('Не удалось определить страну по геолокации:', error);
-      }
-    }
+  const getOptimalPlaceholder = useCallback(async () => {
+    const optimalCode = await getOptimalCountryCode('', allowedCountryCodes, enableGeolocation);
     
-    // Используем страну по умолчанию
     return showFullMaskPlaceholder 
-      ? (COUNTRY_PHONE_CONFIG[fallbackCountryCode]?.format || `+${fallbackCountryCode}`)
-      : `+${fallbackCountryCode}`;
-  }, [showFullMaskPlaceholder]);
-
-  return {
-    formatPhoneNumber,
-    detectCountryCode,
-    isCountryCodeAllowed,
-    isOnlyCountryCode,
-    getOptimalPlaceholder,
-    getCountryByGeolocation,
-    validatePhoneNumber, // Добавляем функцию валидации
-    COUNTRY_PHONE_CONFIG,
-    COUNTRY_ISO_TO_PHONE_CODE
-  };
+      ? (COUNTRY_PHONE_CONFIG[optimalCode]?.format || `+${optimalCode}`)
+      : `+${optimalCode}`;
+  }, [allowedCountryCodes, enableGeolocation, showFullMaskPlaceholder]);
 
   /**
    * Валидирует номер телефона и возвращает результат
    * @param {string} phoneNumber - номер для валидации
    * @returns {Object} результат валидации
    */
-  function validatePhoneNumber(phoneNumber) {
-    const formattedValue = formatPhoneNumber(phoneNumber);
-    const detectedCode = detectCountryCode(formattedValue);
-    const isValid = formattedValue ? isCountryCodeAllowed(formattedValue) : false;
-    const isComplete = formattedValue.length > (detectedCode?.length || 0) + 1;
-    
-    return {
-      isValid,
-      countryCode: detectedCode,
-      value: formattedValue,
-      isComplete
-    };
-  }
+  const validatePhoneNumberCallback = useCallback((phoneNumber) => {
+    return validatePhoneNumber(phoneNumber, allowedCountryCodes);
+  }, [allowedCountryCodes]);
+
+  return {
+    formatPhoneNumber,
+    detectCountryCode,
+    analyzeCountryCode,
+    isCountryCodeAllowed: isCountryCodeAllowedCallback,
+    isOnlyCountryCode,
+    getOptimalPlaceholder,
+    getOptimalCountryCode: (currentCode) => getOptimalCountryCode(currentCode, allowedCountryCodes, enableGeolocation),
+    validatePhoneNumber: validatePhoneNumberCallback,
+    COUNTRY_PHONE_CONFIG,
+    COUNTRY_ISO_TO_PHONE_CODE,
+    PHONE_CONFIG
+  };
 }

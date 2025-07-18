@@ -11,22 +11,30 @@ import Location from './components/Location/Location';
 import Callback from './components/Callback/Callback';
 import Footer from './components/Footer/Footer';
 
+// Компоненты для предзагрузки медиафайлов
+import { MediaPreloaderProvider } from './components/MediaPreloader/MediaPreloader';
+import MediaInitializer from './components/MediaPreloader/MediaInitializer';
+import LoadingProgressAdvanced from './components/MediaPreloader/LoadingProgressAdvanced';
+
 function App() {
   return (
-    <>
-      <Header />
-      <Hero />
-      <Conception />
-      <Carousel />
-      
-      <div className="hideable-content-below">
-        <ApartmentLayouts />
-        <PlacesAround />
-        <Location />
-        <Callback />
-        <Footer />
-      </div>
-    </>
+    <MediaPreloaderProvider>
+      <MediaInitializer>
+        {/* <LoadingProgressAdvanced /> */}
+        <Header />
+        <Hero />
+        <Conception />
+        <Carousel />
+        
+        <div className="hideable-content-below">
+          <ApartmentLayouts />
+          <PlacesAround />
+          <Location />
+          <Callback />
+          <Footer />
+        </div>
+      </MediaInitializer>
+    </MediaPreloaderProvider>
   );
 }
 
