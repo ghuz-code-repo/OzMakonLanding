@@ -6,6 +6,7 @@ import './MediaPreloader.css';
 const MediaInitializer = ({ children }) => {
   const { loadImageGroup, setIsInitialLoadComplete } = useMediaPreloader();
   const [isLoading, setIsLoading] = useState(true);
+  const [showContent, setShowContent] = useState(false);
   const initializationStarted = useRef(false);
 
   useEffect(() => {
@@ -30,98 +31,103 @@ const MediaInitializer = ({ children }) => {
         console.log(`   - Локация: ${MEDIA_CONFIG.location.urls.length} файлов`);
         console.log(`   - ВСЕГО: ${MEDIA_CONFIG.critical.urls.length + MEDIA_CONFIG.carousel.urls.length + MEDIA_CONFIG.apartments.urls.length + MEDIA_CONFIG.places.urls.length + MEDIA_CONFIG.location.urls.length} файлов`);
         
-        // 1. Загружаем критические медиафайлы в приоритетном порядке
+        // 1. Загружаем только самые критические файлы
         console.log('🚀 Загружаем критические медиафайлы...');
         if (MEDIA_CONFIG.critical.urls.length > 0) {
           await loadImageGroup('Критические', MEDIA_CONFIG.critical.urls, true);
         }
         
-        // 2. Показываем сайт пользователю
-        setIsLoading(false);
-        setIsInitialLoadComplete(true);
-        console.log('✅ Сайт готов к показу пользователю');
+        // 2. Убираем HTML-лоадер
+        const htmlPreloader = document.getElementById('instant-preloader');
+        if (htmlPreloader) {
+          htmlPreloader.classList.add('fade-out');
+          setTimeout(() => {
+            htmlPreloader.style.display = 'none';
+          }, 500);
+        }
         
-        // 3. Запускаем фоновую загрузку остальных медиафайлов
+        // 3. Показываем React-контент
+        setIsLoading(false);
+        console.log('✅ Убираем лоадер, показываем сайт');
+        
+        // 4. Небольшая задержка перед показом контента для плавности
+        setTimeout(() => {
+          setShowContent(true);
+          setIsInitialLoadComplete(true);
+          console.log('✅ Сайт полностью готов к использованию');
+        }, 200);
+        
+        // 5. Запускаем фоновую загрузку остальных медиафайлов параллельно и быстро
         console.log('🔄 Запускаем фоновую загрузку...');
         
-        // Небольшая задержка для улучшения пользовательского опыта
+        // Карусель загружаем немедленно (пользователь может быстро прокрутить)
         setTimeout(() => {
           if (MEDIA_CONFIG.carousel.urls.length > 0) {
             console.log(`🎠 Загружаем карусель: ${MEDIA_CONFIG.carousel.urls.length} файлов`);
             loadImageGroup('Карусель', MEDIA_CONFIG.carousel.urls, false);
           }
-        }, 100);
+        }, 10);
         
+        // Планировки загружаем очень быстро
         setTimeout(() => {
           if (MEDIA_CONFIG.apartments.urls.length > 0) {
             console.log(`🏠 Загружаем планировки: ${MEDIA_CONFIG.apartments.urls.length} файлов`);
             loadImageGroup('Планировки', MEDIA_CONFIG.apartments.urls, false);
           }
-        }, 500);
+        }, 50);
         
+        // Места рядом - быстро
         setTimeout(() => {
           if (MEDIA_CONFIG.places.urls.length > 0) {
             console.log(`📍 Загружаем места рядом: ${MEDIA_CONFIG.places.urls.length} файлов`);
             loadImageGroup('Места рядом', MEDIA_CONFIG.places.urls, false);
           }
-        }, 1000);
+        }, 100);
         
+        // Локация - чуть позже
         setTimeout(() => {
           if (MEDIA_CONFIG.location.urls.length > 0) {
             console.log(`🗺️ Загружаем локацию: ${MEDIA_CONFIG.location.urls.length} файлов`);
             loadImageGroup('Локация', MEDIA_CONFIG.location.urls, false);
           }
-        }, 1500);
+        }, 150);
         
       } catch (error) {
         console.error('❌ Ошибка при загрузке критических медиафайлов:', error);
+        // Убираем HTML-лоадер даже при ошибке
+        const htmlPreloader = document.getElementById('instant-preloader');
+        if (htmlPreloader) {
+          htmlPreloader.classList.add('fade-out');
+          setTimeout(() => {
+            htmlPreloader.style.display = 'none';
+          }, 500);
+        }
+        
         // Показываем сайт даже при ошибке, чтобы не блокировать пользователя
         setIsLoading(false);
-        setIsInitialLoadComplete(true);
+        setTimeout(() => {
+          setShowContent(true);
+          setIsInitialLoadComplete(true);
+        }, 200);
       }
     };
 
     initializeMediaLoading();
   }, []); // Пустые зависимости - запускается только один раз
 
-  // Экран загрузки
-  if (isLoading) {
-    return (
-      <div style={{
-        position: 'fixed',
-        top: 0,
-        left: 0,
-        width: '100%',
-        height: '100%',
-        background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
-        display: 'flex',
-        flexDirection: 'column',
-        justifyContent: 'center',
-        alignItems: 'center',
-        zIndex: 10000,
-        color: 'white'
-      }}>
-        <div 
-          style={{
-            width: '60px',
-            height: '60px',
-            border: '4px solid rgba(255, 255, 255, 0.3)',
-            borderTop: '4px solid white',
-            borderRadius: '50%',
-            marginBottom: '20px',
-            animation: 'spin 1s linear infinite'
-          }} 
-          className="media-spinner" 
-        />
-        <h2 style={{ margin: '0 0 10px 0', fontSize: '24px' }}>Загрузка...</h2>
-        <p style={{ margin: 0, fontSize: '16px', opacity: 0.8 }}>
-          Подготавливаем контент для вас
-        </p>
-      </div>
-    );
-  }
-
-  return children;
+  return (
+    <>
+      {/* Основной контент - показываем после завершения загрузки критических файлов */}
+      {showContent && (
+        <div style={{ 
+          opacity: showContent ? 1 : 0,
+          transition: 'opacity 0.3s ease-in'
+        }}>
+          {children}
+        </div>
+      )}
+    </>
+  );
 };
 
 export default MediaInitializer;

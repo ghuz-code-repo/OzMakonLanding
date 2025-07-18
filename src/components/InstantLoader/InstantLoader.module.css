@@ -1,0 +1,232 @@
+/* Мгновенный лоадер - показывается сразу при загрузке страницы */
+.instant-loader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10000;
+  opacity: 1;
+  transition: opacity 0.5s ease-out;
+}
+
+.instant-loader--fade-out {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.instant-loader__content {
+  text-align: center;
+  color: white;
+  animation: instant-loader-fade-in 0.8s ease-out;
+}
+
+.instant-loader__logo {
+  margin-bottom: 40px;
+}
+
+.instant-loader__logo-text {
+  font-size: 48px;
+  font-weight: 700;
+  letter-spacing: 3px;
+  margin-bottom: 8px;
+  background: linear-gradient(45deg, #ffd700, #ffed4e, #ffd700);
+  background-size: 200% 200%;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: instant-loader-shimmer 2s ease-in-out infinite;
+}
+
+.instant-loader__logo-subtitle {
+  font-size: 16px;
+  font-weight: 300;
+  letter-spacing: 2px;
+  color: #ffffff;
+  opacity: 0.9;
+}
+
+.instant-loader__spinner {
+  position: relative;
+  width: 80px;
+  height: 80px;
+  margin: 0 auto 30px;
+}
+
+.instant-loader__spinner-ring {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border: 2px solid transparent;
+  border-top: 2px solid #ffd700;
+  border-radius: 50%;
+  animation: instant-loader-spin 1.2s linear infinite;
+}
+
+.instant-loader__spinner-ring:nth-child(1) {
+  animation-delay: 0s;
+}
+
+.instant-loader__spinner-ring:nth-child(2) {
+  width: 60px;
+  height: 60px;
+  top: 10px;
+  left: 10px;
+  border-top-color: #ffed4e;
+  animation-delay: -0.4s;
+}
+
+.instant-loader__spinner-ring:nth-child(3) {
+  width: 40px;
+  height: 40px;
+  top: 20px;
+  left: 20px;
+  border-top-color: #ffffff;
+  animation-delay: -0.8s;
+}
+
+.instant-loader__text {
+  font-size: 16px;
+  font-weight: 300;
+  color: #ffffff;
+  opacity: 0.8;
+  margin-bottom: 25px;
+  animation: instant-loader-pulse 2s ease-in-out infinite;
+}
+
+.instant-loader__progress {
+  width: 250px;
+  margin: 0 auto;
+}
+
+.instant-loader__progress-bar {
+  width: 100%;
+  height: 3px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.instant-loader__progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #ffd700, #ffed4e, #ffd700);
+  background-size: 200% 100%;
+  border-radius: 2px;
+  animation: instant-loader-progress 2s ease-in-out infinite;
+}
+
+/* Анимации */
+@keyframes instant-loader-fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes instant-loader-spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes instant-loader-shimmer {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+@keyframes instant-loader-pulse {
+  0%, 100% {
+    opacity: 0.8;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+@keyframes instant-loader-progress {
+  0% {
+    transform: translateX(-100%);
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    transform: translateX(200%);
+    background-position: 0% 50%;
+  }
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+  .instant-loader__logo-text {
+    font-size: 36px;
+  }
+  
+  .instant-loader__logo-subtitle {
+    font-size: 14px;
+  }
+  
+  .instant-loader__spinner {
+    width: 60px;
+    height: 60px;
+  }
+  
+  .instant-loader__spinner-ring:nth-child(2) {
+    width: 45px;
+    height: 45px;
+    top: 7.5px;
+    left: 7.5px;
+  }
+  
+  .instant-loader__spinner-ring:nth-child(3) {
+    width: 30px;
+    height: 30px;
+    top: 15px;
+    left: 15px;
+  }
+  
+  .instant-loader__text {
+    font-size: 14px;
+  }
+  
+  .instant-loader__progress {
+    width: 200px;
+  }
+}
+
+@media (max-width: 480px) {
+  .instant-loader__logo-text {
+    font-size: 28px;
+    letter-spacing: 2px;
+  }
+  
+  .instant-loader__logo-subtitle {
+    font-size: 12px;
+    letter-spacing: 1px;
+  }
+  
+  .instant-loader__text {
+    font-size: 13px;
+    padding: 0 20px;
+  }
+  
+  .instant-loader__progress {
+    width: 180px;
+  }
+}
