@@ -2,6 +2,7 @@ import React from 'react';
 import { useTranslation } from 'react-i18next';
 import styles from './Conception.module.css';
 import mainImage from '../../assets/img/Conception/main-image.webp';
+import coffeeTable from '../../assets/img/Conception/coffee_table.webp';
 import circleImage from '../../assets/img/Conception/rectangle-37.png';
 import CallbackMini from '../CallbackMini/CallbackMini';
 import icon1 from '../../assets/img/Conception/icon-1.svg';
@@ -46,7 +47,7 @@ const Conception = () => {
       </div>
       <div className={styles["conception__desc-bottom__overlay"]}>  
         <div className={styles["conception__mobile-img-wrap"]}>
-          <CachedImage src={mainImage} alt="Mobile interior" className={styles["conception__mobile-img"]} />
+          <CachedImage src={coffeeTable} alt="Mobile interior" className={styles["conception__mobile-img"]} />
         </div>
         <div className={styles["conception__desc-bottom"]}>
           <p className={styles["conception__main-desc"] + ' ' + styles["baseline-border"]}>

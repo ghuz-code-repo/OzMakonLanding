@@ -49,7 +49,6 @@
 
 }
 
-
 .top--left--photo--block {
     overflow: hidden;
     max-width: 100%;
@@ -60,8 +59,8 @@
 .top--left--photo {
     width: 835px;
     height: 380px;
-    background-position: 0px -30px;
-    background-size: 100%;
+    background-position: center center;
+    background-size: 115%;
     transition: transform 0.3s ease;
 }
 
@@ -80,8 +79,7 @@
 .left--top--right--photo {
     width: 402px;
     height: 380px;
-    background-size: 300%;
-    background-position: -80px 0px;
+    background-size: cover;
     transition: transform 0.3s ease;
 }
 
@@ -99,8 +97,8 @@
 .right--top--right-photo {
     width: 402px;
     height: 380px;
-    background-size: 300%;
-    background-position: -670px -170px;
+    background-size: cover;
+    background-position: center right;
     transition: transform 0.3s ease;
 }
 
@@ -146,7 +144,6 @@
     line-height: 1.2;
     color: #fff;
     margin-top: -14px;
-    max-width: 90%;
 }
 
 .second-row {
@@ -180,8 +177,8 @@
     /* scale: 0.8; */
     min-width: 100%;
     min-height: 100%;
-    background-position: 0px -20px;
-    background-size: 100%;
+    background-position: top left;
+    background-size: 155%;
     transition: transform 0.3s ease;
 
 }
@@ -261,7 +258,7 @@
     .left--top--right--photo {
         width: 355px;
         height: 335px;
-        background-size: 100%;
+        background-size: cover;
         transition: transform 0.3s ease;
     }
 
@@ -275,7 +272,7 @@
     .right--top--right-photo {
         width: 335px;
         height: 335px;
-        background-size: 100%;
+        background-size: cover;
         background-position: 0px, 0px;
         transition: transform 0.3s ease;
     }
@@ -331,7 +328,6 @@
 
     .top--left--photo {
         width: 735px;
-        height: 250px;
         background-position: center top;
         background-size: cover;
         transition: transform 0.3s ease;
@@ -346,7 +342,6 @@
 
     .left--top--right--photo {
         width: 355px;
-        height: 250px;
         background-size: cover;
         transition: transform 0.3s ease;
     }
@@ -360,7 +355,6 @@
 
     .right--top--right-photo {
         width: 355px;
-        height: 250px;
         background-size: cover;
         background-position: center;
         transition: transform 0.3s ease;
@@ -383,7 +377,7 @@
     }
 }
 
-@media (width < 1500px) and (height > 700px) {
+@media (width < 1500px) and (height > 750px) {
     .usp5-wrapper {
         gap: 20px
     }
@@ -583,16 +577,7 @@
     border-radius: 12px;
 }
 
-
-@media (width < 1300px) or ((height < 700px) and (height > 500px)) {
-    .tablet_year {
-        display: none;
-    }
-
-    .mobile_year {
-        display: none;
-    }
-
+@media (width < 1300px) or ((height < 750px) and (height > 500px)) {
 
     .slide3 {
         display: none;
@@ -739,7 +724,7 @@
     border-radius: 12px;
 }
 
-@media (width < 700px) {
+@media (width < 750px) {
     .slide3 {
         display: none;
     }
@@ -791,7 +776,9 @@
     }
 }
 
-@media (height < 700px) and (width < 700px) {
+@media (height < 750px) and (width < 700px) {
+
+
     .mobile_slide_wrapper {
         gap: 10px;
     }
@@ -816,7 +803,6 @@
         font-size: 14px;
     }
 
-
     .tablet_left_row_title_text {
         font-size: 36px !important;
     }
@@ -824,7 +810,6 @@
     .mid_bullets {
         font-size: 14px !important;
     }
-
 }
 
 @media (height < 300px) {
@@ -861,7 +846,3 @@
     }
 
 }
-
-
-
-/**/

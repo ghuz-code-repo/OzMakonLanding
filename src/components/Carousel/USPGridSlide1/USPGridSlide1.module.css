@@ -449,7 +449,7 @@
 
   .usp5__mobile-top-left-img {
     min-width: calc((100vw - 30px * 3)/2);
-    min-height: calc((55vh - 30px * 3)/2);
+    min-height: calc(100vh/3);
     background-size: cover; 
     background-position: center;
     border-radius: 12px;
@@ -457,7 +457,7 @@
 
   .usp5__mobile-top-right-img {
     min-width: calc((100vw - 30px * 3)/2);
-    min-height: calc((55vh - 30px * 3)/2);
+    min-height: calc(100vh/3);
     background-size: cover;
     background-position: bottom right;
     border-radius: 12px;
@@ -465,7 +465,7 @@
 
   .usp5__mobile-bot-left-img {
     min-width: calc((100vw - 30px * 3)/2);
-    min-height: calc((55vh - 30px * 3)/2);
+    min-height: calc(100vh/3);
     background-size: cover;
     background-position: center;
     border-radius: 12px;
@@ -478,7 +478,7 @@
 
   .usp5__mobile-bot-right-img {
     max-width: calc((100vw - 30px * 3)/2);
-    min-height: calc((55vh - 30px * 3)/2);
+    min-height: calc(100vh/6);
     background-size: cover;
     background-position: center;
     border-radius: 12px

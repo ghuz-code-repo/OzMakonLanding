@@ -25,8 +25,6 @@
 
 .slide5 {
   width: 100%;
-  height: 100%;
-  /* min-width: 1700px; */
   display: flex;
   flex-direction: column;
   gap: 60px;
@@ -94,7 +92,7 @@
 
 .top_right_left_img {
   width: 402px;
-  height: 50vh;
+  height: 45vh;
   background-position: -50px -50px;
   background-size: 142%;
   transition: transform 0.3s ease;
@@ -113,7 +111,7 @@
 
 .top_right_right_img {
   width: 402px;
-  height: 50vh;
+  height: 45vh;
   background-position: -10px -30px;
   background-size: 105%;
   transition: transform 0.3s ease;
@@ -139,7 +137,7 @@
 
 .bottom_left_img {
   width: 547px;
-  height: 45vh;
+  height: 40vh;
   background-position: -90px -10px;
   background-size: 120%;
   transition: transform 0.3s ease;
@@ -158,7 +156,7 @@
 
 .bottom_center_img {
   width: 690px;
-  height: 45vh;
+  height: 40vh;
   background-position: 0px -60px;
   background-size: 100%;
   transition: transform 0.3s ease;
@@ -595,14 +593,6 @@
 
 
 @media (width < 1300px) or ((height < 700px) and (height > 500px)) {
-  .tablet_year {
-    display: none;
-  }
-
-  .mobile_year {
-    display: none;
-  }
-
 
   .slide5 {
     display: none;

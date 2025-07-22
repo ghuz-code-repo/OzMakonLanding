@@ -3,7 +3,7 @@ import { useMediaLoadingStats } from '../../hooks/useCachedImage';
 
 const LoadingProgressAdvanced = () => {
   const { overallProgress, getGroupProgress, groupsInfo, allGroupsCompleted } = useMediaLoadingStats();
-  const [isVisible, setIsVisible] = useState(true);
+  const [isVisible, setIsVisible] = useState(false);
   const [isMinimized, setIsMinimized] = useState(false);
 
   const groups = Object.keys(groupsInfo);
