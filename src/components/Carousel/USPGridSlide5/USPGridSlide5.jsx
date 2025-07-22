@@ -87,6 +87,120 @@ const USPGridSlide5 = () => {
           </div>
         </div>
       </div>
+      <div className={styles['tablet_slide']}>
+        <div className={styles['tablet_slide_wrapper']}>
+          <div className={styles['tablet_slide_left']}>
+            <div className={styles['tablet_first_left_row']}>
+              <div className={styles['tablet_left_row_title']}>
+                <h2 className={styles['tablet_left_row_title_text']}>
+                  {slide.left_top_title.split('\n').map((line, i) => (
+                    <React.Fragment key={i}>
+                      {line}
+                      <br />
+                    </React.Fragment>
+                  ))}
+                </h2>
+                <div className={styles['tablet_left_row_main_text']}>
+                  {slide.left_top_text.split('\n').map((line, i) => (
+                    <React.Fragment key={i}>
+                      {line}
+                      <br />
+                    </React.Fragment>
+                  ))}
+                </div>
+              </div>
+              <div className={styles['tablet_year']}>
+                <span>{slide.year}</span>
+              </div>
+            </div>
+            <div className={styles['tablet_second_left_row']}>
+              <div className={styles['tablet_yellow-line']} />
+              <div className={styles['tablet_bullets']}>
+                <span>
+                  {slide.right_bottom_text.split('\n').map((line, i) => (
+                    <React.Fragment key={i}>
+                      {line}
+                      <br />
+                    </React.Fragment>
+                  ))}
+                </span>
+              </div>
+            </div>
+          </div>
+          <div className={styles['tablet_slide_right']}>
+            <div className={styles['tablet_right_photo_block']}>
+              <div className={styles['top_right_photo']}
+                style={{ backgroundImage: `url(${imgPath(slide.top_right_left_img)})` }} />
+            </div>
+            <div className={styles['slide_two_photos']}>
+              <div className={styles['mid_left_right_photo']}
+                style={{ backgroundImage: `url(${imgPath(slide.top_right_right_img)})` }} />
+              <div className={styles['mid_right_right_photo']}
+                style={{ backgroundImage: `url(${imgPath(slide.bottom_left_img)})` }} />
+            </div>
+            <div className={styles['tablet_bottom_right_photo_block']}>
+              <div className={styles['bottom_right_photo']}
+                style={{ backgroundImage: `url(${imgPath(slide.bottom_center_img)})` }} />
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div className={styles['mobile_slide']}>
+        <div className={styles['mobile_slide_wrapper']}>
+          <div className={styles['mobile_top_row']}>
+            <div className={styles["mobile_title_block"]}>
+                <h2 className={styles['tablet_left_row_title_text']}>
+                  {slide.left_top_title.split('\n').map((line, i) => (
+                    <React.Fragment key={i}>
+                      {line}
+                      <br />
+                    </React.Fragment>
+                  ))}
+                </h2>
+              <div className={styles["mobile_year"]}>
+                {slide.year}
+              </div>
+            </div>
+            <div className={styles["mobile_text_block"]}>
+              <div className={styles["mobile_text"]}>
+                  {slide.left_top_text.split('\n').map((line, i) => (
+                    <React.Fragment key={i}>
+                      {line}
+                      <br />
+                    </React.Fragment>
+                  ))}
+              </div>
+              <div className={styles['mobile_yellow-line']} />
+
+            </div>
+            <div className={styles['mobile_top_photo']}
+              style={{ backgroundImage: `url(${imgPath(slide.top_right_left_img)})` }} />
+          </div>
+          <div className={styles['mobile_mid_row']}>
+            <div className={styles['mid_left_right_mob_photo']}
+              style={{ backgroundImage: `url(${imgPath(slide.top_right_right_img)})` }} />
+            <div className={styles['mid_right_right_content']}>
+              <div className={styles['mid_bullets']}>
+                <span>
+                  {slide.right_bottom_text.split('\n').map((line, i) => (
+                    <React.Fragment key={i}>
+                      {line}
+                      <br />
+                    </React.Fragment>
+                  ))}
+                </span>
+              </div>
+              <div className={styles['mid_right_right_mob_photo']}
+                style={{ backgroundImage: `url(${imgPath(slide.bottom_left_img)})` }} />
+            </div>
+          </div>
+          <div className={styles['mobile_bot_row']}>
+            <div className={styles['bottom_right_mob_photo']}
+              style={{ backgroundImage: `url(${imgPath(slide.bottom_center_img)})` }} />
+          </div>
+        </div>
+      </div>
     </div>
   );
 };
