@@ -1,0 +1,22 @@
+version: '3.8'
+
+services:
+  # Основное приложение
+  ozmakon:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: production
+    container_name: ozmakon
+    restart: unless-stopped
+    networks:
+      - service_network
+      - public_network
+
+networks:
+  service_network:
+    external: true
+    name: service_network
+  public_network:
+    external: true
+    name: public_network
