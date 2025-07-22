@@ -20,7 +20,7 @@ function App() {
   return (
     <MediaPreloaderProvider>
       <MediaInitializer>
-        {/* <LoadingProgressAdvanced /> */}
+        <LoadingProgressAdvanced />
         <Header />
         <Hero />
         <Conception />

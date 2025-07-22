@@ -25,11 +25,112 @@ const USPGridCarousel = () => {
   slideRef.current = currentSlide;
   const lastSlideIndex = slides.length - 1;
 
+  // Touch events для свайпов
+  const touchStartY = useRef(null);
+  const touchStartTime = useRef(null);
+
   console.log(`%c[Render] Слайд: ${currentSlide}`, 'color: orange;');
+
+  // Функция для проверки активности слайдера
+  const isCarouselActive = () => {
+    const { current: container } = containerRef;
+    if (!container) return false;
+
+    const rect = container.getBoundingClientRect();
+    const viewportHeight = window.innerHeight;
+    return rect.top <= 1 && rect.bottom >= viewportHeight - 1;
+  };
+
+  // Функция для смены слайда (общая для wheel и touch)
+  const changeSlide = (direction) => {
+    if (isThrottled.current) {
+      console.log('%c[Navigation] Смена слайда заблокирована (throttle).', 'color: red;');
+      return false;
+    }
+
+    if (slideRef.current === 0 && direction === 'up') {
+      console.log('[Check] Попытка выхода ВВЕРХ.');
+      window.scrollBy({ top: -50, behavior: 'smooth' });
+      return false;
+    }
+
+    if (slideRef.current === lastSlideIndex && direction === 'down') {
+      console.log('[Check] Попытка выхода ВНИЗ.');
+      window.scrollBy({ top: 50, behavior: 'smooth' });
+      return false;
+    }
+    
+    let nextSlide = slideRef.current + (direction === 'down' ? 1 : -1);
+    
+    console.log(`%c[Navigation] Переход на слайд ${nextSlide}`, 'font-weight: bold;');
+    isThrottled.current = true;
+    setCurrentSlide(nextSlide);
+    
+    const rect = containerRef.current.getBoundingClientRect();
+    const viewportHeight = window.innerHeight;
+    const targetScrollY = window.scrollY + rect.top + nextSlide * viewportHeight;
+    window.scrollTo({ top: targetScrollY, behavior: 'auto' });
+
+    console.log(`%c[ACTION] Перемотка на позицию слайда ${nextSlide}. Блокировка на 1с.`, 'color: green;');
+
+    setTimeout(() => {
+      isThrottled.current = false;
+      console.log('%c[ACTION] Блокировка снята.', 'color: blue;');
+    }, SCROLL_DELAY);
+
+    return true;
+  };
+
+  // Обработчики touch событий
+  const handleTouchStart = (e) => {
+    if (!isCarouselActive()) return;
+    
+    touchStartY.current = e.touches[0].clientY;
+    touchStartTime.current = Date.now();
+    console.log('[Touch] Начало касания:', touchStartY.current);
+  };
+
+  const handleTouchEnd = (e) => {
+    if (!isCarouselActive() || touchStartY.current === null) return;
+    
+    const touchEndY = e.changedTouches[0].clientY;
+    const touchEndTime = Date.now();
+    const deltaY = touchStartY.current - touchEndY;
+    const deltaTime = touchEndTime - touchStartTime.current;
+    
+    console.log('[Touch] Конец касания. DeltaY:', deltaY, 'DeltaTime:', deltaTime);
+    
+    // Минимальное расстояние для свайпа (в пикселях)
+    const minSwipeDistance = 50;
+    // Максимальное время для свайпа (в миллисекундах)
+    const maxSwipeTime = 500;
+    
+    if (Math.abs(deltaY) >= minSwipeDistance && deltaTime <= maxSwipeTime) {
+      e.preventDefault();
+      const direction = deltaY > 0 ? 'down' : 'up';
+      console.log(`%c[Touch] Обнаружен свайп ${direction}`, 'color: purple; font-weight: bold;');
+      changeSlide(direction);
+    }
+    
+    // Сброс значений
+    touchStartY.current = null;
+    touchStartTime.current = null;
+  };
+
+  const handleTouchMove = (e) => {
+    if (!isCarouselActive() || touchStartY.current === null) return;
+    
+    // Предотвращаем стандартное поведение скролла во время свайпа
+    const touchCurrentY = e.touches[0].clientY;
+    const deltaY = Math.abs(touchStartY.current - touchCurrentY);
+    
+    if (deltaY > 10) { // Если движение больше 10px, блокируем скролл
+      e.preventDefault();
+    }
+  };
 
   useEffect(() => {
     const handleWheel = (e) => {
-      // ... (этот обработчик остается без изменений) ...
       const { current: container } = containerRef;
       if (!container) return;
 
@@ -53,42 +154,17 @@ const USPGridCarousel = () => {
       e.preventDefault();
       
       const direction = e.deltaY > 0 ? 'down' : 'up';
-      
-      if (isThrottled.current) {
-        console.log('%c[Wheel] Прокрутка заблокирована (throttle).', 'color: red;');
-        return;
-      }
-
-      if (slideRef.current === 0 && direction === 'up') {
-        console.log('[Check] Попытка выхода ВВЕРХ.');
-        window.scrollBy({ top: -50, behavior: 'smooth' });
-        return;
-      }
-
-      if (slideRef.current === lastSlideIndex && direction === 'down') {
-        console.log('[Check] Попытка выхода ВНИЗ.');
-        window.scrollBy({ top: 50, behavior: 'smooth' });
-        return;
-      }
-      
-      let nextSlide = slideRef.current + (direction === 'down' ? 1 : -1);
-      
-      console.log(`%c[Wheel] Листаем на слайд ${nextSlide}`, 'font-weight: bold;');
-      isThrottled.current = true;
-      setCurrentSlide(nextSlide);
-      
-      const targetScrollY = window.scrollY + rect.top + nextSlide * viewportHeight;
-      window.scrollTo({ top: targetScrollY, behavior: 'auto' });
-
-      console.log(`%c[ACTION] Перемотка на позицию слайда ${nextSlide}. Блокировка на 1с.`, 'color: green;');
-
-      setTimeout(() => {
-        isThrottled.current = false;
-        console.log('%c[ACTION] Блокировка снята.', 'color: blue;');
-      }, SCROLL_DELAY);
+      changeSlide(direction);
     };
 
     window.addEventListener('wheel', handleWheel, { passive: false });
+
+    // Добавляем обработчики touch событий
+    if (containerRef.current) {
+      containerRef.current.addEventListener('touchstart', handleTouchStart, { passive: false });
+      containerRef.current.addEventListener('touchend', handleTouchEnd, { passive: false });
+      containerRef.current.addEventListener('touchmove', handleTouchMove, { passive: false });
+    }
 
     // --- НОВАЯ ЛОГИКА СИНХРОНИЗАЦИИ ---
     const observer = new IntersectionObserver(
@@ -131,7 +207,12 @@ const USPGridCarousel = () => {
 
     return () => {
       window.removeEventListener('wheel', handleWheel);
+      
+      // Удаляем обработчики touch событий
       if (containerRef.current) {
+        containerRef.current.removeEventListener('touchstart', handleTouchStart);
+        containerRef.current.removeEventListener('touchend', handleTouchEnd);
+        containerRef.current.removeEventListener('touchmove', handleTouchMove);
         observer.unobserve(containerRef.current);
       }
     };

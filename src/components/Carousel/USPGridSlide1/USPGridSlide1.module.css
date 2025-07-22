@@ -10,8 +10,8 @@
 }
 
 .usp5-wrapper {
+  max-width: 1700px;
   width: 100%;
-  max-width: 100vw !important;
   margin: 0 auto;
   display: flex;
   flex-direction: row;
@@ -21,8 +21,7 @@
   justify-content: space-between;
   align-items: flex-end;
   gap: 30px;
-  padding: 0;
-  /* 20px; */
+  padding: 0 20px;
 }
 
 .usp5-col {
@@ -33,7 +32,7 @@
 }
 
 .usp5-col--left {
-  /* padding-left: 0.5%; */
+  padding-left: 0.5%;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
@@ -207,6 +206,8 @@
   margin-top: 3vh;
   margin-bottom: 7vh;
   align-self: start;
+  max-width: 90%;
+  word-break: break-word;
 }
 
 .usp5__left-bottom {

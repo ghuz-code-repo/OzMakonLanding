@@ -7,6 +7,9 @@
   margin-top: 10vh;
   justify-content: center;
   display: flex;
+  /* Улучшенная поддержка touch событий */
+  touch-action: manipulation;
+  -webkit-overflow-scrolling: touch;
 }
 
 /* Этот контейнер "прилипает" к верху экрана, когда мы скроллим внутри .usp5-scroll-container */
@@ -208,6 +211,12 @@
   /* Применяем анимацию к обертке слайда */
   animation: slideFadeIn 0.5s ease-in-out;
   max-width: 100vw !important;
+  /* Улучшенная поддержка touch событий */
+  touch-action: pan-y; /* Разрешаем только вертикальный скролл */
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
 
 @media(width < 1550) {

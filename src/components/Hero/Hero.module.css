@@ -3,7 +3,7 @@
 /* Base styles for FullHD (1920x1080) and larger screens */
 .hero {
   position: relative;
-  width: 100%;
+  width: 100vw;
   height: 111vh;
   background-size: cover;
   background-position: 0px -50px;
