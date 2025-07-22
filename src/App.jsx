@@ -27,11 +27,11 @@ function App() {
         <Carousel />
         
         <div className="hideable-content-below">
-          <ApartmentLayouts />
+          {/* <ApartmentLayouts />
           <PlacesAround />
           <Location />
           <Callback />
-          <Footer />
+          <Footer /> */}
         </div>
       </MediaInitializer>
     </MediaPreloaderProvider>
