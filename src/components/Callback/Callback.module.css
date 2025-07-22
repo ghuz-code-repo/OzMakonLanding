@@ -6,17 +6,19 @@
   justify-content: space-between;
   align-items: center;
   background: var(--color-bg-main);
-  width: 100%;
+  width: 100vw;
   max-width: 1700px;
-  max-height: 100vh;
-  margin: 0 auto;
+  margin: 0 10px;
+  margin-bottom: 100px;
   padding: 0 20px;
   margin-top: 150px;
   overflow-y: hidden;
+  overflow-x: hidden;
+
 }
 
 .left {
-  width: 700px;
+  max-width: 700px;
   margin-right: 48px;
   display: flex;
   flex-direction: column;
@@ -26,6 +28,8 @@
 .right {
   display: flex;
   align-items: flex-start;
+  max-height: 100vh;
+
 }
 
 .grid {
@@ -195,7 +199,7 @@
 /* Tablets (≤1200px) */
 @media (max-width: 1300px) {
   .CallbackSection {
-    max-width: 1100px;
+    /* max-width: 1100px; */
     padding: 0 16px;
     margin-top: 120px;
   }
@@ -244,7 +248,6 @@
 /* Tablets (≤1024px) */
 @media (max-width: 1100px) {
   .CallbackSection {
-    max-width: 1000px;
     margin-top: 100px;
     flex-direction: column;
     gap: 40px;

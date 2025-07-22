@@ -1,9 +1,9 @@
 @import '../../styles/colors.css';
 
 .location-section {
-  margin:0 20px !important;
-  padding:0 20px !important;
-  
+  margin: 0 20px !important;
+  padding: 0 20px !important;
+
   /* Example style */
   /* Add screen-specific styles here */
 }
@@ -28,7 +28,7 @@
   font-weight: 200;
   font-size: 24px;
 }
- 
+
 .mapBlock {
   max-height: 948px;
   margin-top: 48px;
@@ -42,7 +42,7 @@
   width: 100%;
   min-height: 700px;
   background-size: cover;
-  background-position: center;
+
 }
 
 .mapImage::before {
@@ -289,12 +289,18 @@
     min-height: 280px;
   }
 
+  .mapImage::before {
+    background-position: right;
+  }
+
   .card {
-    min-width: 200px;
+    min-width: 90%;
     min-height: 90px;
     padding: 10px 14px;
-    bottom: 12px;
-    left: 8px;
+    top: 8px;
+    left: 5%;
+    right: 5%;
+    bottom: auto;
     gap: 8px;
   }
 
@@ -307,4 +313,8 @@
   .cardRowBulletPlace {
     font-size: 12px;
   }
+}
+
+@media (max-width: 350px){
+
 }
