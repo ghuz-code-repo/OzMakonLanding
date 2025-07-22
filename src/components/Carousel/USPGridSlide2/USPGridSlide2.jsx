@@ -97,28 +97,33 @@ const USPGridSlide2 = () => {
       </div>
       <div className={styles["usp5__mobile-wrapper"]}>
         <div className={styles["usp5__mobile-top-row"]}>
-          <div className={styles["usp5__mobile-title"]}>
-            <h2 className={styles["usp5__title"]}>
-              {slide.title.split('\n').map((line, i) => (
-                <React.Fragment key={i}>
-                  {line}
-                  <br />
-                </React.Fragment>
-              ))}
-            </h2>
+          <div>
+            <div className={styles["usp5__mobile-title"]}>
+              <h2 className={styles["usp5__title"]}>
+                {slide.title.split('\n').map((line, i) => (
+                  <React.Fragment key={i}>
+                    {line}
+                    <br />
+                  </React.Fragment>
+                ))}
+              </h2>
+            </div>
+            <div className={styles["usp5__mobile-textblock"]}>
+              <div className={styles["usp5__mobile-text"]}>
+                {slide.right.text.split('\n').map((line, i) => (
+                  <React.Fragment key={i}>
+                    {line}
+                    <br />
+                  </React.Fragment>
+                ))}
+              </div>
+              <div className={styles["usp5__mobile-year"] + ' ' + styles["usp5__mobile-text"]}>
+                {slide.left.year}
+              </div>
+            </div>
           </div>
-          <div className={styles["usp5__mobile-textblock"]}>
-            <div className={styles["usp5__mobile-text"]}>
-              {slide.right.text.split('\n').map((line, i) => (
-                <React.Fragment key={i}>
-                  {line}
-                  <br />
-                </React.Fragment>
-              ))}
-            </div>
-            <div className={styles["usp5__mobile-year"] + ' ' + styles["usp5__mobile-text"]}>
-              {slide.left.year}
-            </div>
+          <div className={styles["usp5__mobile-bot-right-text"] + ' ' + styles["usp5__mobile-text"]+ ' ' + styles["tablet-mini-text"]}>
+            {slide.left.list.split('\n').map((item, i) => <div key={i}>{item}</div>)}
           </div>
         </div>
         <div className={styles["usp5_mobile-content-block"]}>
@@ -135,7 +140,7 @@ const USPGridSlide2 = () => {
               style={{ backgroundImage: `url(${imgPath(slide.center.img1)})` }} aria-label='ЖДУ ФОТО'
             />
             <div className={styles["usp5__mobile-bot-right-block"]}>
-              <div className={styles["usp5__mobile-bot-right-text"] + ' ' + styles["usp5__mobile-text"]}>
+              <div className={styles["usp5__mobile-bot-right-text"] + ' ' + styles["usp5__mobile-text"]+ ' ' + styles["mobile-mini-text"]}>
                 {slide.left.list.split('\n').map((item, i) => <div key={i}>{item}</div>)}
               </div>
               <div className={styles["usp5__mobile-bot-right-img"]}
