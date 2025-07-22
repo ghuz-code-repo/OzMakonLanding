@@ -23,7 +23,8 @@ FROM nginx:alpine
 # Copy built application to landing subdirectory to match base path
 COPY --from=build /app/dist /usr/share/nginx/html/landing
 
-# Copy assets directory to handle direct asset requests  
+# Copy assets directory to handle direct asset requests at root level too
+COPY --from=build /app/src/assets /usr/share/nginx/html/src/assets
 COPY --from=build /app/src/assets /usr/share/nginx/html/landing/src/assets
 
 # Create nginx config that works with landing base path
@@ -32,6 +33,12 @@ RUN echo 'server {' > /etc/nginx/conf.d/default.conf && \
     echo '    server_name localhost;' >> /etc/nginx/conf.d/default.conf && \
     echo '    root /usr/share/nginx/html;' >> /etc/nginx/conf.d/default.conf && \
     echo '    index index.html;' >> /etc/nginx/conf.d/default.conf && \
+    echo '    # Handle direct asset requests from src at root level' >> /etc/nginx/conf.d/default.conf && \
+    echo '    location /src/assets/ {' >> /etc/nginx/conf.d/default.conf && \
+    echo '        try_files $uri =404;' >> /etc/nginx/conf.d/default.conf && \
+    echo '        expires 1y;' >> /etc/nginx/conf.d/default.conf && \
+    echo '        add_header Cache-Control "public";' >> /etc/nginx/conf.d/default.conf && \
+    echo '    }' >> /etc/nginx/conf.d/default.conf && \
     echo '    # Handle landing path' >> /etc/nginx/conf.d/default.conf && \
     echo '    location /landing/ {' >> /etc/nginx/conf.d/default.conf && \
     echo '        alias /usr/share/nginx/html/landing/;' >> /etc/nginx/conf.d/default.conf && \
