@@ -18,18 +18,19 @@
   color: #fff;
   margin: 0;
   box-sizing: border-box;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   gap: 30px;
 }
 
 .slide5 {
   width: 100%;
+  height: 100%;
   /* min-width: 1700px; */
   display: flex;
   flex-direction: column;
   gap: 60px;
-  justify-content: space-between;
+  justify-content: center;
 }
 
 .first_row {
@@ -88,12 +89,12 @@
   overflow: hidden;
   max-width: 100%;
   max-height: 100%;
-  border-radius: 0px 0px 12px 12px;
+  border-radius: 12px;
 }
 
 .top_right_left_img {
   width: 402px;
-  height: 520px;
+  height: 50vh;
   background-position: -50px -50px;
   background-size: 142%;
   transition: transform 0.3s ease;
@@ -107,12 +108,12 @@
   overflow: hidden;
   max-width: 100%;
   max-height: 100%;
-  border-radius: 0px 0px 12px 12px;
+  border-radius: 12px;
 }
 
 .top_right_right_img {
   width: 402px;
-  height: 520px;
+  height: 50vh;
   background-position: -10px -30px;
   background-size: 105%;
   transition: transform 0.3s ease;
@@ -133,12 +134,12 @@
   overflow: hidden;
   max-width: 100%;
   max-height: 100%;
-  border-radius: 12px 12px 0px 0px;
+  border-radius: 12px;
 }
 
 .bottom_left_img {
   width: 547px;
-  height: 348px;
+  height: 45vh;
   background-position: -90px -10px;
   background-size: 120%;
   transition: transform 0.3s ease;
@@ -152,12 +153,12 @@
   overflow: hidden;
   max-width: 100%;
   max-height: 100%;
-  border-radius: 12px 12px 0px 0px;
+  border-radius: 12px;
 }
 
 .bottom_center_img {
   width: 690px;
-  height: 348px;
+  height: 45vh;
   background-position: 0px -60px;
   background-size: 100%;
   transition: transform 0.3s ease;

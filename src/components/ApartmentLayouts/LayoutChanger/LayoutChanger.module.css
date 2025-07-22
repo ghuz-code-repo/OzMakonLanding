@@ -4,17 +4,20 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 40px 0;
-  padding: 0 20px;
+  /* margin: 40px 0; */
+  /* padding: 0 20px; */
 }
 
 .layout-changer__controls {
   display: flex;
- background: #222220;
-
+  background: #222220;
+  flex-direction: row;
+  justify-content: space-evenly;
   border-radius: 50px;
   padding: 4px;
   gap: 2px;
+
+  width: 100%;
   /* border: 1px solid rgba(255, 255, 255, 0.2); */
   backdrop-filter: blur(10px);
 }
@@ -30,7 +33,7 @@
   cursor: pointer;
   transition: all 0.3s ease;
   white-space: nowrap;
-  min-width: 140px;
+  /* min-width: 140px; */
   font-family: inherit;
 }
 
@@ -54,31 +57,52 @@
 /* Адаптивность */
 @media (max-width: 768px) {
   .layout-changer {
-    padding: 0 10px;
+    padding: 0px;
   }
-  
+
   .layout-changer__controls {
-    flex-wrap: wrap;
-    border-radius: 25px;
-    gap: 4px;
+    padding: 10px 0px;
+    flex-direction: row;
+    justify-content: space-evenly;
   }
-  
+
   .layout-changer__button {
-    padding: 10px 20px;
+    padding: 6px 0px;
+
     font-size: 14px;
-    min-width: 120px;
+    min-width: 25vw;
+
   }
 }
 
 @media (max-width: 480px) {
   .layout-changer__controls {
-    flex-direction: column;
-    width: 100%;
-    max-width: 300px;
+    padding: 10px 0px;
+    flex-direction: row;
+    justify-content: center;
   }
-  
+
   .layout-changer__button {
-    width: 100%;
-    min-width: unset;
+    padding: 6px 0px;
+    min-width: 25vw;
+
   }
+
+  .layout-changer {
+    min-width: 100vw;
+    margin: 0;
+  }
+
+  .layout-changer__controls {
+    min-width: 100vw;
+  }
+
+  .layout-changer__button {
+    min-width: 23%;
+    text-align: center;
+  }
+
+  .layout-changer__button {
+  font-size: 10px;
+}
 }
