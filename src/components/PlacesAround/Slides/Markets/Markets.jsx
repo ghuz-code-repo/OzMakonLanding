@@ -13,9 +13,10 @@ const Markets = () => {
       {/* Первая строка - главное изображение и текст */}
       <div className={styles.topRow}>
         <div className={styles.mainImage}>
-          <div style={{ backgroundImage: `url(${imgPath('nuts.webp')})` }}
-            className={styles.heroImage}
-          />
+          <img
+            src={imgPath('nuts.webp')}
+            alt="Рынок рядом с комплексом"
+            className={styles.heroImage} />
         </div>
 
         <div className={styles.textBlock}>
@@ -32,13 +33,15 @@ const Markets = () => {
       {/* Вторая строка - дополнительные изображения */}
       <div className={styles.bottomRow}>
         <div className={styles.smallImage}>
-          <div style={{ backgroundImage: `url(${imgPath('man.webp')})` }}
-            className={styles.leftImage}
+          <img
+            src={imgPath('man.webp')}
+            className={styles.image}
           />
         </div>
         <div className={styles.largeImage}>
-          <div style={{ backgroundImage: `url(${imgPath('fruits.webp')})` }}
-            className={styles.rightImage}
+          <img
+            src={imgPath('fruits.webp')}
+            className={styles.image}
           />
         </div>
       </div>

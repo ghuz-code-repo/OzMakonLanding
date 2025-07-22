@@ -2,7 +2,7 @@
 
 /* Base styles for FullHD (1920x1080) and larger screens */
 .conception {
-  width: 100%;
+  width: 100vw;
   background: var(--color-bg-main);
   color: var(--color-text-main);
   padding: 0px;

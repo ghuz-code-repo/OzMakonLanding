@@ -193,7 +193,7 @@
 }
 
 /* Tablets (≤1200px) */
-@media (max-width: 1200px) {
+@media (max-width: 1300px) {
   .CallbackSection {
     max-width: 1100px;
     padding: 0 16px;
@@ -242,7 +242,7 @@
 }
 
 /* Tablets (≤1024px) */
-@media (max-width: 1024px) {
+@media (max-width: 1100px) {
   .CallbackSection {
     max-width: 1000px;
     margin-top: 100px;
@@ -259,8 +259,7 @@
   }
 
   .right {
-    width: 100%;
-    order: 2;
+    display: none;
   }
 
   .title {

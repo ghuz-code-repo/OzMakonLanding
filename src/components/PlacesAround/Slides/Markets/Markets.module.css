@@ -29,8 +29,7 @@
 .heroImage {
   width: 100%;
   height: 100%;
-  background-size: 100%;
-  background-position: 0px -140px;
+  object-fit: cover;
   transition: transform 0.3s ease;
 }
 
@@ -64,7 +63,10 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  /* max-height: fit-content; */
+  /* max-height: 100%; */
 }
+
 
 .description {
   font-size: 20px;
@@ -81,39 +83,325 @@
   height: 445px;
 }
 
-.smallImage,
-.largeImage {
+.smallImage {
+  width: 715px;
+  height: 420px;
   border-radius: 20px;
   overflow: hidden;
   flex-shrink: 0;
 }
 
-.smallImage {
-  width: 690px;
-  height: 420px;
-}
-
 .largeImage {
-  width: 980px;
+  width: 955px;
   height: 420px;
+  border-radius: 20px;
+  overflow: hidden;
+  flex-shrink: 0;
 }
 
-.leftImage{
+.image {
   width: 100%;
   height: 100%;
-  background-size: 100%;
-  background-position: 0px -30px;
-  transition: transform 0.3s ease;
-}
-.rightImage{
-  width: 100%;
-  height: 100%;
-  background-size: 100%;
-  background-position: 0px -75px;
+  object-fit: cover;
   transition: transform 0.3s ease;
 }
 
-.smallImage:hover .leftImage,
-.largeImage:hover .rightImage {
+.smallImage:hover .image,
+.largeImage:hover .image {
   transform: scale(1.05);
+}
+
+@media (max-width: 1700px) {
+  .shoppingCenters {
+    max-width: 1500px;
+  }
+
+  .mainImage {
+    width: 736px;
+    height: 280px;
+  }
+
+  .smallImage {
+    width: 611px;
+    height: 372px;
+  }
+
+  .largeImage {
+    width: 860px;
+    height: 372px;
+  }
+
+  .bottomRow {
+    height: 400px;
+  }
+
+  .textBlock {
+    padding: 36px 22px 12px 22px;
+  }
+
+  .description {
+    font-size: 19px;
+  }
+}
+
+/* Средние экраны (≤ 1440px) */
+@media (max-width: 1515px) {
+  .shoppingCenters {
+    max-width: 1300px;
+    gap: 25px;
+  }
+
+  .topRow {
+    gap: 25px;
+  }
+
+  .mainImage {
+    width: 650px;
+    height: 240px;
+  }
+
+  .smallImage {
+    width: 540px;
+    height: 340px;
+  }
+
+  .largeImage {
+    width: 735px;
+    height: 340px;
+  }
+
+  .bottomRow {
+    height: 365px;
+    gap: 25px;
+  }
+
+  .textBlock {
+    padding: 32px 20px 12px 20px;
+  }
+
+  .description {
+    font-size: 18px;
+  }
+
+  .timeTag {
+    font-size: 13px;
+  }
+}
+
+/* Маленькие экраны (≤ 1280px) */
+@media (max-width: 1313px) {
+  .shoppingCenters {
+    max-width: 1150px;
+    /* gap: 22px; */
+  }
+
+  .topRow {
+    /* gap: 22px; */
+  }
+
+  .mainImage {
+    width: 580px;
+    height: 230px;
+  }
+
+  .smallImage {
+    width: 480px;
+    height: 310px;
+  }
+
+  .largeImage {
+    width: 610px;
+    height: 310px;
+  }
+
+  .bottomRow {
+    height: 335px;
+    gap: 22px;
+  }
+
+  .textBlock {
+    padding: 25px 18px 0px 18px;
+    max-height: fit-content;
+  }
+
+  .description {
+    font-size: 16px;
+    line-height: 1.45;
+  }
+
+  .timeTag {
+    font-size: 13px;
+    gap: 5px;
+  }
+
+  .timeIcon {
+    font-size: 11px;
+  }
+}
+
+/* Планшеты и маленькие ноутбуки (≤ 1024px) */
+@media (max-width: 1280px) {
+  .shoppingCenters {
+    height: auto;
+    gap: 20px;
+  }
+
+  .mainImage {
+    width: 600px;
+    height: 250px;
+  }
+
+  .smallImage {
+    width: 460px;
+    height: 300px;
+  }
+
+  .largeImage {
+    width: 670px;
+    height: 300px;
+  }
+
+  .bottomRow {
+    height: auto;
+  }
+
+  .textBlock {
+    padding: 30px 20px 10px 20px;
+  }
+
+  .description {
+    font-size: 18px;
+  }
+}
+
+/* Планшеты (≤ 768px) */
+@media (max-width: 1100px) {
+  .shoppingCenters {
+    height: auto;
+    gap: 15px;
+    width: 100%;
+  }
+
+  .topRow {
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .mainImage {
+    width: 100%;
+    height: 200px;
+  }
+
+  .smallImage {
+    width: 100%;
+    height: 200px;
+  }
+
+  .largeImage {
+    width: 100%;
+    height: 200px;
+  }
+
+  .textBlock {
+    padding: 20px 16px 10px 16px;
+    min-height: 120px;
+  }
+
+  .description {
+    font-size: 16px;
+    line-height: 1.4;
+  }
+
+  .bottomRow {
+    flex-direction: column;
+    gap: 15px;
+    height: auto;
+  }
+
+  .timeTag {
+    font-size: 12px;
+    margin-right: 0;
+  }
+}
+
+/* Мобильные устройства (≤ 480px) */
+@media (max-width: 480px) {
+  .shoppingCenters {
+    gap: 12px;
+  }
+
+  .topRow {
+    gap: 12px;
+  }
+
+  .mainImage {
+    height: 160px;
+    border-radius: 15px;
+  }
+
+  .textBlock {
+    padding: 16px 12px 8px 12px;
+    border-radius: 15px;
+    min-height: 100px;
+  }
+
+  .description {
+    font-size: 14px;
+    line-height: 1.3;
+  }
+
+  .bottomRow {
+    gap: 12px;
+  }
+
+  .smallImage,
+  .largeImage {
+    height: 140px;
+    border-radius: 15px;
+  }
+
+  .timeTag {
+    font-size: 11px;
+    gap: 4px;
+  }
+
+  .timeIcon {
+    font-size: 10px;
+  }
+}
+
+/* Очень маленькие экраны (≤ 360px) */
+@media (max-width: 360px) {
+  .shoppingCenters {
+    gap: 10px;
+  }
+
+  .mainImage {
+    height: 140px;
+    border-radius: 12px;
+  }
+
+  .textBlock {
+    padding: 12px 10px 6px 10px;
+    border-radius: 12px;
+    min-height: 90px;
+  }
+
+  .description {
+    font-size: 13px;
+  }
+
+  .smallImage,
+  .largeImage {
+    height: 120px;
+    border-radius: 12px;
+  }
+
+  .bottomRow {
+    gap: 10px;
+  }
+
+  .timeTag {
+    font-size: 10px;
+  }
 }

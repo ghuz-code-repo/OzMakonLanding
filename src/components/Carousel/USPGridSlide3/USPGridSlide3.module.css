@@ -469,7 +469,7 @@
 .tablet_slide_left {
     display: flex;
     flex-direction: column;
-    min-width: 50vw;
+    min-width: 45vw;
     /* min-height: 80vh; */
     justify-content: space-between;
     margin: 20px;
@@ -526,7 +526,7 @@
 .tablet_slide_right {
     display: flex;
     flex-direction: column;
-    min-width: 40vw;
+    /* min-width: 40vw; */
     min-height: 80vh;
     gap: 30px;
     margin: 20px;
@@ -556,7 +556,7 @@
 .mid_left_right_photo {
     background-size: cover;
     background-position: center;
-    min-width: 19vw;
+    min-width: 20vw;
 
     height: 30vh;
     border-radius: 12px;

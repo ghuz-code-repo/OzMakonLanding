@@ -47,9 +47,9 @@ const Location = () => {
               </React.Fragment>
             ))}
           </div>
-          <div className={styles.marker}>
+          {/* <div className={styles.marker}>
             <img src={`${imgPath('marker.svg')}`} />
-          </div>
+          </div> */}
         </div>
       </div>
     </section>

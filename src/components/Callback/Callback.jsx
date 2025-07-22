@@ -9,22 +9,22 @@ const imgPath = (name) => `/src/assets/img/Callback/${name}`;
 
 // Все данные остаются с дублированием, как было в вашем рабочем варианте
 const leftImages = [
-  { 'name': 'l-1.png', 'width': '258px', 'height': '328px', 'posX': '0px', 'posY': '0px', 'size': '100%' },
-  { 'name': 'l-2.png', 'width': '258px', 'height': '272px', 'posX': '0px', 'posY': '0px', 'size': '100%' },
-  { 'name': 'l-3.png', 'width': '258px', 'height': '211px', 'posX': '0px', 'posY': '0px', 'size': '100%' },
-  { 'name': 'l-4.png', 'width': '258px', 'height': '149px', 'posX': '0px', 'posY': '0px', 'size': '100%' }
+  { 'name': 'l-1.png', 'width': '13vw', 'height': '328px', 'posX': '0px', 'posY': '0px', 'size': 'cover' },
+  { 'name': 'l-2.png', 'width': '13vw', 'height': '272px', 'posX': '0px', 'posY': '0px', 'size': 'cover' },
+  { 'name': 'l-3.png', 'width': '13vw', 'height': '211px', 'posX': '0px', 'posY': '0px', 'size': 'cover' },
+  { 'name': 'l-4.png', 'width': '13vw', 'height': '149px', 'posX': '0px', 'posY': '0px', 'size': 'cover' }
 ];
 const midImages = [
-  { 'name': 'm-1.png', 'width': '259px', 'height': '210px', 'posX': '0px', 'posY': '0px', 'size': '100%' },
-  { 'name': 'm-2.png', 'width': '259px', 'height': '328px', 'posX': '0px', 'posY': '0px', 'size': '100%' },
-  { 'name': 'm-3.png', 'width': '259px', 'height': '204px', 'posX': '0px', 'posY': '0px', 'size': '100%' },
-  { 'name': 'm-4.png', 'width': '218px', 'height': '346px', 'posX': '0px', 'posY': '0px', 'size': '100%' }
+  { 'name': 'm-1.png', 'width': '13vw', 'height': '210px', 'posX': '0px', 'posY': '0px', 'size': 'cover' },
+  { 'name': 'm-2.png', 'width': '13vw', 'height': '328px', 'posX': '0px', 'posY': '0px', 'size': 'cover' },
+  { 'name': 'm-3.png', 'width': '13vw', 'height': '204px', 'posX': '0px', 'posY': '0px', 'size': 'cover' },
+  { 'name': 'm-4.png', 'width': '13vw', 'height': '346px', 'posX': '0px', 'posY': '0px', 'size': 'cover' }
 ];
 const rightImages = [
-  { 'name': 'r-1.png', 'width': '258px', 'height': '328px', 'posX': '0px', 'posY': '0px', 'size': '100%' },
-  { 'name': 'r-2.png', 'width': '258px', 'height': '164px', 'posX': '0px', 'posY': '0px', 'size': '100%' },
-  { 'name': 'r-3.png', 'width': '258px', 'height': '268px', 'posX': '0px', 'posY': '0px', 'size': '100%' },
-  { 'name': 'r-4.png', 'width': '201px', 'height': '255px', 'posX': '0px', 'posY': '0px', 'size': '100%' }
+  { 'name': 'r-1.png', 'width': '13vw', 'height': '328px', 'posX': '0px', 'posY': '0px', 'size': 'cover' },
+  { 'name': 'r-2.png', 'width': '13vw', 'height': '164px', 'posX': '0px', 'posY': '0px', 'size': 'cover' },
+  { 'name': 'r-3.png', 'width': '13vw', 'height': '268px', 'posX': '0px', 'posY': '0px', 'size': 'cover' },
+  { 'name': 'r-4.png', 'width': '13vw', 'height': '255px', 'posX': '0px', 'posY': '0px', 'size': 'cover' }
 ];
 
 const Callback = () => {
