@@ -1,32 +1,61 @@
-# Используем официальный Node.js образ как базовый
-FROM node:18-alpine AS builder
+# Multi-stage build for React application
+FROM node:18-alpine as build
 
-# Устанавливаем рабочую директорию
+# Set working directory
 WORKDIR /app
 
-# Копируем package.json и package-lock.json (если есть)
+# Copy package files
 COPY package*.json ./
 
-# Устанавливаем зависимости
-RUN npm ci --only=production
+# Install dependencies
+RUN npm ci
 
-# Копируем исходный код
+# Copy source code
 COPY . .
 
-# Собираем приложение
+# Build the application
 RUN npm run build
 
-# Второй этап - продакшн образ с Nginx
-FROM nginx:alpine AS production
+# Production stage with nginx for SPA support
+FROM nginx:alpine
 
-# Копируем собранное приложение из builder этапа
-COPY --from=builder /app/dist /usr/share/nginx/html
+# Copy built application from build stage
+COPY --from=build /app/dist /usr/share/nginx/html
 
-# Копируем конфигурацию Nginx
-COPY nginx.conf /etc/nginx/nginx.conf
+# Copy assets directory to handle direct asset requests
+COPY --from=build /app/src/assets /usr/share/nginx/html/src/assets
 
-# Открываем порт 80
+# Create nginx config for React SPA
+RUN echo 'server {' > /etc/nginx/conf.d/default.conf && \
+    echo '    listen 80;' >> /etc/nginx/conf.d/default.conf && \
+    echo '    server_name localhost;' >> /etc/nginx/conf.d/default.conf && \
+    echo '    root /usr/share/nginx/html;' >> /etc/nginx/conf.d/default.conf && \
+    echo '    index index.html;' >> /etc/nginx/conf.d/default.conf && \
+    echo '    # Handle direct asset requests' >> /etc/nginx/conf.d/default.conf && \
+    echo '    location /src/assets/ {' >> /etc/nginx/conf.d/default.conf && \
+    echo '        try_files $uri =404;' >> /etc/nginx/conf.d/default.conf && \
+    echo '        expires 1y;' >> /etc/nginx/conf.d/default.conf && \
+    echo '        add_header Cache-Control "public";' >> /etc/nginx/conf.d/default.conf && \
+    echo '    }' >> /etc/nginx/conf.d/default.conf && \
+    echo '    # Handle React Router' >> /etc/nginx/conf.d/default.conf && \
+    echo '    location / {' >> /etc/nginx/conf.d/default.conf && \
+    echo '        try_files $uri $uri/ /index.html;' >> /etc/nginx/conf.d/default.conf && \
+    echo '    }' >> /etc/nginx/conf.d/default.conf && \
+    echo '    # Handle API calls if needed' >> /etc/nginx/conf.d/default.conf && \
+    echo '    location /api/ {' >> /etc/nginx/conf.d/default.conf && \
+    echo '        proxy_pass http://host.docker.internal:3001;' >> /etc/nginx/conf.d/default.conf && \
+    echo '        proxy_set_header Host $host;' >> /etc/nginx/conf.d/default.conf && \
+    echo '        proxy_set_header X-Real-IP $remote_addr;' >> /etc/nginx/conf.d/default.conf && \
+    echo '    }' >> /etc/nginx/conf.d/default.conf && \
+    echo '    # Cache static assets' >> /etc/nginx/conf.d/default.conf && \
+    echo '    location ~* \.(js|css|png|jpg|jpeg|gif|ico|svg|webp)$ {' >> /etc/nginx/conf.d/default.conf && \
+    echo '        expires 1y;' >> /etc/nginx/conf.d/default.conf && \
+    echo '        add_header Cache-Control "public";' >> /etc/nginx/conf.d/default.conf && \
+    echo '    }' >> /etc/nginx/conf.d/default.conf && \
+    echo '}' >> /etc/nginx/conf.d/default.conf
+
+# Expose port 80
 EXPOSE 80
 
-# Запускаем Nginx
+# Start nginx
 CMD ["nginx", "-g", "daemon off;"]
