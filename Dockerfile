@@ -46,10 +46,6 @@ RUN echo 'server {' > /etc/nginx/conf.d/default.conf && \
     echo '        expires 1y;' >> /etc/nginx/conf.d/default.conf && \
     echo '        add_header Cache-Control "public";' >> /etc/nginx/conf.d/default.conf && \
     echo '    }' >> /etc/nginx/conf.d/default.conf && \
-    echo '    # Fallback for any other requests' >> /etc/nginx/conf.d/default.conf && \
-    echo '    location / {' >> /etc/nginx/conf.d/default.conf && \
-    echo '        return 404;' >> /etc/nginx/conf.d/default.conf && \
-    echo '    }' >> /etc/nginx/conf.d/default.conf && \
     echo '}' >> /etc/nginx/conf.d/default.conf
 
 # Expose port 80
