@@ -1,6 +1,16 @@
 @import '../../styles/colors.css';
 
+
 .CallbackSection {
+  /* max-width: 1700px; */
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+.CallbackWrapper {
   display: flex;
   flex-direction: row;
   justify-content: space-between;

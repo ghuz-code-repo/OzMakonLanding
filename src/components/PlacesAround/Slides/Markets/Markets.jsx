@@ -23,10 +23,10 @@ const Markets = () => {
           <p className={styles.description}>
             {t('places.marketsDetail')}
           </p>
-          <div className={styles.timeTag}>
+          {/* <div className={styles.timeTag}>
             <img src='/src/assets/img/PlacesAround/car.svg' />
             <span>10 мин</span>
-          </div>
+          </div> */}
         </div>
       </div>
 

@@ -3,9 +3,18 @@
 .location-section {
   margin: 0 20px !important;
   padding: 0 20px !important;
-
+  display: flex;
+  flex-direction: column;
+  /* justify-content: center; */
+  align-items: center;
+  /* align-self: center; */
   /* Example style */
   /* Add screen-specific styles here */
+}
+
+.locationContainer{
+  max-width: 1700px;
+  width: 100%;
 }
 
 .map-placeholder {

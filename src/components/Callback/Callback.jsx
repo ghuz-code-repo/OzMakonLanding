@@ -54,7 +54,7 @@ const Callback = () => {
         name: syncData.name || '',
         phone: syncData.phone || ''
       }));
-      
+
       // Синхронизируем валидность телефона
       setIsPhoneValid(syncData.isPhoneValid || false);
     });
@@ -77,7 +77,7 @@ const Callback = () => {
   const handleNameChange = (e) => {
     const value = validateAndFormatName(e.target.value);
     setFormData(prev => ({ ...prev, name: value }));
-    
+
     // Синхронизируем с глобальным состоянием
     formSync.updateData('name', value);
   };
@@ -85,7 +85,7 @@ const Callback = () => {
   // Обработчик изменения поля телефона
   const handlePhoneChange = (e) => {
     setFormData(prev => ({ ...prev, phone: e.target.value }));
-    
+
     // Синхронизируем с глобальным состоянием
     formSync.updateData('phone', e.target.value);
   };
@@ -94,7 +94,7 @@ const Callback = () => {
   const handlePhoneValidation = (status) => {
     const isValid = status.isValid && status.isComplete;
     setIsPhoneValid(isValid);
-    
+
     // Синхронизируем статус валидации
     formSync.updateValidation('phone', isValid);
   };
@@ -102,7 +102,7 @@ const Callback = () => {
   // Обработчик отправки формы
   const handleSubmit = async (e) => {
     e.preventDefault();
-    
+
     if (!consent) {
       showFlashMessage('Необходимо согласиться с условиями обработки данных', 'warning');
       return;
@@ -133,11 +133,11 @@ const Callback = () => {
 
       if (result.success) {
         showFlashMessage('Заявка успешно отправлена! Мы свяжемся с вами в ближайшее время.', 'success', 7000);
-        
+
         // Очищаем форму после успешной отправки
         setFormData({ name: '', phone: '' });
         setConsent(false);
-        
+
         // Очищаем синхронизированные данные
         formSync.clearData();
       } else {
@@ -212,8 +212,9 @@ const Callback = () => {
 
   return (
     // JSX ОСТАЁТСЯ ВАШ, С ДУБЛИРОВАНИЕМ
-    <div className={styles.CallbackWrapper} id='contacts'>
-      <section className={styles.CallbackSection} ref={sectionRef} data-section="callback">
+    <section className={styles.CallbackSection} ref={sectionRef} data-section="callback" id='contacts'>
+      <div className={styles.CallbackWrapper} >
+
         <div className={styles.left}>
           <h2 className={styles.title}>{t('callback.title')}</h2>
           <h3 className={styles.subTitle}>{t('callback.subTitle')}</h3>
@@ -221,9 +222,9 @@ const Callback = () => {
             {t('callback.mainText')}
           </span>
           <form className={styles.form} onSubmit={handleSubmit}>
-            <input 
-              className={styles.input} 
-              type="text" 
+            <input
+              className={styles.input}
+              type="text"
               name="name"
               value={formData.name}
               onChange={handleNameChange}
@@ -255,9 +256,9 @@ const Callback = () => {
                 {t('callback.agreement')}
               </span>
             </label>
-            <button 
-              className={styles.button} 
-              type="submit" 
+            <button
+              className={styles.button}
+              type="submit"
               disabled={!consent || isSubmitting || !isValidName(formData.name) || !isPhoneValid}
             >
               {isSubmitting ? 'Отправка...' : t('callback.button')}
@@ -292,8 +293,9 @@ const Callback = () => {
             </div>
           </div>
         </div>
-      </section >
-    </div>
+      </div>
+
+    </section >
   );
 };
 

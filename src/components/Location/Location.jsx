@@ -5,7 +5,7 @@ const imgPath = (name) => `/src/assets/img/Location/${name}`;
 const Location = () => {
   const { t } = useTranslation();
 
-  const bullets =[
+  const bullets = [
     {
       icon: imgPath('ladder.svg'),
       timeToPlace: t('location.card.TCM.timeToPlace'),
@@ -18,38 +18,40 @@ const Location = () => {
     }]
   return (
     <section className={styles["location-section"]} id='location'>
-      {/* Location (map) content will go here */}
-      <h2 className={styles.title}>{t('location.title')}</h2>
-      <span className={styles.mainText}>
-        {t('location.mainText').split('\n').map((line, i) => (
-          <React.Fragment key={i}>
-            {line}
-            <br />
-          </React.Fragment>
-        ))}
-      </span>
-      <div className={styles.mapBlock}>
-        <div className={styles.mapImage}>
-          <div className={styles.card}>
-            {bullets.map((bullet, i) => (
-              <React.Fragment key={i}>
-                <div className={styles.cardRow}>
-                  <img src={bullet.icon}/>
-                  <div className={styles.cardRowBulletTextBlock}>
-                    <span className={styles.cardRowBulletTime}>
-                      {t(`${bullet.timeToPlace}`)}
-                    </span>
-                    <span className={styles.cardRowBulletPlace}>
-                      {t(`${bullet.place}`)}
-                    </span>
+      <div className={styles.locationContainer}>
+        {/* Location (map) content will go here */}
+        <h2 className={styles.title}>{t('location.title')}</h2>
+        <span className={styles.mainText}>
+          {t('location.mainText').split('\n').map((line, i) => (
+            <React.Fragment key={i}>
+              {line}
+              <br />
+            </React.Fragment>
+          ))}
+        </span>
+        <div className={styles.mapBlock}>
+          <div className={styles.mapImage}>
+            <div className={styles.card}>
+              {bullets.map((bullet, i) => (
+                <React.Fragment key={i}>
+                  <div className={styles.cardRow}>
+                    <img src={bullet.icon} />
+                    <div className={styles.cardRowBulletTextBlock}>
+                      <span className={styles.cardRowBulletTime}>
+                        {t(`${bullet.timeToPlace}`)}
+                      </span>
+                      <span className={styles.cardRowBulletPlace}>
+                        {t(`${bullet.place}`)}
+                      </span>
+                    </div>
                   </div>
-                </div>
-              </React.Fragment>
-            ))}
-          </div>
-          {/* <div className={styles.marker}>
+                </React.Fragment>
+              ))}
+            </div>
+            {/* <div className={styles.marker}>
             <img src={`${imgPath('marker.svg')}`} />
           </div> */}
+          </div>
         </div>
       </div>
     </section>

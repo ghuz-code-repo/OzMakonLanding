@@ -15,11 +15,7 @@ const Footer = () => {
                         <span className={styles.phone}>
                             <a href={`tel:${t('footer.phone').replace(/\s/g, "")}`}>{t('footer.phone')}</a>
                         </span>
-                        <span className={styles.href}>
-                            <a href="https://gh.uz/news/vash-noviy-dom-nasha-zabota/" target="_blank">
-                                {t('footer.departament')}
-                            </a>
-                        </span>
+
                     </div>
                     <div className={styles.footerTopRight}>
                         <span className={styles.workingHours}>
@@ -31,6 +27,11 @@ const Footer = () => {
                 </div>
                 <div className={styles.footerRow}>
                     <div className={styles.footerBottomLeft}>
+                        <span className={styles.href}>
+                            <a href="https://gh.uz/news/vash-noviy-dom-nasha-zabota/" target="_blank">
+                                {t('footer.departament')}
+                            </a>
+                        </span>
                         <span className={styles.copanyName}>
                             {t('footer.companyName').split('|').map((line, i) => (
                                 i === 0 ? (

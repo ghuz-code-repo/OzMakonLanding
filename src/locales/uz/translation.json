@@ -4,21 +4,21 @@
     "about": "Majmua haqida",
     "advantages": "Afzalliklar",
     "layouts": "Rejalar",
-    "location": "Manzil",
-    "contacts": "Aloqa",
+    "location": "Joylashuv",
+    "contacts": "Kontaktlar",
     "lang": "UZ"
   },
   "hero": {
-    "title": "Yangi imkoniyatlar va shahar hayotining markazida",
-    "subtitle": "Toshkentning yuragida eksklyuziv imkoniyatlar va qulayliklar olamini kashf eting."
+    "title": "Yangi imkoniyatlar va shahar dinamikasi markazida",
+    "subtitle": "Toshkent markazida eksklyuziv imkoniyatlar va qulaylik dunyosini kashf eting"
   },
   "conception": {
-    "sectionTitle": "Majmu\narxitekturasi\nva konsepsiyasi",
-    "mainDescription": "Fasadlar geometriyasi, turli hajm va materiallarning uyg'unligi.\nSirlashgan plitkalar.\nYuqori sifatli italyan suvoq.\nKompozit panellar.",
-    "dutchTitle": "Golland estetikasiga xoslik",
-    "dutchDescription": "De Architekten Cie. golland byurosining master-rejasi. Turli balandlikdagi qurilish va Yevropa fasadlari, an'anaviy mozaika va Markaziy Osiyo arxitekturasi iliq ranglaridan ilhomlangan.",
-    "helpTitle": "Sizga mos keladigan kvartirani tanlashda yordam beramiz",
-    "helpSubtitle": "Bitimning har bir bosqichida yordam beramiz",
+    "sectionTitle": "Arxitektura\nva kontsepsiya\nhaqida",
+    "mainDescription": "Turli hajm va materiallarni birlashtirgan fasad geometriyasi\nSirlangan kafel\nYuqori sifatli italyan gipsi\nKomposit panellar",
+    "dutchTitle": "Golland estetikasi",
+    "dutchDescription": "De Architekten Cie golland byurosining master-rejasi. Markaziy Osiyo an'anaviy mozaikasi va issiq palitrasidan ilhomlangan, turli balandlikdagi qurilish va ifodali yevropa fasadlari",
+    "helpTitle": "Sizga mos kelgan kvartirani tanlashda yordam beramiz",
+    "helpSubtitle": "Bitimning har bir bosqichida hamrohlik qilamiz",
     "form": {
       "namePlaceholder": "Ismingiz",
       "phonePlaceholder": "+998 ",
@@ -27,37 +27,37 @@
   },
   "usp5": {
     "slide1": {
-      "title": "Благоустройство\nи двор\nбез машин",
-      "list": "Закрытый зелёный двор\nBBQ-зона\nБеседки",
-      "textblock": "Детские площадки с теневыми навесами\nЧастный детский сад\nKIDS ROOM\nФитнес-зал"
+      "title": "Obodonlashtirish\nva mashina\nyoʻq hover",
+      "list": "Yopiq yashil hover\nBBQ zonasi\nBeседkalar",
+      "textblock": "Soya soyabonli bolalar maydonchasi\nXususiy bolalar bog'chasi\nKIDS ROOM\nFitnes zali"
     },
     "slide2": {
-      "title": "Интерьеры\nи\nинфраструктура",
-      "list": "Эстетичное лобби\nЗона ожидания-гостиная\nКолясочные",
-      "textblock": "Санузлы с местом для пеленания\nЛифты с видеонаблюдением"
+      "title": "Infratuzilma\nva intererlar\n",
+      "list": "Estetik lobbi\nKutish zonasi-mehmonxona\nArava xonalari",
+      "textblock": "Bolalarni almashtirish joyi bilan hojatxonalar\nVideo kuzatuv bilan liftlar"
     },
     "slide3": {
-      "left_bottom_title": "Продуманное\nпарковочное\nпространство",
-      "left_bottom_text": "Тёплый двухуровневый паркинг\nВозможность установки зарядных станций",
-      "left_bottom_bullets": "Видеонаблюдение 24/7\nУсиление сигнала связи"
+      "left_bottom_title": "O'ylangan\nparking\nmaydoni",
+      "left_bottom_text": "Issiq ikki qavatli parking\nZaryad stantsiyalarini o'rnatish imkoniyati",
+      "left_bottom_bullets": "24/7 video kuzatuv\nAloqa signalini kuchaytirish"
     },
     "slide4": {
-      "left_bottom_title": "Безопасность\nи устойчивость",
-      "left_bottom_text": "Система пожарной безопасности\nIP-домофония\nFace ID",
-      "left_bottom_bullets": "Резервные системы: солнечные панели,\nрезервуары воды, бесперебойное питание"
+      "left_bottom_title": "Xavfsizlik va\nbarqarorlik",
+      "left_bottom_text": "Yong'inga qarshi xavfsizlik tizimi\nIP-domofon\nFace ID",
+      "left_bottom_bullets": "Zaxira tizimlari: quyosh panellari\nsuv rezervuarlari, uzluksiz quvvat"
     },
     "slide5": {
-      "left_top_title":"Комфорт\nи технологии",
-      "left_top_text": "Двухкамерные стеклопакеты,\n6-камерный профиль с улучшенной шумоизоляцией\nИндивидуальные кладовые",
-      "right_bottom_title": "Комфорт",
-      "right_bottom_text": "Электронные замки\nГазовые котлы\nПанельные радиаторы"
+      "left_top_title": "Qulaylik va\ntexnologiyalar",
+      "left_top_text": "2-kamerali oyna paketlari\nYaxshilangan shovqin izolyatsiyasi bilan 6-kamerali profil\nShaxsiy omborlar",
+      "right_bottom_title": "Qulaylik",
+      "right_bottom_text": "Elektron qulflar\nGaz qozonlari\nAtermal qoplama"
     }
   },
   "layouts": {
     "sectionTitle": "Rejalar",
     "chooseLayout": "Rejani tanlang",
     "oneRoom": "1 xonali",
-    "twoRoom": "2 xonali", 
+    "twoRoom": "2 xonali",
     "threeRoom": "3 xonali",
     "fourRoom": "4+ xonali",
     "allApartments": "Barcha kvartiralar",
@@ -65,34 +65,52 @@
     "currency": "so'm",
     "area": "Maydon",
     "rooms": "Xonalar",
-    "priceRange": "Narxi"
+    "priceRange": "Narx"
   },
   "places": {
     "sectionTitle": "Yaqin atrofdagi joylar",
     "shopping": "Savdo markazlari",
-    "parks": "Bog'lar",
+    "parks": "Parklar",
     "markets": "Bozorlar",
     "schools": "Maktablar",
-    "entertainment": "Ko'ngilochar",
-    "shoppingCenters": {
-      "title": "Turar-joy majmuasidan piyoda masofasida zamonaviy savdo-ko'ngilochar markaz — Alfraganus Mall joylashgan",
-      "description": "Bu zamonaviy shahar makoni bo'lib, u yerda butiklar, gastronomik konseptlar, supermarket, dam olish zonalari va bolalar maydonchalari to'plangan. Bu yerda dam olish kunlarini o'tkazish, xarid qilish yoki katta shahar qulayligi va dinamikasida kechqurun sayr qilish yoqimli."
-    },
-    "parksDetail": {
-      "title": "Faol dam olish uchun yashil zonalar va bog'lar",
-      "description": "Majmua yaqinida sayr yo'llari, sport maydonchalari va piknik zonalari bo'lgan obodonlashtirilgan bog'lar joylashgan. Ertalabki yugurishlar, oilaviy dam olish va ochiq havoda faol vaqt o'tkazish uchun ideal joy."
-    },
-    "marketsDetail": {
-      "title": "An'anaviy bozorlar va savdo qatorlari",
-      "description": "Yaqin atrofda ham zamonaviy oziq-ovqat bozorlari, ham an'anaviy savdo qatorlari joylashgan bo'lib, u yerda yangi mevalar, sabzavotlar, go'sht va boshqa mahsulotlarni sotib olish mumkin. Kundalik xaridlar va mahalliy an'analar bilan tanishish uchun qulay."
-    },
-    "schoolsDetail": {
-      "title": "Yuqori darajadagi ta'lim muassasalari",
-      "description": "Bevosita yaqinlikda sifatli maktablar, bolalar bog'chalari va ta'lim markazlari joylashgan. Zamonaviy ta'lim infratuzilmasi barcha yoshdagi bolalarning rivojlanishi va ta'limi uchun qulay sharoitlarni ta'minlaydi."
-    },
-    "entertainmentDetail": {
-      "title": "Butun oila uchun ko'ngilochar va dam olish",
-      "description": "Turli xil ko'ngilochar markazlar, kinoteatrlar, sport majmualari va madaniy muassasalar faol dam olish uchun ko'plab variantlarni taklif qiladi. Oilaviy ko'ngilocharlikdan tortib sport mashg'ulotlarigacha — har kim o'ziga yoqadigan mashg'ulotni topadi."
+    "entertainment": "Dam olish",
+    "shoppingCenters": "Turar-joy majmuasidan piyoda masofada zamonaviy savdo-ko'ngilochar markaz - Alfraganus Mall joylashgan. Bu stilli shahar makoni bo'lib, bu yerda butiklar, gastronomiya konseptlari, supermarket, dam olish zonalari va bolalar maydonlari to'plangan. Bu yerda dam olish kunlarini o'tkazish, xarid-savdo pauzalarini tashkil qilish yoki katta shaharning qulayligi va dinamikasi muhitida kechki sayrlardan zavqlanish yoqimli",
+    "parksDetail": "Turar-joy majmuasi shahar muhitida tabiiy muvozanat hissini yaratadigan yashil zonalar bilan o'ralgan. Atigi bir necha daqiqada - Furqat parki, sekin sayrlar va oilaviy dam olish uchun qulay joy. Besh daqiqada avtomobilda - Ekopark, velosiped yo'llari, faollik zonalari va o'ylangan ekomuhit bilan yangi formatdagi landshaft parki. Shuningdek, yaqin atrofda Mirzo Ulug'bek parki (sobiq Telman parki) joylashgan - barcha bolalar sevadigan tinch, yashil joy",
+    "marketsDetail": "Turar-joy majmuasi turli xil savdo infratuzilmasi bilan o'ralgan. Besh daqiqada avtomobilda - yangi mahsulotlarning keng tanloviga ega Guruch bozori. Atigi 10 daqiqada an'analar, sifat va koloritni birlashtiradigan Toshkentning eng qadimgi va mashhur bozorlaridan biri - Mirobod bozoriga yetib borish mumkin. Va atigi ikki daqiqada piyoda - oziq-ovqat va kundalik ehtiyoj tovarlari taqdim etiladigan 'Korzinka' supermarketi joylashgan",
+    "schoolsDetail": "Piyoda masofada - Alisher Navoiy nomidagi Davlat akademik Katta teatri. Bu O'zbekistonning asosiy sahnasi bo'lib, bu yerda jahon darajasidagi operalar, baletlar va kontsertlar o'tkaziladi - shahar markazida yashash uchun muhim madaniy afzallik",
+    "entertainmentDetail": "Avtomobilda atigi bir necha daqiqa - va siz poytaxtning gastronomiya markazlaridan biri - Taras Shevchenko ko'chasida bo'lasiz. Bu yerda eng yaxshi restoranlar, qahvaxonalar, muallif gastrobarlar, vino do'konlari va qandolat fabrikasi to'plangan. Ko'cha shahar ritmida yashaydi va ham ishbilarmon uchrashuvlar, ham sekin kechki ovqatlar uchun mukammal mos keladi. Atigi besh daqiqada - teatrlar, muzeylar va madaniy makonlar bilan Toshkent markazi"
+  },
+  "location": {
+    "title": "Loyiha joylashuvi",
+    "mainText": "O'ZMAKON Business majmuasi rivojlangan infratuzilmaga ega nufuzli hududda joylashgan bo'lib, barcha zarur obyektlarga oson kirishni ta'minlaydi",
+    "card": {
+      "TCM": {
+        "timeToPlace": "15 daqiqa",
+        "place": "Tashkent city mollgacha"
+      },
+      "METRO": {
+        "timeToPlace": "15 daqiqa",
+        "place": "'Mashinasozlik' metrogacha"
+      }
     }
+  },
+  "callback": {
+    "title": "Tashrif buyuring",
+    "subTitle": "shaxsiy taqdimotga",
+    "mainText": "Aloqa ma'lumotlaringizni qoldiring va bizning menejerimiz batafsil maslahat uchun yaqin vaqtda siz bilan bog'lanadi",
+    "namePlaceholder": "Ismingiz",
+    "phonePlaceholder": "+998 ",
+    "button": "Ariza qoldirish",
+    "agreement": "Tugmani bosish orqali men shaxsiy ma'lumotlarni qayta ishlash siyosatiga muvofiq shaxsiy ma'lumotlarni qayta ishlashga rozilik beraman"
+  },
+  "footer": {
+    "phone": "+998 78 888 11 22",
+    "departament": "Golden House mijozlarga xizmat ko'rsatish bo'limi",
+    "workingHours": "Ish vaqti:",
+    "workingHoursTimeMnFr": "Du-Ju: 9:00 dan 19:00 gacha",
+    "workingHoursTimeSaSu": "Sh-Ya: 10:00 dan 18:00 gacha",
+    "companyName": "\"Unique Creation\" MChJ Golden House kompaniyalar guruhi",
+    "copyright": "©2025 Saytdagi ma'lumotlar tanishish maqsadida taqdim etilgan. Aniqroq ma'lumot olish uchun kompaniya menejerlariga murojaat qiling",
+    "adress": "Manzil: Toshkent sh., Farg'ona yo'li, 50"
   }
-} 
+}

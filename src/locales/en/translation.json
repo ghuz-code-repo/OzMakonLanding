@@ -1,0 +1,116 @@
+{
+  "header": {
+    "main": "Home",
+    "about": "About Complex",
+    "advantages": "Advantages",
+    "layouts": "Layouts",
+    "location": "Location",
+    "contacts": "Contacts",
+    "lang": "EN"
+  },
+  "hero": {
+    "title": "At the epicenter of new opportunities and urban dynamics",
+    "subtitle": "Discover a world of exclusive opportunities and comfort in the heart of Tashkent"
+  },
+  "conception": {
+    "sectionTitle": "About architecture\nand concept\nof residential complex",
+    "mainDescription": "Facade geometry combining various volumes and materials\nGlazed tiles\nHigh-quality Italian plaster\nComposite panels",
+    "dutchTitle": "Dutch aesthetics",
+    "dutchDescription": "Master plan by Dutch bureau De Architekten Cie. Mixed-height development and expressive European facades inspired by traditional mosaics and warm palette of Central Asian architecture",
+    "helpTitle": "We will help you choose an apartment that suits you",
+    "helpSubtitle": "We will accompany you at every stage of the deal",
+    "form": {
+      "namePlaceholder": "Your name",
+      "phonePlaceholder": "+998 ",
+      "button": "Submit application"
+    }
+  },
+  "usp5": {
+    "slide1": {
+      "title": "Landscaping\nand courtyard\nwithout cars",
+      "list": "Closed green courtyard\nBBQ area\nGazebos",
+      "textblock": "Children's playgrounds with shade canopies\nPrivate kindergarten\nKIDS ROOM\nFitness center"
+    },
+    "slide2": {
+      "title": "Infrastructure\nand interiors\n",
+      "list": "Aesthetic lobby\nWaiting area-lounge\nStroller rooms",
+      "textblock": "Bathrooms with baby changing area\nElevators with video surveillance"
+    },
+    "slide3": {
+      "left_bottom_title": "Thoughtful\nparking\nspace",
+      "left_bottom_text": "Warm two-level parking\nPossibility to install charging stations",
+      "left_bottom_bullets": "24/7 video surveillance\nSignal amplification"
+    },
+    "slide4": {
+      "left_bottom_title": "Security and\nsustainability",
+      "left_bottom_text": "Fire safety system\nIP intercom\nFace ID",
+      "left_bottom_bullets": "Backup systems: solar panels\nwater tanks, uninterruptible power supply"
+    },
+    "slide5": {
+      "left_top_title": "Comfort and\ntechnology",
+      "left_top_text": "Double-glazed windows\n6-chamber profile with improved noise insulation\nIndividual storage rooms",
+      "right_bottom_title": "Comfort",
+      "right_bottom_text": "Electronic locks\nGas boilers\nAthermal coating"
+    }
+  },
+  "layouts": {
+    "sectionTitle": "Layouts",
+    "chooseLayout": "Choose layout",
+    "oneRoom": "1 bedroom",
+    "twoRoom": "2 bedroom",
+    "threeRoom": "3 bedroom",
+    "fourRoom": "4+ bedroom",
+    "allApartments": "All apartments",
+    "layout": "Layout",
+    "currency": "UZS",
+    "area": "Area",
+    "rooms": "Rooms",
+    "priceRange": "Price from"
+  },
+  "places": {
+    "sectionTitle": "Places nearby",
+    "shopping": "Shopping centers",
+    "parks": "Parks",
+    "markets": "Markets",
+    "schools": "Schools",
+    "entertainment": "Entertainment",
+    "shoppingCenters": "Within walking distance from the residential complex is located a modern shopping and entertainment center - Alfraganus Mall. This is a stylish urban space where boutiques, gastronomic concepts, supermarket, recreation areas and children's playgrounds are gathered. It's pleasant to spend weekends here, take shopping breaks or enjoy evening walks in the atmosphere of comfort and dynamics of a big city",
+    "parksDetail": "The residential complex is surrounded by green areas that create a sense of natural balance in the urban environment. Just a few minutes away - Furqat Park, a cozy space for leisurely walks and family recreation. Five minutes by car - Ecopark, a new format landscape park with bike paths, activity zones and thoughtful eco-environment. Also nearby is Mirzo Ulugbek Park (former Telman Park) - a quiet, green place loved by all children",
+    "marketsDetail": "The residential complex is located surrounded by diverse commercial infrastructure. Five minutes by car - Rice Market with a wide selection of fresh products. Just 10 minutes away you can reach Mirobod Market - one of the oldest and most popular markets in Tashkent, where traditions, quality and color are combined. And just a two-minute walk away is the Korzinka supermarket, which offers food and everyday goods",
+    "schoolsDetail": "Within walking distance - State Academic Bolshoi Theater named after Alisher Navoi. This is the main stage of Uzbekistan, where world-class operas, ballets and concerts take place - an important cultural advantage for living in the city center",
+    "entertainmentDetail": "Just a couple of minutes by car - and you are on Taras Shevchenko Street, one of the gastronomic centers of the capital. Here are concentrated the best restaurants, coffee shops, author gastrobars, wine boutiques and confectioneries. The street lives in the rhythm of the city and is perfect for both business meetings and leisurely dinners. Just five minutes away - the center of Tashkent with theaters, museums and cultural spaces"
+  },
+  "location": {
+    "title": "Project location",
+    "mainText": "O'ZMAKON Business complex is located in a prestigious area with developed\ninfrastructure, providing easy access to all necessary facilities",
+    "card": {
+      "TCM": {
+        "timeToPlace": "15 minutes",
+        "place": "to Tashkent city mall"
+      },
+      "METRO": {
+        "timeToPlace": "15 minutes",
+        "place": "to Mashinasozlik metro"
+      }
+    }
+  },
+  "callback": {
+    "title": "Come",
+    "subTitle": "for a personal presentation",
+    "mainText": "Leave your contact details and our manager will contact you soon for detailed consultation",
+    "namePlaceholder": "Your name",
+    "phonePlaceholder": "+998 ",
+    "button": "Submit application",
+    "agreement": "By clicking the button, I consent to the processing of personal data in accordance with the Personal Data Processing Policy"
+  },
+  "footer": {
+    "phone": "+998 78 888 11 22",
+    "departament": "Golden House Customer Service Department",
+    "workingHours": "Working hours:",
+    "workingHoursTimeMnFr": "Mon-Fri: 9:00 AM to 7:00 PM",
+    "workingHoursTimeSaSu": "Sat-Sun: 10:00 AM to 6:00 PM",
+    "companyName": "LLC \"Unique Creation\" Golden House Group of Companies",
+    "copyright": "©2025 The information on the site is provided for informational purposes. For more accurate information, please contact the company managers",
+    "adress": "Address: Tashkent, Fergana Highway, 50"
+  }
+}
