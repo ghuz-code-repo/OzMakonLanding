@@ -12,15 +12,27 @@ const leftImages = [
   { 'name': 'l-1.png', 'width': '13vw', 'height': '328px', 'posX': '0px', 'posY': '0px', 'size': 'cover' },
   { 'name': 'l-2.png', 'width': '13vw', 'height': '272px', 'posX': '0px', 'posY': '0px', 'size': 'cover' },
   { 'name': 'l-3.png', 'width': '13vw', 'height': '211px', 'posX': '0px', 'posY': '0px', 'size': 'cover' },
+  { 'name': 'l-4.png', 'width': '13vw', 'height': '149px', 'posX': '0px', 'posY': '0px', 'size': 'cover' },
+  { 'name': 'l-1.png', 'width': '13vw', 'height': '328px', 'posX': '0px', 'posY': '0px', 'size': 'cover' },
+  { 'name': 'l-2.png', 'width': '13vw', 'height': '272px', 'posX': '0px', 'posY': '0px', 'size': 'cover' },
+  { 'name': 'l-3.png', 'width': '13vw', 'height': '211px', 'posX': '0px', 'posY': '0px', 'size': 'cover' },
   { 'name': 'l-4.png', 'width': '13vw', 'height': '149px', 'posX': '0px', 'posY': '0px', 'size': 'cover' }
 ];
 const midImages = [
   { 'name': 'm-1.png', 'width': '13vw', 'height': '210px', 'posX': '0px', 'posY': '0px', 'size': 'cover' },
   { 'name': 'm-2.png', 'width': '13vw', 'height': '328px', 'posX': '0px', 'posY': '0px', 'size': 'cover' },
   { 'name': 'm-3.png', 'width': '13vw', 'height': '204px', 'posX': '0px', 'posY': '0px', 'size': 'cover' },
+  { 'name': 'm-4.png', 'width': '13vw', 'height': '346px', 'posX': '0px', 'posY': '0px', 'size': 'cover' },
+  { 'name': 'm-1.png', 'width': '13vw', 'height': '210px', 'posX': '0px', 'posY': '0px', 'size': 'cover' },
+  { 'name': 'm-2.png', 'width': '13vw', 'height': '328px', 'posX': '0px', 'posY': '0px', 'size': 'cover' },
+  { 'name': 'm-3.png', 'width': '13vw', 'height': '204px', 'posX': '0px', 'posY': '0px', 'size': 'cover' },
   { 'name': 'm-4.png', 'width': '13vw', 'height': '346px', 'posX': '0px', 'posY': '0px', 'size': 'cover' }
 ];
 const rightImages = [
+  { 'name': 'r-1.png', 'width': '13vw', 'height': '328px', 'posX': '0px', 'posY': '0px', 'size': 'cover' },
+  { 'name': 'r-2.png', 'width': '13vw', 'height': '164px', 'posX': '0px', 'posY': '0px', 'size': 'cover' },
+  { 'name': 'r-3.png', 'width': '13vw', 'height': '268px', 'posX': '0px', 'posY': '0px', 'size': 'cover' },
+  { 'name': 'r-4.png', 'width': '13vw', 'height': '255px', 'posX': '0px', 'posY': '0px', 'size': 'cover' },
   { 'name': 'r-1.png', 'width': '13vw', 'height': '328px', 'posX': '0px', 'posY': '0px', 'size': 'cover' },
   { 'name': 'r-2.png', 'width': '13vw', 'height': '164px', 'posX': '0px', 'posY': '0px', 'size': 'cover' },
   { 'name': 'r-3.png', 'width': '13vw', 'height': '268px', 'posX': '0px', 'posY': '0px', 'size': 'cover' },
