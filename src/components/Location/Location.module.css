@@ -327,3 +327,64 @@
 @media (max-width: 350px){
 
 }
+
+/* Media queries for tall screens */
+@media (height > 1440px) {
+  .location__title {
+    font-size: 92px;
+  }
+  
+  .location__description {
+    font-size: 30px;
+  }
+  
+  .location__address {
+    font-size: 22px;
+  }
+  
+  .location__coordinates {
+    font-size: 20px;
+  }
+  
+  .location__map-label {
+    font-size: 18px;
+  }
+  
+  .location__distance-text {
+    font-size: 26px;
+  }
+  
+  .location__time-text {
+    font-size: 24px;
+  }
+}
+
+@media (height > 2100px) {
+  .location__title {
+    font-size: 115px;
+  }
+  
+  .location__description {
+    font-size: 36px;
+  }
+  
+  .location__address {
+    font-size: 28px;
+  }
+  
+  .location__coordinates {
+    font-size: 24px;
+  }
+  
+  .location__map-label {
+    font-size: 22px;
+  }
+  
+  .location__distance-text {
+    font-size: 32px;
+  }
+  
+  .location__time-text {
+    font-size: 30px;
+  }
+}

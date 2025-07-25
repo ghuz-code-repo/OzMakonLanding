@@ -467,3 +467,100 @@
     font-size: 12px;
   }
 }
+
+/* Media queries for tall screens */
+@media (height > 1440px) {
+  .callback__title {
+    font-size: 92px;
+  }
+  
+  .callback__subtitle {
+    font-size: 30px;
+  }
+  
+  .callback__description {
+    font-size: 26px;
+  }
+  
+  .callback__form-title {
+    font-size: 34px;
+  }
+  
+  .callback__form-subtitle {
+    font-size: 22px;
+  }
+  
+  .callback__input {
+    font-size: 20px;
+    padding: 16px 20px;
+  }
+  
+  .callback__button {
+    font-size: 22px;
+    padding: 16px 0;
+  }
+  
+  .callback__contact-title {
+    font-size: 30px;
+  }
+  
+  .callback__contact-phone {
+    font-size: 34px;
+  }
+  
+  .callback__contact-hours {
+    font-size: 18px;
+  }
+  
+  .callback__contact-address {
+    font-size: 18px;
+  }
+}
+
+@media (height > 2100px) {
+  .callback__title {
+    font-size: 115px;
+  }
+  
+  .callback__subtitle {
+    font-size: 36px;
+  }
+  
+  .callback__description {
+    font-size: 32px;
+  }
+  
+  .callback__form-title {
+    font-size: 42px;
+  }
+  
+  .callback__form-subtitle {
+    font-size: 28px;
+  }
+  
+  .callback__input {
+    font-size: 24px;
+    padding: 20px 24px;
+  }
+  
+  .callback__button {
+    font-size: 28px;
+    padding: 20px 0;
+  }
+  
+  .callback__contact-title {
+    font-size: 36px;
+  }
+  
+  .callback__contact-phone {
+    font-size: 42px;
+  }
+  
+  .callback__contact-hours {
+    font-size: 22px;
+  }
+  
+  .callback__contact-address {
+    font-size: 22px;
+  }
+}

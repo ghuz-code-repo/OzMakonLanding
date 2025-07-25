@@ -281,3 +281,52 @@
     margin-bottom: 20px;
   }
 }
+
+/* Media queries for tall screens */
+@media (height > 1440px) {
+  .phone {
+    font-size: 36px;
+  }
+  
+  .href {
+    font-size: 20px;
+  }
+  
+  .workingHours {
+    font-size: 18px;
+  }
+  
+  .copanyName,
+  .copyright,
+  .address {
+    font-size: 18px;
+  }
+  
+  .address {
+    line-height: 30px;
+  }
+}
+
+@media (height > 2100px) {
+  .phone {
+    font-size: 44px;
+  }
+  
+  .href {
+    font-size: 24px;
+  }
+  
+  .workingHours {
+    font-size: 22px;
+  }
+  
+  .copanyName,
+  .copyright,
+  .address {
+    font-size: 22px;
+  }
+  
+  .address {
+    line-height: 36px;
+  }
+}

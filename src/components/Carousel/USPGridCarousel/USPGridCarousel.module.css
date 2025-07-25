@@ -1,6 +1,78 @@
 @import '../../../styles/colors.css';
 
-/* Этот контейнер создает область для скролла высотой в 5 экранов */
+.usp5-non-scroll-container{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  gap: 15vh;
+  padding: 10vh 0;
+  /* КРИТИЧЕСКАЯ оптимизация для устранения рваного скролла */
+  will-change: transform;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  contain: layout style paint;
+  /* Принудительное GPU ускорение */
+  -webkit-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
+  /* Устранение реперфоринга */
+  isolation: isolate;
+}
+
+.usp5-non-scroll-container > * {
+  width: 100%;
+  max-width: 1700px;
+  /* КРИТИЧЕСКАЯ оптимизация каждого слайда */
+  will-change: transform;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  contain: layout style paint;
+  /* Принудительное создание композитного слоя */
+  -webkit-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
+  /* Изолируем каждый слайд */
+  isolation: isolate;
+  position: relative;
+  z-index: 1;
+}
+
+.usp5-section {
+  width: 100%;
+  position: relative;
+  /* Глобальная оптимизация секции */
+  will-change: transform;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  contain: layout style paint;
+  /* Принудительная изоляция */
+  isolation: isolate;
+  /* ЕДИНСТВЕННЫЙ margin для секции */
+  margin: 10vh 0;
+  padding: 0;
+}
+
+/* Адаптивные настройки */
+@media (max-width: 768px) {
+  .usp5-non-scroll-container {
+    gap: 10vh;
+    padding: 5vh 0;
+    /* Упрощенная оптимизация на мобильных */
+    will-change: auto;
+    contain: layout;
+  }
+}
+
+@media (max-width: 480px) {
+  .usp5-non-scroll-container {
+    gap: 8vh;
+    padding: 3vh 0;
+    /* Минимальная оптимизация на слабых устройствах */
+    will-change: auto;
+    transform: none;
+  }
+}
+
 .usp5-scroll-container {
   height: 500vh;
   position: relative;
@@ -25,10 +97,6 @@
   align-items: center;
   justify-content: center;
 }
-
-
-
-
 
 .usp5-slide-anim {
   transition: transform 0.5s cubic-bezier(.4, 0, .2, 1), opacity 0.5s cubic-bezier(.4, 0, .2, 1), filter 0.5s cubic-bezier(.4, 0, .2, 1);
@@ -194,8 +262,6 @@
   max-width: 100vw !important;
 }
 
-
-
 /* Анимация плавного появления для нового слайда */
 @keyframes slideFadeIn {
   from {
@@ -224,3 +290,99 @@
     margin-top: 0;
   }
 }
+
+/* Обертка для всей секции */
+.usp5-section {
+  width: 100%;
+  position: relative;
+  margin: 10vh 0;
+}
+
+/* Контейнер для индикаторов */
+.slide-indicators {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 3vh;
+  padding: 0 20px;
+}
+
+/* Стили для индикаторов */
+.slide-indicator {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  border: 2px solid var(--color-border-light, #ccc);
+  background: transparent;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.slide-indicator:hover {
+  border-color: var(--color-accent, #007bff);
+  transform: scale(1.1);
+}
+
+.slide-indicator--active {
+  background: var(--color-accent, #007bff);
+  border-color: var(--color-accent, #007bff);
+  transform: scale(1.2);
+}
+
+.slide-indicator--active::after {
+  content: '';
+  position: absolute;
+  top: -4px;
+  left: -4px;
+  right: -4px;
+  bottom: -4px;
+  border: 2px solid var(--color-accent, #007bff);
+  border-radius: 50%;
+  opacity: 0.3;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+    opacity: 0.3;
+  }
+  50% {
+    transform: scale(1.2);
+    opacity: 0.1;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 0.3;
+  }
+}
+
+/* Адаптивные стили для индикаторов */
+@media (max-width: 768px) {
+  .slide-indicators {
+    gap: 8px;
+    margin-top: 2vh;
+  }
+  
+  .slide-indicator {
+    width: 10px;
+    height: 10px;
+  }
+
+}
+
+/* Адаптивные стили для индикаторов */
+@media (max-width: 768px) {
+  .slide-indicators {
+    gap: 8px;
+    margin-top: 2vh;
+  }
+  
+  .slide-indicator {
+    width: 10px;
+    height: 10px;
+  }
+}
+
+

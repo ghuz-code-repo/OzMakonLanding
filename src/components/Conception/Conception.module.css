@@ -411,10 +411,11 @@
     margin-bottom: 24px;
   }
 
-  .conception__left{
-    width:100%;
+  .conception__left {
+    width: 100%;
     margin-right: 0;
   }
+
   .conception__right {
     width: 100%;
     min-width: 0;
@@ -793,5 +794,81 @@
     border: 2px solid var(--color-bg-main);
     margin-left: -20px;
     flex-shrink: 0;
+  }
+}
+
+@media (width<1300px) and (height>1440px) {
+  .conception__content {
+    flex-direction: column;
+    align-items: start;
+  }
+}
+
+/* Media queries for tall screens */
+@media (height > 1440px) {
+  .conception__section-title {
+    font-size: 92px;
+  }
+
+  .conception__dutch-title {
+    font-size: 54px;
+  }
+
+  .conception__dutch-desc {
+    font-size: 30px;
+  }
+
+  .conception__main-desc {
+    font-size: 30px;
+  }
+
+  .conception__help-title {
+    font-size: 34px;
+  }
+
+  .conception__help-subtitle {
+    font-size: 22px;
+  }
+
+  .conception__button {
+    font-size: 22px;
+  }
+
+  .conception__input {
+    font-size: 20px;
+  }
+}
+
+@media (height > 2100px) {
+  .conception__section-title {
+    font-size: 95px;
+  }
+
+  .conception__dutch-title {
+    font-size: 66px;
+  }
+
+  .conception__dutch-desc {
+    font-size: 36px;
+  }
+
+  .conception__main-desc {
+    font-size: 36px;
+  }
+
+  .conception__help-title {
+    font-size: 42px;
+  }
+
+  .conception__help-subtitle {
+    font-size: 28px;
+  }
+
+  .conception__button {
+    font-size: 28px;
+  }
+
+  .conception__input {
+    font-size: 24px;
   }
 }

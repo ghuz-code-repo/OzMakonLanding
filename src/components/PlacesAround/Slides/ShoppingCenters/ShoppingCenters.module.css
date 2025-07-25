@@ -406,3 +406,42 @@
     font-size: 10px;
   }
 }
+
+/* Media queries for tall screens */
+@media (height > 1440px) {
+  .description {
+    font-size: 26px;
+    line-height: 1.6;
+  }
+  
+  .timeTag {
+    font-size: 18px;
+  }
+  
+  .timeIcon {
+    font-size: 16px;
+  }
+  
+  .textBlock {
+    padding: 50px 30px 18px 30px;
+  }
+}
+
+@media (height > 2100px) {
+  .description {
+    font-size: 32px;
+    line-height: 1.7;
+  }
+  
+  .timeTag {
+    font-size: 22px;
+  }
+  
+  .timeIcon {
+    font-size: 20px;
+  }
+  
+  .textBlock {
+    padding: 60px 36px 24px 36px;
+  }
+}

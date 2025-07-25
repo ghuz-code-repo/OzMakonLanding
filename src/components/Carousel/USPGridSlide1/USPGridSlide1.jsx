@@ -7,11 +7,18 @@ import CachedBackgroundImage from '../../CachedImage/CachedBackgroundImage';
 const imgPath = (name) => `/src/assets/img/UniqueSellingPropositionsGrid5/slide1/${name}`;
 
 const USPGridSlide1 = () => {
-  const { t } = useTranslation();
+  const { t, ready } = useTranslation();
+
+  const getTranslation = (key, fallback) => {
+    if (!ready) return fallback;
+    const translation = t(key);
+    return translation && translation !== key ? translation : fallback;
+  };
+
   const slide = {
-    title: t('usp5.slide1.title'),
+    title: getTranslation('usp5.slide1.title', 'Детская площадка\nи спорт'),
     left: {
-      list: t('usp5.slide1.list'),
+      list: getTranslation('usp5.slide1.list', 'Детская площадка\nСпортивный зал\nБеговые дорожки'),
       year: '2025',
       img: 'sports.webp',
     },
@@ -22,9 +29,15 @@ const USPGridSlide1 = () => {
     right: {
       img1: 'front_view.webp',
       img2: 'bbq.webp',
-      text: t('usp5.slide1.textblock'),
+      text: getTranslation('usp5.slide1.textblock', 'Активный образ жизни\nдля всей семьи'),
     },
   };
+
+  const safeSplit = (text) => {
+    if (!text || typeof text !== 'string') return [''];
+    return text.split('\n');
+  };
+
   return (
     <div className={styles["usp5__container"]}>
       <div className={styles["usp5-wrapper"]}>
@@ -32,16 +45,16 @@ const USPGridSlide1 = () => {
           <div className={styles["usp5-animatable"]}>
             <div className={styles["usp5__left-top"]}>
               <h2 className={styles["usp5__title"]}>
-                {slide.title.split('\n').map((line, i) => (
+                {safeSplit(slide.title).map((line, i, arr) => (
                   <React.Fragment key={i}>
                     {line}
-                    <br />
+                    {i < arr.length - 1 && <br />}
                   </React.Fragment>
                 ))}
               </h2>
               <div className={styles["usp5__left-top-text"]}>
                 <div className={styles["usp5__list"]}>
-                  {slide.left.list.split('\n').map((item, i) => <div key={i}>{item}</div>)}
+                  {safeSplit(slide.left.list).map((item, i) => <div key={i}>{item}</div>)}
                 </div>
                 <div className={styles["usp5__year"]}>{slide.left.year}</div>
               </div>
@@ -53,7 +66,7 @@ const USPGridSlide1 = () => {
               <CachedBackgroundImage
                 src={imgPath(slide.left.img)}
                 className={styles["usp5__img"] + ' ' + styles["usp5__img-zal"]}
-                aria-label='ЖДУ ФОТО'
+                aria-label='Спортивный зал'
               />
             </div>
           </div>
@@ -63,14 +76,14 @@ const USPGridSlide1 = () => {
             <CachedBackgroundImage
               src={imgPath(slide.center.img1)}
               className={styles["usp5__img"] + ' ' + styles["usp5__img-child"]}
-              aria-label='ЖДУ ФОТО'
+              aria-label='Детская комната'
             />
           </div>
           <div className={styles["usp5__img-block"] + ' ' + styles["usp5__img-block--middle"]}>
             <CachedBackgroundImage
               src={imgPath(slide.center.img2)}
               className={styles["usp5__img"] + ' ' + styles["usp5__img-dvor"]}
-              aria-label='ЖДУ ФОТО'
+              aria-label='Вид сверху'
             />
           </div>
         </div>
@@ -80,11 +93,11 @@ const USPGridSlide1 = () => {
               <CachedBackgroundImage
                 src={imgPath(slide.right.img1)}
                 className={styles["usp5__img"] + ' ' + styles["usp5_img--frontview"]}
-                aria-label='ЖДУ ФОТО'
+                aria-label='Фасад здания'
               />
             </div>
             <div className={styles["usp5__textblock"]}>
-              {slide.right.text.split('\n').map((line, i) => (
+              {safeSplit(slide.right.text).map((line, i) => (
                 <React.Fragment key={i}>
                   {line}
                   <br />
@@ -96,12 +109,13 @@ const USPGridSlide1 = () => {
             <CachedBackgroundImage
               src={imgPath(slide.right.img2)}
               className={styles["usp5__img"] + ' ' + styles["usp5_img--bbq"]}
-              aria-label='ЖДУ ФОТО'
+              aria-label='Барбекю зона'
             />
           </div>
         </div>
       </div>
 
+      {/* Мобильная версия - ВСЕ через CachedBackgroundImage */}
       <div className={styles["usp5__mobile-wrapper"]}>
         <div className={styles["usp5__mobile-top-row"]}>
           <div>
@@ -130,29 +144,37 @@ const USPGridSlide1 = () => {
               </div>
             </div>
           </div>
-          <div className={styles["usp5__mobile-bot-right-text"] + ' ' + styles["usp5__mobile-text"]+ ' ' + styles["tablet-mini-text"]}>
+          <div className={styles["usp5__mobile-bot-right-text"] + ' ' + styles["usp5__mobile-text"] + ' ' + styles["tablet-mini-text"]}>
             {slide.left.list.split('\n').map((item, i) => <div key={i}>{item}</div>)}
           </div>
         </div>
         <div className={styles["usp5_mobile-content-block"]}>
           <div className={styles["usp5__mobile-row"]}>
-            <div className={styles["usp5__mobile-top-left-img"]}
-              style={{ backgroundImage: `url(${imgPath(slide.center.img2)})` }} aria-label='ЖДУ ФОТО'
+            <CachedBackgroundImage
+              src={imgPath(slide.center.img2)}
+              className={styles["usp5__mobile-top-left-img"]}
+              aria-label='Вид сверху'
             />
-            <div className={styles["usp5__mobile-top-right-img"]}
-              style={{ backgroundImage: `url(${imgPath(slide.left.img)})` }} aria-label='ЖДУ ФОТО'
+            <CachedBackgroundImage
+              src={imgPath(slide.left.img)}
+              className={styles["usp5__mobile-top-right-img"]}
+              aria-label='Спортивный зал'
             />
           </div>
           <div className={styles["usp5__mobile-row"]}>
-            <div className={styles["usp5__mobile-bot-left-img"]}
-              style={{ backgroundImage: `url(${imgPath(slide.center.img1)})` }} aria-label='ЖДУ ФОТО'
+            <CachedBackgroundImage
+              src={imgPath(slide.center.img1)}
+              className={styles["usp5__mobile-bot-left-img"]}
+              aria-label='Детская комната'
             />
             <div className={styles["usp5__mobile-bot-right-block"]}>
-              <div className={styles["usp5__mobile-bot-right-text"] + ' ' + styles["usp5__mobile-text"]+ ' ' + styles["mobile-mini-text"]}>
-                {slide.left.list.split('\n').map((item, i) => <div key={i}>{item}</div>)}
+              <div className={styles["usp5__mobile-bot-right-text"] + ' ' + styles["usp5__mobile-text"] + ' ' + styles["mobile-mini-text"]}>
+                {safeSplit(slide.left.list).map((item, i) => <div key={i}>{item}</div>)}
               </div>
-              <div className={styles["usp5__mobile-bot-right-img"]}
-                style={{ backgroundImage: `url(${imgPath(slide.right.img2)})` }} aria-label='ЖДУ ФОТО'
+              <CachedBackgroundImage
+                src={imgPath(slide.right.img2)}
+                className={styles["usp5__mobile-bot-right-img"]}
+                aria-label='Барбекю зона'
               />
             </div>
           </div>
@@ -162,4 +184,4 @@ const USPGridSlide1 = () => {
   );
 };
 
-export default USPGridSlide1; 
+export default USPGridSlide1;

@@ -103,6 +103,16 @@
   }
 
   .layout-changer__button {
-  font-size: 10px;
+    font-size: 10px;
+  }
 }
+
+@media (height > 1440px) {
+  .layout-changer__button {
+    font-size: 2.4vw;
+  }
+
+  .layout-changer__controls {
+    margin-top: 1vh;
+  }
 }

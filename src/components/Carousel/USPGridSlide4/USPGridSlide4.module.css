@@ -812,37 +812,95 @@
     }
 }
 
-@media (height < 300px) {
-    .top_right_photo {
-        background-size: cover;
-        background-position: center;
-        min-width: 40vw;
-        height: 25vh;
-        border-radius: 12px;
-    }
+/* Media queries for tall screens */
+@media (height > 1440px) {
+  .row_title_text {
+    font-size: 92px;
+  }
+  
+  .main-text {
+    font-size: 30px;
+  }
+  
+  .bullets {
+    font-size: 30px;
+  }
+  
+  .year {
+    font-size: 30px;
+  }
+  
+  .tablet_left_row_title_text {
+    font-size: 62px !important;
+  }
+  
+  .tablet_left_row_main_text {
+    font-size: 30px !important;
+  }
+  
+  .tablet_bullets {
+    font-size: 30px !important;
+  }
+  
+  .title_text {
+    font-size: 48px;
+  }
+  
+  .mobile_year {
+    font-size: 20px;
+  }
+  
+  .mobile_text {
+    font-size: 20px;
+  }
+  
+  .mid_bullets {
+    font-size: 20px;
+  }
+}
 
-    .mid_left_right_photo {
-        background-size: cover;
-        background-position: center;
-        min-width: 19vw;
-        height: 25vh;
-        border-radius: 12px;
-    }
-
-    .mid_right_right_photo {
-        background-size: cover;
-        background-position: center;
-        width: 19vw;
-        height: 25vh;
-        border-radius: 12px;
-    }
-
-    .bottom_right_photo {
-        background-size: cover;
-        background-position: center;
-        width: 40vw;
-        height: 25vh;
-        border-radius: 12px;
-    }
-
+@media (height > 2100px) {
+  .row_title_text {
+    font-size: 115px;
+  }
+  
+  .main-text {
+    font-size: 36px;
+  }
+  
+  .bullets {
+    font-size: 36px;
+  }
+  
+  .year {
+    font-size: 36px;
+  }
+  
+  .tablet_left_row_title_text {
+    font-size: 76px !important;
+  }
+  
+  .tablet_left_row_main_text {
+    font-size: 36px !important;
+  }
+  
+  .tablet_bullets {
+    font-size: 36px !important;
+  }
+  
+  .title_text {
+    font-size: 58px;
+  }
+  
+  .mobile_year {
+    font-size: 24px;
+  }
+  
+  .mobile_text {
+    font-size: 24px;
+  }
+  
+  .mid_bullets {
+    font-size: 24px;
+  }
 }
