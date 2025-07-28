@@ -100,10 +100,10 @@ export const generateMediaConfig = () => {
 
   // Локация
   const locationImages = [
-    '/src/assets/webp/Golden House OZMakon_Res_View 1 ОЧЕРЕДь.webp',
-    '/src/assets/webp/bG4Nj8sylI9MApxIBUFS-rail.webp',
-    '/src/assets/webp/d1d443d7d05fa88d7af53e897e3fc70d_lf.webp',
-    '/src/assets/webp/ChatGPT Image 18 июн. 2025 г., 16_17_30.webp'
+    '/src/assets/img/Location/ladder.svg',
+    '/src/assets/img/Location/map.png',
+    '/src/assets/img/Location/marker.svg',
+    '/src/assets/img/Location/metro.svg'
   ];
 
   return {

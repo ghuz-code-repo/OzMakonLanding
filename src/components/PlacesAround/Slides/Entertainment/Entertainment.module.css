@@ -1,4 +1,4 @@
-.entartainment {
+.entertainment {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -11,7 +11,7 @@
 /* Первая строка - главное изображение и текст */
 .topRow {
   display: flex;
-  /* gap: 30px; */
+  gap: 30px;
   flex: 1;
 
 }
