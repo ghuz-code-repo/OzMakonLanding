@@ -148,11 +148,11 @@
     font-size: 14px;
   }
 
-  .hero__logo {
+  /* .hero__logo {
     max-width: 150px;
-    /* Limit logo size for small mobile */
+    /* Limit logo size for small mobile
     margin-bottom: 10px;
-  }
+  } */
 }
 
 /* Media queries for tall screens */

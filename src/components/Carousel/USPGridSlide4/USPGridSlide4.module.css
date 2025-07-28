@@ -585,6 +585,7 @@
 
     .mobile_slide {
         display: none;
+        
     }
 
     .tablet_slide {
@@ -724,7 +725,7 @@
     border-radius: 12px;
 }
 
-@media (width < 750px) {
+@media (width < 750px) or (height > 1440px){
     .slide3 {
         display: none;
     }
@@ -735,6 +736,11 @@
 
     .mobile_slide {
         display: flex;
+        flex-direction: column;
+        align-content: center;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
     }
 }
 
@@ -812,95 +818,60 @@
     }
 }
 
-/* Media queries for tall screens */
-@media (height > 1440px) {
-  .row_title_text {
-    font-size: 92px;
-  }
-  
-  .main-text {
-    font-size: 30px;
-  }
-  
-  .bullets {
-    font-size: 30px;
-  }
-  
-  .year {
-    font-size: 30px;
-  }
-  
-  .tablet_left_row_title_text {
-    font-size: 62px !important;
-  }
-  
-  .tablet_left_row_main_text {
-    font-size: 30px !important;
-  }
-  
-  .tablet_bullets {
-    font-size: 30px !important;
-  }
-  
-  .title_text {
-    font-size: 48px;
-  }
-  
-  .mobile_year {
-    font-size: 20px;
-  }
-  
-  .mobile_text {
-    font-size: 20px;
-  }
-  
-  .mid_bullets {
-    font-size: 20px;
-  }
+.mobile_slide_wrapper{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    /* width: 100%; */
 }
 
+
+@media (height > 1440px) {
+    .title_text {
+        font-size: 55px;
+    }
+
+    .mobile_text,
+    .mobile_year,
+    .mid_bullets {
+        font-size: 32px;
+    }
+
+    .mid_bullets {
+        margin-bottom: 1vh;
+    }
+}
+
+@media (height > 1440px) {
+    .title_text {
+        font-size: 80px;
+    }
+
+    .mobile_text,
+    .mobile_year,
+    .mid_bullets {
+        font-size: 40px;
+    }
+
+    .mid_bullets {
+        margin-bottom: 1vh;
+    }
+}
+
+
 @media (height > 2100px) {
-  .row_title_text {
-    font-size: 115px;
-  }
-  
-  .main-text {
-    font-size: 36px;
-  }
-  
-  .bullets {
-    font-size: 36px;
-  }
-  
-  .year {
-    font-size: 36px;
-  }
-  
-  .tablet_left_row_title_text {
-    font-size: 76px !important;
-  }
-  
-  .tablet_left_row_main_text {
-    font-size: 36px !important;
-  }
-  
-  .tablet_bullets {
-    font-size: 36px !important;
-  }
-  
-  .title_text {
-    font-size: 58px;
-  }
-  
-  .mobile_year {
-    font-size: 24px;
-  }
-  
-  .mobile_text {
-    font-size: 24px;
-  }
-  
-  .mid_bullets {
-    font-size: 24px;
-  }
+    .title_text {
+        font-size: 110px;
+    }
+
+    .mobile_text,
+    .mobile_year,
+    .mid_bullets {
+        font-size: 55px;
+    }
+
+    .mid_bullets {
+        margin-bottom: 2vh;
+    }
 }

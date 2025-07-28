@@ -114,11 +114,13 @@
 .cardRowBulletTime {
   font-weight: 400;
   font-size: 24px;
+  color:black !important;
 }
 
 .cardRowBulletPlace {
   font-weight: 200;
   font-size: 24px;
+  color:black !important;
 }
 
 /* Tablets (≤1200px) */

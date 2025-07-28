@@ -1,20 +1,20 @@
-/* Парки слайд */
 .parks {
   display: flex;
   flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  /* width: 80%; */
+  padding: 20px;
   gap: 30px;
-  max-width: 1700px;
-  max-height: 100vh;
-  width: 100%;
-  height: 70vh;
-  margin: 0 auto;
 }
+
 
 /* Первая строка - главное изображение и текст */
 .topRow {
   display: flex;
-  gap: 30px;
+  /* gap: 30px; */
   flex: 1;
+
 }
 
 .mainImage {
@@ -240,7 +240,7 @@
 }
 
 /* Планшеты и маленькие ноутбуки (≤ 1024px) */
-@media (max-width: 1280px) {
+@media (max-width: 1280px) and (height < 1440px){
   .shoppingCenters {
     height: auto;
     gap: 20px;
@@ -277,14 +277,23 @@
 /* Планшеты (≤ 768px) */
 @media (max-width: 1100px) {
   .shoppingCenters {
-    height: auto;
+    /* height: 100%; */
     gap: 15px;
-    width: 100%;
+    /* width: 100%; */
   }
 
   .topRow {
     flex-direction: column;
     gap: 15px;
+    height: auto;
+
+  }
+
+  .bottomRow {
+    flex-direction: column;
+    gap: 15px;
+    height: auto;
+    width: 100%;
   }
 
   .mainImage {
@@ -327,6 +336,7 @@
 /* Мобильные устройства (≤ 480px) */
 @media (max-width: 480px) {
   .shoppingCenters {
+    height: auto;
     gap: 12px;
   }
 
@@ -408,6 +418,11 @@
 
 /* Media queries for tall screens */
 @media (height > 1440px) {
+  .topRow{
+    flex-direction: column;
+    /* gap: 20px; */
+  }
+  
   .description {
     font-size: 26px;
     line-height: 1.6;
@@ -423,6 +438,29 @@
   
   .textBlock {
     padding: 50px 30px 18px 30px;
+  }
+
+    .mainImage {
+    width: 100%;
+    /* height: 250px; */
+  }
+
+  .smallImage {
+    width: 100%;
+    /* height: 300px; */
+  }
+
+  .largeImage {
+    width: 100%;
+    /* height: 300px; */
+  }
+
+  .bottomRow{
+    flex-direction: column;
+    gap: 20px;
+    height: auto;
+    width: 100%;
+    justify-content: space-between;
   }
 }
 

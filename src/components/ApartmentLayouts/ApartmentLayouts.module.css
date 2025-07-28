@@ -166,7 +166,7 @@
 /* =================================== */
 
 /* Маленькие ноутбуки и большие планшеты (≤ 1200px) */
-@media (max-width: 1200px) {
+@media (max-width: 1440px) {
   .apartment-layouts__content {
     margin-top: 30px;
   }
@@ -344,11 +344,30 @@
     font-size: 30px;
   }
 
-  .apartment-layouts__discount {
-    font-size: 24px;
-    width: 58px;
-    height: 97px;
-    padding-bottom: 15px;
+
+  .apartment-layouts__card {
+    grid-column: span 2;
+    aspect-ratio: 1 / 1;
+    aspect-ratio: unset;
+    min-height: 100px;
+  }
+
+  .apartment-layouts__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  /* Первый элемент занимает 2 колонки (1 сверху) */
+  .apartment-layouts__card:first-child {
+    margin: 0;
+    grid-column: span 2;
+    aspect-ratio: 2 / 1;
+  }
+
+  /* Убираем старое правило для последнего элемента */
+  .apartment-layouts__card:last-child:nth-child(odd) {
+    grid-column: span 2;
+    margin: 0;
+
   }
 }
 
@@ -360,13 +379,6 @@
   .apartment-layouts__card-title,
   .apartment-layouts__price {
     font-size: 36px;
-  }
-
-  .apartment-layouts__discount {
-    font-size: 30px;
-    width: 68px;
-    height: 113px;
-    padding-bottom: 18px;
   }
 
 }

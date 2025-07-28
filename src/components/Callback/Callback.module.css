@@ -38,7 +38,7 @@
 .right {
   display: flex;
   align-items: flex-start;
-  max-height: 100vh;
+  max-height: 65vh;
   /* max-width: 40vw; */
 }
 

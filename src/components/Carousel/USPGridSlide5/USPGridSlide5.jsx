@@ -150,7 +150,7 @@ const USPGridSlide5 = () => {
         <div className={styles['mobile_slide_wrapper']}>
           <div className={styles['mobile_top_row']}>
             <div className={styles["mobile_title_block"]}>
-                <h2 className={styles['tablet_left_row_title_text']}>
+                <h2 className={styles['mobile_left_row_title_text']}>
                   {slide.left_top_title.split('\n').map((line, i) => (
                     <React.Fragment key={i}>
                       {line}
