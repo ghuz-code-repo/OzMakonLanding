@@ -1,7 +1,6 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import styles from './USPGridSlide3.module.css';
-import CachedBackgroundImage from '../../CachedImage/CachedBackgroundImage';
 
 const imgPath = (name) => `/src/assets/img/UniqueSellingPropositionsGrid5/slide3/${name}`;
 
@@ -45,7 +44,198 @@ const USPGridSlide3 = () => {
           <div className={styles["slide-3-top"]}>
             <div className={styles["slide-3-top--left"]}>
               <div className={styles["top--left--photo--block"]}>
-                <CachedBackgroundImage
+                <div
+                  className={styles["top--left--photo"]}
+                  style={{ backgroundImage: `url(${imgPath(slide.images.parkingBig)})` }}
+                  aria-label='Парковка'
+                />
+              </div>
+            </div>
+            <div className={styles["slide-3-top--right"]}>
+              <div className={styles["left--top--right--photo--block"]}>
+                <div
+                  className={styles["left--top--right--photo"]}
+                  style={{ backgroundImage: `url(${imgPath(slide.images.electroZaryad)})` }}
+                  aria-label='Электрозарядка'
+                />
+              </div>
+              <div className={styles["right--top--right-photo--block"]}>
+                <div
+                  className={styles["right--top--right-photo"]}
+                  style={{ backgroundImage: `url(${imgPath(slide.images.usiliteli)})` }}
+                  aria-label='Усилители'
+                />
+              </div>
+            </div>
+          </div>
+
+          <div className={styles["slide-3-bottom"]}>
+            <div className={styles["slide-3-bottom--left"]}>
+              <div className={styles["slide-3-bottom--left--block"]}>
+                <div className={styles["first-row"]}>
+                  <div className={styles["row_title_text"]}>
+                    {safeSplit(slide.title).map((line, i, arr) => (
+                      <React.Fragment key={i}>
+                        {line}
+                        {i < arr.length - 1 && <br />}
+                      </React.Fragment>
+                    ))}
+                  </div>
+                  <div className={styles["bullet-block"]}>
+                    <div className={styles["year"]}>{slide.left.year}</div>
+                    <div className={styles["yellow-line"]} />
+                  </div>
+                </div>
+                <div className={styles["second-row"]}>
+                  <div className={styles["main-text"]}>
+                    {safeSplit(slide.right.text).map((line, i) => (
+                      <React.Fragment key={i}>
+                        {line}
+                        <br />
+                      </React.Fragment>
+                    ))}
+                  </div>
+                  <div className={styles["bullets"]}>
+                    {safeSplit(slide.left.list).map((item, i) => <div key={i}>{item}</div>)}
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className={styles["right--bottom-photo--block"]}>
+              <div
+                className={styles["right--bottom-photo"]}
+                style={{ backgroundImage: `url(${imgPath(slide.images.parkingSmall)})` }}
+                aria-label='Парковка вид'
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Планшетная версия */}
+      <div className={styles["tablet_slide"]}>
+        <div className={styles["tablet_slide_wrapper"]}>
+          <div className={styles["tablet_slide_left"]}>
+            <div className={styles["tablet_first_left_row"]}>
+              <div className={styles["tablet_left_row_title_text"]}>
+                {safeSplit(slide.title).map((line, i, arr) => (
+                  <React.Fragment key={i}>
+                    {line}
+                    {i < arr.length - 1 && <br />}
+                  </React.Fragment>
+                ))}
+              </div>
+              <div className={styles["tablet_year"]}>{slide.left.year}</div>
+            </div>
+            <div className={styles["tablet_second_left_row"]}>
+              <div className={styles["tablet_left_row_main_text"]}>
+                {safeSplit(slide.right.text).map((line, i) => (
+                  <React.Fragment key={i}>
+                    {line}
+                    <br />
+                  </React.Fragment>
+                ))}
+              </div>
+              <div className={styles["tablet_bullet_block"]}>
+                <div className={styles["tablet_bullets"]}>
+                  {safeSplit(slide.left.list).map((item, i) => <div key={i}>{item}</div>)}
+                </div>
+                <div className={styles["tablet_yellow-line"]} />
+              </div>
+            </div>
+          </div>
+          <div className={styles["tablet_slide_right"]}>
+            <div
+              className={styles["top_right_photo"]}
+              style={{ backgroundImage: `url(${imgPath(slide.images.parkingBig)})` }}
+              aria-label='Парковка'
+            />
+            <div className={styles["slide_two_photos"]}>
+              <div
+                className={styles["mid_left_right_photo"]}
+                style={{ backgroundImage: `url(${imgPath(slide.images.electroZaryad)})` }}
+                aria-label='Электрозарядка'
+              />
+              <div
+                className={styles["mid_right_right_photo"]}
+                style={{ backgroundImage: `url(${imgPath(slide.images.usiliteli)})` }}
+                aria-label='Усилители'
+              />
+            </div>
+            <div
+              className={styles["bottom_right_photo"]}
+              style={{ backgroundImage: `url(${imgPath(slide.images.parkingSmall)})` }}
+              aria-label='Парковка вид'
+            />
+          </div>
+        </div>
+      </div>
+
+      {/* Мобильная версия */}
+      <div className={styles["mobile_slide"]}>
+        <div className={styles["mobile_slide_wrapper"]}>
+          <div className={styles["mobile_top_row"]}>
+            <div className={styles["mobile_title_block"]}>
+              <div className={styles["title_text"]}>
+                {safeSplit(slide.title).map((line, i, arr) => (
+                  <React.Fragment key={i}>
+                    {line}
+                    {i < arr.length - 1 && <br />}
+                  </React.Fragment>
+                ))}
+              </div>
+              <div className={styles["mobile_year"]}>{slide.left.year}</div>
+            </div>
+            <div className={styles["mobile_text"]}>
+              {safeSplit(slide.right.text).map((line, i) => (
+                <React.Fragment key={i}>
+                  {line}
+                  <br />
+                </React.Fragment>
+              ))}
+            </div>
+          </div>
+          <div
+            className={styles["mobile_top_photo"]}
+            style={{ backgroundImage: `url(${imgPath(slide.images.parkingBig)})` }}
+            aria-label='Парковка'
+          />
+          <div className={styles["mobile_text_block"]}>
+            <div className={styles["mobile_text"]}>
+              {safeSplit(slide.left.list).map((item, i) => <div key={i}>{item}</div>)}
+            </div>
+            <div className={styles["mobile_yellow-line"]} />
+          </div>
+          <div className={styles["mobile_mid_row"]}>
+            <div
+              className={styles["mid_left_right_mob_photo"]}
+              style={{ backgroundImage: `url(${imgPath(slide.images.electroZaryad)})` }}
+              aria-label='Электрозарядка'
+            />
+            <div className={styles["mid_right_right_content"]}>
+              <div className={styles["mid_bullets"]}>
+                Дополнительная информация
+              </div>
+              <div
+                className={styles["mid_right_right_mob_photo"]}
+                style={{ backgroundImage: `url(${imgPath(slide.images.usiliteli)})` }}
+                aria-label='Усилители'
+              />
+            </div>
+          </div>
+          <div
+            className={styles["bottom_right_mob_photo"]}
+            style={{ backgroundImage: `url(${imgPath(slide.images.parkingSmall)})` }}
+            aria-label='Парковка вид'
+          />
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default USPGridSlide3;
+
                   src={imgPath(slide.images.parkingBig)}
                   className={styles["top--left--photo"]}
                   aria-label='Парковка'

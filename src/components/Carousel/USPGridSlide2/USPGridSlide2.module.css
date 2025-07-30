@@ -50,10 +50,8 @@
 .usp5__img-lift {
   background-position: 0px 0px;
   scale: 1.1;
-  /* border-radius: 0px 0px 12px 12px; */
   min-width: 465px;
   min-height: 335px;
-  background-image: url(/src/assets/img/UniqueSellingPropositionsGrid5/kids_room.webp);
   background-size: cover;
 }
 
@@ -75,7 +73,6 @@
   border-radius: 12px 12px 0px 0px;
   min-width: 465px;
   min-height: 585px;
-  background-image: url(/src/assets/img/UniqueSellingPropositionsGrid5/eagle_view.webp);
   background-size: cover;
 }
 
@@ -101,7 +98,6 @@
   background-position: center;
   min-width: 433px;
   min-height: 370px;
-  background-image: url(/src/assets/img/UniqueSellingPropositionsGrid5/front_view.webp);
   background-size: cover;
   transition: transform 0.3s ease;
 }
@@ -112,10 +108,8 @@
   transition: transform 0.3s ease;
   min-width: 433px;
   min-height: 190px;
-  background-image: url(/src/assets/img/UniqueSellingPropositionsGrid5/bbq.webp);
   background-size: cover;
   transition: transform 0.3s ease;
-
 }
 
 .usp5__right-top-block {
@@ -187,7 +181,6 @@
   width: 454px;
   height: 390px;
   background-position: bottom right;
-  background-image: url(/src/assets/img/UniqueSellingPropositionsGrid5/sports.webp);
   background-size: cover;
 }
 
@@ -442,24 +435,27 @@
   .usp5__mobile-top-left-img {
     min-width: calc((100vw - 30px * 3)/2);
     min-height: calc(100vh/3);
-    background-size: cover;
-    background-position: center;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
     border-radius: 12px;
   }
 
   .usp5__mobile-top-right-img {
     min-width: calc((100vw - 30px * 3)/2);
     min-height: calc(100vh/3);
-    background-size: cover;
-    background-position: bottom right;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
     border-radius: 12px;
   }
 
   .usp5__mobile-bot-left-img {
     min-width: calc((100vw - 30px * 3)/2);
     min-height: calc(100vh/3);
-    background-size: cover;
-    background-position: center;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
     border-radius: 12px;
   }
 
@@ -470,8 +466,9 @@
   .usp5__mobile-bot-right-img {
     max-width: calc((100vw - 30px * 3)/2);
     min-height: calc(100vh/3);
-    background-size: cover;
-    background-position: center;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
     border-radius: 12px
   }
 
