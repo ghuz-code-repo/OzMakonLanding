@@ -3,6 +3,7 @@ import { useMediaPreloader } from './MediaPreloader';
 import { generateMediaConfig } from '../../utils/mediaConfigGenerator';
 import './MediaPreloader.css';
 
+
 const MediaInitializer = ({ children }) => {
   const { loadImageGroup, setIsInitialLoadComplete } = useMediaPreloader();
   const [isLoading, setIsLoading] = useState(true);
@@ -122,11 +123,7 @@ const MediaInitializer = ({ children }) => {
     <>
       {/* Основной контент - показываем после завершения загрузки критических файлов */}
       {showContent && (
-        <div style={{ 
-          opacity: 1, // Нет transition, сразу показываем
-          contain: 'layout style paint',
-          willChange: 'auto'
-        }}>
+        <div className={"mediaInitializerContent"} >
           {children}
         </div>
       )}

@@ -79,7 +79,7 @@ const USPGridCarousel = () => {
   }
 
   return (
-    <section className={styles["usp5-section"]} ref={sectionRef}>
+    <section className={styles["usp5-section"]}>
       <div className={styles["usp5-non-scroll-container"]} id='advantages'>
         <USPGridSlide1 />
         <USPGridSlide2 />
