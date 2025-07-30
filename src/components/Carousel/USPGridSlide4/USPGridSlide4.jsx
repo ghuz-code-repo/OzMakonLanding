@@ -1,6 +1,7 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import styles from './USPGridSlide4.module.css';
+import CachedBackgroundImage from '../../CachedImage/CachedBackgroundImage';
 
 const imgPath = (name) => `/src/assets/img/UniqueSellingPropositionsGrid5/slide4/${name}`;
 
@@ -15,26 +16,35 @@ const USPGridSlide4 = () => {
     year: '2025',
     left_bottom_text: t('usp5.slide4.left_bottom_text'),
     left_bottom_bullets: t('usp5.slide4.left_bottom_bullets'),
-
   };
+
   return (
     <div className={styles["usp5-wrapper"]}>
       <div className={styles['slide3']}>
         <div className={styles['slide-3-top']}>
           <div className={styles['slide-3-top--left']}>
-            <div className={styles['top--left--photo--block']}>
-              <div className={styles['top--left--photo']}
-                style={{ backgroundImage: `url(${imgPath(slide.left_top_img)})` }} />
+            <div className={styles['top--left--photo--block']} style={{ position: 'relative', height: '300px' }}>
+              <CachedBackgroundImage 
+                src={imgPath(slide.left_top_img)}
+                className={styles['top--left--photo']}
+                priority="true"
+              />
             </div>
           </div>
           <div className={styles['slide-3-top--right']}>
-            <div className={styles['left--top--right--photo--block']}>
-              <div className={styles['left--top--right--photo']}
-                style={{ backgroundImage: `url(${imgPath(slide.right_left_top_img)})` }} />
+            <div className={styles['left--top--right--photo--block']} style={{ position: 'relative', height: '300px' }}>
+              <CachedBackgroundImage 
+                src={imgPath(slide.right_left_top_img)}
+                className={styles['left--top--right--photo']}
+                priority="true"
+              />
             </div>
-            <div className={styles['right--top--right-photo--block']}>
-              <div className={styles['right--top--right-photo']}
-                style={{ backgroundImage: `url(${imgPath(slide.right_right_top_img)})` }} />
+            <div className={styles['right--top--right-photo--block']} style={{ position: 'relative', height: '300px' }}>
+              <CachedBackgroundImage 
+                src={imgPath(slide.right_right_top_img)}
+                className={styles['right--top--right-photo']}
+                priority="true"
+              />
             </div>
           </div>
         </div>
@@ -51,61 +61,11 @@ const USPGridSlide4 = () => {
                       </React.Fragment>
                     ))}
                   </h2>
-                  <div className={styles['main-text']}>
-                    {slide.left_bottom_text.split('\n').map((line, i) => (
-                      <React.Fragment key={i}>
-                        {line}
-                        <br />
-                      </React.Fragment>
-                    ))}
+                  <div className={styles['row_year']}>
+                    {slide.year}
                   </div>
                 </div>
-                <div className={styles['year']}>
-                  <span>{slide.year}</span>
-                </div>
-              </div>
-              <div className={styles['second-row']}>
-
-                <div className={styles['bullet-block']}>
-                  <div className={styles['yellow-line']} />
-                  <div className={styles['bullets']}>
-                    <span>
-                      {slide.left_bottom_bullets.split('\n').map((line, i) => (
-                        <React.Fragment key={i}>
-                          {line}
-                          <br />
-                        </React.Fragment>
-                      ))}
-                    </span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div className={styles['slide-3-bottom--right']}>
-            <div className={styles['right--bottom-photo--block']}>
-              <div className={styles['right--bottom-photo']}
-                style={{ backgroundImage: `url(${imgPath(slide.right_bottom_img)})` }}
-              />
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div className={styles['tablet_slide']}>
-        <div className={styles['tablet_slide_wrapper']}>
-          <div className={styles['tablet_slide_left']}>
-            <div className={styles['tablet_first_left_row']}>
-              <div className={styles['tablet_left_row_title']}>
-                <h2 className={styles['tablet_left_row_title_text']}>
-                  {slide.left_bottom_title.split('\n').map((line, i) => (
-                    <React.Fragment key={i}>
-                      {line}
-                      <br />
-                    </React.Fragment>
-                  ))}
-                </h2>
-                <div className={styles['tablet_left_row_main_text']}>
+                <div className={styles['row_text']}>
                   {slide.left_bottom_text.split('\n').map((line, i) => (
                     <React.Fragment key={i}>
                       {line}
@@ -114,96 +74,26 @@ const USPGridSlide4 = () => {
                   ))}
                 </div>
               </div>
-              <div className={styles['tablet_year']}>
-                <span>{slide.year}</span>
-              </div>
-            </div>
-            <div className={styles['tablet_second_left_row']}>
-              <div className={styles['tablet_yellow-line']} />
-              <div className={styles['tablet_bullets']}>
-                <span>
-                  {slide.left_bottom_bullets.split('\n').map((line, i) => (
-                    <React.Fragment key={i}>
-                      {line}
-                      <br />
-                    </React.Fragment>
-                  ))}
-                </span>
+              <div className={styles['second-row']}>
+                <div className={styles['yellow-line']} />
+                <div className={styles['bullets']}>
+                  <span>
+                    {slide.left_bottom_bullets.split('\n').map((line, i) => (
+                      <React.Fragment key={i}>
+                        {line}
+                        <br />
+                      </React.Fragment>
+                    ))}
+                  </span>
+                </div>
               </div>
             </div>
           </div>
-          <div className={styles['tablet_slide_right']}>
-            <div className={styles['tablet_right_photo_block']}>
-              <div className={styles['top_right_photo']}
-                style={{ backgroundImage: `url(${imgPath(slide.left_top_img)})` }} />
-            </div>
-            <div className={styles['slide_two_photos']}>
-              <div className={styles['mid_left_right_photo']}
-                style={{ backgroundImage: `url(${imgPath(slide.right_left_top_img)})` }} />
-              <div className={styles['mid_right_right_photo']}
-                style={{ backgroundImage: `url(${imgPath(slide.right_right_top_img)})` }} />
-            </div>
-            <div className={styles['tablet_bottom_right_photo_block']}>
-              <div className={styles['bottom_right_photo']}
-                style={{ backgroundImage: `url(${imgPath(slide.right_bottom_img)})` }}
-              />
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div className={styles['mobile_slide']}>
-        <div className={styles['mobile_slide_wrapper']}>
-          <div className={styles['mobile_top_row']}>
-            <div className={styles["mobile_title_block"]}>
-              <h2 className={styles["title_text"]}>
-                {slide.left_bottom_title.split('\n').map((line, i) => (
-                  <React.Fragment key={i}>
-                    {line}
-                    <br />
-                  </React.Fragment>
-                ))}
-              </h2>
-              <div className={styles["mobile_year"] + ' ' + styles["mobile_text"]}>
-                {slide.year}
-              </div>
-            </div>
-            <div className={styles["mobile_text_block"]}>
-              <div className={styles["mobile_text"]}>
-                {slide.left_bottom_text.split('\n').map((line, i) => (
-                  <React.Fragment key={i}>
-                    {line}
-                    <br />
-                  </React.Fragment>
-                ))}
-              </div>
-              <div className={styles['mobile_yellow-line']} />
-
-            </div>
-            <div className={styles['mobile_top_photo']}
-              style={{ backgroundImage: `url(${imgPath(slide.left_top_img)})` }} />
-          </div>
-          <div className={styles['mobile_mid_row']}>
-            <div className={styles['mid_left_right_mob_photo']}
-              style={{ backgroundImage: `url(${imgPath(slide.right_left_top_img)})` }} />
-            <div className={styles['mid_right_right_content']}>
-              <div className={styles['mid_bullets']}>
-                <span>
-                  {slide.left_bottom_bullets.split('\n').map((line, i) => (
-                    <React.Fragment key={i}>
-                      {line}
-                      <br />
-                    </React.Fragment>
-                  ))}
-                </span>
-              </div>
-              <div className={styles['mid_right_right_mob_photo']}
-                style={{ backgroundImage: `url(${imgPath(slide.right_right_top_img)})` }} />
-            </div>
-          </div>
-          <div className={styles['mobile_bot_row']}>
-            <div className={styles['bottom_right_mob_photo']}
-              style={{ backgroundImage: `url(${imgPath(slide.right_bottom_img)})` }}
+          <div className={styles['right--bottom-photo--block']} style={{ position: 'relative', height: '300px' }}>
+            <CachedBackgroundImage 
+              src={imgPath(slide.right_bottom_img)}
+              className={styles['right--bottom-photo']}
+              priority="true"
             />
           </div>
         </div>
@@ -212,4 +102,4 @@ const USPGridSlide4 = () => {
   );
 };
 
-export default USPGridSlide4; 
+export default USPGridSlide4;

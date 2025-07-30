@@ -32,27 +32,52 @@ const MediaInitializer = ({ children }) => {
         console.log(`   - Локация: ${MEDIA_CONFIG.location.urls.length} файлов`);
         console.log(`   - ВСЕГО: ${MEDIA_CONFIG.critical.urls.length + MEDIA_CONFIG.carousel.urls.length + MEDIA_CONFIG.apartments.urls.length + MEDIA_CONFIG.places.urls.length + MEDIA_CONFIG.location.urls.length} файлов`);
         
-        // 1. Загружаем критические файлы и первый слайд ОДНОВРЕМЕННО
-        console.log('🚀 Загружаем критические медиафайлы и первый слайд...');
+        // 1. Разделяем все медиафайлы на приоритетные группы
+        console.log('🚀 Инициализация умной загрузки медиафайлов...');
         
-        // Разделяем карусель на первый слайд и остальные
-        const firstSlideUrls = MEDIA_CONFIG.carousel.urls.filter(url => 
-          url.includes('UniqueSellingPropositionsGrid5/slide1/') || 
-          url.includes('USPGridSlide1/')
-        );
-        const otherSlideUrls = MEDIA_CONFIG.carousel.urls.filter(url => 
+        // Группа 1: Критически важные файлы (логотип, фон хедера)
+        const criticalFiles = MEDIA_CONFIG.critical.urls;
+        
+        // Группа 2: Файлы первого экрана
+        const firstScreenUrls = [
+          ...MEDIA_CONFIG.carousel.urls.filter(url => 
+            url.includes('UniqueSellingPropositionsGrid5/slide1/') || 
+            url.includes('USPGridSlide1/')
+          ),
+          ...MEDIA_CONFIG.hero.urls || []
+        ];
+        
+        // Группа 3: Файлы, видимые при первом скролле
+        const firstScrollUrls = [
+          ...MEDIA_CONFIG.location.urls || [],
+          ...MEDIA_CONFIG.places.urls.slice(0, 3) || [] // Только первые 3 изображения
+        ];
+        
+        // Остальные файлы
+        const otherUrls = MEDIA_CONFIG.carousel.urls.filter(url => 
           !url.includes('UniqueSellingPropositionsGrid5/slide1/') && 
           !url.includes('USPGridSlide1/')
         );
 
-        // Загружаем критические файлы и первый слайд параллельно
+        // Умная последовательная загрузка
+        // 1. Сначала загружаем только критические файлы
+        await loadImageGroup('Критические файлы', criticalFiles, true);
+        
+        // Показываем сайт сразу после загрузки критических файлов
+        setIsLoading(false);
+        setShowContent(true);
+        
+        // 2. Загружаем файлы первого экрана
+        await loadImageGroup('Первый экран', firstScreenUrls, true);
+        
+        // 3. Параллельно загружаем файлы первого скролла и остальные
         await Promise.all([
-          loadImageGroup('Критические', MEDIA_CONFIG.critical.urls, true),
-          loadImageGroup('Первый слайд', firstSlideUrls, true)
+          loadImageGroup('Первый скролл', firstScrollUrls, true),
+          loadImageGroup('Остальные файлы', otherUrls, false)
         ]);
 
-        // Теперь обновляем конфигурацию карусели
-        MEDIA_CONFIG.carousel.urls = otherSlideUrls;
+        // Обновляем конфигурацию карусели
+        MEDIA_CONFIG.carousel.urls = otherUrls;
         
         // 2. Убираем HTML-лоадер
         const htmlPreloader = document.getElementById('instant-preloader');

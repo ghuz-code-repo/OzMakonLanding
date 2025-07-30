@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useRef, useEffect, useState } from 'react';
 import { useMediaPreloader } from '../MediaPreloader/MediaPreloader';
 
 const CachedBackgroundImage = ({ 
@@ -8,40 +8,51 @@ const CachedBackgroundImage = ({
   children, 
   alt, 
   'aria-label': ariaLabel,
-  priority = false,
   ...props 
 }) => {
   const imageRef = useRef(null);
+  const [isLoaded, setIsLoaded] = useState(false);
   const { imageCache } = useMediaPreloader();
 
   useEffect(() => {
     let isMounted = true;
-    
-    const loadImage = () => {
-      if (!src) return;
 
-      const cachedUrl = imageCache[src];
-      if (cachedUrl) {
-        if (isMounted && imageRef.current) {
-          imageRef.current.style.backgroundImage = `url("${cachedUrl}")`;
-        }
-      } else {
-        const img = new Image();
-        img.loading = 'eager'; // Всегда используем eager loading
-        img.decoding = 'sync'; // Всегда используем синхронное декодирование
-      
-        img.onload = () => {
-          if (isMounted && imageRef.current) {
-            imageRef.current.style.backgroundImage = `url("${src}")`;
-          }
-        };
+    if (!src) {
+      console.warn('CachedBackgroundImage: src is empty');
+      return;
+    }
 
-        img.src = src;
+    console.log('Loading image:', src); // Добавляем лог
+
+    const setBackground = (url) => {
+      if (isMounted && imageRef.current) {
+        console.log('Setting background for:', src, 'with url:', url); // Добавляем лог
+        // Убеждаемся, что URL правильно обернут в url()
+        const imageUrl = url.startsWith('data:') || url.startsWith('blob:') ? url : `url("${url}")`;
+        imageRef.current.style.backgroundImage = imageUrl.startsWith('url') ? imageUrl : `url("${imageUrl}")`;
+        setIsLoaded(true); // Помечаем, что изображение загружено
+        console.log('Background set successfully for:', src); // Добавляем лог
       }
     };
 
-    // Всегда загружаем изображение немедленно
-    loadImage();
+    // Проверяем кеш
+    if (imageCache[src]) {
+      console.log('🖼️ Использую кешированное изображение:', src);
+      setBackground(imageCache[src]);
+      return;
+    }
+
+    console.log('🔄 Загружаю новое изображение:', src);
+    // Загружаем если нет в кеше
+    const img = new Image();
+    img.onload = () => {
+      console.log('✅ Изображение загружено:', src);
+      setBackground(src);
+    };
+    img.onerror = (error) => {
+      console.error('❌ Ошибка загрузки изображения:', src, error);
+    };
+    img.src = src;
 
     return () => {
       isMounted = false;
@@ -50,26 +61,30 @@ const CachedBackgroundImage = ({
 
   const containerStyle = {
     ...style,
-    position: 'relative',
+    position: 'absolute',
+    inset: 0,
     backgroundSize: 'cover',
     backgroundPosition: 'center',
     backgroundRepeat: 'no-repeat',
-    opacity: 1, // Всегда показываем сразу
+    opacity: isLoaded ? 1 : 0,
+    transition: 'opacity 0.3s ease-in-out',
     transform: 'translateZ(0)',
     backfaceVisibility: 'hidden',
     willChange: 'transform',
-    contain: 'paint layout'
+    WebkitBackfaceVisibility: 'hidden',
+    WebkitTransform: 'translateZ(0)',
   };
 
   return (
-    <div
-      ref={imageRef}
-      className={className}
-      style={containerStyle}
-      aria-label={ariaLabel || alt}
-      {...props}
-    >
-      {children}
+    <div className={className} style={{ position: 'relative', width: '100%', height: '100%', minHeight: style.height || '200px' }}>
+      <div
+        ref={imageRef}
+        style={containerStyle}
+        aria-label={ariaLabel || alt}
+        {...props}
+      >
+        {children}
+      </div>
     </div>
   );
 };

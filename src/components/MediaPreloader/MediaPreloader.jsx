@@ -26,11 +26,15 @@ export const MediaPreloaderProvider = ({ children }) => {
 
   // Функция для загрузки одного изображения
   const loadImage = useCallback((path, url) => {
+    console.log('MediaPreloader attempting to load:', { path, url }); // Добавляем лог
     return new Promise((resolve, reject) => {
       const img = new Image();
-      img.onload = () => resolve({ path, url });
-      img.onerror = () => {
-        console.warn(`Failed to preload: ${path}`);
+      img.onload = () => {
+        console.log('MediaPreloader successfully loaded:', path); // Добавляем лог
+        resolve({ path, url });
+      };
+      img.onerror = (error) => {
+        console.warn(`Failed to preload: ${path}`, error); // Улучшаем лог ошибки
         reject(path);
       };
       img.src = url;

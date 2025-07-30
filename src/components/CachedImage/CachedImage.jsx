@@ -11,14 +11,17 @@ const CachedImage = ({
   fallbackSrc = null,
   onLoad = () => {},
   onError = () => {},
-  priority = false, // больше не используется, всегда грузим сразу
+  priority = false,
+  blurEffect = true, // Добавляем поддержку blur-эффекта
   ...props 
 }) => {
   const { getCachedImage } = useMediaPreloader();
   const [imageSrc, setImageSrc] = useState(null);
   const [isLoaded, setIsLoaded] = useState(false);
   const [hasError, setHasError] = useState(false);
+  const [isTransitioning, setIsTransitioning] = useState(true);
   const imageRef = useRef(null);
+  const placeholderRef = useRef(null);
 
   useEffect(() => {
     let isMounted = true;
@@ -112,20 +115,33 @@ const CachedImage = ({
   }
 
   return (
-    <img
-      ref={imageRef}
-      src={imageSrc || src}
-      alt={alt}
-      className={className}
-      style={{
-        ...style,
-        visibility: 'visible',
-        opacity: 1
-      }}
-      loading="eager"
-      decoding="sync"
-      {...props}
-    />
+    <div className={`${styles.imageContainer} ${className}`} style={style}>
+      {blurEffect && (
+        <div 
+          ref={placeholderRef}
+          className={`${styles.placeholder} ${!isTransitioning ? styles.placeholderHidden : ''}`}
+          style={{
+            backgroundImage: `url(${src})`,
+            backgroundSize: 'cover',
+            backgroundPosition: 'center'
+          }}
+        />
+      )}
+      <img
+        ref={imageRef}
+        src={imageSrc || src}
+        alt={alt}
+        className={`${styles.image} ${isLoaded ? styles.imageLoaded : ''}`}
+        loading="eager"
+        decoding="sync"
+        onLoad={() => {
+          setIsLoaded(true);
+          setTimeout(() => setIsTransitioning(false), 50);
+          onLoad();
+        }}
+        {...props}
+      />
+    </div>
   );
 };
 

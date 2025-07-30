@@ -1,12 +1,25 @@
 /* Анимации для системы предзагрузки медиафайлов */
 
 .mediaInitializerContent {
-  opacity: 1;
+  opacity: 0;
   contain: layout style paint;
-  will-change: auto;
+  will-change: opacity, transform;
   display: flex;
   flex-direction: column;
   margin-top: -70px;
+  animation: fadeInContent 0.5s ease-out forwards;
+  transform-origin: center top;
+}
+
+@keyframes fadeInContent {
+  0% {
+    opacity: 0;
+    transform: translateY(20px) scale(0.98);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
 }
 
 @media ((500px < width < 1200px) and (height > 1440px)) or (height > 2100px) {

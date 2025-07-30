@@ -149,11 +149,36 @@ body::-webkit-scrollbar {
   will-change: auto;
 }
 
-/* Оптимизация изображений */
+/* Глобальные оптимизации для плавности */
+* {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Оптимизация изображений и фонов */
 img, [style*="background-image"] {
-  /* Принудительное освобождение памяти при выходе из области видимости */
   content-visibility: auto;
-  contain-intrinsic-size: 1px 1000px;
+  contain-intrinsic-size: auto 1000px;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  perspective: 1000px;
+  will-change: transform, opacity;
+}
+
+/* Оптимизация скролла */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  overflow-y: scroll;
+  overscroll-behavior-y: none;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Предотвращение дерганий при загрузке шрифтов */
+.font-loaded {
+  font-display: optional;
 }
 
 /* Оптимизация для мобильных устройств */

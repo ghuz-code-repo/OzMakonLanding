@@ -1,0 +1,55 @@
+/* Критические стили для изображений */
+.image-dimensions {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.background-image {
+  position: relative;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  width: 100%;
+  height: 100%;
+}
+
+/* Принудительное сохранение пропорций */
+.aspect-ratio {
+  position: relative;
+  overflow: hidden;
+}
+
+.aspect-ratio--1x1 {
+  padding-top: 100%;
+}
+
+.aspect-ratio--4x3 {
+  padding-top: 75%;
+}
+
+.aspect-ratio--16x9 {
+  padding-top: 56.25%;
+}
+
+/* Контейнер с фиксированной высотой */
+.fixed-height {
+  height: 100vh;
+  width: 100%;
+  overflow: hidden;
+}
+
+/* Оптимизации производительности без влияния на размеры */
+.gpu-accelerated {
+  transform: translate3d(0,0,0);
+  backface-visibility: hidden;
+  transform-style: preserve-3d;
+  will-change: transform;
+}
+
+/* Плавные переходы */
+.smooth-transition {
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+              opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}

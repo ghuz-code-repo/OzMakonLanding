@@ -118,6 +118,14 @@ export const generateMediaConfig = () => {
         '/src/assets/img/Conception/telegram-cloud-document.webp'
       ]
     },
+    // Секция Hero
+    hero: {
+      priority: true,
+      urls: [
+        '/src/assets/img/Hero/logo.svg',
+        '/src/assets/img/Hero/background.webp'
+      ]
+    },
 
     // Изображения карусели (все слайды)
     carousel: {
