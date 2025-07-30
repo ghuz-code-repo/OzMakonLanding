@@ -2,20 +2,20 @@
 // Эта функция поможет собрать все изображения из проекта
 
 export const generateMediaConfig = () => {
-  // Hero изображения
-  const heroImages = [
+  // Самые критические файлы - логотип, фон и концепция
+  const criticalImages = [
+    '/src/assets/img/Hero/logo.svg',
     '/src/assets/img/Hero/background.webp',
-    '/src/assets/img/Hero/logo.svg'
+    '/src/assets/img/Conception/main-image.webp',
+    '/src/assets/img/Conception/telegram-cloud-document.webp'
   ];
 
-  // Conception изображения
+  // Остальные изображения концепции
   const conceptionImages = [
-    '/src/assets/img/Conception/main-image.webp',
     '/src/assets/img/Conception/rectangle-37.png',
     '/src/assets/img/Conception/icon-1.svg',
     '/src/assets/img/Conception/icon-2.svg',
-    '/src/assets/img/Conception/icon-3.svg',
-    '/src/assets/img/Conception/telegram-cloud-document.webp'
+    '/src/assets/img/Conception/icon-3.svg'
   ];
 
   // Карусель изображения по слайдам
@@ -107,25 +107,25 @@ export const generateMediaConfig = () => {
   ];
 
   return {
-    // Критические изображения для первоначальной загрузки
+    // Сразу грузим только самые критические файлы
     critical: {
       priority: true,
       urls: [
-        ...heroImages,
-        ...conceptionImages,
-        // Только первые 2 изображения из первого слайда карусели
-        carouselImages.slide1[0],
-        carouselImages.slide1[1]
+        // Критические файлы
+        '/src/assets/img/Hero/logo.svg',
+        '/src/assets/img/Hero/background.webp',
+        '/src/assets/img/Conception/main-image.webp',
+        '/src/assets/img/Conception/telegram-cloud-document.webp'
       ]
     },
 
-    // Остальные изображения карусели
+    // Изображения карусели (все слайды)
     carousel: {
       priority: false,
       urls: [
-        // Остальные изображения первого слайда
-        ...carouselImages.slide1.slice(2),
-        // Все изображения остальных слайдов
+        // Весь первый слайд (загрузится параллельно с критическими)
+        ...carouselImages.slide1,
+        // Остальные слайды (загрузятся в фоне)
         ...carouselImages.slide2,
         ...carouselImages.slide3,
         ...carouselImages.slide4,

@@ -1,6 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { useMediaPreloader } from '../MediaPreloader/MediaPreloader';
-import '../MediaPreloader/MediaPreloader.css';
+import './NoTransitions.css';
+// import '../MediaPreloader/MediaPreloader.css';
 
 const CachedImage = ({ 
   src, 
@@ -10,71 +11,89 @@ const CachedImage = ({
   fallbackSrc = null,
   onLoad = () => {},
   onError = () => {},
+  priority = false, // больше не используется, всегда грузим сразу
   ...props 
 }) => {
   const { getCachedImage } = useMediaPreloader();
   const [imageSrc, setImageSrc] = useState(null);
   const [isLoaded, setIsLoaded] = useState(false);
   const [hasError, setHasError] = useState(false);
+  const imageRef = useRef(null);
 
   useEffect(() => {
+    let isMounted = true;
+
     const loadImage = () => {
-      // Сначала пробуем получить из кеша
+
       const cachedImage = getCachedImage(src);
       
-      if (cachedImage) {
+      if (cachedImage && isMounted) {
         setImageSrc(src);
         setIsLoaded(true);
         onLoad();
         return;
       }
 
-      // Если нет в кеше, загружаем обычным способом
       const img = new Image();
+      img.loading = 'eager'; // Всегда используем eager loading
+      img.decoding = 'sync'; // Всегда используем синхронное декодирование
+
       img.onload = () => {
-        setImageSrc(src);
-        setIsLoaded(true);
-        onLoad();
-      };
-      img.onerror = () => {
-        setHasError(true);
-        if (fallbackSrc) {
-          setImageSrc(fallbackSrc);
+        if (isMounted) {
+          setImageSrc(src);
+          setIsLoaded(true);
+          onLoad();
         }
-        onError();
       };
+
+      img.onerror = () => {
+        if (isMounted) {
+          setHasError(true);
+          if (fallbackSrc) {
+            setImageSrc(fallbackSrc);
+          }
+          onError();
+        }
+      };
+
+      // Немедленно загружаем изображение
       img.src = src;
     };
 
+    // Always load image immediately when src is available
     if (src) {
       loadImage();
     }
-  }, [src, getCachedImage, fallbackSrc, onLoad, onError]);
 
-  // Показываем placeholder пока изображение не загружено
-  if (!isLoaded && !hasError) {
+    return () => {
+      isMounted = false;
+    };
+  }, [src, getCachedImage, fallbackSrc, onLoad, onError, priority]);
+
+  // Всегда возвращаем изображение, даже во время загрузки
+  if (!hasError) {
     return (
-      <div
-        className={`${className} media-shimmer`}
+      <img
+        ref={imageRef}
+        src={src} // Используем оригинальный src для предварительной загрузки
+        alt={alt}
+        className={className}
         style={{
           ...style,
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-          color: '#999',
-          fontSize: '12px'
+          visibility: 'visible',
+          opacity: 1
         }}
+        loading="eager"
+        decoding="sync"
         {...props}
-      >
-        Загрузка...
-      </div>
+      />
     );
   }
 
-  // Показываем fallback если есть ошибка и нет fallback изображения
   if (hasError && !fallbackSrc) {
     return (
       <div
+        ref={imageRef}
         className={className}
         style={{
           ...style,
@@ -94,10 +113,17 @@ const CachedImage = ({
 
   return (
     <img
-      src={imageSrc}
+      ref={imageRef}
+      src={imageSrc || src}
       alt={alt}
       className={className}
-      style={style}
+      style={{
+        ...style,
+        visibility: 'visible',
+        opacity: 1
+      }}
+      loading="eager"
+      decoding="sync"
       {...props}
     />
   );

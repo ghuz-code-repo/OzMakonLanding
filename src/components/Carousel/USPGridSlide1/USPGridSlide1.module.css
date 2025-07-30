@@ -7,6 +7,7 @@
   background: var(--color-bg-main);
   align-self: center;
   justify-content: center;
+  /* margin-top: 10vh; */
 }
 
 .usp5-wrapper {
@@ -22,6 +23,7 @@
   align-items: flex-end;
   gap: 30px;
   padding: 0 20px;
+  /* padding-top: 20vh; */
 }
 
 .usp5-col {
@@ -824,7 +826,7 @@
 /* Media queries for tall screens */
 @media (height > 1440px) {
   .usp5__title {
-    font-size: 4vh;
+    font-size: 92px;
   }
 
   .usp5__list,
@@ -857,8 +859,24 @@
 }
 
 @media (height > 1440px) and (width < 1024px) {
-  .usp5__title {
+  /* .usp5__title {
     font-size: 0.7vh;
+  } */
+
+  .usp5__list,
+  .usp5__textblock,
+  .usp5__year,
+  .tablet-mini-text,
+  .mobile-mini-text,
+  .usp5__mobile-text {
+    font-size: 36px;
+    margin-top: 1vh;
+  }
+}
+
+@media (height > 2100px) and (width < 1024px) {
+  .usp5__title {
+    font-size: 1vh;
   }
 
   .usp5__list,
@@ -872,9 +890,9 @@
   }
 }
 
-@media (height > 2100px) and (width < 1024px) {
+@media ((height > 1440px) or (height > 2100px)) and (width < 768px) {
   .usp5__title {
-    font-size: 1vh;
+    font-size: 76px;
   }
 
   .usp5__list,

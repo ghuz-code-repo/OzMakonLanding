@@ -31,11 +31,27 @@ const MediaInitializer = ({ children }) => {
         console.log(`   - Локация: ${MEDIA_CONFIG.location.urls.length} файлов`);
         console.log(`   - ВСЕГО: ${MEDIA_CONFIG.critical.urls.length + MEDIA_CONFIG.carousel.urls.length + MEDIA_CONFIG.apartments.urls.length + MEDIA_CONFIG.places.urls.length + MEDIA_CONFIG.location.urls.length} файлов`);
         
-        // 1. Загружаем только самые критические файлы
-        console.log('🚀 Загружаем критические медиафайлы...');
-        if (MEDIA_CONFIG.critical.urls.length > 0) {
-          await loadImageGroup('Критические', MEDIA_CONFIG.critical.urls, true);
-        }
+        // 1. Загружаем критические файлы и первый слайд ОДНОВРЕМЕННО
+        console.log('🚀 Загружаем критические медиафайлы и первый слайд...');
+        
+        // Разделяем карусель на первый слайд и остальные
+        const firstSlideUrls = MEDIA_CONFIG.carousel.urls.filter(url => 
+          url.includes('UniqueSellingPropositionsGrid5/slide1/') || 
+          url.includes('USPGridSlide1/')
+        );
+        const otherSlideUrls = MEDIA_CONFIG.carousel.urls.filter(url => 
+          !url.includes('UniqueSellingPropositionsGrid5/slide1/') && 
+          !url.includes('USPGridSlide1/')
+        );
+
+        // Загружаем критические файлы и первый слайд параллельно
+        await Promise.all([
+          loadImageGroup('Критические', MEDIA_CONFIG.critical.urls, true),
+          loadImageGroup('Первый слайд', firstSlideUrls, true)
+        ]);
+
+        // Теперь обновляем конфигурацию карусели
+        MEDIA_CONFIG.carousel.urls = otherSlideUrls;
         
         // 2. Убираем HTML-лоадер
         const htmlPreloader = document.getElementById('instant-preloader');
@@ -57,40 +73,27 @@ const MediaInitializer = ({ children }) => {
           console.log('✅ Сайт полностью готов к использованию');
         }, 200);
         
-        // 5. Запускаем фоновую загрузку остальных медиафайлов параллельно и быстро
-        console.log('🔄 Запускаем фоновую загрузку...');
+        // 5. Загружаем все остальные медиафайлы ОДНОВРЕМЕННО и максимально быстро
+        console.log('🔄 Запускаем параллельную загрузку всех оставшихся файлов...');
         
-        // Карусель загружаем немедленно (пользователь может быстро прокрутить)
-        setTimeout(() => {
-          if (MEDIA_CONFIG.carousel.urls.length > 0) {
-            console.log(`🎠 Загружаем карусель: ${MEDIA_CONFIG.carousel.urls.length} файлов`);
-            loadImageGroup('Карусель', MEDIA_CONFIG.carousel.urls, false);
-          }
-        }, 10);
-        
-        // Планировки загружаем очень быстро
-        setTimeout(() => {
-          if (MEDIA_CONFIG.apartments.urls.length > 0) {
-            console.log(`🏠 Загружаем планировки: ${MEDIA_CONFIG.apartments.urls.length} файлов`);
-            loadImageGroup('Планировки', MEDIA_CONFIG.apartments.urls, false);
-          }
-        }, 50);
-        
-        // Места рядом - быстро
-        setTimeout(() => {
-          if (MEDIA_CONFIG.places.urls.length > 0) {
-            console.log(`📍 Загружаем места рядом: ${MEDIA_CONFIG.places.urls.length} файлов`);
-            loadImageGroup('Места рядом', MEDIA_CONFIG.places.urls, false);
-          }
-        }, 100);
-        
-        // Локация - чуть позже
-        setTimeout(() => {
-          if (MEDIA_CONFIG.location.urls.length > 0) {
-            console.log(`🗺️ Загружаем локацию: ${MEDIA_CONFIG.location.urls.length} файлов`);
-            loadImageGroup('Локация', MEDIA_CONFIG.location.urls, false);
-          }
-        }, 150);
+        // Загружаем все остальные группы одновременно
+        Promise.all([
+          // Загружаем оставшиеся слайды карусели
+          MEDIA_CONFIG.carousel.urls.length > 0 && 
+            loadImageGroup('Карусель', MEDIA_CONFIG.carousel.urls, true),
+          
+          // Загружаем планировки
+          MEDIA_CONFIG.apartments.urls.length > 0 && 
+            loadImageGroup('Планировки', MEDIA_CONFIG.apartments.urls, true),
+          
+          // Загружаем места рядом
+          MEDIA_CONFIG.places.urls.length > 0 && 
+            loadImageGroup('Места рядом', MEDIA_CONFIG.places.urls, true),
+          
+          // Загружаем локацию
+          MEDIA_CONFIG.location.urls.length > 0 && 
+            loadImageGroup('Локация', MEDIA_CONFIG.location.urls, true)
+        ].filter(Boolean));
         
       } catch (error) {
         console.error('❌ Ошибка при загрузке критических медиафайлов:', error);
@@ -120,8 +123,9 @@ const MediaInitializer = ({ children }) => {
       {/* Основной контент - показываем после завершения загрузки критических файлов */}
       {showContent && (
         <div style={{ 
-          opacity: showContent ? 1 : 0,
-          transition: 'opacity 0.3s ease-in'
+          opacity: 1, // Нет transition, сразу показываем
+          contain: 'layout style paint',
+          willChange: 'auto'
         }}>
           {children}
         </div>

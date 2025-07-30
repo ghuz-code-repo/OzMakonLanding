@@ -1,67 +1,76 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { useMediaPreloader } from '../MediaPreloader/MediaPreloader';
-import '../MediaPreloader/MediaPreloader.css';
 
 const CachedBackgroundImage = ({ 
   src, 
+  className = '', 
+  style = {}, 
   children, 
-  className, 
-  style = {},
-  fallbackBackground = 'linear-gradient(90deg, #f0f0f0 25%, transparent 37%, #f0f0f0 63%)',
+  alt, 
+  'aria-label': ariaLabel,
+  priority = false,
   ...props 
 }) => {
-  const { getCachedImage } = useMediaPreloader();
-  const [backgroundImage, setBackgroundImage] = useState(null);
-  const [isLoaded, setIsLoaded] = useState(false);
+  const imageRef = useRef(null);
+  const { imageCache } = useMediaPreloader();
 
   useEffect(() => {
-    const loadBackgroundImage = () => {
-      // Сначала пробуем получить из кеша
-      const cachedImage = getCachedImage(src);
-      
-      if (cachedImage) {
-        setBackgroundImage(`url(${src})`);
-        setIsLoaded(true);
-        return;
-      }
+    let isMounted = true;
+    
+    const loadImage = () => {
+      if (!src) return;
 
-      // Если нет в кеше, загружаем обычным способом
-      const img = new Image();
-      img.onload = () => {
-        setBackgroundImage(`url(${src})`);
-        setIsLoaded(true);
-      };
-      img.onerror = () => {
-        setBackgroundImage(fallbackBackground);
-        setIsLoaded(true);
-      };
-      img.src = src;
+      const cachedUrl = imageCache[src];
+      if (cachedUrl) {
+        if (isMounted && imageRef.current) {
+          imageRef.current.style.backgroundImage = `url("${cachedUrl}")`;
+        }
+      } else {
+        const img = new Image();
+        img.loading = 'eager'; // Всегда используем eager loading
+        img.decoding = 'sync'; // Всегда используем синхронное декодирование
+      
+        img.onload = () => {
+          if (isMounted && imageRef.current) {
+            imageRef.current.style.backgroundImage = `url("${src}")`;
+          }
+        };
+
+        img.src = src;
+      }
     };
 
-    if (src) {
-      loadBackgroundImage();
-    }
-  }, [src, getCachedImage, fallbackBackground]);
+    // Всегда загружаем изображение немедленно
+    loadImage();
 
-  const finalStyle = {
+    return () => {
+      isMounted = false;
+    };
+  }, [src, imageCache]);
+
+  const containerStyle = {
     ...style,
-    backgroundImage: isLoaded 
-      ? backgroundImage 
-      : undefined
+    position: 'relative',
+    backgroundSize: 'cover',
+    backgroundPosition: 'center',
+    backgroundRepeat: 'no-repeat',
+    opacity: 1, // Всегда показываем сразу
+    transform: 'translateZ(0)',
+    backfaceVisibility: 'hidden',
+    willChange: 'transform',
+    contain: 'paint layout'
   };
 
-  const finalClassName = isLoaded 
-    ? className 
-    : `${className} media-shimmer`;
-
   return (
-    <section 
-      className={finalClassName} 
-      style={finalStyle} 
+    <div
+      ref={imageRef}
+      className={className}
+      style={containerStyle}
+      aria-label={ariaLabel || alt}
       {...props}
     >
       {children}
-    </section>
+    </div>
   );
 };
 

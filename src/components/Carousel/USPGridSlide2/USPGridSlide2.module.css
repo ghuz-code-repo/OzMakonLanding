@@ -6,6 +6,9 @@
   background: var(--color-bg-main);
   align-self: center;
   justify-content: center;
+  padding-right: 20px;
+  padding-left: 20px;
+  padding-top: 20vh;
 }
 
 .usp5-wrapper {
@@ -20,7 +23,7 @@
   justify-content: space-between;
   align-items: flex-end;
   gap: 30px;
-  padding: 0 20px;
+
 }
 
 .usp5-col {

@@ -25,23 +25,42 @@ const Header = () => {
 
   // --- Оптимизированная логика для скрытия/появления хедера ---
   const [showHeader, setShowHeader] = useState(true);
-  const lastScrollY = useRef(window.scrollY);
+  const lastScrollY = useRef(window.pageYOffset);
+  const ticking = useRef(false);
 
-  const handleScroll = useDebounce(() => {
-    if (window.scrollY < 50) {
-      setShowHeader(true);
-      lastScrollY.current = window.scrollY;
-      return;
-    }
-    if (window.scrollY > lastScrollY.current) {
-      setShowHeader(false); // Скролл вниз
-    } else {
-      setShowHeader(true); // Скролл вверх
-    }
-    lastScrollY.current = window.scrollY;
-  }, 16);
+  useEffect(() => {
+    // Инициализация начального положения скролла
+    lastScrollY.current = window.pageYOffset;
+  }, []);
 
-  useEventListener('scroll', handleScroll, window, { passive: true });
+  const handleScroll = () => {
+    if (!ticking.current) {
+      requestAnimationFrame(() => {
+        const currentScrollY = window.pageYOffset;
+        
+        if (currentScrollY <= 0) {
+          // Когда страница в самом верху
+          setShowHeader(true);
+        } else if (currentScrollY < lastScrollY.current) {
+          // Скролл вверх
+          setShowHeader(true);
+        } else if (currentScrollY > lastScrollY.current && currentScrollY > 100) {
+          // Скролл вниз и прошли первые 100px
+          setShowHeader(false);
+        }
+        
+        lastScrollY.current = currentScrollY;
+        ticking.current = false;
+      });
+      
+      ticking.current = true;
+    }
+  };
+
+  useEffect(() => {
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   // --- Оптимизированная проверка мобильного устройства ---
   const checkMobile = useDebounce(() => {

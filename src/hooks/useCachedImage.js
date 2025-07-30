@@ -6,15 +6,14 @@ import { useMediaPreloader } from '../components/MediaPreloader/MediaPreloader';
  * @returns {object} - объект с информацией о состоянии изображения
  */
 export const useCachedImage = (imagePath) => {
-  const { getCachedImage } = useMediaPreloader();
+  const { getCachedImage, imageCache } = useMediaPreloader();
   
   const isImageCached = () => {
-    return !!getCachedImage(imagePath);
+    return !!imageCache[imagePath];
   };
 
   const getImageSrc = () => {
-    const cachedImage = getCachedImage(imagePath);
-    return cachedImage ? imagePath : null;
+    return imageCache[imagePath] || null;
   };
 
   return {
@@ -29,9 +28,11 @@ export const useCachedImage = (imagePath) => {
  * @returns {object} - статистика загрузки
  */
 export const useMediaLoadingStats = () => {
-  const { state } = useMediaPreloader();
+  const { state, imageCache } = useMediaPreloader();
   
   const getOverallProgress = () => {
+    if (!state || typeof state !== 'object') return 0;
+    
     const groups = Object.keys(state);
     if (groups.length === 0) return 0;
     
@@ -40,8 +41,10 @@ export const useMediaLoadingStats = () => {
     
     groups.forEach(group => {
       const groupState = state[group];
-      totalImages += groupState.total || 0;
-      loadedImages += groupState.loaded || 0;
+      if (groupState && typeof groupState === 'object') {
+        totalImages += groupState.total || 0;
+        loadedImages += groupState.loaded || 0;
+      }
     });
     
     return totalImages > 0 ? Math.round((loadedImages / totalImages) * 100) : 0;
@@ -64,12 +67,30 @@ export const useMediaLoadingStats = () => {
     return groups.every(group => isGroupCompleted(group));
   };
 
+  const isFirstSlideLoaded = () => {
+    // Проверяем загрузку всех изображений первого слайда
+    const firstSlideImages = Object.keys(imageCache).filter(path => 
+      path.includes('UniqueSellingPropositionsGrid5/slide1/') ||
+      path.includes('USPGridSlide1/')
+    );
+
+    // Также проверяем основные медиафайлы сайта (логотип, фон и т.д.)
+    const criticalImages = Object.keys(imageCache).filter(path => 
+      path.includes('Header/') ||
+      path.includes('Hero/')
+    );
+
+    const allCriticalImages = [...firstSlideImages, ...criticalImages];
+    return allCriticalImages.length > 0 && allCriticalImages.every(path => imageCache[path]);
+  };
+
   return {
     overallProgress: getOverallProgress(),
     getGroupProgress,
     isGroupCompleted,
     allGroupsCompleted: getAllGroupsCompleted(),
-    groupsInfo: state
+    groupsInfo: state,
+    isFirstSlideLoaded: isFirstSlideLoaded()
   };
 };
 

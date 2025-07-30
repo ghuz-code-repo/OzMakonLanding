@@ -20,20 +20,16 @@ function App() {
   return (
     <MediaPreloaderProvider>
       <MediaInitializer>
-        <LoadingProgressAdvanced />
+        {/* <LoadingProgressAdvanced /> */}
         <Header />
         <Hero />
         <Conception />
         <Carousel />
-
-        {/* <div className="hideable-content-below"> */}
-          <ApartmentLayouts />
-          <PlacesAround />
-          <Location />
-          <Callback />
-          <Footer />
-
-        {/* </div> */}
+        <ApartmentLayouts />
+        <PlacesAround />
+        <Location />
+        <Callback />
+        <Footer />
       </MediaInitializer>
     </MediaPreloaderProvider>
   );

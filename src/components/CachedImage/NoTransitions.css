@@ -1,0 +1,30 @@
+/* Отключаем анимации и transitions на мобильных устройствах, кроме хедера */
+@media (max-width: 768px) {
+  *:not([class*="header"]):not([class*="navbar"]) {
+    /* Отключаем анимации для не-хедер элементов */
+    animation: none !important;
+    transition: none !important;
+  }
+
+  /* Оптимизация изображений */
+  img:not([class*="header"]), 
+  [style*="background-image"]:not([class*="header"]) {
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+  }
+
+  /* Принудительно показываем определенный контент */
+  .hideable-content-below:not([class*="header"]),
+  .hideable-content-above:not([class*="header"]),
+  [class*="media-shimmer"]:not([class*="header"]),
+  [class*="loader"]:not([class*="header"]),
+  [class*="placeholder"]:not([class*="header"]) {
+    opacity: 1 !important;
+    visibility: visible !important;
+  }
+
+  /* Сохраняем анимации для хедера */
+  [class*="header"], [class*="navbar"] {
+    transition: transform 0.3s ease-in-out !important;
+  }
+}

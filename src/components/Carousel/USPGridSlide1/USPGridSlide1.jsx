@@ -154,11 +154,13 @@ const USPGridSlide1 = () => {
               src={imgPath(slide.center.img2)}
               className={styles["usp5__mobile-top-left-img"]}
               aria-label='Вид сверху'
+              priority={true}
             />
             <CachedBackgroundImage
               src={imgPath(slide.left.img)}
               className={styles["usp5__mobile-top-right-img"]}
               aria-label='Спортивный зал'
+              priority={true}
             />
           </div>
           <div className={styles["usp5__mobile-row"]}>
@@ -166,6 +168,7 @@ const USPGridSlide1 = () => {
               src={imgPath(slide.center.img1)}
               className={styles["usp5__mobile-bot-left-img"]}
               aria-label='Детская комната'
+              priority={true}
             />
             <div className={styles["usp5__mobile-bot-right-block"]}>
               <div className={styles["usp5__mobile-bot-right-text"] + ' ' + styles["usp5__mobile-text"] + ' ' + styles["mobile-mini-text"]}>
@@ -175,6 +178,7 @@ const USPGridSlide1 = () => {
                 src={imgPath(slide.right.img2)}
                 className={styles["usp5__mobile-bot-right-img"]}
                 aria-label='Барбекю зона'
+                priority={true}
               />
             </div>
           </div>

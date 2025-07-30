@@ -1,6 +1,6 @@
 @import '../../../styles/colors.css';
 
-.usp5-non-scroll-container{
+.usp5-non-scroll-container {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -8,48 +8,20 @@
   width: 100%;
   gap: 15vh;
   padding: 10vh 0;
-  /* КРИТИЧЕСКАЯ оптимизация для устранения рваного скролла */
-  will-change: transform;
   transform: translateZ(0);
   backface-visibility: hidden;
-  contain: layout style paint;
-  /* Принудительное GPU ускорение */
-  -webkit-transform: translate3d(0, 0, 0);
-  transform: translate3d(0, 0, 0);
-  /* Устранение реперфоринга */
-  isolation: isolate;
-}
-
-.usp5-non-scroll-container > * {
-  width: 100%;
-  max-width: 1700px;
-  /* КРИТИЧЕСКАЯ оптимизация каждого слайда */
   will-change: transform;
-  transform: translateZ(0);
-  backface-visibility: hidden;
   contain: layout style paint;
-  /* Принудительное создание композитного слоя */
-  -webkit-transform: translate3d(0, 0, 0);
-  transform: translate3d(0, 0, 0);
-  /* Изолируем каждый слайд */
-  isolation: isolate;
-  position: relative;
-  z-index: 1;
 }
 
 .usp5-section {
   width: 100%;
   position: relative;
-  /* Глобальная оптимизация секции */
-  will-change: transform;
   transform: translateZ(0);
   backface-visibility: hidden;
+  will-change: transform;
   contain: layout style paint;
-  /* Принудительная изоляция */
-  isolation: isolate;
-  /* ЕДИНСТВЕННЫЙ margin для секции */
   margin: 10vh 0;
-  padding: 0;
 }
 
 /* Адаптивные настройки */

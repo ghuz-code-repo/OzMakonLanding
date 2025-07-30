@@ -30,6 +30,7 @@
   color: var(--color-text-main);
   font-weight: 350;
   font-size: 76px;
+  margin-bottom: 4vh;
 }
 
 .mainText {

@@ -6,6 +6,7 @@
     background: var(--color-bg-main);
     align-self: center;
     justify-content: center;
+    /* margin-top: 10vh; */
 }
 
 
@@ -21,6 +22,7 @@
     align-items: flex-end;
     gap: 30px;
     align-self: center;
+    padding-top: 20vh;
 }
 
 .slide3 {
@@ -178,8 +180,8 @@
     /* scale: 0.8; */
     min-width: 100%;
     min-height: 100%;
-    background-position: -400px;
-    background-size: 155%;
+    background-position: right center;
+    background-size: cover;
     transition: transform 0.3s ease;
 
 }
@@ -198,6 +200,7 @@
     font-weight: 300;
     font-size: 24px;
     color: var(--color-gold);
+    padding-right: 5px;
 }
 
 .tablet_slide {

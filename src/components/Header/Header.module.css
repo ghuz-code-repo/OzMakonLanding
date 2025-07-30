@@ -1,28 +1,7 @@
 @import '../../styles/colors.css';
 
 .header-section {
-  /* The .section class from App.css might add unwanted min-height and padding.
-     Bootstrap's navbar classes (bg-light, navbar-light) will provide base styling.
-     If you use sticky-top, ensure body has appropriate padding if needed. */
-  /* Example: Override App.css .section properties if they conflict */
-  min-height: auto !important;
-  padding: 0 !important;
-  /* Navbar typically controls its own padding */
-  /* border-bottom: 1px solid #dee2e6; Example border */
-
-  /* Base styles for the header wrapper if needed */
-  padding-top: 20px;
-  /* Add some space at the top of the page for the sticky navbar */
-  position: sticky;
-  /* Make the header section sticky */
-  top: 20px;
-  /* Distance from the top of the viewport */
-  left: 0;
-  right: 0;
-  z-index: 1030;
-  /* Ensure it's above other content, Bootstrap's navbar z-index is 1030 */
-  display: flex;
-  justify-content: center;
+  display: none; /* Removing conflicting styles */
 }
 
 .navbar-brand {
@@ -189,24 +168,24 @@
 }
 
 .header {
-  border: 0.5px solid var(--color-border);
-  border-radius: 999px;
-  margin-top: 30px;
   position: fixed;
-  top: 0;
+  top: 20px;
   left: 50%;
   transform: translateX(-50%);
-  z-index: 100;
+  width: 80%;
+  max-width: 1200px;
+  height: 70px;
+  border-radius: 999px;
   background: var(--color-overlay-blur);
   backdrop-filter: var(--color-blur);
-  width: 80%;
-  height: 70px !important;
-  min-width: 0;
-  font-size: 20px;
+  -webkit-backdrop-filter: var(--color-blur);
+  border: 0.5px solid var(--color-border);
+  z-index: 1000;
   display: flex;
   align-items: center;
-  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), border 0.25s ease-out, box-shadow 0.25s ease-out;
-  will-change: transform;
+  justify-content: center;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: transform, opacity;
 }
 
 .header:hover {
@@ -218,7 +197,9 @@
 
 
 .header--hidden {
-  transform: translateX(-50%) translateY(-150%);
+  transform: translate(-50%, -150%);
+  opacity: 0;
+  pointer-events: none;
 }
 
 .header__container {

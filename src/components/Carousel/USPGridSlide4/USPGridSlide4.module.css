@@ -21,6 +21,7 @@
     align-items: flex-end;
     gap: 30px;
     align-self: center;
+    padding-top: 20vh;
 }
 
 .slide3 {
@@ -585,7 +586,7 @@
 
     .mobile_slide {
         display: none;
-        
+
     }
 
     .tablet_slide {
@@ -725,7 +726,7 @@
     border-radius: 12px;
 }
 
-@media (width < 750px) or (height > 1440px){
+@media (width < 750px) or (height > 1440px) {
     .slide3 {
         display: none;
     }
@@ -818,7 +819,7 @@
     }
 }
 
-.mobile_slide_wrapper{
+.mobile_slide_wrapper {
     display: flex;
     flex-direction: column;
     justify-content: center;

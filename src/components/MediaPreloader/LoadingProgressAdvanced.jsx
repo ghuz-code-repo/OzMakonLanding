@@ -2,11 +2,51 @@ import React, { useState } from 'react';
 import { useMediaLoadingStats } from '../../hooks/useCachedImage';
 
 const LoadingProgressAdvanced = () => {
-  const { overallProgress, getGroupProgress, groupsInfo, allGroupsCompleted } = useMediaLoadingStats();
-  const [isVisible, setIsVisible] = useState(true);
+  const { overallProgress, getGroupProgress, groupsInfo, allGroupsCompleted, isFirstSlideLoaded } = useMediaLoadingStats();
+  const [isVisible, setIsVisible] = useState(false);
   const [isMinimized, setIsMinimized] = useState(false);
 
   const groups = Object.keys(groupsInfo);
+  
+  // Показываем блокирующий экран загрузки пока первый слайд не загружен
+  if (!isFirstSlideLoaded) {
+    return (
+      <div style={{
+        position: 'fixed',
+        top: 0,
+        left: 0,
+        right: 0,
+        bottom: 0,
+        background: 'rgba(0, 0, 0, 0.95)',
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        justifyContent: 'center',
+        zIndex: 99999,
+        color: 'white',
+      }}>
+        <h2 style={{ marginBottom: '20px' }}>Загрузка сайта...</h2>
+        <div style={{
+          width: '200px',
+          height: '4px',
+          background: '#333',
+          borderRadius: '2px',
+          overflow: 'hidden',
+          marginBottom: '10px'
+        }}>
+          <div style={{
+            width: `${overallProgress}%`,
+            height: '100%',
+            background: 'linear-gradient(90deg, #4CAF50, #8BC34A)',
+            transition: 'width 0.3s ease',
+            borderRadius: '2px'
+          }} />
+        </div>
+        <div style={{ fontSize: '14px' }}>{overallProgress}%</div>
+      </div>
+    );
+  }
+
   if (groups.length === 0 || (!isVisible && allGroupsCompleted)) return null;
 
   const handleToggleVisibility = () => {
@@ -29,7 +69,8 @@ const LoadingProgressAdvanced = () => {
         borderRadius: '8px',
         fontSize: '12px',
         zIndex: 9999,
-        cursor: 'pointer'
+        cursor: 'pointer',
+        // display: 'none',
       }} onClick={handleToggleVisibility}>
         📊 {overallProgress}%
       </div>
