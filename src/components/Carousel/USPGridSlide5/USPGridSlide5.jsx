@@ -1,9 +1,7 @@
 import React from 'react';
 import styles from './USPGridSlide5.module.css';
 import { useTranslation } from 'react-i18next';
-import CachedBackgroundImage from '../../CachedImage/CachedBackgroundImage';
-const BASE_PATH = '/';
-const imgPath = (name) => `${BASE_PATH}src/assets/img/UniqueSellingPropositionsGrid5/slide5/${name}`;
+const imgPath = (name) => `/src/assets/img/UniqueSellingPropositionsGrid5/slide5/${name}`;
 
 const USPGridSlide5 = () => {
   const { t } = useTranslation();
@@ -47,34 +45,24 @@ const USPGridSlide5 = () => {
             <div className={styles["top_left_yellow_line"]} />
           </div>
           <div className={styles["top_right"]}>
-            <div className={styles["top_right_left_img_block"]} style={{ position: 'relative', height: '300px' }}>
-              <CachedBackgroundImage
-                src={imgPath(slide.top_right_left_img)}
-                className={styles["top_right_left_img"]}
-                priority="true"
-              />
+            <div className={styles["top_right_left_img_block"]}>
+              <div className={styles["top_right_left_img"]}
+                style={{ backgroundImage: `url(${imgPath(slide.top_right_left_img)})` }} />
             </div>
-            <div className={styles["top_right_right_img_block"]} style={{ position: 'relative', height: '300px' }}>
-              <CachedBackgroundImage
-                src={imgPath(slide.top_right_right_img)}
-                className={styles["top_right_right_img"]}
-                priority="true" />
+            <div className={styles["top_right_right_img_block"]}>
+              <div className={styles["top_right_right_img"]}
+                style={{ backgroundImage: `url(${imgPath(slide.top_right_right_img)})` }} />
             </div>
           </div>
         </div>
         <div className={styles["second_row"]}>
-          <div className={styles["bottom_left_img_block"]} style={{ position: 'relative', height: '40vh' }}>
-            <CachedBackgroundImage
-              src={imgPath(slide.bottom_left_img)}
-              className={styles["bottom_left_img"]}
-              priority="true"
-            />
+          <div className={styles["bottom_left_img_block"]}>
+            <div className={styles["bottom_left_img"]}
+              style={{ backgroundImage: `url(${imgPath(slide.bottom_left_img)})` }} />
           </div>
-          <div className={styles["bottom_center_img_block"]} style={{ position: 'relative', height: '40vh' }}>
-            <CachedBackgroundImage
-              src={imgPath(slide.bottom_center_img)}
-              className={styles["bottom_center_img"]}
-              priority="true" />
+          <div className={styles["bottom_center_img_block"]}>
+            <div className={styles["bottom_center_img"]}
+              style={{ backgroundImage: `url(${imgPath(slide.bottom_center_img)})` }} />
           </div>
           <div className={styles["bottom_right"]}>
             <div className={styles["bottom_right_text_block"]}>
@@ -145,15 +133,10 @@ const USPGridSlide5 = () => {
                 style={{ backgroundImage: `url(${imgPath(slide.top_right_left_img)})` }} />
             </div>
             <div className={styles['slide_two_photos']}>
-              <CachedBackgroundImage
-                src={imgPath(slide.top_right_right_img)}
-                className={styles['mid_left_right_photo']}
-                priority="true"
-              />
-              <CachedBackgroundImage
-                src={imgPath(slide.bottom_left_img)}
-                className={styles['mid_right_right_photo']}
-                priority="true" />
+              <div className={styles['mid_left_right_photo']}
+                style={{ backgroundImage: `url(${imgPath(slide.top_right_right_img)})` }} />
+              <div className={styles['mid_right_right_photo']}
+                style={{ backgroundImage: `url(${imgPath(slide.bottom_left_img)})` }} />
             </div>
             <div className={styles['tablet_bottom_right_photo_block']}>
               <div className={styles['bottom_right_photo']}
@@ -191,17 +174,12 @@ const USPGridSlide5 = () => {
               <div className={styles['mobile_yellow-line']} />
 
             </div>
-            <CachedBackgroundImage
-              src={imgPath(slide.top_right_left_img)}
-              className={styles['mobile_top_photo']}
-              priority="true"
-            />
+            <div className={styles['mobile_top_photo']}
+              style={{ backgroundImage: `url(${imgPath(slide.top_right_left_img)})` }} />
           </div>
           <div className={styles['mobile_mid_row']}>
-            <CachedBackgroundImage
-              src={imgPath(slide.top_right_right_img)}
-              className={styles['mid_left_right_mob_photo']}
-              priority="true" />
+            <div className={styles['mid_left_right_mob_photo']}
+              style={{ backgroundImage: `url(${imgPath(slide.top_right_right_img)})` }} />
             <div className={styles['mid_right_right_content']}>
               <div className={styles['mid_bullets']}>
                 <span>
@@ -213,18 +191,12 @@ const USPGridSlide5 = () => {
                   ))}
                 </span>
               </div>
-              <CachedBackgroundImage
-                src={imgPath(slide.bottom_left_img)}
-                className={styles['mid_right_right_mob_photo']}
-                priority="true"
-              />
+              <div className={styles['mid_right_right_mob_photo']}
+                style={{ backgroundImage: `url(${imgPath(slide.bottom_left_img)})` }} />
             </div>
           </div>
           <div className={styles['mobile_bot_row']}>
-            <CachedBackgroundImage
-              src={imgPath(slide.bottom_center_img)}
-              className={styles['bottom_right_mob_photo']}
-              priority="true"
+            <div className={styles['bottom_right_mob_photo']}
               style={{ backgroundImage: `url(${imgPath(slide.bottom_center_img)})` }} />
           </div>
         </div>

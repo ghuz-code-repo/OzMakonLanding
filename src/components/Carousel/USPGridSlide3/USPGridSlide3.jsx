@@ -44,30 +44,27 @@ const USPGridSlide3 = () => {
         <div className={styles["slide3"]}>
           <div className={styles["slide-3-top"]}>
             <div className={styles["slide-3-top--left"]}>
-              <div className={styles["top-left-photo--block"]} style={{ position: 'relative', height: '300px' }}>
+              <div className={styles["top--left--photo--block"]}>
                 <CachedBackgroundImage
                   src={imgPath(slide.images.parkingBig)}
-                  className={styles["top-left-photo"]}
+                  className={styles["top--left--photo"]}
                   aria-label='Парковка'
-                  priority="true"
                 />
               </div>
             </div>
             <div className={styles["slide-3-top--right"]}>
-              <div className={styles["top-right-photo--block"]} style={{ position: 'relative', height: '300px' }}>
+              <div className={styles["left--top--right--photo--block"]}>
                 <CachedBackgroundImage
                   src={imgPath(slide.images.electroZaryad)}
-                  className={styles["top-right-photo"]}
+                  className={styles["left--top--right--photo"]}
                   aria-label='Электрозарядка'
-                  priority="true"
                 />
               </div>
-              <div className={styles["bottom-photo--block"]} style={{ position: 'relative', height: '300px' }}>
+              <div className={styles["right--top--right-photo--block"]}>
                 <CachedBackgroundImage
                   src={imgPath(slide.images.usiliteli)}
-                  className={styles["bottom-photo"]}
+                  className={styles["right--top--right-photo"]}
                   aria-label='Усилители'
-                  priority="true"
                 />
               </div>
             </div>
