@@ -1,7 +1,6 @@
 import React, { useEffect, useRef, useMemo } from 'react';
 import { useMediaPreloader } from '../../MediaPreloader/MediaPreloader';
 import { useImageRetention } from '../../../hooks/useImageRetention';
-import PerformanceOptimizer from '../../../components/PerformanceOptimizer/PerformanceOptimizer';
 import styles from './USPGridCarousel.module.css';
 import USPGridSlide1 from '../USPGridSlide1/USPGridSlide1';
 import USPGridSlide2 from '../USPGridSlide2/USPGridSlide2';
@@ -13,35 +12,6 @@ const USPGridCarousel = () => {
   const sectionRef = useRef(null);
   const containerRef = useRef(null);
   const { isLoading, imageCache } = useMediaPreloader();
-  
-  // Применяем базовые стили для контейнеров при монтировании
-  useEffect(() => {
-    if (sectionRef.current) {
-      sectionRef.current.style.cssText = `
-        max-width: 100vw;
-        overflow: hidden;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        transform: translate3d(0,0,0);
-        backface-visibility: hidden;
-        transform-style: preserve-3d;
-        will-change: transform;
-      `;
-    }
-    if (containerRef.current) {
-      containerRef.current.style.cssText = `
-        width: 100%;
-        height: 100%;
-        display: flex;
-        flex-direction: column;
-        transform: translate3d(0,0,0);
-        backface-visibility: hidden;
-        transform-style: preserve-3d;
-        will-change: transform;
-      `;
-    }
-  }, []);
 
   // Собираем все пути к изображениям карусели
   const carouselImages = useMemo(() => {
@@ -56,21 +26,15 @@ const USPGridCarousel = () => {
 
   useEffect(() => {
     if (!isLoading && sectionRef.current) {
+      // Принудительная оптимизация рендеринга
       const section = sectionRef.current;
       const container = containerRef.current;
       
-      // Применяем GPU-ускорение и оптимизации производительности
-      const applyOptimizations = (element) => {
-        element.style.transform = 'translate3d(0,0,0)';
-        element.style.backfaceVisibility = 'hidden';
-        element.style.perspective = '1000';
-        element.style.willChange = 'transform';
-        element.style.contain = 'content';
-        element.style.isolation = 'isolate';
-      };
-
-      // Оптимизируем основной контейнер
-      applyOptimizations(section);
+      // Применяем GPU ускорение к секции
+      section.style.transform = 'translateZ(0)';
+      section.style.backfaceVisibility = 'hidden';
+      section.style.willChange = 'transform';
+      section.style.contain = 'paint layout';
 
       // Применяем оптимизации к контейнеру
       if (container) {
@@ -115,23 +79,13 @@ const USPGridCarousel = () => {
   }
 
   return (
-    <section className={styles["usp5-section"]} ref={sectionRef}>
-      <div className={styles["usp5-non-scroll-container"]} ref={containerRef} id='advantages'>
-        <PerformanceOptimizer>
-          <USPGridSlide1 />
-        </PerformanceOptimizer>
-        <PerformanceOptimizer>
-          <USPGridSlide2 />
-        </PerformanceOptimizer>
-        <PerformanceOptimizer>
-          <USPGridSlide3 />
-        </PerformanceOptimizer>
-        <PerformanceOptimizer>
-          <USPGridSlide4 />
-        </PerformanceOptimizer>
-        <PerformanceOptimizer>
-          <USPGridSlide5 />
-        </PerformanceOptimizer>
+    <section className={styles["usp5-section"]}>
+      <div className={styles["usp5-non-scroll-container"]} id='advantages'>
+        <USPGridSlide1 />
+        <USPGridSlide2 />
+        <USPGridSlide3 />
+        <USPGridSlide4 />
+        <USPGridSlide5 />
       </div>
     </section>
   );
