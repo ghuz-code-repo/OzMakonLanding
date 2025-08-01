@@ -55,7 +55,6 @@
   /* border-radius: 0px 0px 12px 12px; */
   min-width: 465px;
   min-height: 335px;
-  background-image: url(/src/assets/img/UniqueSellingPropositionsGrid5/kids_room.webp);
   background-size: cover;
   /* Оптимизация для памяти */
   background-attachment: local;
@@ -79,7 +78,6 @@
   border-radius: 12px 12px 0px 0px;
   min-width: 465px;
   min-height: 585px;
-  background-image: url(/src/assets/img/UniqueSellingPropositionsGrid5/eagle_view.webp);
   background-size: cover;
 }
 
@@ -103,7 +101,6 @@
   background-position: -60px 50px;
   min-width: 433px;
   min-height: 370px;
-  background-image: url(/src/assets/img/UniqueSellingPropositionsGrid5/front_view.webp);
   background-size: cover;
   transition: transform 0.3s ease;
 }
@@ -115,7 +112,6 @@
   transition: transform 0.3s ease;
   min-width: 433px;
   min-height: 190px;
-  background-image: url(/src/assets/img/UniqueSellingPropositionsGrid5/bbq.webp);
   background-size: cover;
   transition: transform 0.3s ease;
 
@@ -189,7 +185,6 @@
   width: 454px;
   height: 390px;
   background-position: -270px -10px;
-  background-image: url(/src/assets/img/UniqueSellingPropositionsGrid5/sports.webp);
   background-size: cover;
 }
 

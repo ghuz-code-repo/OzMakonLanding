@@ -58,7 +58,7 @@
 }
 
 .top--left--photo {
-    width: 835px;
+    /* width: 835px; */
     height: 380px;
     background-position: center center;
     background-size: 115%;
@@ -242,7 +242,7 @@
     }
 
     .top--left--photo {
-        width: 735px;
+        /* width: 735px; */
         height: 335px;
         background-position: center top;
         background-size: 115%;
@@ -403,7 +403,7 @@
     }
 
     .top--left--photo {
-        width: 648px;
+        /* width: 648px; */
         height: 295px;
         background-position: center bottom;
         background-size: cover;

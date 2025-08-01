@@ -62,9 +62,9 @@ const USPGridSlide2 = () => {
           <div className={styles["usp5__left-bottom"]}>
             <div className={styles["usp5__line"]} />
             <div className={styles["usp5__img-block"] + ' ' + styles["usp5__img-block--bottom"]}>
-              <CachedBackgroundImage
-                src={imgPath(slide.left.img)}
+              <div
                 className={styles["usp5__img"] + ' ' + styles["usp5__img-enter"]}
+                style={{ backgroundImage: `url(${imgPath(slide.left.img)})` }}
                 aria-label='Входная группа'
               />
             </div>
@@ -72,16 +72,16 @@ const USPGridSlide2 = () => {
         </div>
         <div className={styles["usp5-col"] + ' ' + styles["usp5-col--center"]}>
           <div className={styles["usp5__img-block"] + ' ' + styles["usp5__img-block--top"]}>
-            <CachedBackgroundImage
-              src={imgPath(slide.center.img1)}
+            <div
               className={styles["usp5__img"] + ' ' + styles["usp5__img-lift"]}
+              style={{ backgroundImage: `url(${imgPath(slide.center.img1)})` }}
               aria-label='Лифт'
             />
           </div>
           <div className={styles["usp5__img-block"] + ' ' + styles["usp5__img-block--middle"]}>
-            <CachedBackgroundImage
-              src={imgPath(slide.center.img2)}
+            <div
               className={styles["usp5__img"] + ' ' + styles["usp5__img-hall"]}
+              style={{ backgroundImage: `url(${imgPath(slide.center.img2)})` }}
               aria-label='Холл'
             />
           </div>
@@ -89,9 +89,9 @@ const USPGridSlide2 = () => {
         <div className={styles["usp5-col"] + ' ' + styles["usp5-col--right"]}>
           <div className={styles["usp5__right-top-block"]}>
             <div className={styles["usp5__img-block"] + ' ' + styles["usp5__img-block-right"]}>
-              <CachedBackgroundImage
-                src={imgPath(slide.right.img1)}
+              <div
                 className={styles["usp5__img"] + ' ' + styles["usp5_img--komnata"]}
+                style={{ backgroundImage: `url(${imgPath(slide.right.img1)})` }}
                 aria-label='Комната'
               />
             </div>
@@ -105,9 +105,9 @@ const USPGridSlide2 = () => {
             </div>
           </div>
           <div className={styles["usp5__img-block"] + ' ' + styles["usp5__img-block-bottom-right"]}>
-            <CachedBackgroundImage
-              src={imgPath(slide.right.img2)}
+            <div
               className={styles["usp5__img"] + ' ' + styles["usp5_img--coffee"]}
+              style={{ backgroundImage: `url(${imgPath(slide.right.img2)})` }}
               aria-label='Кофейная зона'
             />
           </div>

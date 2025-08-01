@@ -45,25 +45,25 @@ const USPGridSlide3 = () => {
           <div className={styles["slide-3-top"]}>
             <div className={styles["slide-3-top--left"]}>
               <div className={styles["top--left--photo--block"]}>
-                <CachedBackgroundImage
-                  src={imgPath(slide.images.parkingBig)}
+                <div
                   className={styles["top--left--photo"]}
+                  style={{ backgroundImage: `url(${imgPath(slide.images.parkingBig)})` }}
                   aria-label='Парковка'
                 />
               </div>
             </div>
             <div className={styles["slide-3-top--right"]}>
               <div className={styles["left--top--right--photo--block"]}>
-                <CachedBackgroundImage
-                  src={imgPath(slide.images.electroZaryad)}
+                <div
                   className={styles["left--top--right--photo"]}
+                  style={{ backgroundImage: `url(${imgPath(slide.images.electroZaryad)})` }}
                   aria-label='Электрозарядка'
                 />
               </div>
               <div className={styles["right--top--right-photo--block"]}>
-                <CachedBackgroundImage
-                  src={imgPath(slide.images.usiliteli)}
+                <div
                   className={styles["right--top--right-photo"]}
+                  style={{ backgroundImage: `url(${imgPath(slide.images.usiliteli)})` }}
                   aria-label='Усилители'
                 />
               </div>
@@ -103,9 +103,9 @@ const USPGridSlide3 = () => {
               </div>
             </div>
             <div className={styles["right--bottom-photo--block"]}>
-              <CachedBackgroundImage
-                src={imgPath(slide.images.parkingSmall)}
+              <div
                 className={styles["right--bottom-photo"]}
+                style={{ backgroundImage: `url(${imgPath(slide.images.parkingSmall)})` }}
                 aria-label='Парковка вид'
               />
             </div>

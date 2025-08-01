@@ -59,7 +59,6 @@
 }
 
 .top--left--photo {
-    width: 835px;
     height: 380px;
     background-position: center top;
     background-size: 115%;
@@ -245,7 +244,6 @@
     }
 
     .top--left--photo {
-        width: 735px;
         height: 335px;
         background-position: center top;
         background-size: 115%;
