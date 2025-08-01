@@ -266,6 +266,10 @@ const Callback = () => {
               <span className={styles.customCheckbox}></span>
               <span className={styles.consentText}>
                 {t('callback.agreement')}
+                <a href="/privacy-policy" target="_blank" rel="noopener noreferrer" className={styles.politicsLink}>
+                  {t('callback.politicsLink')}
+                </a>
+                {t('callback.agreement-end')}
               </span>
             </label>
             <button

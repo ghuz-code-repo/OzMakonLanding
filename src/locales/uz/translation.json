@@ -1,6 +1,6 @@
 {
   "header": {
-    "main": "Bosh sahifa",
+    "main": "Asosiy",
     "about": "Majmua haqida",
     "advantages": "Afzalliklar",
     "layouts": "Rejalar",
@@ -13,11 +13,11 @@
     "subtitle": "Toshkent markazida eksklyuziv imkoniyatlar va qulaylik dunyosini kashf eting"
   },
   "conception": {
-    "sectionTitle": "Arxitektura\nva kontsepsiya\nhaqida",
-    "mainDescription": "Turli hajm va materiallarni birlashtirgan fasad geometriyasi\nSirlangan kafel\nYuqori sifatli italyan gipsi\nKomposit panellar",
+    "sectionTitle": "Turar-joy kompleksining\narhitekturasi va\nkontseptsiyasi haqida",
+    "mainDescription": "Turli hajm va materiallarni birlashtirgan fasad geometriyasi\nShirali koshinlar\nYuqori sifatli italyan shtukaturkasi\nKompozit panellar",
     "dutchTitle": "Golland estetikasi",
-    "dutchDescription": "De Architekten Cie golland byurosining master-rejasi. Markaziy Osiyo an'anaviy mozaikasi va issiq palitrasidan ilhomlangan, turli balandlikdagi qurilish va ifodali yevropa fasadlari",
-    "helpTitle": "Sizga mos kelgan kvartirani tanlashda yordam beramiz",
+    "dutchDescription": "De Architekten Cie golland byurosidan master-reja. Ko'p qavatli qurilish va an'anaviy mozaikadan ilhomlangan Markaziy Osiyo arxitekturasining issiq palitrasiga ega yevropa fasadlari",
+    "helpTitle": "Aynan sizga mos keladigan xonadonni tanlashda yordam beramiz",
     "helpSubtitle": "Bitimning har bir bosqichida hamrohlik qilamiz",
     "form": {
       "namePlaceholder": "Ismingiz",
@@ -27,8 +27,8 @@
   },
   "usp5": {
     "slide1": {
-      "title": "Obodonlashtirish\nva mashina\nyoʻq hover",
-      "list": "Yopiq yashil hover\nBBQ zonasi\nBeседkalar",
+      "title": "Obodonlashtirish\nva mashinalarsiz hovli",
+      "list": "Yopiq yashil hovli\nBBQ maydoni\nAyvonlar",
       "textblock": "Soya soyabonli bolalar maydonchasi\nXususiy bolalar bog'chasi\nKIDS ROOM\nFitnes zali"
     },
     "slide2": {
@@ -60,12 +60,12 @@
     "twoRoom": "2 xonali",
     "threeRoom": "3 xonali",
     "fourRoom": "4+ xonali",
-    "allApartments": "Barcha kvartiralar",
+    "allApartments": "Barcha xonadonlar",
     "layout": "Reja",
     "currency": "so'm",
-    "area": "Maydon",
+    "area": "Maydoni",
     "rooms": "Xonalar",
-    "priceRange": "Narx"
+    "priceRange": "Narxi dan"
   },
   "places": {
     "sectionTitle": "Yaqin atrofdagi joylar",
@@ -74,19 +74,19 @@
     "markets": "Bozorlar",
     "schools": "Maktablar",
     "entertainment": "Dam olish",
-    "shoppingCenters": "Turar-joy majmuasidan piyoda masofada zamonaviy savdo-ko'ngilochar markaz - Alfraganus Mall joylashgan. Bu stilli shahar makoni bo'lib, bu yerda butiklar, gastronomiya konseptlari, supermarket, dam olish zonalari va bolalar maydonlari to'plangan. Bu yerda dam olish kunlarini o'tkazish, xarid-savdo pauzalarini tashkil qilish yoki katta shaharning qulayligi va dinamikasi muhitida kechki sayrlardan zavqlanish yoqimli",
-    "parksDetail": "Turar-joy majmuasi shahar muhitida tabiiy muvozanat hissini yaratadigan yashil zonalar bilan o'ralgan. Atigi bir necha daqiqada - Furqat parki, sekin sayrlar va oilaviy dam olish uchun qulay joy. Besh daqiqada avtomobilda - Ekopark, velosiped yo'llari, faollik zonalari va o'ylangan ekomuhit bilan yangi formatdagi landshaft parki. Shuningdek, yaqin atrofda Mirzo Ulug'bek parki (sobiq Telman parki) joylashgan - barcha bolalar sevadigan tinch, yashil joy",
-    "marketsDetail": "Turar-joy majmuasi turli xil savdo infratuzilmasi bilan o'ralgan. Besh daqiqada avtomobilda - yangi mahsulotlarning keng tanloviga ega Guruch bozori. Atigi 10 daqiqada an'analar, sifat va koloritni birlashtiradigan Toshkentning eng qadimgi va mashhur bozorlaridan biri - Mirobod bozoriga yetib borish mumkin. Va atigi ikki daqiqada piyoda - oziq-ovqat va kundalik ehtiyoj tovarlari taqdim etiladigan 'Korzinka' supermarketi joylashgan",
-    "schoolsDetail": "Piyoda masofada - Alisher Navoiy nomidagi Davlat akademik Katta teatri. Bu O'zbekistonning asosiy sahnasi bo'lib, bu yerda jahon darajasidagi operalar, baletlar va kontsertlar o'tkaziladi - shahar markazida yashash uchun muhim madaniy afzallik",
+    "shoppingCenters": "Turar-joy kompleksidan piyoda masofada zamonaviy savdo-ko'ngilochar markaz - Alfraganus Mall joylashgan. Bu stilli shahar makoni bo'lib, bu yerda butiklar, gastronomik konseptlar, supermarket, dam olish zonalari va bolalar maydonchasi to'plangan. Bu yerda dam olish kunlarini o'tkazish, xarid pauzalarini tashkil qilish yoki katta shaharning qulayligi va dinamikasi muhitida kechki sayrlardan zavqlanish yoqimli",
+    "parksDetail": "Turar-joy kompleksi shahar muhitida tabiiy muvozanat hissini yaratadigan yashil zonalar bilan o'ralgan. Atigi bir necha daqiqada - Furqat bog'i, sekin sayrlar va oilaviy dam olish uchun qulay joy. Besh daqiqada avtomobilda - Ekopark, velosiped yo'llari, faollik zonalari va puxta o'ylangan ekomuhit bilan yangi formatdagi landshaft bog'i. Shuningdek, yaqin atrofda Mirzo Ulug'bek bog'i (sobiq Telman bog'i) joylashgan - barcha bolalar sevadigan tinch, yashil joy",
+    "marketsDetail": "Turar-joy kompleksi xilma-xil savdo infratuzilmasi bilan o'ralgan. Avtomobilda besh daqiqa masofada turli yangi mahsulotlar tanlovi bo'lgan Guruch bozori joylashgan. 10 daqiqada Toshkentning eng qadimiy va mashhur bozorlaridan biri - an'analar, sifat va kolorit uyg'unlashgan Mirobod bozoriga yetib borish mumkin. Va ikki daqiqalik piyoda masofada oziq-ovqat va kundalik tovarlar taklif etadigan 'Korzinka' supermarketi joylashgan",
+    "schoolsDetail": "Piyoda masofada - Alisher Navoiy nomidagi Davlat akademik Bolshoy teatri. Bu O'zbekistonning asosiy sahnasi bo'lib, bu yerda jahon darajasidagi operalar, baletlar va kontsertlar o'tkaziladi - shahar markazida yashashning muhim madaniy afzalligi",
     "entertainmentDetail": "Avtomobilda atigi bir necha daqiqa - va siz poytaxtning gastronomiya markazlaridan biri - Taras Shevchenko ko'chasida bo'lasiz. Bu yerda eng yaxshi restoranlar, qahvaxonalar, muallif gastrobarlar, vino do'konlari va qandolat fabrikasi to'plangan. Ko'cha shahar ritmida yashaydi va ham ishbilarmon uchrashuvlar, ham sekin kechki ovqatlar uchun mukammal mos keladi. Atigi besh daqiqada - teatrlar, muzeylar va madaniy makonlar bilan Toshkent markazi"
   },
   "location": {
     "title": "Loyiha joylashuvi",
-    "mainText": "O'ZMAKON Business majmuasi rivojlangan infratuzilmaga ega nufuzli hududda joylashgan bo'lib, barcha zarur obyektlarga oson kirishni ta'minlaydi",
+    "mainText": "O'ZMAKON Business kompleksi barcha zarur obyektlarga oson kirish imkoniyatini ta'minlovchi\nrivojlangan infratuzilmaga ega nufuzli tumanda joylashgan",
     "card": {
       "TCM": {
         "timeToPlace": "15 daqiqa",
-        "place": "Tashkent city mollgacha"
+        "place": "Tashkent City Mall gacha"
       },
       "METRO": {
         "timeToPlace": "15 daqiqa",
@@ -101,14 +101,16 @@
     "namePlaceholder": "Ismingiz",
     "phonePlaceholder": "+998 ",
     "button": "Ariza qoldirish",
-    "agreement": "Tugmani bosish orqali men shaxsiy ma'lumotlarni qayta ishlash siyosatiga muvofiq shaxsiy ma'lumotlarni qayta ishlashga rozilik beraman"
+    "agreement": "Tugmani bosish orqali men shaxsiy ma'lumotlarni qayta ishlash ",
+    "politicsLink": "siyosatiga muvofiq shaxsiy ma'lumotlarni ",
+    "agreement-end": "rozilik bildiraman"
   },
   "footer": {
     "phone": "+998 78 888 11 22",
     "departament": "Golden House mijozlarga xizmat ko'rsatish bo'limi",
     "workingHours": "Ish vaqti:",
     "workingHoursTimeMnFr": "Du-Ju: 9:00 dan 19:00 gacha",
-    "workingHoursTimeSaSu": "Sh-Ya: 10:00 dan 18:00 gacha",
+    "workingHoursTimeSaSu": "Sha-Yak: 10:00 dan 18:00 gacha",
     "companyName": "\"Unique Creation\" MChJ Golden House kompaniyalar guruhi",
     "copyright": "©2025 Saytdagi ma'lumotlar tanishish maqsadida taqdim etilgan. Aniqroq ma'lumot olish uchun kompaniya menejerlariga murojaat qiling",
     "adress": "Manzil: Toshkent sh., Farg'ona yo'li, 50"

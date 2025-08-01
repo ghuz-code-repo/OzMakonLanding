@@ -171,7 +171,7 @@
 
 .right--bottom-photo--block {
     overflow: hidden;
-    width: 835px;
+    min-width: 835px;
     height: 488px;
     border-radius: 12px;
 }
@@ -283,7 +283,7 @@
 
     .right--bottom-photo--block {
         overflow: hidden;
-        width: 734px;
+        min-width: 734px;
         height: 432px;
         border-radius: 12px;
     }
@@ -366,7 +366,7 @@
 
     .right--bottom-photo--block {
         overflow: hidden;
-        width: 734px;
+        min-width: 734px;
         height: 360px;
         border-radius: 12px;
     }
@@ -444,7 +444,7 @@
 
     .right--bottom-photo--block {
         overflow: hidden;
-        width: 647px;
+        min-width: 647px;
         height: 381px;
         border-radius: 12px;
     }

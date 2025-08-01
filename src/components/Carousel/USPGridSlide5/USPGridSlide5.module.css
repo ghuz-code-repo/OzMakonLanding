@@ -6,9 +6,6 @@
   background: var(--color-bg-main);
   align-self: center;
   justify-content: center;
-  /* overflow-y: visible; */
-  margin-top: 10vh;
-
 }
 
 
@@ -24,6 +21,8 @@
   justify-content: center;
   align-items: center;
   gap: 30px;
+  margin-top: 15vh;
+  
 }
 
 .slide5 {

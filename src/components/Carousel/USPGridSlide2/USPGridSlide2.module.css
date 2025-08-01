@@ -20,7 +20,7 @@
   height: 100vh;
   color: #fff;
   box-sizing: border-box;
-  justify-content: space-between;
+  justify-content: center;
   align-items: flex-end;
   gap: 30px;
 

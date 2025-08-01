@@ -206,6 +206,10 @@
   filter: grayscale(0.2);
 }
 
+.politicsLink{
+  color: var(--color-yellow) !important;
+}
+
 /* Tablets (≤1200px) */
 @media (max-width: 1300px) {
   .CallbackSection {

@@ -1,6 +1,6 @@
 {
   "header": {
-    "main": "Home",
+    "main": "Main",
     "about": "About Complex",
     "advantages": "Advantages",
     "layouts": "Layouts",
@@ -16,13 +16,13 @@
     "sectionTitle": "About architecture\nand concept\nof residential complex",
     "mainDescription": "Facade geometry combining various volumes and materials\nGlazed tiles\nHigh-quality Italian plaster\nComposite panels",
     "dutchTitle": "Dutch aesthetics",
-    "dutchDescription": "Master plan by Dutch bureau De Architekten Cie. Mixed-height development and expressive European facades inspired by traditional mosaics and warm palette of Central Asian architecture",
-    "helpTitle": "We will help you choose an apartment that suits you",
-    "helpSubtitle": "We will accompany you at every stage of the deal",
+    "dutchDescription": "Master plan by Dutch bureau De Architekten Cie. Multi-height development and expressive European facades inspired by traditional mosaics and warm palette of Central Asian architecture",
+    "helpTitle": "We'll help you choose an apartment that's right for you",
+    "helpSubtitle": "We'll accompany you at every stage of the deal",
     "form": {
       "namePlaceholder": "Your name",
       "phonePlaceholder": "+998 ",
-      "button": "Submit application"
+      "button": "Submit request"
     }
   },
   "usp5": {
@@ -86,7 +86,7 @@
     "card": {
       "TCM": {
         "timeToPlace": "15 minutes",
-        "place": "to Tashkent city mall"
+        "place": "to Tashkent City Mall"
       },
       "METRO": {
         "timeToPlace": "15 minutes",
@@ -101,7 +101,9 @@
     "namePlaceholder": "Your name",
     "phonePlaceholder": "+998 ",
     "button": "Submit application",
-    "agreement": "By clicking the button, I consent to the processing of personal data in accordance with the Personal Data Processing Policy"
+    "agreement": "By clicking the button, I consent to the processing of personal data in accordance with the ",
+    "politicsLink": "Personal Data Processing Policy" ,
+    "agreement-end": ""
   },
   "footer": {
     "phone": "+998 78 888 11 22",
