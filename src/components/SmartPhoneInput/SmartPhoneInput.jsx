@@ -86,6 +86,9 @@ export const SmartPhoneInput = ({
     //   analysis: codeAnalysis,
     //   isFocused
     // });
+
+    // Определяем фактический код страны из введённого значения
+    const detectedCode = detectCountryCode(formattedValue);
     
     // Логика показа уведомлений
     if (isFocused) {
@@ -136,7 +139,7 @@ export const SmartPhoneInput = ({
         });
       }
     }
-  }, [formatPhoneNumber, isCountryCodeAllowed, detectCountryCode, onChange, onValidationChange, onCountryDetected, defaultConfig.allowedCountryCodes, isFocused]);
+  }, [formatPhoneNumber, isCountryCodeAllowed, detectCountryCode, analyzeCountryCode, onChange, onValidationChange, onCountryDetected, defaultConfig.allowedCountryCodes, isFocused]);
 
   /**
    * Обработчик получения фокуса
