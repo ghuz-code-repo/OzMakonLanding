@@ -158,13 +158,13 @@
 
 .main-text {
     padding-top: 10px;
-    font-weight: 200;
+    font-weight: 400;
     font-size: 24px;
     color: var(--color-gold);
 }
 
 .bullets {
-    font-weight: 200;
+    font-weight: 400;
     font-size: 24px;
     color: var(--color-gold);
 }

@@ -29,7 +29,7 @@
     "slide1": {
       "title": "Landscaping\nand courtyard\nwithout cars",
       "list": "Closed green courtyard\nBBQ area\nGazebos",
-      "textblock": "Children's playgrounds with shade canopies\nPrivate kindergarten\nKIDS ROOM\nFitness center"
+      "textblock": "Children's playgrounds with shade canopies\nPrivate kindergarten\nKids Room\nFitness center"
     },
     "slide2": {
       "title": "Infrastructure\nand interiors\n",
@@ -95,7 +95,7 @@
     }
   },
   "callback": {
-    "title": "Come",
+    "title": "Sign up",
     "subTitle": "for a personal presentation",
     "mainText": "Leave your contact details and our manager will contact you soon for detailed consultation",
     "namePlaceholder": "Your name",
@@ -103,6 +103,7 @@
     "button": "Submit application",
     "agreement": "By clicking the button, I consent to the processing of personal data in accordance with the ",
     "politicsLink": "Personal Data Processing Policy" ,
+    "politicsHref":"../../public/policy/agreement_en.docx",
     "agreement-end": ""
   },
   "footer": {

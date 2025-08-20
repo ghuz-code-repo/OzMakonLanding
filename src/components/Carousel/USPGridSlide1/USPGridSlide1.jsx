@@ -4,7 +4,7 @@ import styles from './USPGridSlide1.module.css';
 import CachedBackgroundImage from '../../CachedImage/CachedBackgroundImage';
 
 
-const imgPath = (name) => `/src/assets/img/UniqueSellingPropositionsGrid5/slide1/${name}`;
+const imgPath = (name) => `/img/UniqueSellingPropositionsGrid5/slide1/${name}`;
 
 const USPGridSlide1 = () => {
   const { t, ready } = useTranslation();

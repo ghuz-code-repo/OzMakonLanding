@@ -1,0 +1,13 @@
+version: '3.8'
+
+services:
+  ozmakon:
+    build:
+      context: .
+      dockerfile: Dockerfile.npx
+    container_name: ozmakon-prod
+    restart: unless-stopped
+    ports:
+      - '80:80'
+    environment:
+      - NODE_ENV=production

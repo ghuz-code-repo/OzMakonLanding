@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './Location.module.css';
 import { useTranslation } from 'react-i18next';
-const imgPath = (name) => `/src/assets/img/Location/${name}`;
+const imgPath = (name) => `/img/Location/${name}`;
 const Location = () => {
   const { t } = useTranslation();
 
@@ -29,6 +29,7 @@ const Location = () => {
             </React.Fragment>
           ))}
         </span>
+        <a href="https://yandex.uz/maps/10335/tashkent/house/YkAYdA5pS0YHQFprfX54cXVqYw==/?ll=69.300287%2C41.290709&z=18">
         <div className={styles.mapBlock}>
           <div className={styles.mapImage}>
             <div className={styles.card}>
@@ -53,6 +54,7 @@ const Location = () => {
           </div> */}
           </div>
         </div>
+        </a>
       </div>
     </section>
   );

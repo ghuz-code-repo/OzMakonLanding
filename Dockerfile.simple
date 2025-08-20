@@ -1,0 +1,23 @@
+# Простой production Dockerfile
+FROM node:22
+
+WORKDIR /app
+
+# Копируем package.json и устанавливаем зависимости
+COPY package*.json ./
+RUN npm install
+
+# Копируем весь проект
+COPY . .
+
+# Устанавливаем права на выполнение для всех исполняемых файлов в node_modules
+RUN chmod -R +x node_modules/.bin/
+
+# Собираем проект
+RUN npm run build
+
+# Открываем порт 80
+EXPOSE 80
+
+# Запускаем сайт на порту 80
+CMD ["npm", "run", "start"]

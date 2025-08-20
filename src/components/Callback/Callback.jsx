@@ -5,7 +5,7 @@ import { sendLeadToMacroCRM, showFlashMessage } from '../../utils/macroCRM';
 import { formSync } from '../../hooks/useFormSync';
 import { SmartPhoneInput } from '../SmartPhoneInput';
 import { validateAndFormatName, isValidName } from '../../utils/nameValidation';
-const imgPath = (name) => `/src/assets/img/Callback/${name}`;
+const imgPath = (name) => `/img/Callback/${name}`;
 
 // Все данные остаются с дублированием, как было в вашем рабочем варианте
 const leftImages = [
@@ -266,7 +266,7 @@ const Callback = () => {
               <span className={styles.customCheckbox}></span>
               <span className={styles.consentText}>
                 {t('callback.agreement')}
-                <a href="/privacy-policy" target="_blank" rel="noopener noreferrer" className={styles.politicsLink}>
+                <a href={t('callback.politicsHref')} download="policy.docx" className={styles.politicsLink}>
                   {t('callback.politicsLink')}
                 </a>
                 {t('callback.agreement-end')}

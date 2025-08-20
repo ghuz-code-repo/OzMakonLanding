@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next';
 import styles from './USPGridSlide3.module.css';
 import CachedBackgroundImage from '../../CachedImage/CachedBackgroundImage';
 
-const imgPath = (name) => `/src/assets/img/UniqueSellingPropositionsGrid5/slide3/${name}`;
+const imgPath = (name) => `/img/UniqueSellingPropositionsGrid5/slide3/${name}`;
 
 const USPGridSlide3 = () => {
   const { t, ready } = useTranslation();
@@ -16,13 +16,13 @@ const USPGridSlide3 = () => {
   };
 
   const slide = {
-    title: getTranslation('usp5.slide3.title', 'Паркинг\nи инфраструктура'),
+    title: getTranslation('usp5.slide3.left_bottom_title', 'Паркинг\nи инфраструктура'),
     left: {
-      list: getTranslation('usp5.slide3.list', 'Подземный паркинг\nЭлектрозарядки\nСистема безопасности'),
+      list: getTranslation('usp5.slide3.left_bottom_text', 'Подземный паркинг\nЭлектрозарядки\nСистема безопасности'),
       year: '2025',
     },
     right: {
-      text: getTranslation('usp5.slide3.textblock', 'Современная инфраструктура\nдля комфортной жизни'),
+      text: getTranslation('usp5.slide3.left_bottom_bullets', 'Современная инфраструктура\nдля комфортной жизни'),
     },
     images: {
       parkingBig: '2b-garage.webp',

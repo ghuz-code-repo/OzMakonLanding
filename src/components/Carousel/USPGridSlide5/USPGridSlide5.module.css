@@ -55,12 +55,12 @@
 
 .top_left_title {
   margin-top: -1rem;
-  font-weight: 350;
+  font-weight: 400;
   font-size: 76px;
 }
 
 .top_left_year {
-  font-weight: 250;
+  font-weight: 400;
   font-size: 24px;
   color: var(--color-gold);
 
@@ -68,7 +68,7 @@
 
 .top_left_text {
   text-align: left;
-  font-weight: 250;
+  font-weight: 400;
   font-size: 24px;
   color: var(--color-gold);
 }
@@ -114,7 +114,7 @@
 .top_right_right_img {
   width: 402px;
   height: 45vh;
-  background-position: -10px -30px;
+  background-position: -10px bottom;
   background-size: 105%;
   transition: transform 0.3s ease;
 }
@@ -183,13 +183,13 @@
 }
 
 .bottom_right_title {
-  font-weight: 250;
+  font-weight: 400;
   font-size: 24px;
   color: var(--color-gold);
 }
 
 .bottom_right_text {
-  font-weight: 250;
+  font-weight: 400;
   font-size: 24px;
   color: var(--color-gold);
 }

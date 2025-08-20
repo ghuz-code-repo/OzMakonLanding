@@ -32,7 +32,8 @@ const Conception = () => {
               </React.Fragment>
             ))}
           </h2>
-          <CachedImage src={circleImage} alt="yellow line" className={styles["conception__yellow-line"]} />
+          {/* <CachedImage src={circleImage} alt="yellow line"  */}
+          <div className={styles["conception__yellow-line"]} />
         </div>
         <div className={styles["conception__right"]}>
           <h3 className={styles["conception__dutch-title"] + ' ' + styles["baseline-border"]}>{t('conception.dutchTitle')}</h3>

@@ -2,7 +2,7 @@ import React from 'react';
 import { useTranslation } from 'react-i18next';
 import styles from './Markets.module.css';
 
-const imgPath = (name) => `/src/assets/img/PlacesAround/Markets/${name}`;
+const imgPath = (name) => `/img/PlacesAround/Markets/${name}`;
 
 
 const Markets = () => {
@@ -24,7 +24,7 @@ const Markets = () => {
             {t('places.marketsDetail')}
           </p>
           {/* <div className={styles.timeTag}>
-            <img src='/src/assets/img/PlacesAround/car.svg' />
+            <img src='/img/PlacesAround/car.svg' />
             <span>10 мин</span>
           </div> */}
         </div>

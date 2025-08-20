@@ -4,7 +4,7 @@ import styles from './ApartmentLayouts.module.css';
 import LayoutChanger from './LayoutChanger/LayoutChanger';
 import MacroWidget from '../MacroWidget/MacroWidget';
 
-const imgPath = (name) => `/src/assets/img/ApartmentLayouts/${name}`;
+const imgPath = (name) => `/img/ApartmentLayouts/${name}`;
 
 const ApartmentLayouts = () => {
   const { t } = useTranslation();

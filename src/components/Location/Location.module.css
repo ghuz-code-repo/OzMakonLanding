@@ -64,10 +64,10 @@
   height: 100%;
 
   /* Задаем фон и фильтр именно здесь */
-  background-image: url('/src/assets/img/Location/map.png');
+  background-image: url('/img/Location/map.png');
   background-size: cover;
   background-position: center;
-  filter: grayscale(100%);
+  /* filter: grayscale(100%); */
 
   /* Помещаем этот слой под основной контент */
   z-index: -1;

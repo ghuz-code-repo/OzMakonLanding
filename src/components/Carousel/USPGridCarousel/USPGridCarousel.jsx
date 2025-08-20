@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useMemo } from 'react';
+import React, { useEffect, useRef, useMemo, useState } from 'react';
 import { useMediaPreloader } from '../../MediaPreloader/MediaPreloader';
 import { useImageRetention } from '../../../hooks/useImageRetention';
 import styles from './USPGridCarousel.module.css';
@@ -74,9 +74,21 @@ const USPGridCarousel = () => {
     };
   }, [isLoading]);
 
-  if (isLoading) {
-    return null; // Или показать прелоадер
-  }
+  // Показываем контент с таймаутом - если загрузка длится больше 5 секунд, показываем принудительно
+  const [forceShow, setForceShow] = useState(false);
+  
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setForceShow(true);
+    }, 5000); // 5 секунд таймаут
+    
+    return () => clearTimeout(timer);
+  }, []);
+
+  // Временно отключаем проверку загрузки для исправления проблемы
+  // if (isLoading && !forceShow) {
+  //   return null; // Или показать прелоадер
+  // }
 
   return (
     <section className={styles["usp5-section"]}>

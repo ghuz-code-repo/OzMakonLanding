@@ -29,7 +29,7 @@
     "slide1": {
       "title": "Благоустройство\nи двор без машин",
       "list": "Закрытый зелёный двор\nBBQ-зона\nБеседки",
-      "textblock": "Детские площадки с теневыми навесами\nЧастный детский сад\nKIDS ROOM\nФитнес-зал"
+      "textblock": "Детские площадки с теневыми навесами\nЧастный детский сад\nKids Room\nФитнес-зал"
     },
     "slide2": {
       "title": "Инфраструктура\nи интерьеры\n",
@@ -86,7 +86,7 @@
     "card": {
       "TCM": {
         "timeToPlace": "15 минут",
-        "place": "до Tashkent city moll"
+        "place": "до Tashkent City Mall"
       },
       "METRO": {
         "timeToPlace": "15 минут",
@@ -103,6 +103,7 @@
     "button": "Оставить заявку",
     "agreement": "Нажимая на кнопку, я даю свое согласие на обработку персональных данных в соответствии с ",
     "politicsLink": "Политикой обработки персональных данных",
+    "politicsHref":"policy/agreement_ru.docx",
     "agreement-end": ""
   },
   "footer": {

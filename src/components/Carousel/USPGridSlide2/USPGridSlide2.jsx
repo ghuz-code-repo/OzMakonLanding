@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next';
 import styles from './USPGridSlide2.module.css';
 import CachedBackgroundImage from '../../CachedImage/CachedBackgroundImage';
 
-const imgPath = (name) => `/src/assets/img/UniqueSellingPropositionsGrid5/slide2/${name}`;
+const imgPath = (name) => `/img/UniqueSellingPropositionsGrid5/slide2/${name}`;
 
 const USPGridSlide2 = () => {
   const { t, ready } = useTranslation();

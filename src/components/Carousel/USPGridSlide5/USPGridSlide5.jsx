@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './USPGridSlide5.module.css';
 import { useTranslation } from 'react-i18next';
-const imgPath = (name) => `/src/assets/img/UniqueSellingPropositionsGrid5/slide5/${name}`;
+const imgPath = (name) => `/img/UniqueSellingPropositionsGrid5/slide5/${name}`;
 
 const USPGridSlide5 = () => {
   const { t } = useTranslation();
