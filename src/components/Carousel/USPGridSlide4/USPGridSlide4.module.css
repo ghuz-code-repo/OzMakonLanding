@@ -6,6 +6,7 @@
     background: var(--color-bg-main);
     align-self: center;
     justify-content: center;
+    max-width: 98vw;
 }
 
 
@@ -305,7 +306,8 @@
     }
 
     .usp5-wrapper {
-        gap: 25px
+        gap: 25px;
+        justify-content: center;
     }
 
     .slide3 {
@@ -469,7 +471,7 @@
 .tablet_slide_left {
     display: flex;
     flex-direction: column;
-    min-width: 45vw;
+    min-width: 50vw;
     /* min-height: 80vh; */
     justify-content: space-between;
     margin: 20px;

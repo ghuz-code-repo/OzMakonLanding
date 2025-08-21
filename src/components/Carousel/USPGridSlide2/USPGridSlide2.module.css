@@ -9,6 +9,7 @@
   padding-right: 20px;
   padding-left: 20px;
   padding-top: 20vh;
+  max-width: 98vw;
 }
 
 .usp5-wrapper {
@@ -408,7 +409,8 @@
   }
 
   .usp5__mobile-text {
-    font-size: 14px;
+    font-size: 24px;
+    font-weight: 400;
     line-height: 1.2;
     color: var(--color-gold);
   }
@@ -420,11 +422,16 @@
   }
 
   .usp5__mobile-year {
+    font-size: 24px;
+    font-weight: 400;
     align-self: flex-end;
   }
 
   .usp5__mobile-bot-right-text {
     text-align: right;
+    font-weight: 400;
+    font-size: 24px;
+    color: var(--color-gold);
   }
 
   .usp5__mobile-row {
@@ -717,7 +724,7 @@
   }
 
   .usp5__mobile-text {
-    font-size: 14px;
+    font-size: 24px;
     line-height: 1.2;
     color: var(--color-gold);
   }
@@ -729,11 +736,16 @@
   }
 
   .usp5__mobile-year {
+    font-size: 24px;
+    font-weight: 400;
     align-self: flex-end;
   }
 
   .usp5__mobile-bot-right-text {
     text-align: right;
+    font-weight: 400;
+    font-size: 24px;
+    color: var(--color-gold);
   }
 
   .usp5__mobile-row {

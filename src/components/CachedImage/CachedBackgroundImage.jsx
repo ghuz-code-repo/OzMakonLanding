@@ -26,13 +26,13 @@ const CachedBackgroundImage = ({
     backgroundSize: 'cover',
     backgroundPosition: 'center',
     backgroundRepeat: 'no-repeat',
-    opacity: 1,
-    visibility: 'visible',
-    display: 'block',
+    opacity: '1 !important',
+    visibility: 'visible !important',
+    display: 'block !important',
 
-    // backfaceVisibility: 'hidden',
-    // willChange: 'transform',
-    // contain: 'paint layout'
+    backfaceVisibility: 'hidden',
+    // willChange: 'transform', // Отключено - вызывает translateZ(0px)
+    contain: 'paint layout'
   };
 
   return (

@@ -3,12 +3,20 @@ img {
   opacity: 1 !important;
   visibility: visible !important;
   display: block !important;
+  animation: none !important;
+  /* transition: none !important; */
+  animation-delay: 0s !important;
+  transition-delay: 0s !important;
 }
 
 /* Принудительно показываем background изображения */
 [style*="background-image"] {
   opacity: 1 !important;
   visibility: visible !important;
+  animation: none !important;
+  /* transition: none !important; */
+  animation-delay: 0s !important;
+  transition-delay: 0s !important;
 }
 
 /* Отключаем любые fade-in эффекты на изображениях */
@@ -39,19 +47,40 @@ img[alt]:empty {
 }
 
 /* Отключаем все fadeIn анимации во всех компонентах */
-/* *[class*="slide"],
+*[class*="slide"],
 *[class*="places-around"],
 *[class*="carousel"],
 *[class*="usp"],
 *[class*="apartment"],
-*[class*="location"] {
+*[class*="location"],
+*[class*="hero"],
+*[class*="conception"] {
   animation: none !important;
-  transition: opacity 0s !important;
+  /* transition: none !important; */
   opacity: 1 !important;
   visibility: visible !important;
-} */
+  animation-delay: 0s !important;
+  transition-delay: 0s !important;
+}
 
 /* Отключаем анимации на всех слайдах */
+/* Принудительно для всех вложенных элементов каруселей */
+*[class*="slide"] *,
+*[class*="carousel"] *,
+*[class*="usp"] * {
+  animation: none !important;
+  /* transition: none !important; */
+  opacity: 1 !important;
+  visibility: visible !important;
+  animation-delay: 0s !important;
+  transition-delay: 0s !important;
+}
+
+/* Исключения для hover-эффектов - восстанавливаем transitions только для transform */
+*[class*="slide"] *[class*="photo"],
+*[class*="usp"] *[class*="photo"] {
+  transition: transform 0.3s ease !important;
+}
 /* .places-around__slide {
   animation: none !important;
   opacity: 1 !important;

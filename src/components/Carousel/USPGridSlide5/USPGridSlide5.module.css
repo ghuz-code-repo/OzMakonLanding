@@ -11,6 +11,7 @@
 
 .usp5_wrapper {
   max-width: 1700px;
+  max-width: 98vw;
   width: 100%;
   display: flex;
   flex-direction: row;
@@ -22,7 +23,7 @@
   align-items: center;
   gap: 30px;
   margin-top: 15vh;
-  
+
 }
 
 .slide5 {
@@ -31,6 +32,8 @@
   flex-direction: column;
   gap: 60px;
   justify-content: center;
+  max-width: 93vw;
+
 }
 
 .first_row {
@@ -484,7 +487,7 @@
 .tablet_slide_left {
   display: flex;
   flex-direction: column;
-  min-width: 45vw;
+  min-width: 50vw;
   /* min-height: 80vh; */
   justify-content: space-between;
   margin: 20px;

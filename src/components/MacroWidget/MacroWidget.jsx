@@ -1,6 +1,6 @@
 import React, { forwardRef, useImperativeHandle, useState, useEffect } from 'react';
 
-const MACRO_SCRIPT_URL = "https://api.macrocrm.gh.uz/estate/embedjs/?domain=gh.uz";
+const MACRO_SCRIPT_URL = "https://api.macrocrm.gh.uz/estate/embedjs/?domain=http://oz-makon-business.gh.uz/";
 window.isMacroScriptInitiated = window.isMacroScriptInitiated || false;
 
 const MacroWidget = forwardRef((props, ref) => {

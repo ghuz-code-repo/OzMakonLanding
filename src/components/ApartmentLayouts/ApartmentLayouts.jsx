@@ -133,7 +133,7 @@ const ApartmentLayouts = () => {
         price: '1 000 000 000',
         discount: '-2%',
         isHover: false,
-        roomCount: [4,5]
+        roomCount: [3,4,5]
       },
       {
         id: 8,
@@ -143,7 +143,7 @@ const ApartmentLayouts = () => {
         price: '1 000 000 000',
         discount: '-2%',
         isHover: false,
-        roomCount: [4,5]
+        roomCount: [3,4,5]
       }
     ]
   };
