@@ -12,13 +12,13 @@ img {
 }
 
 /* Отключаем любые fade-in эффекты на изображениях */
-img,
+/* img,
 [style*="background-image"],
 .cached-image,
 .cached-background {
   animation: none !important;
   transition: none !important;
-}
+} */
 
 /* Для всех компонентов CachedImage */
 img[src] {
@@ -39,7 +39,7 @@ img[alt]:empty {
 }
 
 /* Отключаем все fadeIn анимации во всех компонентах */
-*[class*="slide"],
+/* *[class*="slide"],
 *[class*="places-around"],
 *[class*="carousel"],
 *[class*="usp"],
@@ -49,13 +49,13 @@ img[alt]:empty {
   transition: opacity 0s !important;
   opacity: 1 !important;
   visibility: visible !important;
-}
+} */
 
 /* Отключаем анимации на всех слайдах */
-.places-around__slide {
+/* .places-around__slide {
   animation: none !important;
   opacity: 1 !important;
-}
+} */
 
 .places-around__slide--animating {
   opacity: 1 !important;

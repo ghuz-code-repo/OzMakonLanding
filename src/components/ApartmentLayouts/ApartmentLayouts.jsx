@@ -218,7 +218,7 @@ const ApartmentLayouts = () => {
                 </div>
                 <div className={styles["apartment-layouts__card-content"]}>
                   <div className={styles["apartment-layouts__price"]}>
-                    {layout.price} {t('layouts.currency')}
+                    {/* {layout.price} {t('layouts.currency')} */}
                   </div>
                 </div>
               </div>

@@ -137,7 +137,7 @@ const Callback = () => {
         name: formData.name,
         phone: formData.phone,
         action: 'callback', // Тип заявки - обратный звонок
-        channelMedium: 'Форма обратной связи', // Метка источника
+        channelMedium: 'Сайт-визитка oz-makon-business.gh.uz', // Метка источника
         message: `Заявка с сайта OzMakon. Имя: ${formData.name}, Телефон: ${formData.phone}`
       };
 

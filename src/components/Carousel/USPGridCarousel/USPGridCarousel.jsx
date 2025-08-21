@@ -31,14 +31,13 @@ const USPGridCarousel = () => {
       const container = containerRef.current;
       
       // Применяем GPU ускорение к секции
-      section.style.transform = 'translateZ(0)';
       section.style.backfaceVisibility = 'hidden';
       section.style.willChange = 'transform';
       section.style.contain = 'paint layout';
 
       // Применяем оптимизации к контейнеру
       if (container) {
-        container.style.transform = 'translateZ(0)';
+
         container.style.backfaceVisibility = 'hidden';
         container.style.willChange = 'transform';
         container.style.contain = 'paint layout';
@@ -47,7 +46,6 @@ const USPGridCarousel = () => {
       // Оптимизируем все слайды
       const slides = section.querySelectorAll('[class*="usp5__container"]');
       slides.forEach(slide => {
-        slide.style.transform = 'translateZ(0)';
         slide.style.backfaceVisibility = 'hidden';
         slide.style.willChange = 'transform';
         slide.style.contain = 'paint layout';

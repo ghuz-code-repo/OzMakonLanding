@@ -10,8 +10,7 @@
   transition: opacity 0.3s ease-in-out;
   border-radius: 12px;
   overflow: hidden;
-  transform: translateZ(0);
-  backface-visibility: hidden;
+;  backface-visibility: hidden;
   will-change: transform;
 }
 

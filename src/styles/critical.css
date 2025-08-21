@@ -42,7 +42,7 @@
 
 /* Оптимизации производительности без влияния на размеры */
 .gpu-accelerated {
-  transform: translate3d(0,0,0);
+  /* transform: translate3d(0,0,0); */
   backface-visibility: hidden;
   transform-style: preserve-3d;
   will-change: transform;

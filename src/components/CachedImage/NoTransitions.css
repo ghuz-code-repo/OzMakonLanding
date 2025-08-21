@@ -1,10 +1,10 @@
 /* Отключаем анимации и transitions на мобильных устройствах, кроме хедера */
 @media (max-width: 768px) {
-  *:not([class*="header"]):not([class*="navbar"]) {
-    /* Отключаем анимации для не-хедер элементов */
+  /* *:not([class*="header"]):not([class*="navbar"]) {
+    Отключаем анимации для не-хедер элементов
     animation: none !important;
     transition: none !important;
-  }
+  } */
 
   /* Оптимизация изображений */
   img:not([class*="header"]), 

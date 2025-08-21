@@ -162,9 +162,9 @@ img, [style*="background-image"] {
     /* Отключаем сложные эффекты на мобильных для экономии памяти */
     backdrop-filter: none !important;
     filter: none !important;
-    transform: none !important;
+    /* transform: none !important;
     transition: none !important;
-    animation: none !important;
+    animation: none !important; */
   }
   
   /* Исключения для критически важных элементов */

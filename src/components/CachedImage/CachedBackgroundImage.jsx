@@ -29,10 +29,10 @@ const CachedBackgroundImage = ({
     opacity: 1,
     visibility: 'visible',
     display: 'block',
-    transform: 'translateZ(0)',
-    backfaceVisibility: 'hidden',
-    willChange: 'transform',
-    contain: 'paint layout'
+
+    // backfaceVisibility: 'hidden',
+    // willChange: 'transform',
+    // contain: 'paint layout'
   };
 
   return (

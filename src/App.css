@@ -13,29 +13,29 @@ body {
 
 /* ПРИНУДИТЕЛЬНОЕ ОТОБРАЖЕНИЕ ВСЕХ ИЗОБРАЖЕНИЙ И БЛОКОВ */
 /* Отключаем все анимации и transitions на всех элементах */
-*,
+/* *,
 *::before,
-*::after {
-  animation-duration: 0s !important;
-  animation-delay: 0s !important;
-  transition-duration: 0s !important;
-  transition-delay: 0s !important;
-}
+*::after { */
+  /* animation-duration: 0s !important; */
+  /* animation-delay: 0s !important; */
+  /* transition-duration: 0s !important; */
+  /* transition-delay: 0s !important; */
+/* } */
 
 /* Принудительно показываем все изображения */
-img {
-  opacity: 1 !important;
+/* img {
+  /* opacity: 1 !important;
   visibility: visible !important;
-  display: block !important;
-}
+  display: block !important; 
+} */
 
 /* Принудительно показываем все блоки с background-image */
-[style*="background-image"] {
+/* [style*="background-image"] {
   opacity: 1 !important;
   visibility: visible !important;
-}
+} */
 
-/* Отключаем все анимации на всех компонентах */
+/* Отключаем все анимации на всех компонентах
 [class*="slide"],
 [class*="places-around"],
 [class*="carousel"],
@@ -48,7 +48,7 @@ img {
   transition: none !important;
   opacity: 1 !important;
   visibility: visible !important;
-}
+} */
 
 /* Для Chrome, Edge, Safari */
 body::-webkit-scrollbar {
@@ -83,12 +83,12 @@ body {
   align-items: center;
   max-width: 100vw;
 }
-
+/* 
 .hide-below-slider .hideable-content-below {
   opacity: 0 !important;
   pointer-events: none !important;
   transition: opacity 0.3s;
-}
+} */
 
 /* Скрываем всё выше блока слайдера на 5-м слайде */
 .hide-above-slider body > *:not(.usp5__container):not(.usp5-fixed):not(.hideable-content-below) {
