@@ -46,8 +46,8 @@
   max-width: 1700px;
   margin: 0 auto;
   opacity: 1;
-  transition: all 0.3s ease;
-  animation: fadeIn 0.5s ease-in-out;
+  /* transition: all 0.3s ease; -- ОТКЛЮЧЕНО */
+  /* animation: fadeIn 0.5s ease-in-out; -- ОТКЛЮЧЕНО */
 }
 
 .places-around__slide--animating {

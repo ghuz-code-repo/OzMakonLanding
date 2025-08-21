@@ -1,5 +1,6 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useRef } from 'react';
 import { useMediaPreloader } from '../MediaPreloader/MediaPreloader';
+import './ForceVisible.css';
 
 const CachedBackgroundImage = ({ 
   src, 
@@ -12,49 +13,22 @@ const CachedBackgroundImage = ({
   ...props 
 }) => {
   const imageRef = useRef(null);
-  const { imageCache } = useMediaPreloader();
+  const { getCachedImage } = useMediaPreloader();
 
-  useEffect(() => {
-    let isMounted = true;
-    
-    const loadImage = () => {
-      if (!src) return;
-
-      const cachedUrl = imageCache[src];
-      if (cachedUrl) {
-        if (isMounted && imageRef.current) {
-          imageRef.current.style.backgroundImage = `url("${cachedUrl}")`;
-        }
-      } else {
-        const img = new Image();
-        img.loading = 'eager'; // Всегда используем eager loading
-        img.decoding = 'sync'; // Всегда используем синхронное декодирование
-      
-        img.onload = () => {
-          if (isMounted && imageRef.current) {
-            imageRef.current.style.backgroundImage = `url("${src}")`;
-          }
-        };
-
-        img.src = src;
-      }
-    };
-
-    // Всегда загружаем изображение немедленно
-    loadImage();
-
-    return () => {
-      isMounted = false;
-    };
-  }, [src, imageCache]);
+  // Получаем кешированный URL, если доступен
+  const cachedImageUrl = getCachedImage(src);
+  const finalSrc = cachedImageUrl || src;
 
   const containerStyle = {
     ...style,
-    position: 'relative',
+    position: style.position || 'relative',
+    backgroundImage: finalSrc ? `url("${finalSrc}")` : 'none',
     backgroundSize: 'cover',
     backgroundPosition: 'center',
     backgroundRepeat: 'no-repeat',
-    opacity: 1, // Всегда показываем сразу
+    opacity: 1,
+    visibility: 'visible',
+    display: 'block',
     transform: 'translateZ(0)',
     backfaceVisibility: 'hidden',
     willChange: 'transform',

@@ -47,18 +47,19 @@
   animation: spin 1s linear infinite;
 }
 
-/* Плавные переходы */
+/* Плавные переходы - ОТКЛЮЧЕНО */
 .media-transition {
-  transition: all 0.3s ease;
+  display: block; /* Заглушка для валидности CSS */
 }
 
 .media-fade-in {
-  animation: fadeIn 0.5s ease-in;
+  /* animation: fadeIn 0.5s ease-in; -- ОТКЛЮЧЕНО */
+  opacity: 1 !important;
 }
 
 @keyframes fadeIn {
   from {
-    opacity: 0;
+    opacity: 1;
   }
 
   to {

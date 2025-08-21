@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { useMediaPreloader } from './MediaPreloader';
 import { generateMediaConfig } from '../../utils/mediaConfigGenerator';
+import { getAllImagePaths } from '../../utils/completeMediaScanner';
 import './MediaPreloader.css';
 
 
@@ -9,6 +10,22 @@ const MediaInitializer = ({ children }) => {
   const [isLoading, setIsLoading] = useState(true);
   const [showContent, setShowContent] = useState(false);
   const initializationStarted = useRef(false);
+
+  // Функция для преобразования путей в объекты с path и url
+  const convertPathsToObjects = (paths) => {
+    const allImages = getAllImagePaths();
+    const imageMap = Object.fromEntries(allImages.map(img => [img.path, img]));
+    
+    return paths.map(path => {
+      const imageObj = imageMap[path];
+      if (imageObj) {
+        return imageObj;
+      } else {
+        console.warn(`Image not found in preloader cache: ${path}`);
+        return { path, url: path }; // fallback
+      }
+    });
+  };
 
   useEffect(() => {
     // Предотвращаем повторную инициализацию
@@ -45,10 +62,14 @@ const MediaInitializer = ({ children }) => {
           !url.includes('USPGridSlide1/')
         );
 
+        // Преобразуем пути в объекты для загрузки
+        const criticalObjects = convertPathsToObjects(MEDIA_CONFIG.critical.urls);
+        const firstSlideObjects = convertPathsToObjects(firstSlideUrls);
+
         // Загружаем критические файлы и первый слайд параллельно
         await Promise.all([
-          loadImageGroup('Критические', MEDIA_CONFIG.critical.urls, true),
-          loadImageGroup('Первый слайд', firstSlideUrls, true)
+          loadImageGroup('Критические', criticalObjects, true),
+          loadImageGroup('Первый слайд', firstSlideObjects, true)
         ]);
 
         // Теперь обновляем конфигурацию карусели
@@ -77,23 +98,29 @@ const MediaInitializer = ({ children }) => {
         // 5. Загружаем все остальные медиафайлы ОДНОВРЕМЕННО и максимально быстро
         console.log('🔄 Запускаем параллельную загрузку всех оставшихся файлов...');
         
+        // Преобразуем оставшиеся пути в объекты
+        const carouselObjects = convertPathsToObjects(otherSlideUrls);
+        const apartmentsObjects = convertPathsToObjects(MEDIA_CONFIG.apartments.urls);
+        const placesObjects = convertPathsToObjects(MEDIA_CONFIG.places.urls);
+        const locationObjects = convertPathsToObjects(MEDIA_CONFIG.location.urls);
+        
         // Загружаем все остальные группы одновременно
         Promise.all([
           // Загружаем оставшиеся слайды карусели
-          MEDIA_CONFIG.carousel.urls.length > 0 && 
-            loadImageGroup('Карусель', MEDIA_CONFIG.carousel.urls, true),
+          carouselObjects.length > 0 && 
+            loadImageGroup('Карусель', carouselObjects, true),
           
           // Загружаем планировки
-          MEDIA_CONFIG.apartments.urls.length > 0 && 
-            loadImageGroup('Планировки', MEDIA_CONFIG.apartments.urls, true),
+          apartmentsObjects.length > 0 && 
+            loadImageGroup('Планировки', apartmentsObjects, true),
           
           // Загружаем места рядом
-          MEDIA_CONFIG.places.urls.length > 0 && 
-            loadImageGroup('Места рядом', MEDIA_CONFIG.places.urls, true),
+          placesObjects.length > 0 && 
+            loadImageGroup('Места рядом', placesObjects, true),
           
           // Загружаем локацию
-          MEDIA_CONFIG.location.urls.length > 0 && 
-            loadImageGroup('Локация', MEDIA_CONFIG.location.urls, true)
+          locationObjects.length > 0 && 
+            loadImageGroup('Локация', locationObjects, true)
         ].filter(Boolean));
         
       } catch (error) {

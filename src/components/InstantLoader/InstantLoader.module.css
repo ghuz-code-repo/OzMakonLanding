@@ -22,7 +22,7 @@
 .instant-loader__content {
   text-align: center;
   color: white;
-  animation: instant-loader-fade-in 0.8s ease-out;
+  /* animation: instant-loader-fade-in 0.8s ease-out; -- ОТКЛЮЧЕНО */
 }
 
 .instant-loader__logo {
@@ -119,11 +119,11 @@
   animation: instant-loader-progress 2s ease-in-out infinite;
 }
 
-/* Анимации */
+/* Анимации - ОТКЛЮЧЕНО */
 @keyframes instant-loader-fade-in {
   from {
-    opacity: 0;
-    transform: translateY(20px);
+    opacity: 1;
+    transform: translateY(0);
   }
   to {
     opacity: 1;

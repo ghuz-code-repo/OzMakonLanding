@@ -24,21 +24,12 @@ const PerformanceOptimizer = ({ children }) => {
     images.forEach(img => {
       img.style.imageRendering = 'auto';
       img.loading = 'eager';
-      img.decoding = 'async';
+      img.decoding = 'sync';
       
-      // Добавляем плавное появление
-      img.style.opacity = '0';
-      img.style.transition = 'opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1)';
-      
-      if (img.complete) {
-        img.style.opacity = '1';
-      } else {
-        img.onload = () => {
-          requestAnimationFrame(() => {
-            img.style.opacity = '1';
-          });
-        };
-      }
+      // ВСЕГДА показываем изображения без анимаций
+      img.style.opacity = '1';
+      img.style.visibility = 'visible';
+      img.style.transition = 'none';
     });
 
     // Отключаем heavy-weight эффекты на мобильных
@@ -47,6 +38,8 @@ const PerformanceOptimizer = ({ children }) => {
       containerRef.current.style.willChange = 'auto';
       images.forEach(img => {
         img.style.transition = 'none';
+        img.style.opacity = '1';
+        img.style.visibility = 'visible';
       });
     }
   }, []);

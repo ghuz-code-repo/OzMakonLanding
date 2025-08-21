@@ -1,4 +1,4 @@
-/* CSS для улучшения производительности слайдов */
+/* CSS для улучшения производительности слайдов
 .optimize-gpu {
   transform: translate3d(0, 0, 0);
   backface-visibility: hidden;
@@ -12,10 +12,10 @@
   background-size: cover;
   background-position: center;
   transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-}
+} */
 
 /* Отключаем тяжелые эффекты на мобильных */
-@media (max-width: 768px) {
+/* @media (max-width: 768px) {
   .optimize-gpu {
     will-change: auto;
   }
@@ -23,22 +23,23 @@
   .optimize-images {
     transition: none;
   }
-}
+ */
 
-/* Оптимизация для больших экранов */
+/* Оптимизация для больших экранов
 @media (min-width: 1200px) {
   .optimize-gpu {
     transform-style: preserve-3d;
   }
-}
+} */
 
-/* Плавное появление изображений */
+/* Плавное появление изображений - ОТКЛЮЧЕНО для стабильности */
 .image-fade-in {
-  opacity: 0;
-  animation: fadeIn 0.5s ease forwards;
+  opacity: 1 !important;
+  animation: none !important;
 }
 
+/* Отключаем все fadeIn анимации */
 @keyframes fadeIn {
-  from { opacity: 0; }
+  from { opacity: 1; }
   to { opacity: 1; }
 }

@@ -71,15 +71,15 @@
 }
 
 .usp5-slide-anim {
-  transition: transform 0.5s cubic-bezier(.4, 0, .2, 1), opacity 0.5s cubic-bezier(.4, 0, .2, 1), filter 0.5s cubic-bezier(.4, 0, .2, 1);
+  display: block; /* Заглушка для валидности CSS */
 }
 
 .usp5-anim--down {
-  /* Появление снизу вверх */
+  /* Появление снизу вверх - ОТКЛЮЧЕНО */
   transform: translateY(0px);
-  opacity: 0;
-  filter: blur(16px);
-  animation: usp5-slide-in-down 0.5s forwards;
+  opacity: 1 !important;
+  filter: blur(0px) !important;
+  /* animation: usp5-slide-in-down 0.5s forwards; -- ОТКЛЮЧЕНО */
 }
 
 @keyframes usp5-slide-in-down {
@@ -97,11 +97,11 @@
 }
 
 .usp5-anim--up {
-  /* Появление сверху вниз */
+  /* Появление сверху вниз - ОТКЛЮЧЕНО */
   transform: translateY(0px);
-  opacity: 0;
-  filter: blur(16px);
-  animation: usp5-slide-in-up 0.5s forwards;
+  opacity: 1 !important;
+  filter: blur(0px) !important;
+  /* animation: usp5-slide-in-up 0.5s forwards; -- ОТКЛЮЧЕНО */
 }
 
 @keyframes usp5-slide-in-up {
@@ -118,21 +118,25 @@
   }
 }
 
-/* Анимация появления/ухода слайдов через классы на .usp5__container и .usp5-col */
+/* Анимация появления/ухода слайдов через классы на .usp5__container и .usp5-col - ОТКЛЮЧЕНО */
 .usp5__container.anim-down .usp5-animatable {
-  animation: usp5-appear-down 0.3s cubic-bezier(.4, 0, .2, 1) both;
+  /* animation: usp5-appear-down 0.3s cubic-bezier(.4, 0, .2, 1) both; -- ОТКЛЮЧЕНО */
+  opacity: 1 !important;
 }
 
 .usp5__container.anim-down .usp5-col--leaving .usp5-animatable {
-  animation: usp5-disappear-down 0.3s cubic-bezier(.4, 0, .2, 1) both !important;
+  /* animation: usp5-disappear-down 0.3s cubic-bezier(.4, 0, .2, 1) both !important; -- ОТКЛЮЧЕНО */
+  opacity: 1 !important;
 }
 
 .usp5__container.anim-up .usp5-animatable {
-  animation: usp5-appear-up 0.3s cubic-bezier(.4, 0, .2, 1) both;
+  /* animation: usp5-appear-up 0.3s cubic-bezier(.4, 0, .2, 1) both; -- ОТКЛЮЧЕНО */
+  opacity: 1 !important;
 }
 
 .usp5__container.anim-up .usp5-col--leaving .usp5-animatable {
-  animation: usp5-disappear-up 0.3s cubic-bezier(.4, 0, .2, 1) both !important;
+  /* animation: usp5-disappear-up 0.3s cubic-bezier(.4, 0, .2, 1) both !important; -- ОТКЛЮЧЕНО */
+  opacity: 1 !important;
 }
 
 .usp5__container.anim-down .usp5-col--left .usp5-animatable {
@@ -220,7 +224,7 @@
 
 @keyframes slideFadeIn {
   from {
-    opacity: 0;
+    opacity: 1;
   }
 
   to {
@@ -229,15 +233,15 @@
 }
 
 .slide-container-animated {
-  /* Запускаем анимацию */
-  animation: slideFadeIn 0.5s ease-in-out;
+  /* Анимация отключена */
+  /* animation: slideFadeIn 0.5s ease-in-out; -- ОТКЛЮЧЕНО */
   max-width: 100vw !important;
 }
 
-/* Анимация плавного появления для нового слайда */
+/* Анимация плавного появления для нового слайда - ОТКЛЮЧЕНО */
 @keyframes slideFadeIn {
   from {
-    opacity: 0;
+    opacity: 1;
   }
 
   to {
@@ -246,8 +250,8 @@
 }
 
 .slide-container-animated {
-  /* Применяем анимацию к обертке слайда */
-  animation: slideFadeIn 0.5s ease-in-out;
+  /* Анимация отключена */
+  /* animation: slideFadeIn 0.5s ease-in-out; -- ОТКЛЮЧЕНО */
   max-width: 100vw !important;
   /* Улучшенная поддержка touch событий */
   touch-action: pan-y; /* Разрешаем только вертикальный скролл */
@@ -287,7 +291,7 @@
   border: 2px solid var(--color-border-light, #ccc);
   background: transparent;
   cursor: pointer;
-  transition: all 0.3s ease;
+  /* transition: all 0.3s ease; -- ОТКЛЮЧЕНО */
   position: relative;
 }
 
@@ -312,7 +316,7 @@
   border: 2px solid var(--color-accent, #007bff);
   border-radius: 50%;
   opacity: 0.3;
-  animation: pulse 2s infinite;
+  /* animation: pulse 2s infinite; -- ОТКЛЮЧЕНО */
 }
 
 @keyframes pulse {

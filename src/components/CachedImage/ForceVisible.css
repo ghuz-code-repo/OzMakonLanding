@@ -1,0 +1,62 @@
+/* Принудительно показываем все изображения */
+img {
+  opacity: 1 !important;
+  visibility: visible !important;
+  display: block !important;
+}
+
+/* Принудительно показываем background изображения */
+[style*="background-image"] {
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+/* Отключаем любые fade-in эффекты на изображениях */
+img,
+[style*="background-image"],
+.cached-image,
+.cached-background {
+  animation: none !important;
+  transition: none !important;
+}
+
+/* Для всех компонентов CachedImage */
+img[src] {
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+/* Убираем возможные задержки загрузки - loading это HTML атрибут, не CSS */
+img[loading] {
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+/* Принудительное отображение даже при ошибках */
+img[alt]:empty {
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+/* Отключаем все fadeIn анимации во всех компонентах */
+*[class*="slide"],
+*[class*="places-around"],
+*[class*="carousel"],
+*[class*="usp"],
+*[class*="apartment"],
+*[class*="location"] {
+  animation: none !important;
+  transition: opacity 0s !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+/* Отключаем анимации на всех слайдах */
+.places-around__slide {
+  animation: none !important;
+  opacity: 1 !important;
+}
+
+.places-around__slide--animating {
+  opacity: 1 !important;
+}

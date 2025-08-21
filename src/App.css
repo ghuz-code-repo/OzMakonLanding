@@ -11,6 +11,45 @@ body {
   overflow-x: hidden !important; /* Prevents scrollbars from appearing */
 }
 
+/* ПРИНУДИТЕЛЬНОЕ ОТОБРАЖЕНИЕ ВСЕХ ИЗОБРАЖЕНИЙ И БЛОКОВ */
+/* Отключаем все анимации и transitions на всех элементах */
+*,
+*::before,
+*::after {
+  animation-duration: 0s !important;
+  animation-delay: 0s !important;
+  transition-duration: 0s !important;
+  transition-delay: 0s !important;
+}
+
+/* Принудительно показываем все изображения */
+img {
+  opacity: 1 !important;
+  visibility: visible !important;
+  display: block !important;
+}
+
+/* Принудительно показываем все блоки с background-image */
+[style*="background-image"] {
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+/* Отключаем все анимации на всех компонентах */
+[class*="slide"],
+[class*="places-around"],
+[class*="carousel"],
+[class*="usp"],
+[class*="apartment"],
+[class*="location"],
+[class*="hero"],
+[class*="conception"] {
+  animation: none !important;
+  transition: none !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
 /* Для Chrome, Edge, Safari */
 body::-webkit-scrollbar {
   width: 0 !important;
