@@ -493,6 +493,7 @@
 }
 
 .tablet_left_row_main_text {
+    align-self: flex-start;
     font-size: 24px;
     color: var(--color-gold);
 }

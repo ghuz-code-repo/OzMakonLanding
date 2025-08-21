@@ -24,10 +24,9 @@ export default defineConfig({
     }
   },
   server: {
-    port: 80,
+    port: 5173,
     host: true,
-    cors: true,
-    origin: ['http://localhost', 'https://oz-makon-business.gh.uz', 'http://oz-makon-business.gh.uz']
+    cors: true
   },
   preview: {
     port: 80,

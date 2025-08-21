@@ -8,7 +8,8 @@ const imageModules = import.meta.glob([
   '/src/assets/img/**/*.svg'
 ], { 
   eager: true,
-  as: 'url' // Важное изменение - получаем прямой URL вместо модуля
+  query: '?url', // Обновленный способ получения URL
+  import: 'default'
 });
 
 export function getAllImagePaths() {

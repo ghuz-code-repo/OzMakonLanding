@@ -38,16 +38,16 @@ export const MediaPreloaderProvider = ({ children }) => {
   }, []);
 
   // Функция для загрузки группы изображений
-  const loadImageGroup = useCallback(async (groupName, urlList, isCritical = false) => {
-    if (!Array.isArray(urlList)) {
-      console.error(`loadImageGroup: urlList is not an array for group "${groupName}":`, urlList);
+  const loadImageGroup = useCallback(async (groupName, imageObjects, isCritical = false) => {
+    if (!Array.isArray(imageObjects)) {
+      console.error(`loadImageGroup: imageObjects is not an array for group "${groupName}":`, imageObjects);
       return false;
     }
 
-    // Преобразуем пути в правильный формат для загрузки
-    const imageList = urlList.map(url => ({
-      path: url,
-      url: url // В данном случае URL такой же как путь, т.к. пути уже абсолютные
+    // Используем правильные URL из imageObjects
+    const imageList = imageObjects.map(imageObj => ({
+      path: imageObj.path,
+      url: imageObj.url // Используем url, обработанный Vite
     }));
 
     // Инициализируем состояние группы
@@ -105,7 +105,8 @@ export const MediaPreloaderProvider = ({ children }) => {
       console.log('Found images to preload:', allImages.length);
       
       if (allImages.length > 0) {
-        const success = await loadImageGroup('Initial', allImages.map(img => img.path), true);
+        // Передаем массив объектов с path и url, а не только пути
+        const success = await loadImageGroup('Initial', allImages, true);
         setIsLoading(!success);
         setIsInitialLoadComplete(true);
       } else {
