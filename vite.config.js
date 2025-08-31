@@ -29,7 +29,7 @@ export default defineConfig({
     cors: true
   },
   preview: {
-    port: 80,
+    port: 85,
     host: true,
     cors: true,
     allowedHosts: ['oz-makon-business.gh.uz', 'localhost', '0.0.0.0']

@@ -418,7 +418,7 @@
   }
 
   .usp5__mobile-text {
-    font-size: 24px;
+    font-size: 14px;
     font-weight: 400;
     line-height: 1.2;
     color: var(--color-gold);
@@ -432,14 +432,14 @@
 
   .usp5__mobile-year {
     align-self: flex-end;
-    font-size: 24px;
+    font-size: 14px;
     font-weight: 400;
   }
 
   .usp5__mobile-bot-right-text {
     text-align: right;
     font-weight: 400;
-    font-size: 24px;
+    font-size: 14px;
     color: var(--color-gold);
   }
 
