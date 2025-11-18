@@ -13,7 +13,7 @@ const Footer = () => {
                 <div className={styles.footerRow}>
                     <div className={styles.footerTopLeft}>
                         <span className={styles.phone}>
-                            <a href={`tel:${t('footer.phone').replace(/\s/g, "")}`}>{t('footer.phone')}</a>
+                            <a className="phone998781501111" href={`tel:${t('footer.phone').replace(/\s/g, "")}`}>{t('footer.phone')}</a>
                         </span>
 
                     </div>
