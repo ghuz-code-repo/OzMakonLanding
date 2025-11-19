@@ -133,7 +133,7 @@ const CallbackMini = () => {
         <div className={styles["CallbackMini__right"]}>
           <p className={styles["CallbackMini__subtitle"]}>{t('conception.helpSubtitle')}</p>
           <div className={styles["CallbackMini__form"]}>
-            <input
+            {/* <input
               type="text"
               className={styles["CallbackMini__input"] + ' ' + styles["urbanist"]}
               placeholder={t('conception.form.namePlaceholder')}
@@ -152,7 +152,7 @@ const CallbackMini = () => {
               disabled={isSubmitting}
               name="phone"
               autoComplete="off"
-            />
+            /> */}
             <a href="#contacts"><button className={styles["CallbackMini__button"]}>{t('conception.form.button')}</button></a>
           </div>
         </div>
