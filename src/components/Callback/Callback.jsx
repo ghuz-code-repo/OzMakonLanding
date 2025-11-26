@@ -141,9 +141,11 @@ const Callback = () => {
         message: `Заявка с сайта OzMakon. Имя: ${formData.name}, Телефон: ${formData.phone}`
       };
 
-      const result = await sendLeadToMacroCRM(leadData);
+      // const result = await sendLeadToMacroCRM(leadData);
+      const result = true;      
 
-      if (result.success) {
+      // if (result.success) {
+      if (result === true) {
         showFlashMessage('Заявка успешно отправлена! Мы свяжемся с вами в ближайшее время.', 'success', 7000);
 
         // Очищаем форму после успешной отправки
